@@ -1,0 +1,503 @@
+# OpenAPI Contract
+
+```yaml
+openapi: 3.1.0
+
+info:
+  title: Git-Backed Personal Vault API
+  description: |
+    API for accessing and managing a user's GitHub-backed Markdown vault.
+
+    The user's private GitHub repository is the canonical source of truth
+    for vault contents.
+
+    Clients such as the PWA and future Swift/iOS application communicate
+    with the vault through this API.
+  version: 0.1.0
+
+servers:
+  - url: https://api.example.com
+    description: Production API placeholder
+
+tags:
+  - name: Vault
+    description: Vault metadata and information
+  - name: Files
+    description: Vault file operations
+  - name: Search
+    description: Vault search
+  - name: Sync
+    description: Synchronization operations
+
+paths:
+
+  /v1/vault:
+    get:
+      operationId: getVault
+      summary: Get the current user's vault
+      description: |
+        Returns metadata about the authenticated user's vault.
+
+        Vault contents themselves remain in the user's private GitHub
+        repository.
+      tags:
+        - Vault
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Vault metadata
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Vault"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          description: No vault has been configured for the user
+
+  /v1/files:
+    get:
+      operationId: listFiles
+      summary: List vault files
+      description: |
+        Returns files and directories available in the user's vault.
+      tags:
+        - Files
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: "#/components/parameters/Path"
+      responses:
+        "200":
+          description: Files and directories
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FileList"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          description: Vault or path was not found
+
+    post:
+      operationId: createFile
+      summary: Create a file
+      description: |
+        Creates a new file in the user's vault and commits the change
+        to the user's GitHub repository.
+      tags:
+        - Files
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateFileRequest"
+      responses:
+        "201":
+          description: File created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/File"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "409":
+          description: File already exists
+
+  /v1/files/{path}:
+    parameters:
+      - $ref: "#/components/parameters/FilePath"
+
+    get:
+      operationId: getFile
+      summary: Get a file
+      description: |
+        Returns the contents and metadata of a file in the user's vault.
+      tags:
+        - Files
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: File contents and metadata
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/File"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          description: File was not found
+
+    put:
+      operationId: updateFile
+      summary: Update a file
+      description: |
+        Updates an existing file and commits the change to the user's
+        GitHub repository.
+      tags:
+        - Files
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateFileRequest"
+      responses:
+        "200":
+          description: File updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/File"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          description: File was not found
+        "409":
+          description: File changed since the client last retrieved it
+
+    delete:
+      operationId: deleteFile
+      summary: Delete a file
+      description: |
+        Deletes a file and commits the change to the user's GitHub repository.
+      tags:
+        - Files
+      security:
+        - bearerAuth: []
+      responses:
+        "204":
+          description: File deleted
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "403":
+          $ref: "#/components/responses/Forbidden"
+        "404":
+          description: File was not found
+        "409":
+          description: File changed since the client last retrieved it
+
+  /v1/search:
+    get:
+      operationId: searchVault
+      summary: Search the vault
+      description: |
+        Searches the user's vault.
+
+        The initial implementation may use straightforward text search.
+        Semantic search and knowledge-graph functionality are future features.
+      tags:
+        - Search
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: q
+          in: query
+          required: true
+          description: Search query
+          schema:
+            type: string
+            minLength: 1
+        - name: path
+          in: query
+          required: false
+          description: Optional path prefix used to limit the search
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Search results
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SearchResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /v1/sync:
+    post:
+      operationId: syncVault
+      summary: Synchronize vault state
+      description: |
+        Starts or requests synchronization between the client and the
+        user's GitHub-backed vault.
+
+        Detailed offline synchronization and conflict-resolution semantics
+        are intentionally deferred to a later development phase.
+      tags:
+        - Sync
+      security:
+        - bearerAuth: []
+      responses:
+        "202":
+          description: Synchronization accepted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SyncOperation"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /v1/sync/status:
+    get:
+      operationId: getSyncStatus
+      summary: Get synchronization status
+      description: |
+        Returns the current synchronization state for the user's vault.
+      tags:
+        - Sync
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Synchronization status
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SyncStatus"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+components:
+
+  securitySchemes:
+
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: |
+        Authenticated application session token.
+
+  parameters:
+
+    Path:
+      name: path
+      in: query
+      required: false
+      description: |
+        Optional path used to limit the returned files and directories.
+      schema:
+        type: string
+
+    FilePath:
+      name: path
+      in: path
+      required: true
+      description: |
+        Repository-relative path to the requested file.
+
+        The backend must validate and safely handle this path.
+      schema:
+        type: string
+        minLength: 1
+
+  responses:
+
+    BadRequest:
+      description: Invalid request
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+
+    Unauthorized:
+      description: Authentication is required
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+
+    Forbidden:
+      description: The authenticated user is not authorized
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+
+  schemas:
+
+    Vault:
+      type: object
+      required:
+        - id
+        - owner
+        - repository
+        - branch
+      properties:
+        id:
+          type: string
+          format: uuid
+        owner:
+          type: string
+        repository:
+          type: string
+        branch:
+          type: string
+
+    File:
+      type: object
+      required:
+        - path
+        - type
+      properties:
+        path:
+          type: string
+          description: Repository-relative file path
+        type:
+          type: string
+          enum:
+            - file
+            - directory
+        name:
+          type: string
+        content:
+          type: string
+          description: File contents when requested
+        sha:
+          type: string
+          description: GitHub blob/file identifier used for change detection
+        size:
+          type: integer
+          minimum: 0
+        lastModified:
+          type: string
+          format: date-time
+
+    FileList:
+      type: object
+      required:
+        - path
+        - entries
+      properties:
+        path:
+          type: string
+        entries:
+          type: array
+          items:
+            $ref: "#/components/schemas/File"
+
+    CreateFileRequest:
+      type: object
+      required:
+        - path
+        - content
+      properties:
+        path:
+          type: string
+          minLength: 1
+        content:
+          type: string
+        commitMessage:
+          type: string
+          minLength: 1
+          maxLength: 200
+
+    UpdateFileRequest:
+      type: object
+      required:
+        - content
+      properties:
+        content:
+          type: string
+        expectedSha:
+          type: string
+          description: |
+            SHA of the version the client expects to update.
+            Used to detect concurrent modifications.
+        commitMessage:
+          type: string
+          minLength: 1
+          maxLength: 200
+
+    SearchResponse:
+      type: object
+      required:
+        - query
+        - results
+      properties:
+        query:
+          type: string
+        results:
+          type: array
+          items:
+            $ref: "#/components/schemas/SearchResult"
+
+    SearchResult:
+      type: object
+      required:
+        - path
+      properties:
+        path:
+          type: string
+        title:
+          type: string
+        snippet:
+          type: string
+        score:
+          type: number
+          format: double
+
+    SyncOperation:
+      type: object
+      required:
+        - id
+        - status
+      properties:
+        id:
+          type: string
+        status:
+          $ref: "#/components/schemas/SyncState"
+
+    SyncStatus:
+      type: object
+      required:
+        - status
+      properties:
+        status:
+          $ref: "#/components/schemas/SyncState"
+        lastSyncAt:
+          type: string
+          format: date-time
+          nullable: true
+        message:
+          type: string
+
+    SyncState:
+      type: string
+      enum:
+        - idle
+        - pending
+        - running
+        - completed
+        - failed
+        - conflict
+
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+```
