@@ -34,4 +34,4 @@ jobs:
 
       - name: Validate OpenAPI
         run: |
-          npx --yes @redocly/cli@latest lint openapi/openapi.yaml
+          pnpm dlx @redocly/cli@latest lint openapi/openapi.yaml
