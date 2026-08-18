@@ -34,4 +34,4 @@ jobs:
 
       - name: Validate OpenAPI
         run: |
-          pnpm dlx @redocly/cli@latest lint openapi/openapi.yaml
+          pnpm --package=@redocly/cli dlx redocly lint openapi/openapi.yaml
