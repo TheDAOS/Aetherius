@@ -1706,6 +1706,18 @@
       "source_location": "L1"
     },
     {
+      "id": "ai_context_project_blueprint",
+      "label": "project-blueprint.md",
+      "_origin": "ast",
+      "community": 26,
+      "community_name": "project-blueprint.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "project-blueprint.md",
+      "source_file": "ai/context/project-blueprint.md",
+      "source_location": "L1"
+    },
+    {
       "id": "docs_architecture_overview",
       "label": "overview.md",
       "_origin": "ast",
@@ -5298,5 +5310,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "7a36d2d439bf50298df23cd2ea0f48cda5e34f2b"
+  "built_at_commit": "0a178dfeb72c597cd720f8f7038dbd1c3c90eb2e"
 }

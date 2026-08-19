@@ -24,5 +24,6 @@
   "22": "workflows/graphify.md",
   "23": "CLAUDE.md",
   "24": "GEMINI.md",
-  "25": "pnpm Workspace Configuration (apps/*)"
+  "25": "pnpm Workspace Configuration (apps/*)",
+  "26": "project-blueprint.md"
 }
