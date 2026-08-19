@@ -172,5 +172,23 @@
     "seen": 1787168681.7111795,
     "ast_hash": "9bf75b261d928a4356296a0a380c18e1",
     "semantic_hash": ""
+  },
+  "ai/context/phase-1-frontend-plan.md": {
+    "mtime": 1787169954.0564308,
+    "seen": 1787169958.6238596,
+    "ast_hash": "e9e5c37124e0b152e7344ff7d8c00799",
+    "semantic_hash": ""
+  },
+  "docs/architecture/frontend.md": {
+    "mtime": 1787169939.9423332,
+    "seen": 1787169958.6240647,
+    "ast_hash": "a099d7fe9167c548075cacde7d8dab06",
+    "semantic_hash": ""
+  },
+  "docs/decisions/ADR-006-frontend-pwa-design-system.md": {
+    "mtime": 1787169947.4713852,
+    "seen": 1787169958.6243868,
+    "ast_hash": "4354bbf6ee036fc0dbd88f73504d59dd",
+    "semantic_hash": ""
   }
 }

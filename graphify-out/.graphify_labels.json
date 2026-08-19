@@ -25,5 +25,8 @@
   "23": "CLAUDE.md",
   "24": "GEMINI.md",
   "25": "pnpm Workspace Configuration (apps/*)",
-  "26": "project-blueprint.md"
+  "26": "project-blueprint.md",
+  "27": "Phase 1 Implementation Plan — Frontend / PWA Foundation",
+  "28": "Frontend & PWA Architecture",
+  "29": "ADR-006: Frontend PWA Design System and Architecture"
 }
