@@ -1,0 +1,146 @@
+{
+  ".claude/settings.json": {
+    "mtime": 1787166105.8389547,
+    "seen": 1787167358.6178782,
+    "ast_hash": "2b81186f7c91ef231442f6fecfb1c0a6",
+    "semantic_hash": "2b81186f7c91ef231442f6fecfb1c0a6"
+  },
+  ".codex/hooks.json": {
+    "mtime": 1787166116.2216356,
+    "seen": 1787167358.6178854,
+    "ast_hash": "943bc4704a28957e5d5c27e078acc4c4",
+    "semantic_hash": "943bc4704a28957e5d5c27e078acc4c4"
+  },
+  ".gemini/settings.json": {
+    "mtime": 1787166122.6950374,
+    "seen": 1787167358.6178885,
+    "ast_hash": "00bd50511d0f0c4b3f71067ba7a66c3b",
+    "semantic_hash": "00bd50511d0f0c4b3f71067ba7a66c3b"
+  },
+  "package.json": {
+    "mtime": 1787053615.2245092,
+    "seen": 1787167358.6178904,
+    "ast_hash": "1904e0d69e20150582d6953df4f3fb26",
+    "semantic_hash": "1904e0d69e20150582d6953df4f3fb26"
+  },
+  ".agents/rules/graphify.md": {
+    "mtime": 1787166160.8937476,
+    "seen": 1787167358.6178916,
+    "ast_hash": "f1e53ecc9194573d3c28fc116c743a2e",
+    "semantic_hash": "f1e53ecc9194573d3c28fc116c743a2e"
+  },
+  ".agents/workflows/graphify.md": {
+    "mtime": 1787166160.8938956,
+    "seen": 1787167358.6178923,
+    "ast_hash": "6d73634a678cf1e1c71930adf80bd1f0",
+    "semantic_hash": "6d73634a678cf1e1c71930adf80bd1f0"
+  },
+  ".github/workflows/ci.yml": {
+    "mtime": 1787054607.3142571,
+    "seen": 1787167358.617894,
+    "ast_hash": "11c6a55268cd3cde4a898c051fd5ff9a",
+    "semantic_hash": "11c6a55268cd3cde4a898c051fd5ff9a"
+  },
+  "AGENTS.md": {
+    "mtime": 1787166116.2209635,
+    "seen": 1787167358.617895,
+    "ast_hash": "847512991d42dcfee25a02c3749cd05e",
+    "semantic_hash": "847512991d42dcfee25a02c3749cd05e"
+  },
+  "CLAUDE.md": {
+    "mtime": 1787166105.838703,
+    "seen": 1787167358.6178958,
+    "ast_hash": "82efb97a359f5c7290bf2513d14686be",
+    "semantic_hash": "82efb97a359f5c7290bf2513d14686be"
+  },
+  "GEMINI.md": {
+    "mtime": 1787166122.6948364,
+    "seen": 1787167358.617897,
+    "ast_hash": "82efb97a359f5c7290bf2513d14686be",
+    "semantic_hash": "82efb97a359f5c7290bf2513d14686be"
+  },
+  "README.md": {
+    "mtime": 1787047516.7279918,
+    "seen": 1787167358.6178977,
+    "ast_hash": "133bda78ac7a5cef4f96226a7fe78ed3",
+    "semantic_hash": "133bda78ac7a5cef4f96226a7fe78ed3"
+  },
+  "docs/architecture/authentication.md": {
+    "mtime": 1787053307.4168222,
+    "seen": 1787167358.617899,
+    "ast_hash": "7ce08a263a23654c8d79ee38bd8b54cf",
+    "semantic_hash": "7ce08a263a23654c8d79ee38bd8b54cf"
+  },
+  "docs/architecture/data-flow.md": {
+    "mtime": 1787053289.0971556,
+    "seen": 1787167358.6179001,
+    "ast_hash": "05efdeaf5bb6d2e0a7b0ee69b9565e87",
+    "semantic_hash": "05efdeaf5bb6d2e0a7b0ee69b9565e87"
+  },
+  "docs/architecture/github.md": {
+    "mtime": 1787053323.274408,
+    "seen": 1787167358.6179008,
+    "ast_hash": "04416afd6791102a61e5dfb127277238",
+    "semantic_hash": "04416afd6791102a61e5dfb127277238"
+  },
+  "docs/architecture/overview.md": {
+    "mtime": 1787053267.433949,
+    "seen": 1787167358.617902,
+    "ast_hash": "e44472dc8bf2b4e88cae522c36db6f78",
+    "semantic_hash": "e44472dc8bf2b4e88cae522c36db6f78"
+  },
+  "docs/architecture/security.md": {
+    "mtime": 1787053353.79173,
+    "seen": 1787167358.617903,
+    "ast_hash": "085f5371b3f6ed519fa4205c4e751986",
+    "semantic_hash": "085f5371b3f6ed519fa4205c4e751986"
+  },
+  "docs/architecture/supabase.md": {
+    "mtime": 1787053339.2035236,
+    "seen": 1787167358.6179042,
+    "ast_hash": "380e12bdc0f48891e2d3743732b70e0b",
+    "semantic_hash": "380e12bdc0f48891e2d3743732b70e0b"
+  },
+  "docs/decisions/ADR-001-github-is-source-of-truth.md": {
+    "mtime": 1787053073.5536213,
+    "seen": 1787167358.6179051,
+    "ast_hash": "2595b6c8129cf4cdb43184b7066db6d9",
+    "semantic_hash": "2595b6c8129cf4cdb43184b7066db6d9"
+  },
+  "docs/decisions/ADR-002-supabase-responsibilities.md": {
+    "mtime": 1787053110.693141,
+    "seen": 1787167358.617906,
+    "ast_hash": "0017c8eab0a60e0b17b522b14547fc55",
+    "semantic_hash": "0017c8eab0a60e0b17b522b14547fc55"
+  },
+  "docs/decisions/ADR-003-api-boundary.md": {
+    "mtime": 1787053123.072964,
+    "seen": 1787167358.617907,
+    "ast_hash": "4de77e5c01c0ea3b121352d38d6a6349",
+    "semantic_hash": "4de77e5c01c0ea3b121352d38d6a6349"
+  },
+  "docs/decisions/ADR-004-markdown-vault-format.md": {
+    "mtime": 1787053134.4831522,
+    "seen": 1787167358.617908,
+    "ast_hash": "1da8d8b88d115879c932c7f2b81b807b",
+    "semantic_hash": "1da8d8b88d115879c932c7f2b81b807b"
+  },
+  "docs/decisions/ADR-005-pwa-swift-shared-api.md": {
+    "mtime": 1787053145.4981217,
+    "seen": 1787167358.617909,
+    "ast_hash": "5b0e8254c4f2a0f43af40a9aa9c1b9e0",
+    "semantic_hash": "5b0e8254c4f2a0f43af40a9aa9c1b9e0"
+  },
+  "openapi/openapi.yaml": {
+    "mtime": 1787054764.515312,
+    "seen": 1787167358.6179104,
+    "ast_hash": "a066b4e02a53f948b586e426d3072b2d",
+    "semantic_hash": "a066b4e02a53f948b586e426d3072b2d"
+  },
+  "pnpm-workspace.yaml": {
+    "mtime": 1787047380.7166715,
+    "seen": 1787167358.6179113,
+    "ast_hash": "d8311d54523d039af81dd90f803fdec3",
+    "semantic_hash": "d8311d54523d039af81dd90f803fdec3"
+  }
+}
