@@ -2,20 +2,20 @@
   ".claude/settings.json": {
     "mtime": 1787166105.8389547,
     "seen": 1787167358.6178782,
-    "ast_hash": "",
-    "semantic_hash": ""
+    "ast_hash": "2b81186f7c91ef231442f6fecfb1c0a6",
+    "semantic_hash": "2b81186f7c91ef231442f6fecfb1c0a6"
   },
   ".codex/hooks.json": {
     "mtime": 1787166116.2216356,
     "seen": 1787167358.6178854,
-    "ast_hash": "",
-    "semantic_hash": ""
+    "ast_hash": "943bc4704a28957e5d5c27e078acc4c4",
+    "semantic_hash": "943bc4704a28957e5d5c27e078acc4c4"
   },
   ".gemini/settings.json": {
     "mtime": 1787166122.6950374,
     "seen": 1787167358.6178885,
-    "ast_hash": "",
-    "semantic_hash": ""
+    "ast_hash": "00bd50511d0f0c4b3f71067ba7a66c3b",
+    "semantic_hash": "00bd50511d0f0c4b3f71067ba7a66c3b"
   },
   "package.json": {
     "mtime": 1787053615.2245092,
@@ -142,29 +142,5 @@
     "seen": 1787167358.6179113,
     "ast_hash": "d8311d54523d039af81dd90f803fdec3",
     "semantic_hash": "d8311d54523d039af81dd90f803fdec3"
-  },
-  "templates/vault-template/README.md": {
-    "mtime": 1787168461.7013943,
-    "seen": 1787168484.0476778,
-    "ast_hash": "4b4a84d21e9df960083706785cc6ace7",
-    "semantic_hash": ""
-  },
-  "templates/vault-template/notes/miscellaneous/welcome.md": {
-    "mtime": 1787168480.2378466,
-    "seen": 1787168484.0476825,
-    "ast_hash": "3223062d3acb1d5e3603728f0d0197a5",
-    "semantic_hash": ""
-  },
-  "templates/vault-template/templates/daily-note.md": {
-    "mtime": 1787168465.1004174,
-    "seen": 1787168484.0476854,
-    "ast_hash": "48c5ca55005fe9ad04d3cf741096b89c",
-    "semantic_hash": ""
-  },
-  "templates/vault-template/templates/project-spec.md": {
-    "mtime": 1787168467.0594304,
-    "seen": 1787168484.0476878,
-    "ast_hash": "f6d06918d23ca691e72204002450455d",
-    "semantic_hash": ""
   }
 }
