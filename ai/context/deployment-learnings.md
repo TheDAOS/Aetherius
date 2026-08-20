@@ -29,3 +29,7 @@ When using `pnpm/action-setup` in GitHub Actions, if you hardcode the `version` 
   ```typescript
   /// <reference types="vite/client" />
   ```
+
+## 5. Vercel Monorepo `package-lock.json` Pitfall
+* **Issue:** When configuring a monorepo in Vercel with `apps/web` as the Root Directory, if Vercel detects a `package-lock.json` inside the `apps/web/` folder, it will strictly force `npm install` instead of `pnpm install`, ignoring the outer workspace. This results in missing dev dependencies (like `tsc`) and causes `sh: line 1: tsc: command not found` during the build step.
+* **Fix/Workaround:** Ensure that no accidental `package-lock.json` files are committed inside the subdirectories of a `pnpm` workspace. If you accidentally ran `npm install` inside the subdirectory, delete the generated `package-lock.json` and push the deletion. Vercel will then correctly fallback to detecting the `pnpm-workspace.yaml` in the parent directory and use `pnpm` to install all required dependencies.
