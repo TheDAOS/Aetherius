@@ -18,7 +18,7 @@
   "16": "Project: {{name}}",
   "17": "Personal Knowledge Vault",
   "18": "Daily Note - {{date}}",
-  "19": "README.md",
+  "19": "Git-Backed Personal Vault",
   "20": "Welcome to Your Vault",
   "21": "rules/graphify.md",
   "22": "workflows/graphify.md",
@@ -38,5 +38,8 @@
   "36": "postcss.config.js",
   "37": "tailwind.config.js",
   "38": "vite.config.ts",
-  "39": "tailwindcss"
+  "39": "tailwindcss",
+  "40": "AuthContext.tsx",
+  "41": "imports",
+  "42": "index.ts"
 }

@@ -18,10 +18,10 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1787053615.2245092,
-    "seen": 1787167358.6178904,
-    "ast_hash": "1904e0d69e20150582d6953df4f3fb26",
-    "semantic_hash": "1904e0d69e20150582d6953df4f3fb26"
+    "mtime": 1787214356.4476368,
+    "seen": 1787217237.4333544,
+    "ast_hash": "378f8336abedeeab83fdbe1c8cd3b51d",
+    "semantic_hash": ""
   },
   ".agents/rules/graphify.md": {
     "mtime": 1787166160.8937476,
@@ -192,9 +192,9 @@
     "semantic_hash": ""
   },
   "apps/web/package.json": {
-    "mtime": 1787210106.3760827,
-    "seen": 1787210392.2681015,
-    "ast_hash": "2578f6020f793ab0b0fc52b74e3fc60d",
+    "mtime": 1787214384.1450105,
+    "seen": 1787217237.4311316,
+    "ast_hash": "b964f20494f64a923407874df351c00a",
     "semantic_hash": ""
   },
   "apps/web/postcss.config.js": {
@@ -204,9 +204,9 @@
     "semantic_hash": ""
   },
   "apps/web/src/App.tsx": {
-    "mtime": 1787210319.7457523,
-    "seen": 1787210392.2681134,
-    "ast_hash": "d151e5d30051067308472fb02eac38a6",
+    "mtime": 1787216215.460183,
+    "seen": 1787217237.4313068,
+    "ast_hash": "36e0962b3d629d5800c5e07b68e2d35d",
     "semantic_hash": ""
   },
   "apps/web/src/components/common/Badge.tsx": {
@@ -300,9 +300,9 @@
     "semantic_hash": ""
   },
   "apps/web/src/main.tsx": {
-    "mtime": 1787210324.3877885,
-    "seen": 1787210392.268141,
-    "ast_hash": "4ad112e4b9a7edaa6e76c28eccf72f6e",
+    "mtime": 1787214411.093768,
+    "seen": 1787217237.4326258,
+    "ast_hash": "bdab7089556e53221ae6be45ea362eb8",
     "semantic_hash": ""
   },
   "apps/web/src/routes/NewNoteModal.tsx": {
@@ -375,6 +375,42 @@
     "mtime": 1787210164.7505393,
     "seen": 1787210392.2699335,
     "ast_hash": "b0caddee71f9208535f0ad51ddcaf976",
+    "semantic_hash": ""
+  },
+  "ai/context/phase-2-backend-plan.md": {
+    "mtime": 1787214312.2625308,
+    "seen": 1787214317.9441562,
+    "ast_hash": "9144b4a5a5f0f0f34973d40981feac8a",
+    "semantic_hash": ""
+  },
+  "apps/web/src/contexts/AuthContext.tsx": {
+    "mtime": 1787214400.8427432,
+    "seen": 1787217237.4324634,
+    "ast_hash": "5fe4d57fb8df07188c23459ed4ce0756",
+    "semantic_hash": ""
+  },
+  "apps/web/src/routes/LoginView.tsx": {
+    "mtime": 1787216209.8851407,
+    "seen": 1787217237.432629,
+    "ast_hash": "3590008f72446357e17e035588e52902",
+    "semantic_hash": ""
+  },
+  "apps/web/src/services/supabaseClient.ts": {
+    "mtime": 1787214393.9227266,
+    "seen": 1787217237.43304,
+    "ast_hash": "2ba4b56b77666e1902f570b16b4ac7ca",
+    "semantic_hash": ""
+  },
+  "supabase/functions/api-v1/deno.json": {
+    "mtime": 1787214716.88982,
+    "seen": 1787217237.4333572,
+    "ast_hash": "c67b349b14a67ef36e462028509432b7",
+    "semantic_hash": ""
+  },
+  "supabase/functions/api-v1/index.ts": {
+    "mtime": 1787217148.5403965,
+    "seen": 1787217237.43336,
+    "ast_hash": "10a2367e2154cc8b5f905ad59f4d3417",
     "semantic_hash": ""
   }
 }

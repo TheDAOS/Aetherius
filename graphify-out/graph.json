@@ -394,6 +394,19 @@
       "source_location": "L3"
     },
     {
+      "id": "apps_web_src_contexts_authcontext_authcontexttype",
+      "label": "AuthContextType",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "authcontexttype",
+      "source_file": "apps/web/src/contexts/AuthContext.tsx",
+      "source_location": "L5"
+    },
+    {
       "id": "apps_web_src_components_layout_appshell_appshell",
       "label": "AppShell()",
       "_callable": true,
@@ -646,18 +659,6 @@
       "source_location": "L203"
     },
     {
-      "id": "apps_web_src_app_app",
-      "label": "App()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "app()",
-      "source_file": "apps/web/src/App.tsx",
-      "source_location": "L4"
-    },
-    {
       "id": "apps_web_src_components_common_button_button",
       "label": "Button()",
       "_callable": true,
@@ -800,6 +801,54 @@
       "norm_label": "badge()",
       "source_file": "apps/web/src/components/common/Badge.tsx",
       "source_location": "L10"
+    },
+    {
+      "id": "apps_web_src_app_app",
+      "label": "App()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "app()",
+      "source_file": "apps/web/src/App.tsx",
+      "source_location": "L6"
+    },
+    {
+      "id": "apps_web_src_contexts_authcontext_authprovider",
+      "label": "AuthProvider()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "authprovider()",
+      "source_file": "apps/web/src/contexts/AuthContext.tsx",
+      "source_location": "L21"
+    },
+    {
+      "id": "apps_web_src_contexts_authcontext_useauth",
+      "label": "useAuth()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "useauth()",
+      "source_file": "apps/web/src/contexts/AuthContext.tsx",
+      "source_location": "L61"
+    },
+    {
+      "id": "apps_web_src_routes_loginview_loginview",
+      "label": "LoginView()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "loginview()",
+      "source_file": "apps/web/src/routes/LoginView.tsx",
+      "source_location": "L4"
     },
     {
       "id": "openapi_openapi_yaml_bearer_auth",
@@ -1369,14 +1418,14 @@
       "source_location": "L35"
     },
     {
-      "id": "ai_context_phase_2_backend_plan_4_next_actions",
-      "label": "4. Next Actions",
+      "id": "ai_context_phase_2_backend_plan_4_status",
+      "label": "4. Status",
       "_origin": "ast",
       "community": 11,
       "community_name": "2. Step-by-Step Execution Sequence",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "4. next actions",
+      "norm_label": "4. status",
       "source_file": "ai/context/phase-2-backend-plan.md",
       "source_location": "L40"
     },
@@ -2128,7 +2177,7 @@
       "label": "README.md",
       "_origin": "ast",
       "community": 19,
-      "community_name": "README.md",
+      "community_name": "Git-Backed Personal Vault",
       "file_type": "document",
       "node_kind": "page",
       "norm_label": "readme.md",
@@ -2140,7 +2189,7 @@
       "label": "Aetherius",
       "_origin": "ast",
       "community": 19,
-      "community_name": "README.md",
+      "community_name": "Git-Backed Personal Vault",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "aetherius",
@@ -2152,7 +2201,7 @@
       "label": "Architecture",
       "_origin": "ast",
       "community": 19,
-      "community_name": "README.md",
+      "community_name": "Git-Backed Personal Vault",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "architecture",
@@ -2164,12 +2213,24 @@
       "label": "Git-Backed Personal Vault",
       "_origin": "ast",
       "community": 19,
-      "community_name": "README.md",
+      "community_name": "Git-Backed Personal Vault",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "git-backed personal vault",
       "source_file": "README.md",
       "source_location": "L3"
+    },
+    {
+      "id": "readme_project_status",
+      "label": "Project Status",
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "Git-Backed Personal Vault",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "project status",
+      "source_file": "README.md",
+      "source_location": "L16"
     },
     {
       "id": "package",
@@ -2203,6 +2264,28 @@
       "norm_label": "description",
       "source_file": "package.json",
       "source_location": "L5"
+    },
+    {
+      "id": "package_devdependencies",
+      "label": "devDependencies",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "devdependencies",
+      "source_file": "package.json",
+      "source_location": "L21"
+    },
+    {
+      "id": "package_devdependencies_supabase",
+      "label": "supabase",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "supabase",
+      "source_file": "package.json",
+      "source_location": "L22"
     },
     {
       "id": "package_devengines",
@@ -2357,6 +2440,17 @@
       "norm_label": "version",
       "source_file": "package.json",
       "source_location": "L4"
+    },
+    {
+      "id": "supabase",
+      "label": "supabase",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "package.json",
+      "file_type": "concept",
+      "norm_label": "supabase",
+      "source_file": "package.json",
+      "source_location": "L22"
     },
     {
       "id": "templates_vault_template_notes_miscellaneous_welcome",
@@ -3213,17 +3307,6 @@
       "source_location": "L1"
     },
     {
-      "id": "apps_web_src_app",
-      "label": "App.tsx",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "app.tsx",
-      "source_file": "apps/web/src/App.tsx",
-      "source_location": "L1"
-    },
-    {
       "id": "apps_web_src_components_common_button",
       "label": "Button.tsx",
       "_origin": "ast",
@@ -3299,28 +3382,6 @@
       "norm_label": "usepwa.ts",
       "source_file": "apps/web/src/hooks/usePWA.ts",
       "source_location": "L1"
-    },
-    {
-      "id": "apps_web_src_main",
-      "label": "main.tsx",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "main.tsx",
-      "source_file": "apps/web/src/main.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_web_src_main_rootelement",
-      "label": "rootElement",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "rootelement",
-      "source_file": "apps/web/src/main.tsx",
-      "source_location": "L6"
     },
     {
       "id": "apps_web_src_routes_newnotemodal",
@@ -3661,7 +3722,7 @@
       "file_type": "code",
       "norm_label": "clsx",
       "source_file": "apps/web/package.json",
-      "source_location": "L13"
+      "source_location": "L14"
     },
     {
       "id": "apps_web_package_dependencies_lucide_react",
@@ -3672,7 +3733,7 @@
       "file_type": "code",
       "norm_label": "lucide-react",
       "source_file": "apps/web/package.json",
-      "source_location": "L14"
+      "source_location": "L15"
     },
     {
       "id": "apps_web_package_dependencies_react",
@@ -3683,7 +3744,7 @@
       "file_type": "code",
       "norm_label": "react",
       "source_file": "apps/web/package.json",
-      "source_location": "L15"
+      "source_location": "L16"
     },
     {
       "id": "apps_web_package_dependencies_react_dom",
@@ -3694,7 +3755,18 @@
       "file_type": "code",
       "norm_label": "react-dom",
       "source_file": "apps/web/package.json",
-      "source_location": "L16"
+      "source_location": "L17"
+    },
+    {
+      "id": "apps_web_package_dependencies_supabase_supabase_js",
+      "label": "@supabase/supabase-js",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "web/package.json",
+      "file_type": "code",
+      "norm_label": "@supabase/supabase-js",
+      "source_file": "apps/web/package.json",
+      "source_location": "L13"
     },
     {
       "id": "apps_web_package_dependencies_tailwind_merge",
@@ -3705,7 +3777,7 @@
       "file_type": "code",
       "norm_label": "tailwind-merge",
       "source_file": "apps/web/package.json",
-      "source_location": "L17"
+      "source_location": "L18"
     },
     {
       "id": "apps_web_package_name",
@@ -3815,7 +3887,7 @@
       "file_type": "concept",
       "norm_label": "clsx",
       "source_file": "apps/web/package.json",
-      "source_location": "L13"
+      "source_location": "L14"
     },
     {
       "id": "lucide_react",
@@ -3826,7 +3898,7 @@
       "file_type": "concept",
       "norm_label": "lucide-react",
       "source_file": "apps/web/package.json",
-      "source_location": "L14"
+      "source_location": "L15"
     },
     {
       "id": "react",
@@ -3837,7 +3909,7 @@
       "file_type": "concept",
       "norm_label": "react",
       "source_file": "apps/web/package.json",
-      "source_location": "L15"
+      "source_location": "L16"
     },
     {
       "id": "react_dom",
@@ -3848,7 +3920,18 @@
       "file_type": "concept",
       "norm_label": "react-dom",
       "source_file": "apps/web/package.json",
-      "source_location": "L16"
+      "source_location": "L17"
+    },
+    {
+      "id": "supabase_supabase_js",
+      "label": "@supabase/supabase-js",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "web/package.json",
+      "file_type": "concept",
+      "norm_label": "@supabase/supabase-js",
+      "source_file": "apps/web/package.json",
+      "source_location": "L13"
     },
     {
       "id": "tailwind_merge",
@@ -3859,7 +3942,7 @@
       "file_type": "concept",
       "norm_label": "tailwind-merge",
       "source_file": "apps/web/package.json",
-      "source_location": "L17"
+      "source_location": "L18"
     },
     {
       "id": "apps_web_package_devdependencies",
@@ -3870,7 +3953,7 @@
       "file_type": "code",
       "norm_label": "devdependencies",
       "source_file": "apps/web/package.json",
-      "source_location": "L19"
+      "source_location": "L20"
     },
     {
       "id": "apps_web_package_devdependencies_autoprefixer",
@@ -3881,7 +3964,7 @@
       "file_type": "code",
       "norm_label": "autoprefixer",
       "source_file": "apps/web/package.json",
-      "source_location": "L24"
+      "source_location": "L25"
     },
     {
       "id": "apps_web_package_devdependencies_postcss",
@@ -3892,7 +3975,7 @@
       "file_type": "code",
       "norm_label": "postcss",
       "source_file": "apps/web/package.json",
-      "source_location": "L25"
+      "source_location": "L26"
     },
     {
       "id": "apps_web_package_devdependencies_tailwindcss",
@@ -3903,7 +3986,7 @@
       "file_type": "code",
       "norm_label": "tailwindcss",
       "source_file": "apps/web/package.json",
-      "source_location": "L26"
+      "source_location": "L27"
     },
     {
       "id": "apps_web_package_devdependencies_types_node",
@@ -3914,7 +3997,7 @@
       "file_type": "code",
       "norm_label": "@types/node",
       "source_file": "apps/web/package.json",
-      "source_location": "L20"
+      "source_location": "L21"
     },
     {
       "id": "apps_web_package_devdependencies_types_react",
@@ -3925,7 +4008,7 @@
       "file_type": "code",
       "norm_label": "@types/react",
       "source_file": "apps/web/package.json",
-      "source_location": "L21"
+      "source_location": "L22"
     },
     {
       "id": "apps_web_package_devdependencies_types_react_dom",
@@ -3936,7 +4019,7 @@
       "file_type": "code",
       "norm_label": "@types/react-dom",
       "source_file": "apps/web/package.json",
-      "source_location": "L22"
+      "source_location": "L23"
     },
     {
       "id": "apps_web_package_devdependencies_typescript",
@@ -3947,7 +4030,7 @@
       "file_type": "code",
       "norm_label": "typescript",
       "source_file": "apps/web/package.json",
-      "source_location": "L27"
+      "source_location": "L28"
     },
     {
       "id": "apps_web_package_devdependencies_vite",
@@ -3958,7 +4041,7 @@
       "file_type": "code",
       "norm_label": "vite",
       "source_file": "apps/web/package.json",
-      "source_location": "L28"
+      "source_location": "L29"
     },
     {
       "id": "apps_web_package_devdependencies_vite_plugin_pwa",
@@ -3969,7 +4052,7 @@
       "file_type": "code",
       "norm_label": "vite-plugin-pwa",
       "source_file": "apps/web/package.json",
-      "source_location": "L29"
+      "source_location": "L30"
     },
     {
       "id": "apps_web_package_devdependencies_vitejs_plugin_react",
@@ -3980,7 +4063,7 @@
       "file_type": "code",
       "norm_label": "@vitejs/plugin-react",
       "source_file": "apps/web/package.json",
-      "source_location": "L23"
+      "source_location": "L24"
     },
     {
       "id": "apps_web_package_json_tailwindcss",
@@ -3991,7 +4074,7 @@
       "file_type": "concept",
       "norm_label": "tailwindcss",
       "source_file": "apps/web/package.json",
-      "source_location": "L26"
+      "source_location": "L27"
     },
     {
       "id": "autoprefixer",
@@ -4002,7 +4085,7 @@
       "file_type": "concept",
       "norm_label": "autoprefixer",
       "source_file": "apps/web/package.json",
-      "source_location": "L24"
+      "source_location": "L25"
     },
     {
       "id": "postcss",
@@ -4013,7 +4096,7 @@
       "file_type": "concept",
       "norm_label": "postcss",
       "source_file": "apps/web/package.json",
-      "source_location": "L25"
+      "source_location": "L26"
     },
     {
       "id": "types_node",
@@ -4024,7 +4107,7 @@
       "file_type": "concept",
       "norm_label": "@types/node",
       "source_file": "apps/web/package.json",
-      "source_location": "L20"
+      "source_location": "L21"
     },
     {
       "id": "types_react",
@@ -4035,7 +4118,7 @@
       "file_type": "concept",
       "norm_label": "@types/react",
       "source_file": "apps/web/package.json",
-      "source_location": "L21"
+      "source_location": "L22"
     },
     {
       "id": "types_react_dom",
@@ -4046,7 +4129,7 @@
       "file_type": "concept",
       "norm_label": "@types/react-dom",
       "source_file": "apps/web/package.json",
-      "source_location": "L22"
+      "source_location": "L23"
     },
     {
       "id": "typescript",
@@ -4057,7 +4140,7 @@
       "file_type": "concept",
       "norm_label": "typescript",
       "source_file": "apps/web/package.json",
-      "source_location": "L27"
+      "source_location": "L28"
     },
     {
       "id": "vite",
@@ -4068,7 +4151,7 @@
       "file_type": "concept",
       "norm_label": "vite",
       "source_file": "apps/web/package.json",
-      "source_location": "L28"
+      "source_location": "L29"
     },
     {
       "id": "vite_plugin_pwa",
@@ -4079,7 +4162,7 @@
       "file_type": "concept",
       "norm_label": "vite-plugin-pwa",
       "source_file": "apps/web/package.json",
-      "source_location": "L29"
+      "source_location": "L30"
     },
     {
       "id": "vitejs_plugin_react",
@@ -4090,7 +4173,7 @@
       "file_type": "concept",
       "norm_label": "@vitejs/plugin-react",
       "source_file": "apps/web/package.json",
-      "source_location": "L23"
+      "source_location": "L24"
     },
     {
       "id": "apps_web_src_components_common_badge",
@@ -4314,6 +4397,160 @@
       "norm_label": "trust boundaries",
       "source_file": "docs/architecture/security.md",
       "source_location": "L11"
+    },
+    {
+      "id": "apps_web_src_app",
+      "label": "App.tsx",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "app.tsx",
+      "source_file": "apps/web/src/App.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_contexts_authcontext",
+      "label": "AuthContext.tsx",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "authcontext.tsx",
+      "source_file": "apps/web/src/contexts/AuthContext.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_contexts_authcontext_authcontext",
+      "label": "AuthContext",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "authcontext",
+      "source_file": "apps/web/src/contexts/AuthContext.tsx",
+      "source_location": "L13"
+    },
+    {
+      "id": "apps_web_src_main",
+      "label": "main.tsx",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "main.tsx",
+      "source_file": "apps/web/src/main.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_main_rootelement",
+      "label": "rootElement",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "rootelement",
+      "source_file": "apps/web/src/main.tsx",
+      "source_location": "L8"
+    },
+    {
+      "id": "apps_web_src_routes_loginview",
+      "label": "LoginView.tsx",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "loginview.tsx",
+      "source_file": "apps/web/src/routes/LoginView.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_services_supabaseclient",
+      "label": "supabaseClient.ts",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "supabaseclient.ts",
+      "source_file": "apps/web/src/services/supabaseClient.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_services_supabaseclient_supabase",
+      "label": "supabase",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "supabase",
+      "source_file": "apps/web/src/services/supabaseClient.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "supabase_functions_api_v1_deno",
+      "label": "deno.json",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "imports",
+      "file_type": "code",
+      "norm_label": "deno.json",
+      "source_file": "supabase/functions/api-v1/deno.json",
+      "source_location": "L1"
+    },
+    {
+      "id": "supabase_functions_api_v1_deno_imports",
+      "label": "imports",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "imports",
+      "file_type": "code",
+      "norm_label": "imports",
+      "source_file": "supabase/functions/api-v1/deno.json",
+      "source_location": "L2"
+    },
+    {
+      "id": "supabase_functions_api_v1_deno_imports_supabase_functions_js",
+      "label": "@supabase/functions-js",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "imports",
+      "file_type": "code",
+      "norm_label": "@supabase/functions-js",
+      "source_file": "supabase/functions/api-v1/deno.json",
+      "source_location": "L3"
+    },
+    {
+      "id": "supabase_functions_api_v1_deno_imports_supabase_server",
+      "label": "@supabase/server",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "imports",
+      "file_type": "code",
+      "norm_label": "@supabase/server",
+      "source_file": "supabase/functions/api-v1/deno.json",
+      "source_location": "L4"
+    },
+    {
+      "id": "supabase_functions_api_v1_index",
+      "label": "index.ts",
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "index.ts",
+      "file_type": "code",
+      "norm_label": "index.ts",
+      "source_file": "supabase/functions/api-v1/index.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "supabase_functions_api_v1_index_corsheaders",
+      "label": "corsHeaders",
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "index.ts",
+      "file_type": "code",
+      "norm_label": "corsheaders",
+      "source_file": "supabase/functions/api-v1/index.ts",
+      "source_location": "L3"
     },
     {
       "id": "docs_architecture_supabase",
@@ -5350,6 +5587,18 @@
   ],
   "links": [
     {
+      "source": "apps_web_src_app_app",
+      "target": "apps_web_src_contexts_authcontext_useauth",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/App.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
       "source": "apps_web_src_components_layout_appshell_appshell",
       "target": "apps_web_src_hooks_usevault_usevault",
       "relation": "calls",
@@ -5359,6 +5608,18 @@
       "context": "call",
       "source_file": "apps/web/src/components/layout/AppShell.tsx",
       "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_routes_loginview_loginview",
+      "target": "apps_web_src_contexts_authcontext_useauth",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/routes/LoginView.tsx",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -5742,7 +6003,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/web/package.json",
-      "source_location": "L13",
+      "source_location": "L14",
       "weight": 1.0
     },
     {
@@ -5754,7 +6015,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/web/package.json",
-      "source_location": "L14",
+      "source_location": "L15",
       "weight": 1.0
     },
     {
@@ -5766,7 +6027,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/web/package.json",
-      "source_location": "L15",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -5778,7 +6039,19 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/web/package.json",
-      "source_location": "L16",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_package_dependencies_supabase_supabase_js",
+      "target": "supabase_supabase_js",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/package.json",
+      "source_location": "L13",
       "weight": 1.0
     },
     {
@@ -5790,7 +6063,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/web/package.json",
-      "source_location": "L17",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -5802,7 +6075,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/web/package.json",
-      "source_location": "L24",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -5814,7 +6087,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/web/package.json",
-      "source_location": "L25",
+      "source_location": "L26",
       "weight": 1.0
     },
     {
@@ -5826,7 +6099,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/web/package.json",
-      "source_location": "L26",
+      "source_location": "L27",
       "weight": 1.0
     },
     {
@@ -5838,7 +6111,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/web/package.json",
-      "source_location": "L20",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -5850,7 +6123,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/web/package.json",
-      "source_location": "L21",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -5862,7 +6135,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/web/package.json",
-      "source_location": "L22",
+      "source_location": "L23",
       "weight": 1.0
     },
     {
@@ -5874,7 +6147,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/web/package.json",
-      "source_location": "L27",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -5886,7 +6159,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/web/package.json",
-      "source_location": "L28",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -5898,7 +6171,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/web/package.json",
-      "source_location": "L29",
+      "source_location": "L30",
       "weight": 1.0
     },
     {
@@ -5910,7 +6183,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "apps/web/package.json",
-      "source_location": "L23",
+      "source_location": "L24",
       "weight": 1.0
     },
     {
@@ -5923,6 +6196,30 @@
       "context": "import",
       "source_file": "apps/web/src/App.tsx",
       "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_app",
+      "target": "apps_web_src_routes_loginview_loginview",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/App.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_app",
+      "target": "apps_web_src_contexts_authcontext_useauth",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/App.tsx",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -6082,6 +6379,18 @@
       "weight": 1.0
     },
     {
+      "source": "apps_web_src_contexts_authcontext",
+      "target": "apps_web_src_services_supabaseclient_supabase",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/contexts/AuthContext.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
       "source": "apps_web_src_hooks_usevault",
       "target": "apps_web_src_types_vault_syncstatus",
       "relation": "imports",
@@ -6139,6 +6448,30 @@
       "context": "import",
       "source_file": "apps/web/src/main.tsx",
       "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_main",
+      "target": "apps_web_src_contexts_authcontext_authprovider",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/main.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_routes_loginview",
+      "target": "apps_web_src_contexts_authcontext_useauth",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/routes/LoginView.tsx",
+      "source_location": "L2",
       "weight": 1.0
     },
     {
@@ -6478,6 +6811,18 @@
       "weight": 1.0
     },
     {
+      "source": "package_devdependencies_supabase",
+      "target": "supabase",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "package.json",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
       "source": "apps_web_src_app",
       "target": "apps_web_src_routes_workspaceview",
       "relation": "imports_from",
@@ -6487,6 +6832,30 @@
       "context": "import",
       "source_file": "apps/web/src/App.tsx",
       "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_app",
+      "target": "apps_web_src_routes_loginview",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/App.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_app",
+      "target": "apps_web_src_contexts_authcontext",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/App.tsx",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -6646,6 +7015,18 @@
       "weight": 1.0
     },
     {
+      "source": "apps_web_src_contexts_authcontext",
+      "target": "apps_web_src_services_supabaseclient",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/contexts/AuthContext.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
       "source": "apps_web_src_hooks_usevault",
       "target": "apps_web_src_types_vault",
       "relation": "imports_from",
@@ -6679,6 +7060,30 @@
       "context": "import",
       "source_file": "apps/web/src/main.tsx",
       "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_main",
+      "target": "apps_web_src_contexts_authcontext",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/main.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_routes_loginview",
+      "target": "apps_web_src_contexts_authcontext",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/routes/LoginView.tsx",
+      "source_location": "L2",
       "weight": 1.0
     },
     {
@@ -7705,7 +8110,7 @@
     },
     {
       "source": "ai_context_phase_2_backend_plan_phase_2_implementation_plan_supabase_backend",
-      "target": "ai_context_phase_2_backend_plan_4_next_actions",
+      "target": "ai_context_phase_2_backend_plan_4_status",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -7738,17 +8143,6 @@
     },
     {
       "source": "apps_web_package",
-      "target": "apps_web_package_devdependencies",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "apps/web/package.json",
-      "source_location": "L19",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_web_package",
       "target": "apps_web_package_name",
       "relation": "contains",
       "_origin": "ast",
@@ -7756,6 +8150,17 @@
       "confidence_score": 1.0,
       "source_file": "apps/web/package.json",
       "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_package",
+      "target": "apps_web_package_devdependencies",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/package.json",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -7804,7 +8209,7 @@
     },
     {
       "source": "apps_web_package_dependencies",
-      "target": "apps_web_package_dependencies_clsx",
+      "target": "apps_web_package_dependencies_supabase_supabase_js",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -7815,7 +8220,7 @@
     },
     {
       "source": "apps_web_package_dependencies",
-      "target": "apps_web_package_dependencies_lucide_react",
+      "target": "apps_web_package_dependencies_clsx",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -7826,7 +8231,7 @@
     },
     {
       "source": "apps_web_package_dependencies",
-      "target": "apps_web_package_dependencies_react",
+      "target": "apps_web_package_dependencies_lucide_react",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -7837,7 +8242,7 @@
     },
     {
       "source": "apps_web_package_dependencies",
-      "target": "apps_web_package_dependencies_react_dom",
+      "target": "apps_web_package_dependencies_react",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -7848,13 +8253,24 @@
     },
     {
       "source": "apps_web_package_dependencies",
-      "target": "apps_web_package_dependencies_tailwind_merge",
+      "target": "apps_web_package_dependencies_react_dom",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/web/package.json",
       "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_package_dependencies",
+      "target": "apps_web_package_dependencies_tailwind_merge",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/package.json",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -7865,7 +8281,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/web/package.json",
-      "source_location": "L20",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -7876,7 +8292,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/web/package.json",
-      "source_location": "L21",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -7887,7 +8303,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/web/package.json",
-      "source_location": "L22",
+      "source_location": "L23",
       "weight": 1.0
     },
     {
@@ -7898,7 +8314,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/web/package.json",
-      "source_location": "L23",
+      "source_location": "L24",
       "weight": 1.0
     },
     {
@@ -7909,7 +8325,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/web/package.json",
-      "source_location": "L24",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -7920,7 +8336,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/web/package.json",
-      "source_location": "L25",
+      "source_location": "L26",
       "weight": 1.0
     },
     {
@@ -7931,7 +8347,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/web/package.json",
-      "source_location": "L26",
+      "source_location": "L27",
       "weight": 1.0
     },
     {
@@ -7942,7 +8358,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/web/package.json",
-      "source_location": "L27",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -7953,7 +8369,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/web/package.json",
-      "source_location": "L28",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -7964,7 +8380,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/web/package.json",
-      "source_location": "L29",
+      "source_location": "L30",
       "weight": 1.0
     },
     {
@@ -8019,7 +8435,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/web/src/App.tsx",
-      "source_location": "L4",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -8320,6 +8736,50 @@
       "weight": 1.0
     },
     {
+      "source": "apps_web_src_contexts_authcontext",
+      "target": "apps_web_src_contexts_authcontext_authcontext",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/contexts/AuthContext.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_contexts_authcontext",
+      "target": "apps_web_src_contexts_authcontext_authprovider",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/contexts/AuthContext.tsx",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_contexts_authcontext",
+      "target": "apps_web_src_contexts_authcontext_authcontexttype",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/contexts/AuthContext.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_contexts_authcontext",
+      "target": "apps_web_src_contexts_authcontext_useauth",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/contexts/AuthContext.tsx",
+      "source_location": "L61",
+      "weight": 1.0
+    },
+    {
       "source": "apps_web_src_hooks_usepwa",
       "target": "apps_web_src_hooks_usepwa_usepwa",
       "relation": "contains",
@@ -8349,7 +8809,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/web/src/main.tsx",
-      "source_location": "L6",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_routes_loginview",
+      "target": "apps_web_src_routes_loginview_loginview",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/routes/LoginView.tsx",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -8471,6 +8942,17 @@
       "confidence_score": 1.0,
       "source_file": "apps/web/src/services/mockVault.ts",
       "source_location": "L44",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_supabaseclient",
+      "target": "apps_web_src_services_supabaseclient_supabase",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/supabaseClient.ts",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -10378,6 +10860,17 @@
     },
     {
       "source": "package",
+      "target": "package_devdependencies",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "package.json",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "package",
       "target": "package_private",
       "relation": "contains",
       "_origin": "ast",
@@ -10429,6 +10922,17 @@
       "confidence_score": 1.0,
       "source_file": "package.json",
       "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_supabase",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "package.json",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -10510,6 +11014,17 @@
     },
     {
       "source": "readme_git_backed_personal_vault",
+      "target": "readme_project_status",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "readme_git_backed_personal_vault",
       "target": "readme_architecture",
       "relation": "contains",
       "_origin": "ast",
@@ -10517,6 +11032,50 @@
       "confidence_score": 1.0,
       "source_file": "README.md",
       "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "supabase_functions_api_v1_deno",
+      "target": "supabase_functions_api_v1_deno_imports",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "supabase/functions/api-v1/deno.json",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "supabase_functions_api_v1_deno_imports",
+      "target": "supabase_functions_api_v1_deno_imports_supabase_functions_js",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "supabase/functions/api-v1/deno.json",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "supabase_functions_api_v1_deno_imports",
+      "target": "supabase_functions_api_v1_deno_imports_supabase_server",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "supabase/functions/api-v1/deno.json",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "supabase_functions_api_v1_index",
+      "target": "supabase_functions_api_v1_index_corsheaders",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "supabase/functions/api-v1/index.ts",
+      "source_location": "L3",
       "weight": 1.0
     },
     {
@@ -10994,5 +11553,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "0a8746578d6d733a75573c1b13c6f378c5dc5b7c"
+  "built_at_commit": "1872f00ff0a82535edc5bb4cf144f17faafff6a2"
 }
