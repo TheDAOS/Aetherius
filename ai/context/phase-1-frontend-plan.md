@@ -48,12 +48,24 @@ All client data interactions in Phase 1 use an in-memory mock API layer strictly
 | `/settings` | **Vault & App Settings** | • **Vault Info**: Linked GitHub repo, current branch (`main`), last commit SHA<br>• **Editor Preferences**: Font size, line length, monospace toggle<br>• **PWA Status**: Offline cache indicator, "Install App" button |
 | `/*` (Fallback) | **404 Not Found Page** | • Funky Neo-Memphis graphic: *"Note vanished into the ether"*<br>• Quick button to create this note or return to root |
 
-### 3.2 Responsive Adaptations for Mobile PWA
-* On **Desktop / Tablet**: Sidebar + Editor live side-by-side in the 3-column workspace.
-* On **Mobile Screens**:
-  * Workspace defaults to the **Note Reader/Editor**.
-  * File tree is accessed via a **slide-out drawer** (hamburger menu).
-  * Floating **[ + ] button (FAB)** in the bottom right enables rapid note creation.
+### 3.2 Responsive Adaptations & Platform UX
+
+#### Desktop Power-User Features
+* **Keyboard Shortcuts (`Cmd` / `Ctrl`)**:
+  * `Ctrl + K` / `Cmd + K`: Open quick search and note switcher modal.
+  * `Ctrl + N` / `Cmd + N`: Create new note in active directory.
+  * `Ctrl + S` / `Cmd + S`: Trigger save / mock commit.
+  * `Ctrl + \` / `Cmd + \` (or `Ctrl + B`): Toggle sidebar collapse.
+  * `Ctrl + E` / `Cmd + E`: Toggle Edit ↔ Preview mode.
+* **Multi-Pane & Split View**: Side-by-side Markdown Edit + Live Preview split pane on wide displays.
+
+#### Mobile PWA Touch Specifics
+* **Full-Screen Single Pane**: The note editor takes full screen by default on mobile viewports.
+* **Navigation Drawer**: The file tree is accessed via a smooth slide-out hamburger drawer.
+* **Sticky Mobile Keyboard Toolbar**: Persistent Markdown accessory bar above the virtual keyboard (`#`, `**bold**`, `[ ] checkbox`, `- bullet`, ````code````, `link`).
+* **Touch & Gestures**: Swipe from left edge to open file tree drawer, pull-to-refresh for Git sync.
+* **Safe-Area Support**: Native notch padding with `env(safe-area-inset-top)` and bottom home bar spacing.
+* **Floating Action Button (`+` FAB)**: Tactile bottom-right button for 1-tap note creation.
 
 ---
 

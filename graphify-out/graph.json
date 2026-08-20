@@ -1802,14 +1802,14 @@
       "source_location": "L40"
     },
     {
-      "id": "ai_context_phase_1_frontend_plan_3_2_responsive_adaptations_for_mobile_pwa",
-      "label": "3.2 Responsive Adaptations for Mobile PWA",
+      "id": "ai_context_phase_1_frontend_plan_3_2_responsive_adaptations_platform_ux",
+      "label": "3.2 Responsive Adaptations & Platform UX",
       "_origin": "ast",
       "community": 27,
       "community_name": "Phase 1 Implementation Plan \u2014 Frontend / PWA Foundation",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "3.2 responsive adaptations for mobile pwa",
+      "norm_label": "3.2 responsive adaptations & platform ux",
       "source_file": "ai/context/phase-1-frontend-plan.md",
       "source_location": "L51"
     },
@@ -1835,7 +1835,7 @@
       "node_kind": "heading",
       "norm_label": "4. frontend monorepo directory structure (`apps/web/`)",
       "source_file": "ai/context/phase-1-frontend-plan.md",
-      "source_location": "L60"
+      "source_location": "L72"
     },
     {
       "id": "ai_context_phase_1_frontend_plan_5_mock_api_data_layer_conforming_to_openapi_yaml",
@@ -1847,7 +1847,7 @@
       "node_kind": "heading",
       "norm_label": "5. mock api & data layer (conforming to `openapi.yaml`)",
       "source_file": "ai/context/phase-1-frontend-plan.md",
-      "source_location": "L115"
+      "source_location": "L127"
     },
     {
       "id": "ai_context_phase_1_frontend_plan_6_step_by_step_execution_sequence",
@@ -1859,7 +1859,31 @@
       "node_kind": "heading",
       "norm_label": "6. step-by-step execution sequence",
       "source_file": "ai/context/phase-1-frontend-plan.md",
-      "source_location": "L127"
+      "source_location": "L139"
+    },
+    {
+      "id": "ai_context_phase_1_frontend_plan_desktop_power_user_features",
+      "label": "Desktop Power-User Features",
+      "_origin": "ast",
+      "community": 27,
+      "community_name": "Phase 1 Implementation Plan \u2014 Frontend / PWA Foundation",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "desktop power-user features",
+      "source_file": "ai/context/phase-1-frontend-plan.md",
+      "source_location": "L53"
+    },
+    {
+      "id": "ai_context_phase_1_frontend_plan_mobile_pwa_touch_specifics",
+      "label": "Mobile PWA Touch Specifics",
+      "_origin": "ast",
+      "community": 27,
+      "community_name": "Phase 1 Implementation Plan \u2014 Frontend / PWA Foundation",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "mobile pwa touch specifics",
+      "source_file": "ai/context/phase-1-frontend-plan.md",
+      "source_location": "L62"
     },
     {
       "id": "ai_context_phase_1_frontend_plan_phase_1_implementation_plan_frontend_pwa_foundation",
@@ -1910,6 +1934,30 @@
       "source_location": "L20"
     },
     {
+      "id": "docs_architecture_frontend_3_1_desktop_ux_power_user_features",
+      "label": "3.1 Desktop UX & Power-User Features",
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "Frontend & PWA Architecture",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "3.1 desktop ux & power-user features",
+      "source_file": "docs/architecture/frontend.md",
+      "source_location": "L68"
+    },
+    {
+      "id": "docs_architecture_frontend_3_2_mobile_pwa_ux_touch_specifics",
+      "label": "3.2 Mobile PWA UX & Touch Specifics",
+      "_origin": "ast",
+      "community": 28,
+      "community_name": "Frontend & PWA Architecture",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "3.2 mobile pwa ux & touch specifics",
+      "source_file": "docs/architecture/frontend.md",
+      "source_location": "L79"
+    },
+    {
       "id": "docs_architecture_frontend_3_application_shell_layout",
       "label": "3. Application Shell & Layout",
       "_origin": "ast",
@@ -1931,7 +1979,7 @@
       "node_kind": "heading",
       "norm_label": "4. routes & navigation structure",
       "source_file": "docs/architecture/frontend.md",
-      "source_location": "L70"
+      "source_location": "L95"
     },
     {
       "id": "docs_architecture_frontend_5_mock_api_openapi_conformance",
@@ -1943,7 +1991,7 @@
       "node_kind": "heading",
       "norm_label": "5. mock api & openapi conformance",
       "source_file": "docs/architecture/frontend.md",
-      "source_location": "L83"
+      "source_location": "L108"
     },
     {
       "id": "docs_architecture_frontend_color_palette_tokens",
@@ -3888,6 +3936,28 @@
       "weight": 1.0
     },
     {
+      "source": "ai_context_phase_1_frontend_plan_3_2_responsive_adaptations_platform_ux",
+      "target": "ai_context_phase_1_frontend_plan_desktop_power_user_features",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-1-frontend-plan.md",
+      "source_location": "L53",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_1_frontend_plan_3_2_responsive_adaptations_platform_ux",
+      "target": "ai_context_phase_1_frontend_plan_mobile_pwa_touch_specifics",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-1-frontend-plan.md",
+      "source_location": "L62",
+      "weight": 1.0
+    },
+    {
       "source": "ai_context_phase_1_frontend_plan_3_application_layout_views",
       "target": "ai_context_phase_1_frontend_plan_3_1_key_views_routes",
       "relation": "contains",
@@ -3900,24 +3970,13 @@
     },
     {
       "source": "ai_context_phase_1_frontend_plan_3_application_layout_views",
-      "target": "ai_context_phase_1_frontend_plan_3_2_responsive_adaptations_for_mobile_pwa",
+      "target": "ai_context_phase_1_frontend_plan_3_2_responsive_adaptations_platform_ux",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "ai/context/phase-1-frontend-plan.md",
       "source_location": "L51",
-      "weight": 1.0
-    },
-    {
-      "source": "ai_context_phase_1_frontend_plan_phase_1_implementation_plan_frontend_pwa_foundation",
-      "target": "ai_context_phase_1_frontend_plan_5_mock_api_data_layer_conforming_to_openapi_yaml",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "ai/context/phase-1-frontend-plan.md",
-      "source_location": "L115",
       "weight": 1.0
     },
     {
@@ -3933,13 +3992,24 @@
     },
     {
       "source": "ai_context_phase_1_frontend_plan_phase_1_implementation_plan_frontend_pwa_foundation",
-      "target": "ai_context_phase_1_frontend_plan_6_step_by_step_execution_sequence",
+      "target": "ai_context_phase_1_frontend_plan_5_mock_api_data_layer_conforming_to_openapi_yaml",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "ai/context/phase-1-frontend-plan.md",
       "source_location": "L127",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_1_frontend_plan_phase_1_implementation_plan_frontend_pwa_foundation",
+      "target": "ai_context_phase_1_frontend_plan_6_step_by_step_execution_sequence",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-1-frontend-plan.md",
+      "source_location": "L139",
       "weight": 1.0
     },
     {
@@ -3972,7 +4042,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "ai/context/phase-1-frontend-plan.md",
-      "source_location": "L60",
+      "source_location": "L72",
       "weight": 1.0
     },
     {
@@ -4196,6 +4266,39 @@
       "weight": 1.0
     },
     {
+      "source": "docs_architecture_frontend_3_application_shell_layout",
+      "target": "docs_architecture_frontend_3_1_desktop_ux_power_user_features",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/architecture/frontend.md",
+      "source_location": "L68",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_architecture_frontend_3_application_shell_layout",
+      "target": "docs_architecture_frontend_3_2_mobile_pwa_ux_touch_specifics",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/architecture/frontend.md",
+      "source_location": "L79",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_architecture_frontend_frontend_pwa_architecture",
+      "target": "docs_architecture_frontend_5_mock_api_openapi_conformance",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/architecture/frontend.md",
+      "source_location": "L108",
+      "weight": 1.0
+    },
+    {
       "source": "docs_architecture_frontend_frontend_pwa_architecture",
       "target": "docs_architecture_frontend_2_design_system_warm_cream_acid_neo_memphis",
       "relation": "contains",
@@ -4230,28 +4333,6 @@
     },
     {
       "source": "docs_architecture_frontend_frontend_pwa_architecture",
-      "target": "docs_architecture_frontend_4_routes_navigation_structure",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/architecture/frontend.md",
-      "source_location": "L70",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_architecture_frontend_frontend_pwa_architecture",
-      "target": "docs_architecture_frontend_5_mock_api_openapi_conformance",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "docs/architecture/frontend.md",
-      "source_location": "L83",
-      "weight": 1.0
-    },
-    {
-      "source": "docs_architecture_frontend_frontend_pwa_architecture",
       "target": "docs_architecture_frontend_1_technical_stack",
       "relation": "contains",
       "_origin": "ast",
@@ -4259,6 +4340,17 @@
       "confidence_score": 1.0,
       "source_file": "docs/architecture/frontend.md",
       "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_architecture_frontend_frontend_pwa_architecture",
+      "target": "docs_architecture_frontend_4_routes_navigation_structure",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/architecture/frontend.md",
+      "source_location": "L95",
       "weight": 1.0
     },
     {
@@ -5990,5 +6082,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "32fb7a613b01b59be80afdb1d394a53594e8033e"
+  "built_at_commit": "e24d7f8920b700584e53bfb70fb08b7f40860db3"
 }

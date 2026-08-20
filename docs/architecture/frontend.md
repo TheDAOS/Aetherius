@@ -65,6 +65,31 @@ The desktop workspace follows a 3-column collapsible architecture:
 └─────────────────────────┴─────────────────────────────────────────────────────────────┘
 ```
 
+### 3.1 Desktop UX & Power-User Features
+* **Keyboard Shortcuts (`Cmd` / `Ctrl`)**:
+  * `Ctrl + K` / `Cmd + K`: Open quick search and note switcher modal.
+  * `Ctrl + N` / `Cmd + N`: Create new note in active directory.
+  * `Ctrl + S` / `Cmd + S`: Trigger save / mock commit.
+  * `Ctrl + \` / `Cmd + \` (or `Ctrl + B`): Toggle sidebar collapse.
+  * `Ctrl + E` / `Cmd + E`: Toggle Edit ↔ Preview mode.
+* **Multi-Pane & Split View**:
+  * Side-by-side Markdown Edit + Live Preview split pane on wide displays.
+  * Hover lift effects on note items and tactile buttons.
+
+### 3.2 Mobile PWA UX & Touch Specifics
+* **Full-Screen Single Pane**: The note editor takes full screen by default on mobile viewports.
+* **Navigation Drawer**: The file tree is accessed via a smooth slide-out hamburger drawer.
+* **Sticky Mobile Keyboard Toolbar**:
+  * Persistent quick-formatting accessory bar directly above the virtual keyboard for rapid Markdown entry (`#`, `**bold**`, `[ ] checkbox`, `- bullet`, ````code````, `link`).
+* **Touch & Gestures**:
+  * Swipe from left edge to open file tree drawer.
+  * Pull-to-refresh / pull-to-sync from top.
+* **Safe-Area & Standalone PWA Support**:
+  * Native notch/island padding using `env(safe-area-inset-top)` and bottom home bar padding.
+  * Standalone manifest display (`"display": "standalone"`) without browser chrome.
+* **Floating Action Button (`+` FAB)**: Tactile bottom-right button for 1-tap note capture.
+
+
 ---
 
 ## 4. Routes & Navigation Structure
