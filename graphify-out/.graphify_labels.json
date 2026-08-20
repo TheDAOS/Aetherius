@@ -29,7 +29,7 @@
   "27": "Phase 1 Implementation Plan — Frontend / PWA Foundation",
   "28": "Frontend & PWA Architecture",
   "29": "ADR-006: Frontend PWA Design System and Architecture",
-  "30": "vault.ts",
+  "30": "types/vault.ts",
   "31": "WorkspaceView.tsx",
   "32": "compilerOptions",
   "33": "web/package.json",
@@ -41,5 +41,6 @@
   "39": "tailwindcss",
   "40": "AuthContext.tsx",
   "41": "imports",
-  "42": "index.ts"
+  "42": "GitHubClient",
+  "43": "2. Step-by-Step Execution Sequence"
 }

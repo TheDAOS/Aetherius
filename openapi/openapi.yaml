@@ -53,6 +53,36 @@ paths:
         "404":
           description: No vault has been configured for the user
 
+    post:
+      operationId: createVault
+      summary: Initialize a new vault
+      description: |
+        Creates a new private GitHub repository for the user's vault
+        and stores the metadata in the database.
+      tags:
+        - Vault
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateVaultRequest"
+      responses:
+        "201":
+          description: Vault created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Vault"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "409":
+          description: A vault already exists for this user
+
   /v1/files:
     get:
       operationId: listFiles
@@ -348,6 +378,18 @@ components:
           type: string
         branch:
           type: string
+
+    CreateVaultRequest:
+      type: object
+      required:
+        - repository
+      properties:
+        repository:
+          type: string
+          description: Name for the new GitHub repository
+        description:
+          type: string
+          description: Optional description for the repository
 
     File:
       type: object

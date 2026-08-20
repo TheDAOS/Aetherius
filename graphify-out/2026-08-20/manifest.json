@@ -60,10 +60,10 @@
     "semantic_hash": "82efb97a359f5c7290bf2513d14686be"
   },
   "README.md": {
-    "mtime": 1787047516.7279918,
-    "seen": 1787167358.6178977,
-    "ast_hash": "133bda78ac7a5cef4f96226a7fe78ed3",
-    "semantic_hash": "133bda78ac7a5cef4f96226a7fe78ed3"
+    "mtime": 1787217284.9523916,
+    "seen": 1787217303.3092997,
+    "ast_hash": "e4c11d2dbe807eb36d2f4f5bf83f5f1c",
+    "semantic_hash": ""
   },
   "docs/architecture/authentication.md": {
     "mtime": 1787053307.4168222,
@@ -168,9 +168,9 @@
     "semantic_hash": ""
   },
   "ai/context/project-blueprint.md": {
-    "mtime": 1787168677.9758477,
-    "seen": 1787168681.7111795,
-    "ast_hash": "9bf75b261d928a4356296a0a380c18e1",
+    "mtime": 1787217279.652888,
+    "seen": 1787217303.3093657,
+    "ast_hash": "1c5861a8c544d31fd343834ee57d544d",
     "semantic_hash": ""
   },
   "ai/context/phase-1-frontend-plan.md": {
@@ -378,9 +378,9 @@
     "semantic_hash": ""
   },
   "ai/context/phase-2-backend-plan.md": {
-    "mtime": 1787214312.2625308,
-    "seen": 1787214317.9441562,
-    "ast_hash": "9144b4a5a5f0f0f34973d40981feac8a",
+    "mtime": 1787217296.6904771,
+    "seen": 1787217303.3093624,
+    "ast_hash": "aa23b3e8fede4d8b29f7fa400cf761e8",
     "semantic_hash": ""
   },
   "apps/web/src/contexts/AuthContext.tsx": {
@@ -411,6 +411,12 @@
     "mtime": 1787217148.5403965,
     "seen": 1787217237.43336,
     "ast_hash": "10a2367e2154cc8b5f905ad59f4d3417",
+    "semantic_hash": ""
+  },
+  "ai/context/phase-3-github-vault-plan.md": {
+    "mtime": 1787224368.8663502,
+    "seen": 1787224374.9134636,
+    "ast_hash": "34def2ab6fc0e327e684a75ead725fcc",
     "semantic_hash": ""
   }
 }

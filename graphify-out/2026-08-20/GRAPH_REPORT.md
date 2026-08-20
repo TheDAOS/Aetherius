@@ -1,16 +1,16 @@
 # Graph Report - Aetherius  (2026-08-20)
 
 ## Corpus Check
-- 66 files · ~20,433 words
+- 67 files · ~21,023 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 466 nodes · 528 edges · 43 communities (35 shown, 8 thin omitted)
+- 478 nodes · 539 edges · 44 communities (36 shown, 8 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `045eadd6`
+- Built from commit: `f30673e2`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -28,13 +28,13 @@
 - ADR-005: PWA and Swift Share the Same API
 - 2. Step-by-Step Execution Sequence
 - ADR-001: GitHub Is the Source of Truth
-- Project Philosophy
+- Non-Negotiable Rules
 - Authentication Architecture
 - Data Flow
 - Project: {{name}}
 - Personal Knowledge Vault
 - Daily Note - {{date}}
-- README.md
+- Git-Backed Personal Vault
 - Welcome to Your Vault
 - rules/graphify.md
 - workflows/graphify.md
@@ -53,6 +53,7 @@
 - AuthContext.tsx
 - imports
 - index.ts
+- 2. Step-by-Step Execution Sequence
 
 ## God Nodes (most connected - your core abstractions)
 1. `MockVaultService` - 19 edges
@@ -81,7 +82,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (43 total, 8 thin omitted)
+## Communities (44 total, 8 thin omitted)
 
 ### Community 0 - "Git-Backed Personal Vault API (OpenAPI 3.1.0)"
 Cohesion: 0.12
@@ -120,8 +121,8 @@ Cohesion: 0.17
 Nodes (11): ADR-004: Markdown Vault Format, Alternatives Considered, Consequences, Constraints, Context, Decision, Negative, Positive (+3 more)
 
 ### Community 9 - "AGENTS.md"
-Cohesion: 0.05
-Nodes (34): 10. Keep the MVP Simple, 1. GitHub Is the Source of Truth, 2. Markdown Is the Canonical Note Format, 3. Supabase Is Not Canonical Note Storage, 4. Clients Must Not Perform Privileged GitHub Operations, 5. PWA and Swift Must Use the Same API, 6. OpenAPI Must Stay in Sync, 7. Database Changes Require Migrations (+26 more)
+Cohesion: 0.06
+Nodes (33): ADR Rules, ADRs, AI-assisted development, AI Context, AI Development Workflow, AI is not the authority, API-first, API Rules (+25 more)
 
 ### Community 10 - "ADR-005: PWA and Swift Share the Same API"
 Cohesion: 0.17
@@ -129,15 +130,15 @@ Nodes (11): ADR-005: PWA and Swift Share the Same API, Alternatives Considered, 
 
 ### Community 11 - "2. Step-by-Step Execution Sequence"
 Cohesion: 0.18
-Nodes (10): 1. Overview & Objectives, 2. Step-by-Step Execution Sequence, 3. Adherence to Rules & Constraints, 4. Next Actions, Phase 2 Implementation Plan — Supabase Backend, **Step 1 — Supabase Local Environment Setup**, **Step 2 — Database Schema & RLS (Migrations)**, **Step 3 — Authentication Integration** (+2 more)
+Nodes (10): 1. Overview & Objectives, 2. Step-by-Step Execution Sequence, 3. Adherence to Rules & Constraints, 4. Status, Phase 2 Implementation Plan — Supabase Backend, **Step 1 — Supabase Local Environment Setup**, **Step 2 — Database Schema & RLS (Migrations)**, **Step 3 — Authentication Integration** (+2 more)
 
 ### Community 12 - "ADR-001: GitHub Is the Source of Truth"
 Cohesion: 0.18
 Nodes (10): ADR-001: GitHub Is the Source of Truth, Alternatives Considered, Application-owned storage, Consequences, Context, Decision, Negative, Positive (+2 more)
 
-### Community 13 - "Project Philosophy"
-Cohesion: 0.20
-Nodes (10): AI-assisted development, AI is not the authority, API-first, Automated enforcement, Documented architecture, Open formats, Project Philosophy, Start simple (+2 more)
+### Community 13 - "Non-Negotiable Rules"
+Cohesion: 0.18
+Nodes (11): 10. Keep the MVP Simple, 1. GitHub Is the Source of Truth, 2. Markdown Is the Canonical Note Format, 3. Supabase Is Not Canonical Note Storage, 4. Clients Must Not Perform Privileged GitHub Operations, 5. PWA and Swift Must Use the Same API, 6. OpenAPI Must Stay in Sync, 7. Database Changes Require Migrations (+3 more)
 
 ### Community 14 - "Authentication Architecture"
 Cohesion: 0.22
@@ -159,9 +160,9 @@ Nodes (4): Note Format, Personal Knowledge Vault, Portability & Ownership, Struc
 Cohesion: 0.40
 Nodes (4): Daily Note - {{date}}, Notes & Thoughts, Objectives, Tasks & Follow-ups
 
-### Community 19 - "README.md"
-Cohesion: 0.50
-Nodes (3): Aetherius, Architecture, Git-Backed Personal Vault
+### Community 19 - "Git-Backed Personal Vault"
+Cohesion: 0.40
+Nodes (4): Aetherius, Architecture, Git-Backed Personal Vault, Project Status
 
 ### Community 27 - "Phase 1 Implementation Plan — Frontend / PWA Foundation"
 Cohesion: 0.13
@@ -203,8 +204,12 @@ Nodes (8): App(), AuthContext, AuthContextType, AuthProvider(), useAuth(), rootE
 Cohesion: 0.50
 Nodes (3): imports, @supabase/functions-js, @supabase/server
 
+### Community 43 - "2. Step-by-Step Execution Sequence"
+Cohesion: 0.18
+Nodes (10): 1. Overview & Objectives, 2. Step-by-Step Execution Sequence, 3. Adherence to Rules & Constraints, 4. Definition of Done, Phase 3 Implementation Plan — GitHub Vault, **Step 1 — GitHub Integration & Auth Flow**, **Step 2 — Vault Initialization (`POST /v1/vault`)**, **Step 3 — File System Endpoints (GitHub Contents API)** (+2 more)
+
 ## Knowledge Gaps
-- **274 isolated node(s):** `name`, `private`, `version`, `type`, `dev` (+269 more)
+- **283 isolated node(s):** `name`, `private`, `version`, `type`, `dev` (+278 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **8 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -216,7 +221,7 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `devDependencies` connect `devDependencies` to `web/package.json`?**
   _High betweenness centrality (0.006) - this node is a cross-community bridge._
 - **What connects `name`, `private`, `version` to the rest of the system?**
-  _274 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _283 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Git-Backed Personal Vault API (OpenAPI 3.1.0)` be split into smaller, more focused modules?**
   _Cohesion score 0.125 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**
@@ -224,4 +229,4 @@ _Questions this graph is uniquely positioned to answer:_
 - **Should `Security Architecture` be split into smaller, more focused modules?**
   _Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected._
 - **Should `AGENTS.md` be split into smaller, more focused modules?**
-  _Cohesion score 0.05405405405405406 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.05555555555555555 - nodes in this community are weakly interconnected._

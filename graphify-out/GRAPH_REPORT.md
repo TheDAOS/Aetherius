@@ -1,16 +1,16 @@
 # Graph Report - Aetherius  (2026-08-20)
 
 ## Corpus Check
-- 66 files · ~20,480 words
+- 69 files · ~22,355 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 467 nodes · 529 edges · 43 communities (35 shown, 8 thin omitted)
+- 503 nodes · 595 edges · 44 communities (36 shown, 8 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `1872f00f`
+- Built from commit: `f30673e2`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -44,7 +44,7 @@
 - Phase 1 Implementation Plan — Frontend / PWA Foundation
 - Frontend & PWA Architecture
 - ADR-006: Frontend PWA Design System and Architecture
-- vault.ts
+- types/vault.ts
 - WorkspaceView.tsx
 - compilerOptions
 - web/package.json
@@ -52,36 +52,37 @@
 - Badge.tsx
 - AuthContext.tsx
 - imports
-- index.ts
+- GitHubClient
+- 2. Step-by-Step Execution Sequence
 
 ## God Nodes (most connected - your core abstractions)
-1. `MockVaultService` - 19 edges
-2. `compilerOptions` - 18 edges
-3. `Git-Backed Personal Vault API (OpenAPI 3.1.0)` - 14 edges
-4. `Security Architecture` - 13 edges
-5. `VaultFile` - 12 edges
-6. `SyncStatus` - 11 edges
-7. `Non-Negotiable Rules` - 11 edges
-8. `Project Philosophy` - 10 edges
-9. `Architecture Overview` - 10 edges
-10. `GitHub Architecture` - 9 edges
+1. `compilerOptions` - 18 edges
+2. `VaultService` - 17 edges
+3. `VaultFile` - 17 edges
+4. `MockVaultService` - 16 edges
+5. `Git-Backed Personal Vault API (OpenAPI 3.1.0)` - 14 edges
+6. `SyncStatus` - 13 edges
+7. `Security Architecture` - 13 edges
+8. `Non-Negotiable Rules` - 11 edges
+9. `Vault` - 10 edges
+10. `GitHubClient` - 10 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `OpenAPI Validation Step (redocly lint)` --references--> `Git-Backed Personal Vault API (OpenAPI 3.1.0)`  [EXTRACTED]
   .github/workflows/ci.yml → openapi/openapi.yaml
+- `AppShellProps` --references--> `useVault()`  [EXTRACTED]
+  apps/web/src/components/layout/AppShell.tsx → apps/web/src/hooks/useVault.ts
 - `SidebarProps` --references--> `VaultFile`  [EXTRACTED]
   apps/web/src/components/layout/Sidebar.tsx → apps/web/src/types/vault.ts
 - `TopHeaderProps` --references--> `SyncStatus`  [EXTRACTED]
   apps/web/src/components/layout/TopHeader.tsx → apps/web/src/types/vault.ts
 - `FileItemProps` --references--> `VaultFile`  [EXTRACTED]
   apps/web/src/components/vault/FileItem.tsx → apps/web/src/types/vault.ts
-- `FileTreeProps` --references--> `VaultFile`  [EXTRACTED]
-  apps/web/src/components/vault/FileTree.tsx → apps/web/src/types/vault.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (43 total, 8 thin omitted)
+## Communities (44 total, 8 thin omitted)
 
 ### Community 0 - "Git-Backed Personal Vault API (OpenAPI 3.1.0)"
 Cohesion: 0.12
@@ -175,13 +176,13 @@ Nodes (11): 1. Technical Stack, 2. Design System: "Warm Cream & Acid Neo-Memphis
 Cohesion: 0.25
 Nodes (7): ADR-006: Frontend PWA Design System and Architecture, Consequences, Context, Decision, Negative, Positive, Related Decisions
 
-### Community 30 - "vault.ts"
-Cohesion: 0.08
-Nodes (29): AppShell(), AppShellProps, Sidebar(), SidebarProps, TopHeader(), TopHeaderProps, FileItem(), FileItemProps (+21 more)
+### Community 30 - "types/vault.ts"
+Cohesion: 0.06
+Nodes (30): AppShell(), AppShellProps, Sidebar(), SidebarProps, TopHeader(), TopHeaderProps, FileItem(), FileItemProps (+22 more)
 
 ### Community 31 - "WorkspaceView.tsx"
-Cohesion: 0.10
-Nodes (21): Button(), ButtonProps, Input(), InputProps, Modal(), ModalProps, NoteEditor(), NoteEditorProps (+13 more)
+Cohesion: 0.12
+Nodes (18): Button(), ButtonProps, Input(), InputProps, Modal(), ModalProps, NoteEditor(), NoteEditorProps (+10 more)
 
 ### Community 32 - "compilerOptions"
 Cohesion: 0.08
@@ -196,27 +197,31 @@ Cohesion: 0.10
 Nodes (21): devDependencies, autoprefixer, postcss, tailwindcss, @types/node, @types/react, @types/react-dom, typescript (+13 more)
 
 ### Community 40 - "AuthContext.tsx"
-Cohesion: 0.28
-Nodes (8): App(), AuthContext, AuthContextType, AuthProvider(), useAuth(), rootElement, LoginView(), supabase
+Cohesion: 0.20
+Nodes (11): App(), AuthContext, AuthContextType, AuthProvider(), useAuth(), rootElement, LoginView(), SearchModal() (+3 more)
 
 ### Community 41 - "imports"
 Cohesion: 0.50
 Nodes (3): imports, @supabase/functions-js, @supabase/server
 
+### Community 43 - "2. Step-by-Step Execution Sequence"
+Cohesion: 0.18
+Nodes (10): 1. Overview & Objectives, 2. Step-by-Step Execution Sequence, 3. Adherence to Rules & Constraints, 4. Definition of Done, Phase 3 Implementation Plan — GitHub Vault, **Step 1 — GitHub Integration & Auth Flow**, **Step 2 — Vault Initialization (`POST /v1/vault`)**, **Step 3 — File System Endpoints (GitHub Contents API)** (+2 more)
+
 ## Knowledge Gaps
-- **275 isolated node(s):** `name`, `private`, `version`, `type`, `dev` (+270 more)
+- **283 isolated node(s):** `name`, `private`, `version`, `type`, `dev` (+278 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **8 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `MockVaultService` connect `vault.ts` to `WorkspaceView.tsx`?**
-  _High betweenness centrality (0.008) - this node is a cross-community bridge._
-- **Why does `devDependencies` connect `devDependencies` to `web/package.json`?**
+- **Why does `VaultService` connect `types/vault.ts` to `AuthContext.tsx`, `WorkspaceView.tsx`?**
+  _High betweenness centrality (0.007) - this node is a cross-community bridge._
+- **Why does `VaultFile` connect `types/vault.ts` to `AuthContext.tsx`?**
   _High betweenness centrality (0.006) - this node is a cross-community bridge._
 - **What connects `name`, `private`, `version` to the rest of the system?**
-  _275 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _283 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Git-Backed Personal Vault API (OpenAPI 3.1.0)` be split into smaller, more focused modules?**
   _Cohesion score 0.125 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**

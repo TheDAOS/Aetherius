@@ -5,6 +5,7 @@ import { supabase } from '../services/supabaseClient';
 interface AuthContextType {
   session: Session | null;
   user: User | null;
+  providerToken: string | null;
   loading: boolean;
   signInWithGithub: () => Promise<void>;
   signOut: () => Promise<void>;
@@ -13,6 +14,7 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType>({
   session: null,
   user: null,
+  providerToken: null,
   loading: true,
   signInWithGithub: async () => {},
   signOut: async () => {},
@@ -21,18 +23,21 @@ const AuthContext = createContext<AuthContextType>({
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [session, setSession] = useState<Session | null>(null);
   const [user, setUser] = useState<User | null>(null);
+  const [providerToken, setProviderToken] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       setUser(session?.user ?? null);
+      setProviderToken(session?.provider_token ?? null);
       setLoading(false);
     });
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
       setUser(session?.user ?? null);
+      setProviderToken(session?.provider_token ?? null);
     });
 
     return () => subscription.unsubscribe();
@@ -52,7 +57,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ session, user, loading, signInWithGithub, signOut }}>
+    <AuthContext.Provider value={{ session, user, providerToken, loading, signInWithGithub, signOut }}>
       {children}
     </AuthContext.Provider>
   );

@@ -132,10 +132,10 @@
     "semantic_hash": "5b0e8254c4f2a0f43af40a9aa9c1b9e0"
   },
   "openapi/openapi.yaml": {
-    "mtime": 1787054764.515312,
-    "seen": 1787167358.6179104,
-    "ast_hash": "a066b4e02a53f948b586e426d3072b2d",
-    "semantic_hash": "a066b4e02a53f948b586e426d3072b2d"
+    "mtime": 1787224753.720178,
+    "seen": 1787224991.782123,
+    "ast_hash": "c193bed99fa5552edc9c1ccc42c3f0f6",
+    "semantic_hash": ""
   },
   "pnpm-workspace.yaml": {
     "mtime": 1787210142.1473625,
@@ -294,9 +294,9 @@
     "semantic_hash": ""
   },
   "apps/web/src/hooks/useVault.ts": {
-    "mtime": 1787210216.3609433,
-    "seen": 1787210392.2681396,
-    "ast_hash": "fa06faac3a08cd505ad0284362ed38b8",
+    "mtime": 1787224883.7338898,
+    "seen": 1787224991.778702,
+    "ast_hash": "0918b888ece772de58e3c8219fa124bc",
     "semantic_hash": ""
   },
   "apps/web/src/main.tsx": {
@@ -312,15 +312,15 @@
     "semantic_hash": ""
   },
   "apps/web/src/routes/SearchModal.tsx": {
-    "mtime": 1787210302.8786204,
-    "seen": 1787210392.268144,
-    "ast_hash": "a21a45c908e4d17778f219f91efed6dd",
+    "mtime": 1787224944.063526,
+    "seen": 1787224991.7789884,
+    "ast_hash": "4d0e6950a0a4ee4a401ad4784cea4912",
     "semantic_hash": ""
   },
   "apps/web/src/routes/SettingsModal.tsx": {
-    "mtime": 1787210357.78405,
-    "seen": 1787210392.2681453,
-    "ast_hash": "cbcf63ea96da8172b1c7145ece661a8a",
+    "mtime": 1787224985.8989387,
+    "seen": 1787224991.7789917,
+    "ast_hash": "e57b672e65583c7d98071762d3c427a4",
     "semantic_hash": ""
   },
   "apps/web/src/routes/WorkspaceView.tsx": {
@@ -384,9 +384,9 @@
     "semantic_hash": ""
   },
   "apps/web/src/contexts/AuthContext.tsx": {
-    "mtime": 1787214400.8427432,
-    "seen": 1787217237.4324634,
-    "ast_hash": "5fe4d57fb8df07188c23459ed4ce0756",
+    "mtime": 1787224601.4294775,
+    "seen": 1787224991.7786,
+    "ast_hash": "88bfd1f1460d55ec0ee14dc09c95ef96",
     "semantic_hash": ""
   },
   "apps/web/src/routes/LoginView.tsx": {
@@ -408,9 +408,27 @@
     "semantic_hash": ""
   },
   "supabase/functions/api-v1/index.ts": {
-    "mtime": 1787217148.5403965,
-    "seen": 1787217237.43336,
-    "ast_hash": "10a2367e2154cc8b5f905ad59f4d3417",
+    "mtime": 1787224821.4831874,
+    "seen": 1787224991.7798123,
+    "ast_hash": "9acb0e7ebc914a07734db973e7155b4a",
+    "semantic_hash": ""
+  },
+  "ai/context/phase-3-github-vault-plan.md": {
+    "mtime": 1787224368.8663502,
+    "seen": 1787224374.9134636,
+    "ast_hash": "34def2ab6fc0e327e684a75ead725fcc",
+    "semantic_hash": ""
+  },
+  "apps/web/src/services/vault.ts": {
+    "mtime": 1787224929.6113796,
+    "seen": 1787224991.779301,
+    "ast_hash": "2905f52592d749a96a68d8ccc748723c",
+    "semantic_hash": ""
+  },
+  "supabase/functions/_shared/github.ts": {
+    "mtime": 1787224806.2999904,
+    "seen": 1787224991.7797153,
+    "ast_hash": "0aa5f704dc7dee71dbf4dbea954c8f61",
     "semantic_hash": ""
   }
 }

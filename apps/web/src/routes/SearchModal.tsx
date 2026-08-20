@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Search, FileText, CornerDownLeft } from 'lucide-react';
 import { Modal } from '../components/common/Modal';
 import { SearchResult } from '../types/vault';
-import { mockVaultService } from '../services/mockVault';
+import { vaultService } from '../services/vault';
+import { useAuth } from '../contexts/AuthContext';
 
 interface SearchModalProps {
   isOpen: boolean;
@@ -15,12 +16,13 @@ export const SearchModal: React.FC<SearchModalProps> = ({
   onClose,
   onSelectFile
 }) => {
+  const { providerToken } = useAuth();
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<SearchResult[]>([]);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   useEffect(() => {
-    if (!isOpen) {
+    if (!isOpen || !providerToken) {
       setQuery('');
       setResults([]);
       setSelectedIndex(0);
@@ -29,12 +31,12 @@ export const SearchModal: React.FC<SearchModalProps> = ({
 
     const timer = setTimeout(async () => {
       if (query.trim()) {
-        const res = await mockVaultService.search(query);
+        const res = await vaultService.search(providerToken, query);
         setResults(res.results);
         setSelectedIndex(0);
       } else {
         // Show recent / all files by default
-        const list = await mockVaultService.listFiles();
+        const list = await vaultService.listFiles(providerToken);
         const initialResults: SearchResult[] = list.entries
           .filter(e => e.type === 'file')
           .map(e => ({
