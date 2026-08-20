@@ -10,7 +10,7 @@ export class VaultService {
     return headers;
   }
 
-  private async invoke<T>(path: string, options: { method: string, body?: any, providerToken?: string | null }): Promise<T> {
+  private async invoke<T>(path: string, options: { method: 'GET' | 'POST' | 'PUT' | 'DELETE', body?: any, providerToken?: string | null }): Promise<T> {
     const { data, error } = await supabase.functions.invoke(`api-v1${path}`, {
       method: options.method,
       body: options.body,
@@ -44,7 +44,7 @@ export class VaultService {
         name: f.name,
         type: f.type,
         size: f.size,
-        updatedAt: new Date().toISOString(), // GitHub tree doesn't return date
+        lastModified: new Date().toISOString(), // GitHub tree doesn't return date
         sha: f.sha
       }))
     };
@@ -57,7 +57,7 @@ export class VaultService {
       name: f.name,
       type: f.type,
       size: f.size,
-      updatedAt: new Date().toISOString(),
+      lastModified: new Date().toISOString(),
       sha: f.sha,
       // GitHub content is base64
       content: f.content ? atob(f.content.replace(/\n/g, '')) : ''
@@ -94,16 +94,16 @@ export class VaultService {
     await this.invoke<void>(`/v1/files/${path}?sha=${sha}`, { method: 'DELETE', providerToken });
   }
 
-  async getSyncStatus(providerToken: string | null): Promise<SyncStatus> {
+  async getSyncStatus(_providerToken: string | null): Promise<SyncStatus> {
     // Stub
     return {
-      lastSyncedAt: new Date().toISOString(),
+      lastSyncAt: new Date().toISOString(),
       status: 'idle',
-      pendingChanges: 0
+      message: undefined
     };
   }
 
-  async syncVault(providerToken: string | null): Promise<void> {
+  async syncVault(_providerToken: string | null): Promise<void> {
     // Stub
   }
 
