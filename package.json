@@ -17,5 +17,8 @@
       "onFail": "download"
     }
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "supabase": "^2.115.0"
+  }
 }

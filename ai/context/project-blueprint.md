@@ -879,7 +879,7 @@ This phase establishes the environment in which the AI will build the project.
 
 ⸻
 
-Phase 1 — PWA
+Phase 1 — PWA (Completed)
 
 Build:
 
@@ -895,7 +895,7 @@ Initially use mock data where useful.
 
 ⸻
 
-Phase 2 — Supabase Backend
+Phase 2 — Supabase Backend (Completed)
 
 Build:
 
