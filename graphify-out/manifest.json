@@ -18,9 +18,9 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1787214356.4476368,
-    "seen": 1787217237.4333544,
-    "ast_hash": "378f8336abedeeab83fdbe1c8cd3b51d",
+    "mtime": 1787228239.0343485,
+    "seen": 1787229628.4499028,
+    "ast_hash": "57c7593d6b2726cbdcb5e56f4266b16e",
     "semantic_hash": ""
   },
   ".agents/rules/graphify.md": {
@@ -36,10 +36,10 @@
     "semantic_hash": "6d73634a678cf1e1c71930adf80bd1f0"
   },
   ".github/workflows/ci.yml": {
-    "mtime": 1787054607.3142571,
-    "seen": 1787167358.617894,
-    "ast_hash": "11c6a55268cd3cde4a898c051fd5ff9a",
-    "semantic_hash": "11c6a55268cd3cde4a898c051fd5ff9a"
+    "mtime": 1787228575.3687434,
+    "seen": 1787229628.4502096,
+    "ast_hash": "280773d7de517e899a1384659e462634",
+    "semantic_hash": ""
   },
   "AGENTS.md": {
     "mtime": 1787166116.2209635,
@@ -192,9 +192,9 @@
     "semantic_hash": ""
   },
   "apps/web/package.json": {
-    "mtime": 1787214384.1450105,
-    "seen": 1787217237.4311316,
-    "ast_hash": "b964f20494f64a923407874df351c00a",
+    "mtime": 1787229354.4110527,
+    "seen": 1787229628.4475296,
+    "ast_hash": "2084dd2ca50decdaf7e75e7bdbae1250",
     "semantic_hash": ""
   },
   "apps/web/postcss.config.js": {
@@ -408,9 +408,9 @@
     "semantic_hash": ""
   },
   "supabase/functions/api-v1/index.ts": {
-    "mtime": 1787224821.4831874,
-    "seen": 1787224991.7798123,
-    "ast_hash": "9acb0e7ebc914a07734db973e7155b4a",
+    "mtime": 1787226546.8457065,
+    "seen": 1787229628.450055,
+    "ast_hash": "f329afd95384a80103155812509a78e4",
     "semantic_hash": ""
   },
   "ai/context/phase-3-github-vault-plan.md": {
@@ -420,15 +420,27 @@
     "semantic_hash": ""
   },
   "apps/web/src/services/vault.ts": {
-    "mtime": 1787224929.6113796,
-    "seen": 1787224991.779301,
-    "ast_hash": "2905f52592d749a96a68d8ccc748723c",
+    "mtime": 1787229334.6269011,
+    "seen": 1787229628.4496179,
+    "ast_hash": "2e47855a8a173379b15d066fd43146b0",
     "semantic_hash": ""
   },
   "supabase/functions/_shared/github.ts": {
     "mtime": 1787224806.2999904,
     "seen": 1787224991.7797153,
     "ast_hash": "0aa5f704dc7dee71dbf4dbea954c8f61",
+    "semantic_hash": ""
+  },
+  "apps/web/src/vite-env.d.ts": {
+    "mtime": 1787229298.7831664,
+    "seen": 1787229628.449697,
+    "ast_hash": "0352474ba2918efe13895edbc3780d94",
+    "semantic_hash": ""
+  },
+  "ai/context/deployment-learnings.md": {
+    "mtime": 1787229578.085765,
+    "seen": 1787229628.450456,
+    "ast_hash": "3bb75a9967c0a8d28472363bea332a8e",
     "semantic_hash": ""
   }
 }

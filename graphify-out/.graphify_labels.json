@@ -39,8 +39,10 @@
   "37": "tailwind.config.js",
   "38": "vite.config.ts",
   "39": "tailwindcss",
-  "40": "AuthContext.tsx",
+  "40": "VaultService",
   "41": "imports",
   "42": "GitHubClient",
-  "43": "2. Step-by-Step Execution Sequence"
+  "43": "2. Step-by-Step Execution Sequence",
+  "44": "Deployment Learnings & Workarounds",
+  "45": "vite-env.d.ts"
 }
