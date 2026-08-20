@@ -4,19 +4,6 @@
   "graph": {},
   "nodes": [
     {
-      "id": "apps_web_src_components_layout_appshell_appshellprops",
-      "label": "AppShellProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": "appshellprops",
-      "source_file": "apps/web/src/components/layout/AppShell.tsx",
-      "source_location": "L6"
-    },
-    {
       "id": "apps_web_src_components_layout_sidebar_sidebarprops",
       "label": "SidebarProps",
       "_callable": true,
@@ -106,6 +93,19 @@
       "norm_label": "mockvaultservice",
       "source_file": "apps/web/src/services/mockVault.ts",
       "source_location": "L54"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice",
+      "label": "VaultService",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": "vaultservice",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L4"
     },
     {
       "id": "apps_web_src_types_vault_apierror",
@@ -342,19 +342,6 @@
       "source_location": "L5"
     },
     {
-      "id": "apps_web_src_contexts_authcontext_authcontexttype",
-      "label": "AuthContextType",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "authcontexttype",
-      "source_file": "apps/web/src/contexts/AuthContext.tsx",
-      "source_location": "L5"
-    },
-    {
       "id": "apps_web_src_routes_newnotemodal_newnotemodalprops",
       "label": "NewNoteModalProps",
       "_callable": true,
@@ -366,32 +353,6 @@
       "norm_label": "newnotemodalprops",
       "source_file": "apps/web/src/routes/NewNoteModal.tsx",
       "source_location": "L7"
-    },
-    {
-      "id": "apps_web_src_routes_searchmodal_searchmodalprops",
-      "label": "SearchModalProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "searchmodalprops",
-      "source_file": "apps/web/src/routes/SearchModal.tsx",
-      "source_location": "L8"
-    },
-    {
-      "id": "apps_web_src_types_vault_searchresult",
-      "label": "SearchResult",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "searchresult",
-      "source_file": "apps/web/src/types/vault.ts",
-      "source_location": "L41"
     },
     {
       "id": "apps_web_src_components_common_badge_badgeprops",
@@ -407,17 +368,56 @@
       "source_location": "L3"
     },
     {
-      "id": "apps_web_src_services_vault_vaultservice",
-      "label": "VaultService",
+      "id": "apps_web_src_components_layout_appshell_appshellprops",
+      "label": "AppShellProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 40,
-      "community_name": "VaultService",
+      "community_name": "AuthContext.tsx",
       "file_type": "code",
-      "norm_label": "vaultservice",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L4"
+      "norm_label": "appshellprops",
+      "source_file": "apps/web/src/components/layout/AppShell.tsx",
+      "source_location": "L6"
+    },
+    {
+      "id": "apps_web_src_contexts_authcontext_authcontexttype",
+      "label": "AuthContextType",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "authcontexttype",
+      "source_file": "apps/web/src/contexts/AuthContext.tsx",
+      "source_location": "L5"
+    },
+    {
+      "id": "apps_web_src_routes_searchmodal_searchmodalprops",
+      "label": "SearchModalProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "searchmodalprops",
+      "source_file": "apps/web/src/routes/SearchModal.tsx",
+      "source_location": "L8"
+    },
+    {
+      "id": "apps_web_src_types_vault_searchresult",
+      "label": "SearchResult",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "searchresult",
+      "source_file": "apps/web/src/types/vault.ts",
+      "source_location": "L41"
     },
     {
       "id": "supabase_functions_shared_github_githubclient",
@@ -433,18 +433,6 @@
       "source_location": "L1"
     },
     {
-      "id": "apps_web_src_components_layout_appshell_appshell",
-      "label": "AppShell()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": "appshell()",
-      "source_file": "apps/web/src/components/layout/AppShell.tsx",
-      "source_location": "L13"
-    },
-    {
       "id": "apps_web_src_components_layout_sidebar_sidebar",
       "label": "Sidebar()",
       "_callable": true,
@@ -455,18 +443,6 @@
       "norm_label": "sidebar()",
       "source_file": "apps/web/src/components/layout/Sidebar.tsx",
       "source_location": "L15"
-    },
-    {
-      "id": "apps_web_src_components_layout_topheader_topheader",
-      "label": "TopHeader()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": "topheader()",
-      "source_file": "apps/web/src/components/layout/TopHeader.tsx",
-      "source_location": "L18"
     },
     {
       "id": "apps_web_src_components_vault_fileitem_fileitem",
@@ -503,18 +479,6 @@
       "norm_label": "gitstatusbadge()",
       "source_file": "apps/web/src/components/vault/GitStatusBadge.tsx",
       "source_location": "L12"
-    },
-    {
-      "id": "apps_web_src_hooks_usevault_usevault",
-      "label": "useVault()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": "usevault()",
-      "source_file": "apps/web/src/hooks/useVault.ts",
-      "source_location": "L6"
     },
     {
       "id": "apps_web_src_services_mockvault_generatesha",
@@ -685,16 +649,160 @@
       "source_location": "L203"
     },
     {
-      "id": "apps_web_src_app_app",
-      "label": "App()",
+      "id": "apps_web_src_services_vault_vaultservice_createfile",
+      "label": ".createFile()",
       "_callable": true,
       "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
+      "community": 30,
+      "community_name": "types/vault.ts",
       "file_type": "code",
-      "norm_label": "app()",
-      "source_file": "apps/web/src/App.tsx",
-      "source_location": "L6"
+      "norm_label": ".createfile()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L67"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice_createvault",
+      "label": ".createVault()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": ".createvault()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L31"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice_deletefile",
+      "label": ".deleteFile()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": ".deletefile()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L93"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice_getfile",
+      "label": ".getFile()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": ".getfile()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L53"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice_getheaders",
+      "label": ".getHeaders()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": ".getheaders()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L5"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice_getsyncstatus",
+      "label": ".getSyncStatus()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": ".getsyncstatus()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L97"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice_getvault",
+      "label": ".getVault()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": ".getvault()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L27"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice_invoke",
+      "label": ".invoke()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": ".invoke()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L13"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice_listfiles",
+      "label": ".listFiles()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": ".listfiles()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L39"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice_resettodefaults",
+      "label": ".resetToDefaults()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": ".resettodefaults()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L129"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice_search",
+      "label": ".search()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": ".search()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L110"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice_syncvault",
+      "label": ".syncVault()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": ".syncvault()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L106"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice_updatefile",
+      "label": ".updateFile()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": ".updatefile()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L80"
     },
     {
       "id": "apps_web_src_components_common_button_button",
@@ -769,30 +877,6 @@
       "source_location": "L16"
     },
     {
-      "id": "apps_web_src_contexts_authcontext_authprovider",
-      "label": "AuthProvider()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "authprovider()",
-      "source_file": "apps/web/src/contexts/AuthContext.tsx",
-      "source_location": "L23"
-    },
-    {
-      "id": "apps_web_src_contexts_authcontext_useauth",
-      "label": "useAuth()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "useauth()",
-      "source_file": "apps/web/src/contexts/AuthContext.tsx",
-      "source_location": "L66"
-    },
-    {
       "id": "apps_web_src_hooks_usepwa_usepwa",
       "label": "usePWA()",
       "_callable": true,
@@ -805,18 +889,6 @@
       "source_location": "L3"
     },
     {
-      "id": "apps_web_src_routes_loginview_loginview",
-      "label": "LoginView()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "loginview()",
-      "source_file": "apps/web/src/routes/LoginView.tsx",
-      "source_location": "L4"
-    },
-    {
       "id": "apps_web_src_routes_newnotemodal_newnotemodal",
       "label": "NewNoteModal()",
       "_callable": true,
@@ -827,18 +899,6 @@
       "norm_label": "newnotemodal()",
       "source_file": "apps/web/src/routes/NewNoteModal.tsx",
       "source_location": "L13"
-    },
-    {
-      "id": "apps_web_src_routes_searchmodal_searchmodal",
-      "label": "SearchModal()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "searchmodal()",
-      "source_file": "apps/web/src/routes/SearchModal.tsx",
-      "source_location": "L14"
     },
     {
       "id": "apps_web_src_routes_settingsmodal_settingsmodal",
@@ -877,160 +937,100 @@
       "source_location": "L10"
     },
     {
-      "id": "apps_web_src_services_vault_vaultservice_createfile",
-      "label": ".createFile()",
+      "id": "apps_web_src_app_app",
+      "label": "App()",
       "_callable": true,
       "_origin": "ast",
       "community": 40,
-      "community_name": "VaultService",
+      "community_name": "AuthContext.tsx",
       "file_type": "code",
-      "norm_label": ".createfile()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L67"
+      "norm_label": "app()",
+      "source_file": "apps/web/src/App.tsx",
+      "source_location": "L6"
     },
     {
-      "id": "apps_web_src_services_vault_vaultservice_createvault",
-      "label": ".createVault()",
+      "id": "apps_web_src_components_layout_appshell_appshell",
+      "label": "AppShell()",
       "_callable": true,
       "_origin": "ast",
       "community": 40,
-      "community_name": "VaultService",
+      "community_name": "AuthContext.tsx",
       "file_type": "code",
-      "norm_label": ".createvault()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L31"
-    },
-    {
-      "id": "apps_web_src_services_vault_vaultservice_deletefile",
-      "label": ".deleteFile()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 40,
-      "community_name": "VaultService",
-      "file_type": "code",
-      "norm_label": ".deletefile()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L93"
-    },
-    {
-      "id": "apps_web_src_services_vault_vaultservice_getfile",
-      "label": ".getFile()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 40,
-      "community_name": "VaultService",
-      "file_type": "code",
-      "norm_label": ".getfile()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L53"
-    },
-    {
-      "id": "apps_web_src_services_vault_vaultservice_getheaders",
-      "label": ".getHeaders()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 40,
-      "community_name": "VaultService",
-      "file_type": "code",
-      "norm_label": ".getheaders()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L5"
-    },
-    {
-      "id": "apps_web_src_services_vault_vaultservice_getsyncstatus",
-      "label": ".getSyncStatus()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 40,
-      "community_name": "VaultService",
-      "file_type": "code",
-      "norm_label": ".getsyncstatus()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L97"
-    },
-    {
-      "id": "apps_web_src_services_vault_vaultservice_getvault",
-      "label": ".getVault()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 40,
-      "community_name": "VaultService",
-      "file_type": "code",
-      "norm_label": ".getvault()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L27"
-    },
-    {
-      "id": "apps_web_src_services_vault_vaultservice_invoke",
-      "label": ".invoke()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 40,
-      "community_name": "VaultService",
-      "file_type": "code",
-      "norm_label": ".invoke()",
-      "source_file": "apps/web/src/services/vault.ts",
+      "norm_label": "appshell()",
+      "source_file": "apps/web/src/components/layout/AppShell.tsx",
       "source_location": "L13"
     },
     {
-      "id": "apps_web_src_services_vault_vaultservice_listfiles",
-      "label": ".listFiles()",
+      "id": "apps_web_src_components_layout_topheader_topheader",
+      "label": "TopHeader()",
       "_callable": true,
       "_origin": "ast",
       "community": 40,
-      "community_name": "VaultService",
+      "community_name": "AuthContext.tsx",
       "file_type": "code",
-      "norm_label": ".listfiles()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L39"
+      "norm_label": "topheader()",
+      "source_file": "apps/web/src/components/layout/TopHeader.tsx",
+      "source_location": "L18"
     },
     {
-      "id": "apps_web_src_services_vault_vaultservice_resettodefaults",
-      "label": ".resetToDefaults()",
+      "id": "apps_web_src_contexts_authcontext_authprovider",
+      "label": "AuthProvider()",
       "_callable": true,
       "_origin": "ast",
       "community": 40,
-      "community_name": "VaultService",
+      "community_name": "AuthContext.tsx",
       "file_type": "code",
-      "norm_label": ".resettodefaults()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L129"
+      "norm_label": "authprovider()",
+      "source_file": "apps/web/src/contexts/AuthContext.tsx",
+      "source_location": "L23"
     },
     {
-      "id": "apps_web_src_services_vault_vaultservice_search",
-      "label": ".search()",
+      "id": "apps_web_src_contexts_authcontext_useauth",
+      "label": "useAuth()",
       "_callable": true,
       "_origin": "ast",
       "community": 40,
-      "community_name": "VaultService",
+      "community_name": "AuthContext.tsx",
       "file_type": "code",
-      "norm_label": ".search()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L110"
+      "norm_label": "useauth()",
+      "source_file": "apps/web/src/contexts/AuthContext.tsx",
+      "source_location": "L66"
     },
     {
-      "id": "apps_web_src_services_vault_vaultservice_syncvault",
-      "label": ".syncVault()",
+      "id": "apps_web_src_hooks_usevault_usevault",
+      "label": "useVault()",
       "_callable": true,
       "_origin": "ast",
       "community": 40,
-      "community_name": "VaultService",
+      "community_name": "AuthContext.tsx",
       "file_type": "code",
-      "norm_label": ".syncvault()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L106"
+      "norm_label": "usevault()",
+      "source_file": "apps/web/src/hooks/useVault.ts",
+      "source_location": "L6"
     },
     {
-      "id": "apps_web_src_services_vault_vaultservice_updatefile",
-      "label": ".updateFile()",
+      "id": "apps_web_src_routes_loginview_loginview",
+      "label": "LoginView()",
       "_callable": true,
       "_origin": "ast",
       "community": 40,
-      "community_name": "VaultService",
+      "community_name": "AuthContext.tsx",
       "file_type": "code",
-      "norm_label": ".updatefile()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L80"
+      "norm_label": "loginview()",
+      "source_file": "apps/web/src/routes/LoginView.tsx",
+      "source_location": "L4"
+    },
+    {
+      "id": "apps_web_src_routes_searchmodal_searchmodal",
+      "label": "SearchModal()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "searchmodal()",
+      "source_file": "apps/web/src/routes/SearchModal.tsx",
+      "source_location": "L14"
     },
     {
       "id": "supabase_functions_shared_github_githubclient_constructor",
@@ -3475,17 +3475,6 @@
       "source_location": "L82"
     },
     {
-      "id": "apps_web_src_components_layout_appshell",
-      "label": "AppShell.tsx",
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": "appshell.tsx",
-      "source_file": "apps/web/src/components/layout/AppShell.tsx",
-      "source_location": "L1"
-    },
-    {
       "id": "apps_web_src_components_layout_sidebar",
       "label": "Sidebar.tsx",
       "_origin": "ast",
@@ -3541,17 +3530,6 @@
       "source_location": "L1"
     },
     {
-      "id": "apps_web_src_hooks_usevault",
-      "label": "useVault.ts",
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": "usevault.ts",
-      "source_file": "apps/web/src/hooks/useVault.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "apps_web_src_services_mockvault",
       "label": "mockVault.ts",
       "_origin": "ast",
@@ -3585,39 +3563,6 @@
       "source_location": "L14"
     },
     {
-      "id": "apps_web_src_services_supabaseclient",
-      "label": "supabaseClient.ts",
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": "supabaseclient.ts",
-      "source_file": "apps/web/src/services/supabaseClient.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_web_src_services_supabaseclient_supabase",
-      "label": "supabase",
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": "supabase",
-      "source_file": "apps/web/src/services/supabaseClient.ts",
-      "source_location": "L6"
-    },
-    {
-      "id": "apps_web_src_services_vault",
-      "label": "services/vault.ts",
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": "services/vault.ts",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "apps_web_src_types_vault",
       "label": "types/vault.ts",
       "_origin": "ast",
@@ -3626,17 +3571,6 @@
       "file_type": "code",
       "norm_label": "types/vault.ts",
       "source_file": "apps/web/src/types/vault.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_web_src_app",
-      "label": "App.tsx",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "app.tsx",
-      "source_file": "apps/web/src/App.tsx",
       "source_location": "L1"
     },
     {
@@ -3706,28 +3640,6 @@
       "source_location": "L1"
     },
     {
-      "id": "apps_web_src_contexts_authcontext",
-      "label": "AuthContext.tsx",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "authcontext.tsx",
-      "source_file": "apps/web/src/contexts/AuthContext.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_web_src_contexts_authcontext_authcontext",
-      "label": "AuthContext",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "authcontext",
-      "source_file": "apps/web/src/contexts/AuthContext.tsx",
-      "source_location": "L14"
-    },
-    {
       "id": "apps_web_src_hooks_usepwa",
       "label": "usePWA.ts",
       "_origin": "ast",
@@ -3739,39 +3651,6 @@
       "source_location": "L1"
     },
     {
-      "id": "apps_web_src_main",
-      "label": "main.tsx",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "main.tsx",
-      "source_file": "apps/web/src/main.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_web_src_main_rootelement",
-      "label": "rootElement",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "rootelement",
-      "source_file": "apps/web/src/main.tsx",
-      "source_location": "L8"
-    },
-    {
-      "id": "apps_web_src_routes_loginview",
-      "label": "LoginView.tsx",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "loginview.tsx",
-      "source_file": "apps/web/src/routes/LoginView.tsx",
-      "source_location": "L1"
-    },
-    {
       "id": "apps_web_src_routes_newnotemodal",
       "label": "NewNoteModal.tsx",
       "_origin": "ast",
@@ -3780,17 +3659,6 @@
       "file_type": "code",
       "norm_label": "newnotemodal.tsx",
       "source_file": "apps/web/src/routes/NewNoteModal.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_web_src_routes_searchmodal",
-      "label": "SearchModal.tsx",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "searchmodal.tsx",
-      "source_file": "apps/web/src/routes/SearchModal.tsx",
       "source_location": "L1"
     },
     {
@@ -4798,6 +4666,138 @@
       "source_location": "L11"
     },
     {
+      "id": "apps_web_src_app",
+      "label": "App.tsx",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "app.tsx",
+      "source_file": "apps/web/src/App.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_components_layout_appshell",
+      "label": "AppShell.tsx",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "appshell.tsx",
+      "source_file": "apps/web/src/components/layout/AppShell.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_contexts_authcontext",
+      "label": "AuthContext.tsx",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "authcontext.tsx",
+      "source_file": "apps/web/src/contexts/AuthContext.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_contexts_authcontext_authcontext",
+      "label": "AuthContext",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "authcontext",
+      "source_file": "apps/web/src/contexts/AuthContext.tsx",
+      "source_location": "L14"
+    },
+    {
+      "id": "apps_web_src_hooks_usevault",
+      "label": "useVault.ts",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "usevault.ts",
+      "source_file": "apps/web/src/hooks/useVault.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_main",
+      "label": "main.tsx",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "main.tsx",
+      "source_file": "apps/web/src/main.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_main_rootelement",
+      "label": "rootElement",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "rootelement",
+      "source_file": "apps/web/src/main.tsx",
+      "source_location": "L8"
+    },
+    {
+      "id": "apps_web_src_routes_loginview",
+      "label": "LoginView.tsx",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "loginview.tsx",
+      "source_file": "apps/web/src/routes/LoginView.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_routes_searchmodal",
+      "label": "SearchModal.tsx",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "searchmodal.tsx",
+      "source_file": "apps/web/src/routes/SearchModal.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_services_supabaseclient",
+      "label": "supabaseClient.ts",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "supabaseclient.ts",
+      "source_file": "apps/web/src/services/supabaseClient.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_services_supabaseclient_supabase",
+      "label": "supabase",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "supabase",
+      "source_file": "apps/web/src/services/supabaseClient.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "apps_web_src_services_vault",
+      "label": "services/vault.ts",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "services/vault.ts",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "supabase_functions_api_v1_deno",
       "label": "deno.json",
       "_origin": "ast",
@@ -5065,6 +5065,18 @@
       "norm_label": "4. vite environment variables",
       "source_file": "ai/context/deployment-learnings.md",
       "source_location": "L26"
+    },
+    {
+      "id": "ai_context_deployment_learnings_5_vercel_monorepo_package_lock_json_pitfall",
+      "label": "5. Vercel Monorepo `package-lock.json` Pitfall",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "Deployment Learnings & Workarounds",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "5. vercel monorepo `package-lock.json` pitfall",
+      "source_file": "ai/context/deployment-learnings.md",
+      "source_location": "L33"
     },
     {
       "id": "ai_context_deployment_learnings_deployment_learnings_workarounds",
@@ -8841,6 +8853,17 @@
       "confidence_score": 1.0,
       "source_file": "ai/context/deployment-learnings.md",
       "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_deployment_learnings_deployment_learnings_workarounds",
+      "target": "ai_context_deployment_learnings_5_vercel_monorepo_package_lock_json_pitfall",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/deployment-learnings.md",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -12926,5 +12949,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "457bdcdf976f195ed1c54bf97e0fc562fd6a0e78"
+  "built_at_commit": "84cb85fd1f6dc9ec7cb4ef0a6db3d0a3659432df"
 }
