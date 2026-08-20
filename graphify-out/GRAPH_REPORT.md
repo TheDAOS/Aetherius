@@ -1,16 +1,16 @@
 # Graph Report - Aetherius  (2026-08-20)
 
 ## Corpus Check
-- 58 files · ~19,122 words
+- 59 files · ~19,494 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 435 nodes · 491 edges · 40 communities (33 shown, 7 thin omitted)
+- 446 nodes · 501 edges · 40 communities (33 shown, 7 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `d73d3271`
+- Built from commit: `0a874657`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -26,7 +26,7 @@
 - ADR-004: Markdown Vault Format
 - AGENTS.md
 - ADR-005: PWA and Swift Share the Same API
-- Non-Negotiable Rules
+- 2. Step-by-Step Execution Sequence
 - ADR-001: GitHub Is the Source of Truth
 - Project Philosophy
 - Authentication Architecture
@@ -117,16 +117,16 @@ Cohesion: 0.17
 Nodes (11): ADR-004: Markdown Vault Format, Alternatives Considered, Consequences, Constraints, Context, Decision, Negative, Positive (+3 more)
 
 ### Community 9 - "AGENTS.md"
-Cohesion: 0.08
-Nodes (23): ADR Rules, ADRs, AI Context, AI Development Workflow, API Rules, Architecture Documentation, CI Requirements, Core Architecture (+15 more)
+Cohesion: 0.05
+Nodes (34): 10. Keep the MVP Simple, 1. GitHub Is the Source of Truth, 2. Markdown Is the Canonical Note Format, 3. Supabase Is Not Canonical Note Storage, 4. Clients Must Not Perform Privileged GitHub Operations, 5. PWA and Swift Must Use the Same API, 6. OpenAPI Must Stay in Sync, 7. Database Changes Require Migrations (+26 more)
 
 ### Community 10 - "ADR-005: PWA and Swift Share the Same API"
 Cohesion: 0.17
 Nodes (11): ADR-005: PWA and Swift Share the Same API, Alternatives Considered, Consequences, Constraints, Context, Decision, Negative, Positive (+3 more)
 
-### Community 11 - "Non-Negotiable Rules"
+### Community 11 - "2. Step-by-Step Execution Sequence"
 Cohesion: 0.18
-Nodes (11): 10. Keep the MVP Simple, 1. GitHub Is the Source of Truth, 2. Markdown Is the Canonical Note Format, 3. Supabase Is Not Canonical Note Storage, 4. Clients Must Not Perform Privileged GitHub Operations, 5. PWA and Swift Must Use the Same API, 6. OpenAPI Must Stay in Sync, 7. Database Changes Require Migrations (+3 more)
+Nodes (10): 1. Overview & Objectives, 2. Step-by-Step Execution Sequence, 3. Adherence to Rules & Constraints, 4. Next Actions, Phase 2 Implementation Plan — Supabase Backend, **Step 1 — Supabase Local Environment Setup**, **Step 2 — Database Schema & RLS (Migrations)**, **Step 3 — Authentication Integration** (+2 more)
 
 ### Community 12 - "ADR-001: GitHub Is the Source of Truth"
 Cohesion: 0.18
@@ -174,11 +174,11 @@ Nodes (7): ADR-006: Frontend PWA Design System and Architecture, Consequences, C
 
 ### Community 30 - "vault.ts"
 Cohesion: 0.08
-Nodes (31): AppShell(), AppShellProps, Sidebar(), SidebarProps, TopHeader(), TopHeaderProps, FileItem(), FileItemProps (+23 more)
+Nodes (29): AppShell(), AppShellProps, Sidebar(), SidebarProps, TopHeader(), TopHeaderProps, FileItem(), FileItemProps (+21 more)
 
 ### Community 31 - "WorkspaceView.tsx"
 Cohesion: 0.09
-Nodes (21): App(), Button(), ButtonProps, Input(), InputProps, Modal(), ModalProps, NoteEditor() (+13 more)
+Nodes (23): App(), Button(), ButtonProps, Input(), InputProps, Modal(), ModalProps, NoteEditor() (+15 more)
 
 ### Community 32 - "compilerOptions"
 Cohesion: 0.08
@@ -193,7 +193,7 @@ Cohesion: 0.10
 Nodes (21): devDependencies, autoprefixer, postcss, tailwindcss, @types/node, @types/react, @types/react-dom, typescript (+13 more)
 
 ## Knowledge Gaps
-- **259 isolated node(s):** `name`, `private`, `version`, `type`, `dev` (+254 more)
+- **267 isolated node(s):** `name`, `private`, `version`, `type`, `dev` (+262 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **7 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -204,13 +204,13 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.008) - this node is a cross-community bridge._
 - **Why does `devDependencies` connect `devDependencies` to `web/package.json`?**
   _High betweenness centrality (0.006) - this node is a cross-community bridge._
-- **Why does `Non-Negotiable Rules` connect `Non-Negotiable Rules` to `AGENTS.md`?**
-  _High betweenness centrality (0.004) - this node is a cross-community bridge._
 - **What connects `name`, `private`, `version` to the rest of the system?**
-  _259 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _267 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Git-Backed Personal Vault API (OpenAPI 3.1.0)` be split into smaller, more focused modules?**
   _Cohesion score 0.125 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**
   _Cohesion score 0.11764705882352941 - nodes in this community are weakly interconnected._
 - **Should `Security Architecture` be split into smaller, more focused modules?**
   _Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected._
+- **Should `AGENTS.md` be split into smaller, more focused modules?**
+  _Cohesion score 0.05405405405405406 - nodes in this community are weakly interconnected._

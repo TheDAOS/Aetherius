@@ -1,16 +1,16 @@
 # Graph Report - Aetherius  (2026-08-20)
 
 ## Corpus Check
-- 30 files · ~13,094 words
+- 58 files · ~19,122 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 275 nodes · 247 edges · 30 communities (24 shown, 6 thin omitted)
+- 435 nodes · 491 edges · 40 communities (33 shown, 7 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `e24d7f89`
+- Built from commit: `d73d3271`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -44,27 +44,41 @@
 - Phase 1 Implementation Plan — Frontend / PWA Foundation
 - Frontend & PWA Architecture
 - ADR-006: Frontend PWA Design System and Architecture
+- vault.ts
+- WorkspaceView.tsx
+- compilerOptions
+- web/package.json
+- devDependencies
+- Badge.tsx
 
 ## God Nodes (most connected - your core abstractions)
-1. `Git-Backed Personal Vault API (OpenAPI 3.1.0)` - 14 edges
-2. `Security Architecture` - 13 edges
-3. `Non-Negotiable Rules` - 11 edges
-4. `Project Philosophy` - 10 edges
-5. `Architecture Overview` - 10 edges
-6. `GitHub Architecture` - 9 edges
-7. `Supabase Architecture` - 9 edges
-8. `Authentication Architecture` - 8 edges
-9. `Data Flow` - 8 edges
-10. `Phase 1 Implementation Plan — Frontend / PWA Foundation` - 7 edges
+1. `MockVaultService` - 19 edges
+2. `compilerOptions` - 18 edges
+3. `Git-Backed Personal Vault API (OpenAPI 3.1.0)` - 14 edges
+4. `Security Architecture` - 13 edges
+5. `VaultFile` - 12 edges
+6. `SyncStatus` - 11 edges
+7. `Non-Negotiable Rules` - 11 edges
+8. `Project Philosophy` - 10 edges
+9. `Architecture Overview` - 10 edges
+10. `GitHub Architecture` - 9 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `OpenAPI Validation Step (redocly lint)` --references--> `Git-Backed Personal Vault API (OpenAPI 3.1.0)`  [EXTRACTED]
   .github/workflows/ci.yml → openapi/openapi.yaml
+- `SidebarProps` --references--> `VaultFile`  [EXTRACTED]
+  apps/web/src/components/layout/Sidebar.tsx → apps/web/src/types/vault.ts
+- `TopHeaderProps` --references--> `SyncStatus`  [EXTRACTED]
+  apps/web/src/components/layout/TopHeader.tsx → apps/web/src/types/vault.ts
+- `FileItemProps` --references--> `VaultFile`  [EXTRACTED]
+  apps/web/src/components/vault/FileItem.tsx → apps/web/src/types/vault.ts
+- `FileTreeProps` --references--> `VaultFile`  [EXTRACTED]
+  apps/web/src/components/vault/FileTree.tsx → apps/web/src/types/vault.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (30 total, 6 thin omitted)
+## Communities (40 total, 7 thin omitted)
 
 ### Community 0 - "Git-Backed Personal Vault API (OpenAPI 3.1.0)"
 Cohesion: 0.12
@@ -158,25 +172,45 @@ Nodes (11): 1. Technical Stack, 2. Design System: "Warm Cream & Acid Neo-Memphis
 Cohesion: 0.25
 Nodes (7): ADR-006: Frontend PWA Design System and Architecture, Consequences, Context, Decision, Negative, Positive, Related Decisions
 
+### Community 30 - "vault.ts"
+Cohesion: 0.08
+Nodes (31): AppShell(), AppShellProps, Sidebar(), SidebarProps, TopHeader(), TopHeaderProps, FileItem(), FileItemProps (+23 more)
+
+### Community 31 - "WorkspaceView.tsx"
+Cohesion: 0.09
+Nodes (21): App(), Button(), ButtonProps, Input(), InputProps, Modal(), ModalProps, NoteEditor() (+13 more)
+
+### Community 32 - "compilerOptions"
+Cohesion: 0.08
+Nodes (23): compilerOptions, allowImportingTsExtensions, baseUrl, isolatedModules, jsx, lib, module, moduleResolution (+15 more)
+
+### Community 33 - "web/package.json"
+Cohesion: 0.10
+Nodes (20): dependencies, clsx, lucide-react, react, react-dom, tailwind-merge, name, private (+12 more)
+
+### Community 34 - "devDependencies"
+Cohesion: 0.10
+Nodes (21): devDependencies, autoprefixer, postcss, tailwindcss, @types/node, @types/react, @types/react-dom, typescript (+13 more)
+
 ## Knowledge Gaps
-- **201 isolated node(s):** `name`, `private`, `version`, `description`, `main` (+196 more)
+- **259 isolated node(s):** `name`, `private`, `version`, `type`, `dev` (+254 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **6 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **7 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
+- **Why does `MockVaultService` connect `vault.ts` to `WorkspaceView.tsx`?**
+  _High betweenness centrality (0.008) - this node is a cross-community bridge._
+- **Why does `devDependencies` connect `devDependencies` to `web/package.json`?**
+  _High betweenness centrality (0.006) - this node is a cross-community bridge._
 - **Why does `Non-Negotiable Rules` connect `Non-Negotiable Rules` to `AGENTS.md`?**
-  _High betweenness centrality (0.011) - this node is a cross-community bridge._
-- **Why does `Project Philosophy` connect `Project Philosophy` to `AGENTS.md`?**
-  _High betweenness centrality (0.010) - this node is a cross-community bridge._
+  _High betweenness centrality (0.004) - this node is a cross-community bridge._
 - **What connects `name`, `private`, `version` to the rest of the system?**
-  _201 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _259 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Git-Backed Personal Vault API (OpenAPI 3.1.0)` be split into smaller, more focused modules?**
   _Cohesion score 0.125 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**
   _Cohesion score 0.11764705882352941 - nodes in this community are weakly interconnected._
 - **Should `Security Architecture` be split into smaller, more focused modules?**
   _Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected._
-- **Should `AGENTS.md` be split into smaller, more focused modules?**
-  _Cohesion score 0.07692307692307693 - nodes in this community are weakly interconnected._

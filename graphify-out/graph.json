@@ -466,18 +466,6 @@
       "source_location": "L12"
     },
     {
-      "id": "apps_web_src_hooks_usepwa_usepwa",
-      "label": "usePWA()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "vault.ts",
-      "file_type": "code",
-      "norm_label": "usepwa()",
-      "source_file": "apps/web/src/hooks/usePWA.ts",
-      "source_location": "L3"
-    },
-    {
       "id": "apps_web_src_hooks_usevault_usevault",
       "label": "useVault()",
       "_callable": true,
@@ -488,18 +476,6 @@
       "norm_label": "usevault()",
       "source_file": "apps/web/src/hooks/useVault.ts",
       "source_location": "L5"
-    },
-    {
-      "id": "apps_web_src_routes_settingsmodal_settingsmodal",
-      "label": "SettingsModal()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "vault.ts",
-      "file_type": "code",
-      "norm_label": "settingsmodal()",
-      "source_file": "apps/web/src/routes/SettingsModal.tsx",
-      "source_location": "L17"
     },
     {
       "id": "apps_web_src_services_mockvault_generatesha",
@@ -754,6 +730,18 @@
       "source_location": "L16"
     },
     {
+      "id": "apps_web_src_hooks_usepwa_usepwa",
+      "label": "usePWA()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "WorkspaceView.tsx",
+      "file_type": "code",
+      "norm_label": "usepwa()",
+      "source_file": "apps/web/src/hooks/usePWA.ts",
+      "source_location": "L3"
+    },
+    {
       "id": "apps_web_src_routes_newnotemodal_newnotemodal",
       "label": "NewNoteModal()",
       "_callable": true,
@@ -776,6 +764,18 @@
       "norm_label": "searchmodal()",
       "source_file": "apps/web/src/routes/SearchModal.tsx",
       "source_location": "L13"
+    },
+    {
+      "id": "apps_web_src_routes_settingsmodal_settingsmodal",
+      "label": "SettingsModal()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "WorkspaceView.tsx",
+      "file_type": "code",
+      "norm_label": "settingsmodal()",
+      "source_file": "apps/web/src/routes/SettingsModal.tsx",
+      "source_location": "L17"
     },
     {
       "id": "apps_web_src_routes_workspaceview_workspaceview",
@@ -1321,136 +1321,136 @@
       "source_location": "L79"
     },
     {
-      "id": "agents_10_keep_the_mvp_simple",
-      "label": "10. Keep the MVP Simple",
+      "id": "ai_context_phase_2_backend_plan",
+      "label": "phase-2-backend-plan.md",
       "_origin": "ast",
       "community": 11,
-      "community_name": "Non-Negotiable Rules",
+      "community_name": "2. Step-by-Step Execution Sequence",
       "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "10. keep the mvp simple",
-      "source_file": "AGENTS.md",
-      "source_location": "L176"
+      "node_kind": "page",
+      "norm_label": "phase-2-backend-plan.md",
+      "source_file": "ai/context/phase-2-backend-plan.md",
+      "source_location": "L1"
     },
     {
-      "id": "agents_1_github_is_the_source_of_truth",
-      "label": "1. GitHub Is the Source of Truth",
+      "id": "ai_context_phase_2_backend_plan_1_overview_objectives",
+      "label": "1. Overview & Objectives",
       "_origin": "ast",
       "community": 11,
-      "community_name": "Non-Negotiable Rules",
+      "community_name": "2. Step-by-Step Execution Sequence",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "1. github is the source of truth",
-      "source_file": "AGENTS.md",
-      "source_location": "L59"
+      "norm_label": "1. overview & objectives",
+      "source_file": "ai/context/phase-2-backend-plan.md",
+      "source_location": "L3"
     },
     {
-      "id": "agents_2_markdown_is_the_canonical_note_format",
-      "label": "2. Markdown Is the Canonical Note Format",
+      "id": "ai_context_phase_2_backend_plan_2_step_by_step_execution_sequence",
+      "label": "2. Step-by-Step Execution Sequence",
       "_origin": "ast",
       "community": 11,
-      "community_name": "Non-Negotiable Rules",
+      "community_name": "2. Step-by-Step Execution Sequence",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "2. markdown is the canonical note format",
-      "source_file": "AGENTS.md",
-      "source_location": "L69"
+      "norm_label": "2. step-by-step execution sequence",
+      "source_file": "ai/context/phase-2-backend-plan.md",
+      "source_location": "L9"
     },
     {
-      "id": "agents_3_supabase_is_not_canonical_note_storage",
-      "label": "3. Supabase Is Not Canonical Note Storage",
+      "id": "ai_context_phase_2_backend_plan_3_adherence_to_rules_constraints",
+      "label": "3. Adherence to Rules & Constraints",
       "_origin": "ast",
       "community": 11,
-      "community_name": "Non-Negotiable Rules",
+      "community_name": "2. Step-by-Step Execution Sequence",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "3. supabase is not canonical note storage",
-      "source_file": "AGENTS.md",
-      "source_location": "L79"
+      "norm_label": "3. adherence to rules & constraints",
+      "source_file": "ai/context/phase-2-backend-plan.md",
+      "source_location": "L35"
     },
     {
-      "id": "agents_4_clients_must_not_perform_privileged_github_operations",
-      "label": "4. Clients Must Not Perform Privileged GitHub Operations",
+      "id": "ai_context_phase_2_backend_plan_4_next_actions",
+      "label": "4. Next Actions",
       "_origin": "ast",
       "community": 11,
-      "community_name": "Non-Negotiable Rules",
+      "community_name": "2. Step-by-Step Execution Sequence",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "4. clients must not perform privileged github operations",
-      "source_file": "AGENTS.md",
-      "source_location": "L96"
+      "norm_label": "4. next actions",
+      "source_file": "ai/context/phase-2-backend-plan.md",
+      "source_location": "L40"
     },
     {
-      "id": "agents_5_pwa_and_swift_must_use_the_same_api",
-      "label": "5. PWA and Swift Must Use the Same API",
+      "id": "ai_context_phase_2_backend_plan_phase_2_implementation_plan_supabase_backend",
+      "label": "Phase 2 Implementation Plan \u2014 Supabase Backend",
       "_origin": "ast",
       "community": 11,
-      "community_name": "Non-Negotiable Rules",
+      "community_name": "2. Step-by-Step Execution Sequence",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "5. pwa and swift must use the same api",
-      "source_file": "AGENTS.md",
-      "source_location": "L116"
+      "norm_label": "phase 2 implementation plan \u2014 supabase backend",
+      "source_file": "ai/context/phase-2-backend-plan.md",
+      "source_location": "L1"
     },
     {
-      "id": "agents_6_openapi_must_stay_in_sync",
-      "label": "6. OpenAPI Must Stay in Sync",
+      "id": "ai_context_phase_2_backend_plan_step_1_supabase_local_environment_setup",
+      "label": "**Step 1 \u2014 Supabase Local Environment Setup**",
       "_origin": "ast",
       "community": 11,
-      "community_name": "Non-Negotiable Rules",
+      "community_name": "2. Step-by-Step Execution Sequence",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "6. openapi must stay in sync",
-      "source_file": "AGENTS.md",
-      "source_location": "L126"
+      "norm_label": "**step 1 \u2014 supabase local environment setup**",
+      "source_file": "ai/context/phase-2-backend-plan.md",
+      "source_location": "L11"
     },
     {
-      "id": "agents_7_database_changes_require_migrations",
-      "label": "7. Database Changes Require Migrations",
+      "id": "ai_context_phase_2_backend_plan_step_2_database_schema_rls_migrations",
+      "label": "**Step 2 \u2014 Database Schema & RLS (Migrations)**",
       "_origin": "ast",
       "community": 11,
-      "community_name": "Non-Negotiable Rules",
+      "community_name": "2. Step-by-Step Execution Sequence",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "7. database changes require migrations",
-      "source_file": "AGENTS.md",
-      "source_location": "L142"
+      "norm_label": "**step 2 \u2014 database schema & rls (migrations)**",
+      "source_file": "ai/context/phase-2-backend-plan.md",
+      "source_location": "L16"
     },
     {
-      "id": "agents_8_avoid_premature_abstraction",
-      "label": "8. Avoid Premature Abstraction",
+      "id": "ai_context_phase_2_backend_plan_step_3_authentication_integration",
+      "label": "**Step 3 \u2014 Authentication Integration**",
       "_origin": "ast",
       "community": 11,
-      "community_name": "Non-Negotiable Rules",
+      "community_name": "2. Step-by-Step Execution Sequence",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "8. avoid premature abstraction",
-      "source_file": "AGENTS.md",
-      "source_location": "L152"
+      "norm_label": "**step 3 \u2014 authentication integration**",
+      "source_file": "ai/context/phase-2-backend-plan.md",
+      "source_location": "L20"
     },
     {
-      "id": "agents_9_do_not_introduce_unnecessary_dependencies",
-      "label": "9. Do Not Introduce Unnecessary Dependencies",
+      "id": "ai_context_phase_2_backend_plan_step_4_edge_functions_scaffolding",
+      "label": "**Step 4 \u2014 Edge Functions Scaffolding**",
       "_origin": "ast",
       "community": 11,
-      "community_name": "Non-Negotiable Rules",
+      "community_name": "2. Step-by-Step Execution Sequence",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "9. do not introduce unnecessary dependencies",
-      "source_file": "AGENTS.md",
-      "source_location": "L162"
+      "norm_label": "**step 4 \u2014 edge functions scaffolding**",
+      "source_file": "ai/context/phase-2-backend-plan.md",
+      "source_location": "L25"
     },
     {
-      "id": "agents_non_negotiable_rules",
-      "label": "Non-Negotiable Rules",
+      "id": "ai_context_phase_2_backend_plan_step_5_verification_quality_checks",
+      "label": "**Step 5 \u2014 Verification & Quality Checks**",
       "_origin": "ast",
       "community": 11,
-      "community_name": "Non-Negotiable Rules",
+      "community_name": "2. Step-by-Step Execution Sequence",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "non-negotiable rules",
-      "source_file": "AGENTS.md",
-      "source_location": "L57"
+      "norm_label": "**step 5 \u2014 verification & quality checks**",
+      "source_file": "ai/context/phase-2-backend-plan.md",
+      "source_location": "L30"
     },
     {
       "id": "docs_decisions_adr_001_github_is_source_of_truth",
@@ -3158,17 +3158,6 @@
       "source_location": "L1"
     },
     {
-      "id": "apps_web_src_hooks_usepwa",
-      "label": "usePWA.ts",
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "vault.ts",
-      "file_type": "code",
-      "norm_label": "usepwa.ts",
-      "source_file": "apps/web/src/hooks/usePWA.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "apps_web_src_hooks_usevault",
       "label": "useVault.ts",
       "_origin": "ast",
@@ -3177,17 +3166,6 @@
       "file_type": "code",
       "norm_label": "usevault.ts",
       "source_file": "apps/web/src/hooks/useVault.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_web_src_routes_settingsmodal",
-      "label": "SettingsModal.tsx",
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "vault.ts",
-      "file_type": "code",
-      "norm_label": "settingsmodal.tsx",
-      "source_file": "apps/web/src/routes/SettingsModal.tsx",
       "source_location": "L1"
     },
     {
@@ -3312,6 +3290,17 @@
       "source_location": "L1"
     },
     {
+      "id": "apps_web_src_hooks_usepwa",
+      "label": "usePWA.ts",
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "WorkspaceView.tsx",
+      "file_type": "code",
+      "norm_label": "usepwa.ts",
+      "source_file": "apps/web/src/hooks/usePWA.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "apps_web_src_main",
       "label": "main.tsx",
       "_origin": "ast",
@@ -3353,6 +3342,17 @@
       "file_type": "code",
       "norm_label": "searchmodal.tsx",
       "source_file": "apps/web/src/routes/SearchModal.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_routes_settingsmodal",
+      "label": "SettingsModal.tsx",
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "WorkspaceView.tsx",
+      "file_type": "code",
+      "norm_label": "settingsmodal.tsx",
+      "source_file": "apps/web/src/routes/SettingsModal.tsx",
       "source_location": "L1"
     },
     {
@@ -4916,6 +4916,126 @@
       "source_location": "L1"
     },
     {
+      "id": "agents_10_keep_the_mvp_simple",
+      "label": "10. Keep the MVP Simple",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "AGENTS.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "10. keep the mvp simple",
+      "source_file": "AGENTS.md",
+      "source_location": "L176"
+    },
+    {
+      "id": "agents_1_github_is_the_source_of_truth",
+      "label": "1. GitHub Is the Source of Truth",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "AGENTS.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "1. github is the source of truth",
+      "source_file": "AGENTS.md",
+      "source_location": "L59"
+    },
+    {
+      "id": "agents_2_markdown_is_the_canonical_note_format",
+      "label": "2. Markdown Is the Canonical Note Format",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "AGENTS.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "2. markdown is the canonical note format",
+      "source_file": "AGENTS.md",
+      "source_location": "L69"
+    },
+    {
+      "id": "agents_3_supabase_is_not_canonical_note_storage",
+      "label": "3. Supabase Is Not Canonical Note Storage",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "AGENTS.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "3. supabase is not canonical note storage",
+      "source_file": "AGENTS.md",
+      "source_location": "L79"
+    },
+    {
+      "id": "agents_4_clients_must_not_perform_privileged_github_operations",
+      "label": "4. Clients Must Not Perform Privileged GitHub Operations",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "AGENTS.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "4. clients must not perform privileged github operations",
+      "source_file": "AGENTS.md",
+      "source_location": "L96"
+    },
+    {
+      "id": "agents_5_pwa_and_swift_must_use_the_same_api",
+      "label": "5. PWA and Swift Must Use the Same API",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "AGENTS.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "5. pwa and swift must use the same api",
+      "source_file": "AGENTS.md",
+      "source_location": "L116"
+    },
+    {
+      "id": "agents_6_openapi_must_stay_in_sync",
+      "label": "6. OpenAPI Must Stay in Sync",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "AGENTS.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "6. openapi must stay in sync",
+      "source_file": "AGENTS.md",
+      "source_location": "L126"
+    },
+    {
+      "id": "agents_7_database_changes_require_migrations",
+      "label": "7. Database Changes Require Migrations",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "AGENTS.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "7. database changes require migrations",
+      "source_file": "AGENTS.md",
+      "source_location": "L142"
+    },
+    {
+      "id": "agents_8_avoid_premature_abstraction",
+      "label": "8. Avoid Premature Abstraction",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "AGENTS.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "8. avoid premature abstraction",
+      "source_file": "AGENTS.md",
+      "source_location": "L152"
+    },
+    {
+      "id": "agents_9_do_not_introduce_unnecessary_dependencies",
+      "label": "9. Do Not Introduce Unnecessary Dependencies",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "AGENTS.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "9. do not introduce unnecessary dependencies",
+      "source_file": "AGENTS.md",
+      "source_location": "L162"
+    },
+    {
       "id": "agents_adr_rules",
       "label": "ADR Rules",
       "_origin": "ast",
@@ -5142,6 +5262,18 @@
       "norm_label": "graphify",
       "source_file": "AGENTS.md",
       "source_location": "L646"
+    },
+    {
+      "id": "agents_non_negotiable_rules",
+      "label": "Non-Negotiable Rules",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "AGENTS.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "non-negotiable rules",
+      "source_file": "AGENTS.md",
+      "source_location": "L57"
     },
     {
       "id": "agents_planning_requirements",
@@ -7481,6 +7613,116 @@
       "confidence_score": 1.0,
       "source_file": "ai/context/phase-1-frontend-plan.md",
       "source_location": "L72",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_2_backend_plan",
+      "target": "ai_context_phase_2_backend_plan_phase_2_implementation_plan_supabase_backend",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-2-backend-plan.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_2_backend_plan_2_step_by_step_execution_sequence",
+      "target": "ai_context_phase_2_backend_plan_step_1_supabase_local_environment_setup",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-2-backend-plan.md",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_2_backend_plan_2_step_by_step_execution_sequence",
+      "target": "ai_context_phase_2_backend_plan_step_2_database_schema_rls_migrations",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-2-backend-plan.md",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_2_backend_plan_2_step_by_step_execution_sequence",
+      "target": "ai_context_phase_2_backend_plan_step_3_authentication_integration",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-2-backend-plan.md",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_2_backend_plan_2_step_by_step_execution_sequence",
+      "target": "ai_context_phase_2_backend_plan_step_4_edge_functions_scaffolding",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-2-backend-plan.md",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_2_backend_plan_2_step_by_step_execution_sequence",
+      "target": "ai_context_phase_2_backend_plan_step_5_verification_quality_checks",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-2-backend-plan.md",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_2_backend_plan_phase_2_implementation_plan_supabase_backend",
+      "target": "ai_context_phase_2_backend_plan_1_overview_objectives",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-2-backend-plan.md",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_2_backend_plan_phase_2_implementation_plan_supabase_backend",
+      "target": "ai_context_phase_2_backend_plan_3_adherence_to_rules_constraints",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-2-backend-plan.md",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_2_backend_plan_phase_2_implementation_plan_supabase_backend",
+      "target": "ai_context_phase_2_backend_plan_4_next_actions",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-2-backend-plan.md",
+      "source_location": "L40",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_2_backend_plan_phase_2_implementation_plan_supabase_backend",
+      "target": "ai_context_phase_2_backend_plan_2_step_by_step_execution_sequence",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-2-backend-plan.md",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -10752,5 +10994,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "d73d32717c89e3d0e29080145a54fd4552bb926d"
+  "built_at_commit": "0a8746578d6d733a75573c1b13c6f378c5dc5b7c"
 }
