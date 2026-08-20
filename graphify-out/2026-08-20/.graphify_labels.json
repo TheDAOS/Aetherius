@@ -12,7 +12,7 @@
   "10": "ADR-005: PWA and Swift Share the Same API",
   "11": "2. Step-by-Step Execution Sequence",
   "12": "ADR-001: GitHub Is the Source of Truth",
-  "13": "Non-Negotiable Rules",
+  "13": "Project Philosophy",
   "14": "Authentication Architecture",
   "15": "Data Flow",
   "16": "Project: {{name}}",
@@ -29,7 +29,7 @@
   "27": "Phase 1 Implementation Plan — Frontend / PWA Foundation",
   "28": "Frontend & PWA Architecture",
   "29": "ADR-006: Frontend PWA Design System and Architecture",
-  "30": "vault.ts",
+  "30": "types/vault.ts",
   "31": "WorkspaceView.tsx",
   "32": "compilerOptions",
   "33": "web/package.json",
@@ -41,6 +41,6 @@
   "39": "tailwindcss",
   "40": "AuthContext.tsx",
   "41": "imports",
-  "42": "index.ts",
+  "42": "GitHubClient",
   "43": "2. Step-by-Step Execution Sequence"
 }

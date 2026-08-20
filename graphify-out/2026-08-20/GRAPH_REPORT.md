@@ -1,11 +1,11 @@
 # Graph Report - Aetherius  (2026-08-20)
 
 ## Corpus Check
-- 67 files · ~21,023 words
+- 69 files · ~22,355 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 478 nodes · 539 edges · 44 communities (36 shown, 8 thin omitted)
+- 503 nodes · 595 edges · 44 communities (36 shown, 8 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
@@ -28,7 +28,7 @@
 - ADR-005: PWA and Swift Share the Same API
 - 2. Step-by-Step Execution Sequence
 - ADR-001: GitHub Is the Source of Truth
-- Non-Negotiable Rules
+- Project Philosophy
 - Authentication Architecture
 - Data Flow
 - Project: {{name}}
@@ -44,7 +44,7 @@
 - Phase 1 Implementation Plan — Frontend / PWA Foundation
 - Frontend & PWA Architecture
 - ADR-006: Frontend PWA Design System and Architecture
-- vault.ts
+- types/vault.ts
 - WorkspaceView.tsx
 - compilerOptions
 - web/package.json
@@ -52,32 +52,32 @@
 - Badge.tsx
 - AuthContext.tsx
 - imports
-- index.ts
+- GitHubClient
 - 2. Step-by-Step Execution Sequence
 
 ## God Nodes (most connected - your core abstractions)
-1. `MockVaultService` - 19 edges
-2. `compilerOptions` - 18 edges
-3. `Git-Backed Personal Vault API (OpenAPI 3.1.0)` - 14 edges
-4. `Security Architecture` - 13 edges
-5. `VaultFile` - 12 edges
-6. `SyncStatus` - 11 edges
-7. `Non-Negotiable Rules` - 11 edges
-8. `Project Philosophy` - 10 edges
-9. `Architecture Overview` - 10 edges
-10. `GitHub Architecture` - 9 edges
+1. `compilerOptions` - 18 edges
+2. `VaultService` - 17 edges
+3. `VaultFile` - 17 edges
+4. `MockVaultService` - 16 edges
+5. `Git-Backed Personal Vault API (OpenAPI 3.1.0)` - 14 edges
+6. `SyncStatus` - 13 edges
+7. `Security Architecture` - 13 edges
+8. `Non-Negotiable Rules` - 11 edges
+9. `Vault` - 10 edges
+10. `GitHubClient` - 10 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `OpenAPI Validation Step (redocly lint)` --references--> `Git-Backed Personal Vault API (OpenAPI 3.1.0)`  [EXTRACTED]
   .github/workflows/ci.yml → openapi/openapi.yaml
+- `AppShellProps` --references--> `useVault()`  [EXTRACTED]
+  apps/web/src/components/layout/AppShell.tsx → apps/web/src/hooks/useVault.ts
 - `SidebarProps` --references--> `VaultFile`  [EXTRACTED]
   apps/web/src/components/layout/Sidebar.tsx → apps/web/src/types/vault.ts
 - `TopHeaderProps` --references--> `SyncStatus`  [EXTRACTED]
   apps/web/src/components/layout/TopHeader.tsx → apps/web/src/types/vault.ts
 - `FileItemProps` --references--> `VaultFile`  [EXTRACTED]
   apps/web/src/components/vault/FileItem.tsx → apps/web/src/types/vault.ts
-- `FileTreeProps` --references--> `VaultFile`  [EXTRACTED]
-  apps/web/src/components/vault/FileTree.tsx → apps/web/src/types/vault.ts
 
 ## Import Cycles
 - None detected.
@@ -121,8 +121,8 @@ Cohesion: 0.17
 Nodes (11): ADR-004: Markdown Vault Format, Alternatives Considered, Consequences, Constraints, Context, Decision, Negative, Positive (+3 more)
 
 ### Community 9 - "AGENTS.md"
-Cohesion: 0.06
-Nodes (33): ADR Rules, ADRs, AI-assisted development, AI Context, AI Development Workflow, AI is not the authority, API-first, API Rules (+25 more)
+Cohesion: 0.05
+Nodes (34): 10. Keep the MVP Simple, 1. GitHub Is the Source of Truth, 2. Markdown Is the Canonical Note Format, 3. Supabase Is Not Canonical Note Storage, 4. Clients Must Not Perform Privileged GitHub Operations, 5. PWA and Swift Must Use the Same API, 6. OpenAPI Must Stay in Sync, 7. Database Changes Require Migrations (+26 more)
 
 ### Community 10 - "ADR-005: PWA and Swift Share the Same API"
 Cohesion: 0.17
@@ -136,9 +136,9 @@ Nodes (10): 1. Overview & Objectives, 2. Step-by-Step Execution Sequence, 3. Adh
 Cohesion: 0.18
 Nodes (10): ADR-001: GitHub Is the Source of Truth, Alternatives Considered, Application-owned storage, Consequences, Context, Decision, Negative, Positive (+2 more)
 
-### Community 13 - "Non-Negotiable Rules"
-Cohesion: 0.18
-Nodes (11): 10. Keep the MVP Simple, 1. GitHub Is the Source of Truth, 2. Markdown Is the Canonical Note Format, 3. Supabase Is Not Canonical Note Storage, 4. Clients Must Not Perform Privileged GitHub Operations, 5. PWA and Swift Must Use the Same API, 6. OpenAPI Must Stay in Sync, 7. Database Changes Require Migrations (+3 more)
+### Community 13 - "Project Philosophy"
+Cohesion: 0.20
+Nodes (10): AI-assisted development, AI is not the authority, API-first, Automated enforcement, Documented architecture, Open formats, Project Philosophy, Start simple (+2 more)
 
 ### Community 14 - "Authentication Architecture"
 Cohesion: 0.22
@@ -176,13 +176,13 @@ Nodes (11): 1. Technical Stack, 2. Design System: "Warm Cream & Acid Neo-Memphis
 Cohesion: 0.25
 Nodes (7): ADR-006: Frontend PWA Design System and Architecture, Consequences, Context, Decision, Negative, Positive, Related Decisions
 
-### Community 30 - "vault.ts"
-Cohesion: 0.08
-Nodes (29): AppShell(), AppShellProps, Sidebar(), SidebarProps, TopHeader(), TopHeaderProps, FileItem(), FileItemProps (+21 more)
+### Community 30 - "types/vault.ts"
+Cohesion: 0.06
+Nodes (30): AppShell(), AppShellProps, Sidebar(), SidebarProps, TopHeader(), TopHeaderProps, FileItem(), FileItemProps (+22 more)
 
 ### Community 31 - "WorkspaceView.tsx"
-Cohesion: 0.10
-Nodes (21): Button(), ButtonProps, Input(), InputProps, Modal(), ModalProps, NoteEditor(), NoteEditorProps (+13 more)
+Cohesion: 0.12
+Nodes (18): Button(), ButtonProps, Input(), InputProps, Modal(), ModalProps, NoteEditor(), NoteEditorProps (+10 more)
 
 ### Community 32 - "compilerOptions"
 Cohesion: 0.08
@@ -197,8 +197,8 @@ Cohesion: 0.10
 Nodes (21): devDependencies, autoprefixer, postcss, tailwindcss, @types/node, @types/react, @types/react-dom, typescript (+13 more)
 
 ### Community 40 - "AuthContext.tsx"
-Cohesion: 0.28
-Nodes (8): App(), AuthContext, AuthContextType, AuthProvider(), useAuth(), rootElement, LoginView(), supabase
+Cohesion: 0.20
+Nodes (11): App(), AuthContext, AuthContextType, AuthProvider(), useAuth(), rootElement, LoginView(), SearchModal() (+3 more)
 
 ### Community 41 - "imports"
 Cohesion: 0.50
@@ -216,9 +216,9 @@ Nodes (10): 1. Overview & Objectives, 2. Step-by-Step Execution Sequence, 3. Adh
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `MockVaultService` connect `vault.ts` to `WorkspaceView.tsx`?**
-  _High betweenness centrality (0.008) - this node is a cross-community bridge._
-- **Why does `devDependencies` connect `devDependencies` to `web/package.json`?**
+- **Why does `VaultService` connect `types/vault.ts` to `AuthContext.tsx`, `WorkspaceView.tsx`?**
+  _High betweenness centrality (0.007) - this node is a cross-community bridge._
+- **Why does `VaultFile` connect `types/vault.ts` to `AuthContext.tsx`?**
   _High betweenness centrality (0.006) - this node is a cross-community bridge._
 - **What connects `name`, `private`, `version` to the rest of the system?**
   _283 weakly-connected nodes found - possible documentation gaps or missing edges._
@@ -229,4 +229,4 @@ _Questions this graph is uniquely positioned to answer:_
 - **Should `Security Architecture` be split into smaller, more focused modules?**
   _Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected._
 - **Should `AGENTS.md` be split into smaller, more focused modules?**
-  _Cohesion score 0.05555555555555555 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.05405405405405406 - nodes in this community are weakly interconnected._
