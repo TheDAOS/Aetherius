@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --safe-area-top: env(safe-area-inset-top, 0px);
+    --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  body {
+    background-color: #F6F3EA;
+    color: #111111;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Tactile neo-memphis interactive utility classes */
+.neo-box {
+  background-color: #FDFCFA;
+  border: 2px solid #111111;
+  box-shadow: 3px 3px 0px #111111;
+}
+
+.neo-box-sm {
+  background-color: #FDFCFA;
+  border: 1.5px solid #111111;
+  box-shadow: 2px 2px 0px #111111;
+}
+
+.neo-box-lg {
+  background-color: #FDFCFA;
+  border: 3px solid #111111;
+  box-shadow: 6px 6px 0px #111111;
+}
+
+.neo-btn {
+  border: 2px solid #111111;
+  box-shadow: 3px 3px 0px #111111;
+  transition: all 0.08s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.neo-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px #111111;
+}
+
+.neo-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #111111;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F6F3EA;
+  border-left: 1px solid #D8D1C0;
+}
+::-webkit-scrollbar-thumb {
+  background: #383531;
+  border: 2px solid #F6F3EA;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #111111;
+}
