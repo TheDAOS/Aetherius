@@ -28,5 +28,15 @@
   "26": "project-blueprint.md",
   "27": "Phase 1 Implementation Plan — Frontend / PWA Foundation",
   "28": "Frontend & PWA Architecture",
-  "29": "ADR-006: Frontend PWA Design System and Architecture"
+  "29": "ADR-006: Frontend PWA Design System and Architecture",
+  "30": "vault.ts",
+  "31": "WorkspaceView.tsx",
+  "32": "compilerOptions",
+  "33": "web/package.json",
+  "34": "devDependencies",
+  "35": "Badge.tsx",
+  "36": "postcss.config.js",
+  "37": "tailwind.config.js",
+  "38": "vite.config.ts",
+  "39": "tailwindcss"
 }
