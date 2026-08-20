@@ -1418,14 +1418,14 @@
       "source_location": "L35"
     },
     {
-      "id": "ai_context_phase_2_backend_plan_4_next_actions",
-      "label": "4. Next Actions",
+      "id": "ai_context_phase_2_backend_plan_4_status",
+      "label": "4. Status",
       "_origin": "ast",
       "community": 11,
       "community_name": "2. Step-by-Step Execution Sequence",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "4. next actions",
+      "norm_label": "4. status",
       "source_file": "ai/context/phase-2-backend-plan.md",
       "source_location": "L40"
     },
@@ -1634,124 +1634,136 @@
       "source_location": "L53"
     },
     {
-      "id": "agents_ai_assisted_development",
-      "label": "AI-assisted development",
+      "id": "agents_10_keep_the_mvp_simple",
+      "label": "10. Keep the MVP Simple",
       "_origin": "ast",
       "community": 13,
-      "community_name": "Project Philosophy",
+      "community_name": "Non-Negotiable Rules",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "ai-assisted development",
+      "norm_label": "10. keep the mvp simple",
       "source_file": "AGENTS.md",
-      "source_location": "L599"
+      "source_location": "L176"
     },
     {
-      "id": "agents_ai_is_not_the_authority",
-      "label": "AI is not the authority",
+      "id": "agents_1_github_is_the_source_of_truth",
+      "label": "1. GitHub Is the Source of Truth",
       "_origin": "ast",
       "community": 13,
-      "community_name": "Project Philosophy",
+      "community_name": "Non-Negotiable Rules",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "ai is not the authority",
+      "norm_label": "1. github is the source of truth",
       "source_file": "AGENTS.md",
-      "source_location": "L603"
+      "source_location": "L59"
     },
     {
-      "id": "agents_api_first",
-      "label": "API-first",
+      "id": "agents_2_markdown_is_the_canonical_note_format",
+      "label": "2. Markdown Is the Canonical Note Format",
       "_origin": "ast",
       "community": 13,
-      "community_name": "Project Philosophy",
+      "community_name": "Non-Negotiable Rules",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "api-first",
+      "norm_label": "2. markdown is the canonical note format",
       "source_file": "AGENTS.md",
-      "source_location": "L595"
+      "source_location": "L69"
     },
     {
-      "id": "agents_automated_enforcement",
-      "label": "Automated enforcement",
+      "id": "agents_3_supabase_is_not_canonical_note_storage",
+      "label": "3. Supabase Is Not Canonical Note Storage",
       "_origin": "ast",
       "community": 13,
-      "community_name": "Project Philosophy",
+      "community_name": "Non-Negotiable Rules",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "automated enforcement",
+      "norm_label": "3. supabase is not canonical note storage",
       "source_file": "AGENTS.md",
-      "source_location": "L615"
+      "source_location": "L79"
     },
     {
-      "id": "agents_documented_architecture",
-      "label": "Documented architecture",
+      "id": "agents_4_clients_must_not_perform_privileged_github_operations",
+      "label": "4. Clients Must Not Perform Privileged GitHub Operations",
       "_origin": "ast",
       "community": 13,
-      "community_name": "Project Philosophy",
+      "community_name": "Non-Negotiable Rules",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "documented architecture",
+      "norm_label": "4. clients must not perform privileged github operations",
       "source_file": "AGENTS.md",
-      "source_location": "L611"
+      "source_location": "L96"
     },
     {
-      "id": "agents_open_formats",
-      "label": "Open formats",
+      "id": "agents_5_pwa_and_swift_must_use_the_same_api",
+      "label": "5. PWA and Swift Must Use the Same API",
       "_origin": "ast",
       "community": 13,
-      "community_name": "Project Philosophy",
+      "community_name": "Non-Negotiable Rules",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "open formats",
+      "norm_label": "5. pwa and swift must use the same api",
       "source_file": "AGENTS.md",
-      "source_location": "L591"
+      "source_location": "L116"
     },
     {
-      "id": "agents_project_philosophy",
-      "label": "Project Philosophy",
+      "id": "agents_6_openapi_must_stay_in_sync",
+      "label": "6. OpenAPI Must Stay in Sync",
       "_origin": "ast",
       "community": 13,
-      "community_name": "Project Philosophy",
+      "community_name": "Non-Negotiable Rules",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "project philosophy",
+      "norm_label": "6. openapi must stay in sync",
       "source_file": "AGENTS.md",
-      "source_location": "L583"
+      "source_location": "L126"
     },
     {
-      "id": "agents_start_simple",
-      "label": "Start simple",
+      "id": "agents_7_database_changes_require_migrations",
+      "label": "7. Database Changes Require Migrations",
       "_origin": "ast",
       "community": 13,
-      "community_name": "Project Philosophy",
+      "community_name": "Non-Negotiable Rules",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "start simple",
+      "norm_label": "7. database changes require migrations",
       "source_file": "AGENTS.md",
-      "source_location": "L619"
+      "source_location": "L142"
     },
     {
-      "id": "agents_user_owned_data",
-      "label": "User-owned data",
+      "id": "agents_8_avoid_premature_abstraction",
+      "label": "8. Avoid Premature Abstraction",
       "_origin": "ast",
       "community": 13,
-      "community_name": "Project Philosophy",
+      "community_name": "Non-Negotiable Rules",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "user-owned data",
+      "norm_label": "8. avoid premature abstraction",
       "source_file": "AGENTS.md",
-      "source_location": "L587"
+      "source_location": "L152"
     },
     {
-      "id": "agents_zero_cost_first",
-      "label": "Zero-cost first",
+      "id": "agents_9_do_not_introduce_unnecessary_dependencies",
+      "label": "9. Do Not Introduce Unnecessary Dependencies",
       "_origin": "ast",
       "community": 13,
-      "community_name": "Project Philosophy",
+      "community_name": "Non-Negotiable Rules",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "zero-cost first",
+      "norm_label": "9. do not introduce unnecessary dependencies",
       "source_file": "AGENTS.md",
-      "source_location": "L623"
+      "source_location": "L162"
+    },
+    {
+      "id": "agents_non_negotiable_rules",
+      "label": "Non-Negotiable Rules",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "Non-Negotiable Rules",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "non-negotiable rules",
+      "source_file": "AGENTS.md",
+      "source_location": "L57"
     },
     {
       "id": "docs_architecture_authentication",
@@ -2177,7 +2189,7 @@
       "label": "README.md",
       "_origin": "ast",
       "community": 19,
-      "community_name": "README.md",
+      "community_name": "Git-Backed Personal Vault",
       "file_type": "document",
       "node_kind": "page",
       "norm_label": "readme.md",
@@ -2189,7 +2201,7 @@
       "label": "Aetherius",
       "_origin": "ast",
       "community": 19,
-      "community_name": "README.md",
+      "community_name": "Git-Backed Personal Vault",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "aetherius",
@@ -2201,7 +2213,7 @@
       "label": "Architecture",
       "_origin": "ast",
       "community": 19,
-      "community_name": "README.md",
+      "community_name": "Git-Backed Personal Vault",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "architecture",
@@ -2213,12 +2225,24 @@
       "label": "Git-Backed Personal Vault",
       "_origin": "ast",
       "community": 19,
-      "community_name": "README.md",
+      "community_name": "Git-Backed Personal Vault",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "git-backed personal vault",
       "source_file": "README.md",
       "source_location": "L3"
+    },
+    {
+      "id": "readme_project_status",
+      "label": "Project Status",
+      "_origin": "ast",
+      "community": 19,
+      "community_name": "Git-Backed Personal Vault",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "project status",
+      "source_file": "README.md",
+      "source_location": "L16"
     },
     {
       "id": "package",
@@ -4541,6 +4565,138 @@
       "source_location": "L3"
     },
     {
+      "id": "ai_context_phase_3_github_vault_plan",
+      "label": "phase-3-github-vault-plan.md",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "2. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "phase-3-github-vault-plan.md",
+      "source_file": "ai/context/phase-3-github-vault-plan.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "ai_context_phase_3_github_vault_plan_1_overview_objectives",
+      "label": "1. Overview & Objectives",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "2. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "1. overview & objectives",
+      "source_file": "ai/context/phase-3-github-vault-plan.md",
+      "source_location": "L3"
+    },
+    {
+      "id": "ai_context_phase_3_github_vault_plan_2_step_by_step_execution_sequence",
+      "label": "2. Step-by-Step Execution Sequence",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "2. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "2. step-by-step execution sequence",
+      "source_file": "ai/context/phase-3-github-vault-plan.md",
+      "source_location": "L9"
+    },
+    {
+      "id": "ai_context_phase_3_github_vault_plan_3_adherence_to_rules_constraints",
+      "label": "3. Adherence to Rules & Constraints",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "2. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "3. adherence to rules & constraints",
+      "source_file": "ai/context/phase-3-github-vault-plan.md",
+      "source_location": "L39"
+    },
+    {
+      "id": "ai_context_phase_3_github_vault_plan_4_definition_of_done",
+      "label": "4. Definition of Done",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "2. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "4. definition of done",
+      "source_file": "ai/context/phase-3-github-vault-plan.md",
+      "source_location": "L45"
+    },
+    {
+      "id": "ai_context_phase_3_github_vault_plan_phase_3_implementation_plan_github_vault",
+      "label": "Phase 3 Implementation Plan \u2014 GitHub Vault",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "2. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "phase 3 implementation plan \u2014 github vault",
+      "source_file": "ai/context/phase-3-github-vault-plan.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "ai_context_phase_3_github_vault_plan_step_1_github_integration_auth_flow",
+      "label": "**Step 1 \u2014 GitHub Integration & Auth Flow**",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "2. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "**step 1 \u2014 github integration & auth flow**",
+      "source_file": "ai/context/phase-3-github-vault-plan.md",
+      "source_location": "L11"
+    },
+    {
+      "id": "ai_context_phase_3_github_vault_plan_step_2_vault_initialization_post_v1_vault",
+      "label": "**Step 2 \u2014 Vault Initialization (`POST /v1/vault`)**",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "2. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "**step 2 \u2014 vault initialization (`post /v1/vault`)**",
+      "source_file": "ai/context/phase-3-github-vault-plan.md",
+      "source_location": "L16"
+    },
+    {
+      "id": "ai_context_phase_3_github_vault_plan_step_3_file_system_endpoints_github_contents_api",
+      "label": "**Step 3 \u2014 File System Endpoints (GitHub Contents API)**",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "2. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "**step 3 \u2014 file system endpoints (github contents api)**",
+      "source_file": "ai/context/phase-3-github-vault-plan.md",
+      "source_location": "L22"
+    },
+    {
+      "id": "ai_context_phase_3_github_vault_plan_step_4_edge_function_routing_refinement",
+      "label": "**Step 4 \u2014 Edge Function Routing & Refinement**",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "2. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "**step 4 \u2014 edge function routing & refinement**",
+      "source_file": "ai/context/phase-3-github-vault-plan.md",
+      "source_location": "L29"
+    },
+    {
+      "id": "ai_context_phase_3_github_vault_plan_step_5_pwa_integration_verification",
+      "label": "**Step 5 \u2014 PWA Integration & Verification**",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "2. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "**step 5 \u2014 pwa integration & verification**",
+      "source_file": "ai/context/phase-3-github-vault-plan.md",
+      "source_location": "L34"
+    },
+    {
       "id": "docs_architecture_supabase",
       "label": "supabase.md",
       "_origin": "ast",
@@ -5141,126 +5297,6 @@
       "source_location": "L1"
     },
     {
-      "id": "agents_10_keep_the_mvp_simple",
-      "label": "10. Keep the MVP Simple",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "AGENTS.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "10. keep the mvp simple",
-      "source_file": "AGENTS.md",
-      "source_location": "L176"
-    },
-    {
-      "id": "agents_1_github_is_the_source_of_truth",
-      "label": "1. GitHub Is the Source of Truth",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "AGENTS.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "1. github is the source of truth",
-      "source_file": "AGENTS.md",
-      "source_location": "L59"
-    },
-    {
-      "id": "agents_2_markdown_is_the_canonical_note_format",
-      "label": "2. Markdown Is the Canonical Note Format",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "AGENTS.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "2. markdown is the canonical note format",
-      "source_file": "AGENTS.md",
-      "source_location": "L69"
-    },
-    {
-      "id": "agents_3_supabase_is_not_canonical_note_storage",
-      "label": "3. Supabase Is Not Canonical Note Storage",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "AGENTS.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "3. supabase is not canonical note storage",
-      "source_file": "AGENTS.md",
-      "source_location": "L79"
-    },
-    {
-      "id": "agents_4_clients_must_not_perform_privileged_github_operations",
-      "label": "4. Clients Must Not Perform Privileged GitHub Operations",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "AGENTS.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "4. clients must not perform privileged github operations",
-      "source_file": "AGENTS.md",
-      "source_location": "L96"
-    },
-    {
-      "id": "agents_5_pwa_and_swift_must_use_the_same_api",
-      "label": "5. PWA and Swift Must Use the Same API",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "AGENTS.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "5. pwa and swift must use the same api",
-      "source_file": "AGENTS.md",
-      "source_location": "L116"
-    },
-    {
-      "id": "agents_6_openapi_must_stay_in_sync",
-      "label": "6. OpenAPI Must Stay in Sync",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "AGENTS.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "6. openapi must stay in sync",
-      "source_file": "AGENTS.md",
-      "source_location": "L126"
-    },
-    {
-      "id": "agents_7_database_changes_require_migrations",
-      "label": "7. Database Changes Require Migrations",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "AGENTS.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "7. database changes require migrations",
-      "source_file": "AGENTS.md",
-      "source_location": "L142"
-    },
-    {
-      "id": "agents_8_avoid_premature_abstraction",
-      "label": "8. Avoid Premature Abstraction",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "AGENTS.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "8. avoid premature abstraction",
-      "source_file": "AGENTS.md",
-      "source_location": "L152"
-    },
-    {
-      "id": "agents_9_do_not_introduce_unnecessary_dependencies",
-      "label": "9. Do Not Introduce Unnecessary Dependencies",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "AGENTS.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "9. do not introduce unnecessary dependencies",
-      "source_file": "AGENTS.md",
-      "source_location": "L162"
-    },
-    {
       "id": "agents_adr_rules",
       "label": "ADR Rules",
       "_origin": "ast",
@@ -5309,6 +5345,18 @@
       "source_location": "L232"
     },
     {
+      "id": "agents_ai_assisted_development",
+      "label": "AI-assisted development",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "AGENTS.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "ai-assisted development",
+      "source_file": "AGENTS.md",
+      "source_location": "L599"
+    },
+    {
       "id": "agents_ai_context",
       "label": "AI Context",
       "_origin": "ast",
@@ -5333,6 +5381,30 @@
       "source_location": "L311"
     },
     {
+      "id": "agents_ai_is_not_the_authority",
+      "label": "AI is not the authority",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "AGENTS.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "ai is not the authority",
+      "source_file": "AGENTS.md",
+      "source_location": "L603"
+    },
+    {
+      "id": "agents_api_first",
+      "label": "API-first",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "AGENTS.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "api-first",
+      "source_file": "AGENTS.md",
+      "source_location": "L595"
+    },
+    {
       "id": "agents_api_rules",
       "label": "API Rules",
       "_origin": "ast",
@@ -5355,6 +5427,18 @@
       "norm_label": "architecture documentation",
       "source_file": "AGENTS.md",
       "source_location": "L268"
+    },
+    {
+      "id": "agents_automated_enforcement",
+      "label": "Automated enforcement",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "AGENTS.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "automated enforcement",
+      "source_file": "AGENTS.md",
+      "source_location": "L615"
     },
     {
       "id": "agents_ci_requirements",
@@ -5441,6 +5525,18 @@
       "source_location": "L228"
     },
     {
+      "id": "agents_documented_architecture",
+      "label": "Documented architecture",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "AGENTS.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "documented architecture",
+      "source_file": "AGENTS.md",
+      "source_location": "L611"
+    },
+    {
       "id": "agents_final_authority",
       "label": "Final Authority",
       "_origin": "ast",
@@ -5489,16 +5585,16 @@
       "source_location": "L646"
     },
     {
-      "id": "agents_non_negotiable_rules",
-      "label": "Non-Negotiable Rules",
+      "id": "agents_open_formats",
+      "label": "Open formats",
       "_origin": "ast",
       "community": 9,
       "community_name": "AGENTS.md",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "non-negotiable rules",
+      "norm_label": "open formats",
       "source_file": "AGENTS.md",
-      "source_location": "L57"
+      "source_location": "L591"
     },
     {
       "id": "agents_planning_requirements",
@@ -5525,6 +5621,18 @@
       "source_location": "L3"
     },
     {
+      "id": "agents_project_philosophy",
+      "label": "Project Philosophy",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "AGENTS.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "project philosophy",
+      "source_file": "AGENTS.md",
+      "source_location": "L583"
+    },
+    {
       "id": "agents_repository_structure",
       "label": "Repository Structure",
       "_origin": "ast",
@@ -5549,6 +5657,18 @@
       "source_location": "L439"
     },
     {
+      "id": "agents_start_simple",
+      "label": "Start simple",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "AGENTS.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "start simple",
+      "source_file": "AGENTS.md",
+      "source_location": "L619"
+    },
+    {
       "id": "agents_testing_requirements",
       "label": "Testing Requirements",
       "_origin": "ast",
@@ -5561,6 +5681,18 @@
       "source_location": "L388"
     },
     {
+      "id": "agents_user_owned_data",
+      "label": "User-owned data",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "AGENTS.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "user-owned data",
+      "source_file": "AGENTS.md",
+      "source_location": "L587"
+    },
+    {
       "id": "agents_when_the_agent_must_stop_and_ask",
       "label": "When the Agent Must Stop and Ask",
       "_origin": "ast",
@@ -5571,6 +5703,18 @@
       "norm_label": "when the agent must stop and ask",
       "source_file": "AGENTS.md",
       "source_location": "L545"
+    },
+    {
+      "id": "agents_zero_cost_first",
+      "label": "Zero-cost first",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "AGENTS.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "zero-cost first",
+      "source_file": "AGENTS.md",
+      "source_location": "L623"
     }
   ],
   "links": [
@@ -8098,7 +8242,7 @@
     },
     {
       "source": "ai_context_phase_2_backend_plan_phase_2_implementation_plan_supabase_backend",
-      "target": "ai_context_phase_2_backend_plan_4_next_actions",
+      "target": "ai_context_phase_2_backend_plan_4_status",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -8115,6 +8259,116 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "ai/context/phase-2-backend-plan.md",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_3_github_vault_plan",
+      "target": "ai_context_phase_3_github_vault_plan_phase_3_implementation_plan_github_vault",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-3-github-vault-plan.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_3_github_vault_plan_2_step_by_step_execution_sequence",
+      "target": "ai_context_phase_3_github_vault_plan_step_1_github_integration_auth_flow",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-3-github-vault-plan.md",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_3_github_vault_plan_2_step_by_step_execution_sequence",
+      "target": "ai_context_phase_3_github_vault_plan_step_2_vault_initialization_post_v1_vault",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-3-github-vault-plan.md",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_3_github_vault_plan_2_step_by_step_execution_sequence",
+      "target": "ai_context_phase_3_github_vault_plan_step_3_file_system_endpoints_github_contents_api",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-3-github-vault-plan.md",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_3_github_vault_plan_2_step_by_step_execution_sequence",
+      "target": "ai_context_phase_3_github_vault_plan_step_4_edge_function_routing_refinement",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-3-github-vault-plan.md",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_3_github_vault_plan_2_step_by_step_execution_sequence",
+      "target": "ai_context_phase_3_github_vault_plan_step_5_pwa_integration_verification",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-3-github-vault-plan.md",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_3_github_vault_plan_phase_3_implementation_plan_github_vault",
+      "target": "ai_context_phase_3_github_vault_plan_1_overview_objectives",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-3-github-vault-plan.md",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_3_github_vault_plan_phase_3_implementation_plan_github_vault",
+      "target": "ai_context_phase_3_github_vault_plan_3_adherence_to_rules_constraints",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-3-github-vault-plan.md",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_3_github_vault_plan_phase_3_implementation_plan_github_vault",
+      "target": "ai_context_phase_3_github_vault_plan_4_definition_of_done",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-3-github-vault-plan.md",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_3_github_vault_plan_phase_3_implementation_plan_github_vault",
+      "target": "ai_context_phase_3_github_vault_plan_2_step_by_step_execution_sequence",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-3-github-vault-plan.md",
       "source_location": "L9",
       "weight": 1.0
     },
@@ -11002,6 +11256,17 @@
     },
     {
       "source": "readme_git_backed_personal_vault",
+      "target": "readme_project_status",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "readme_git_backed_personal_vault",
       "target": "readme_architecture",
       "relation": "contains",
       "_origin": "ast",
@@ -11530,5 +11795,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "045eadd6bfb5206a136e3daf65f054d841d7324c"
+  "built_at_commit": "f30673e2079fb267cfc4ff274a5cbf437bef2fb3"
 }

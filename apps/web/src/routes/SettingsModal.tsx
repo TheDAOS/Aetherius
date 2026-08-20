@@ -4,7 +4,7 @@ import { Modal } from '../components/common/Modal';
 import { Button } from '../components/common/Button';
 import { Vault, SyncStatus } from '../types/vault';
 import { usePWA } from '../hooks/usePWA';
-import { mockVaultService } from '../services/mockVault';
+import { vaultService } from '../services/vault';
 
 interface SettingsModalProps {
   isOpen: boolean;
@@ -102,7 +102,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               icon={<RefreshCw size={13} />}
               onClick={() => {
                 if (window.confirm('Reset local mock vault back to starter notes?')) {
-                  mockVaultService.resetToDefaults();
+                  vaultService.resetToDefaults();
                   onResetVault();
                   onClose();
                 }

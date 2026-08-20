@@ -429,3 +429,14 @@ enabled = true
 client_id = "env(SUPABASE_AUTH_EXTERNAL_GITHUB_CLIENT_ID)"
 secret = "env(SUPABASE_AUTH_EXTERNAL_GITHUB_SECRET)"
 redirect_uri = ""
+
+[functions.test-func]
+enabled = true
+verify_jwt = false
+import_map = "./functions/test-func/deno.json"
+# Uncomment to specify a custom file path to the entrypoint.
+# Supported file extensions are: .ts, .js, .mjs, .jsx, .tsx
+entrypoint = "./functions/test-func/index.ts"
+# Specifies static files to be bundled with the function. Supports glob patterns.
+# For example, if you want to serve static HTML pages in your function:
+# static_files = [ "./functions/test-func/*.html" ]

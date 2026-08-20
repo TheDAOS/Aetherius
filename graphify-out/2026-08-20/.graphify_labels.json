@@ -12,13 +12,13 @@
   "10": "ADR-005: PWA and Swift Share the Same API",
   "11": "2. Step-by-Step Execution Sequence",
   "12": "ADR-001: GitHub Is the Source of Truth",
-  "13": "Project Philosophy",
+  "13": "Non-Negotiable Rules",
   "14": "Authentication Architecture",
   "15": "Data Flow",
   "16": "Project: {{name}}",
   "17": "Personal Knowledge Vault",
   "18": "Daily Note - {{date}}",
-  "19": "README.md",
+  "19": "Git-Backed Personal Vault",
   "20": "Welcome to Your Vault",
   "21": "rules/graphify.md",
   "22": "workflows/graphify.md",
@@ -41,5 +41,6 @@
   "39": "tailwindcss",
   "40": "AuthContext.tsx",
   "41": "imports",
-  "42": "index.ts"
+  "42": "index.ts",
+  "43": "2. Step-by-Step Execution Sequence"
 }
