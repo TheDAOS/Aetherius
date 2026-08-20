@@ -1,16 +1,16 @@
 # Graph Report - Aetherius  (2026-08-20)
 
 ## Corpus Check
-- 71 files · ~22,864 words
+- 71 files · ~22,949 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 513 nodes · 603 edges · 46 communities (38 shown, 8 thin omitted)
+- 514 nodes · 604 edges · 47 communities (39 shown, 8 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `84cb85fd`
+- Built from commit: `93d82036`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -55,6 +55,7 @@
 - GitHubClient
 - 2. Step-by-Step Execution Sequence
 - Deployment Learnings & Workarounds
+- VaultService
 
 ## God Nodes (most connected - your core abstractions)
 1. `compilerOptions` - 18 edges
@@ -83,7 +84,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (46 total, 8 thin omitted)
+## Communities (47 total, 8 thin omitted)
 
 ### Community 0 - "Git-Backed Personal Vault API (OpenAPI 3.1.0)"
 Cohesion: 0.12
@@ -178,8 +179,8 @@ Cohesion: 0.25
 Nodes (7): ADR-006: Frontend PWA Design System and Architecture, Consequences, Context, Decision, Negative, Positive, Related Decisions
 
 ### Community 30 - "types/vault.ts"
-Cohesion: 0.07
-Nodes (26): Sidebar(), SidebarProps, TopHeaderProps, FileItem(), FileItemProps, FileTree(), FileTreeProps, GitStatusBadge() (+18 more)
+Cohesion: 0.11
+Nodes (18): TopHeaderProps, GitStatusBadge(), GitStatusBadgeProps, SettingsModalProps, DEFAULT_FILES, DEFAULT_VAULT, generateSha(), MockVaultService (+10 more)
 
 ### Community 31 - "WorkspaceView.tsx"
 Cohesion: 0.12
@@ -210,28 +211,32 @@ Cohesion: 0.18
 Nodes (10): 1. Overview & Objectives, 2. Step-by-Step Execution Sequence, 3. Adherence to Rules & Constraints, 4. Definition of Done, Phase 3 Implementation Plan — GitHub Vault, **Step 1 — GitHub Integration & Auth Flow**, **Step 2 — Vault Initialization (`POST /v1/vault`)**, **Step 3 — File System Endpoints (GitHub Contents API)** (+2 more)
 
 ### Community 44 - "Deployment Learnings & Workarounds"
-Cohesion: 0.29
-Nodes (6): 1. Supabase CLI Edge Function Bundling, 2. Vercel `ERR_INVALID_THIS` (pnpm + Node 20/22 mismatch), 3. GitHub Actions `pnpm/action-setup` Conflict, 4. Vite Environment Variables, 5. Vercel Monorepo `package-lock.json` Pitfall, Deployment Learnings & Workarounds
+Cohesion: 0.25
+Nodes (7): 1. Supabase CLI Edge Function Bundling, 2. Vercel `ERR_INVALID_THIS` (pnpm + Node 20/22 mismatch), 3. GitHub Actions `pnpm/action-setup` Conflict, 4. Vite Environment Variables, 5. Vercel Monorepo `package-lock.json` Pitfall, 6. Supabase OAuth Redirect to Localhost, Deployment Learnings & Workarounds
+
+### Community 46 - "VaultService"
+Cohesion: 0.13
+Nodes (8): Sidebar(), SidebarProps, FileItem(), FileItemProps, FileTree(), FileTreeProps, VaultService, VaultFile
 
 ## Knowledge Gaps
-- **290 isolated node(s):** `name`, `private`, `version`, `type`, `packageManager` (+285 more)
+- **291 isolated node(s):** `name`, `private`, `version`, `type`, `packageManager` (+286 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **8 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `VaultService` connect `types/vault.ts` to `AuthContext.tsx`, `WorkspaceView.tsx`?**
+- **Why does `VaultService` connect `VaultService` to `AuthContext.tsx`, `WorkspaceView.tsx`?**
   _High betweenness centrality (0.007) - this node is a cross-community bridge._
-- **Why does `VaultFile` connect `types/vault.ts` to `AuthContext.tsx`?**
+- **Why does `VaultFile` connect `VaultService` to `AuthContext.tsx`, `types/vault.ts`?**
+  _High betweenness centrality (0.006) - this node is a cross-community bridge._
+- **Why does `MockVaultService` connect `types/vault.ts` to `VaultService`?**
   _High betweenness centrality (0.006) - this node is a cross-community bridge._
 - **What connects `name`, `private`, `version` to the rest of the system?**
-  _290 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _291 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Git-Backed Personal Vault API (OpenAPI 3.1.0)` be split into smaller, more focused modules?**
   _Cohesion score 0.125 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**
   _Cohesion score 0.09523809523809523 - nodes in this community are weakly interconnected._
 - **Should `Security Architecture` be split into smaller, more focused modules?**
   _Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected._
-- **Should `AGENTS.md` be split into smaller, more focused modules?**
-  _Cohesion score 0.05405405405405406 - nodes in this community are weakly interconnected._
