@@ -4,19 +4,6 @@
   "graph": {},
   "nodes": [
     {
-      "id": "apps_web_src_components_layout_sidebar_sidebarprops",
-      "label": "SidebarProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": "sidebarprops",
-      "source_file": "apps/web/src/components/layout/Sidebar.tsx",
-      "source_location": "L6"
-    },
-    {
       "id": "apps_web_src_components_layout_topheader_topheaderprops",
       "label": "TopHeaderProps",
       "_callable": true,
@@ -28,32 +15,6 @@
       "norm_label": "topheaderprops",
       "source_file": "apps/web/src/components/layout/TopHeader.tsx",
       "source_location": "L7"
-    },
-    {
-      "id": "apps_web_src_components_vault_fileitem_fileitemprops",
-      "label": "FileItemProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": "fileitemprops",
-      "source_file": "apps/web/src/components/vault/FileItem.tsx",
-      "source_location": "L5"
-    },
-    {
-      "id": "apps_web_src_components_vault_filetree_filetreeprops",
-      "label": "FileTreeProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": "filetreeprops",
-      "source_file": "apps/web/src/components/vault/FileTree.tsx",
-      "source_location": "L5"
     },
     {
       "id": "apps_web_src_components_vault_gitstatusbadge_gitstatusbadgeprops",
@@ -93,19 +54,6 @@
       "norm_label": "mockvaultservice",
       "source_file": "apps/web/src/services/mockVault.ts",
       "source_location": "L54"
-    },
-    {
-      "id": "apps_web_src_services_vault_vaultservice",
-      "label": "VaultService",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": "vaultservice",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L4"
     },
     {
       "id": "apps_web_src_types_vault_apierror",
@@ -236,19 +184,6 @@
       "norm_label": "vault",
       "source_file": "apps/web/src/types/vault.ts",
       "source_location": "L5"
-    },
-    {
-      "id": "apps_web_src_types_vault_vaultfile",
-      "label": "VaultFile",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": "vaultfile",
-      "source_file": "apps/web/src/types/vault.ts",
-      "source_location": "L14"
     },
     {
       "id": "apps_web_src_components_common_button_buttonprops",
@@ -433,40 +368,69 @@
       "source_location": "L1"
     },
     {
-      "id": "apps_web_src_components_layout_sidebar_sidebar",
-      "label": "Sidebar()",
+      "id": "apps_web_src_components_layout_sidebar_sidebarprops",
+      "label": "SidebarProps",
       "_callable": true,
+      "_callable_class": true,
       "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
+      "community": 46,
+      "community_name": "VaultService",
       "file_type": "code",
-      "norm_label": "sidebar()",
+      "norm_label": "sidebarprops",
       "source_file": "apps/web/src/components/layout/Sidebar.tsx",
-      "source_location": "L15"
+      "source_location": "L6"
     },
     {
-      "id": "apps_web_src_components_vault_fileitem_fileitem",
-      "label": "FileItem()",
+      "id": "apps_web_src_components_vault_fileitem_fileitemprops",
+      "label": "FileItemProps",
       "_callable": true,
+      "_callable_class": true,
       "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
+      "community": 46,
+      "community_name": "VaultService",
       "file_type": "code",
-      "norm_label": "fileitem()",
+      "norm_label": "fileitemprops",
       "source_file": "apps/web/src/components/vault/FileItem.tsx",
-      "source_location": "L12"
+      "source_location": "L5"
     },
     {
-      "id": "apps_web_src_components_vault_filetree_filetree",
-      "label": "FileTree()",
+      "id": "apps_web_src_components_vault_filetree_filetreeprops",
+      "label": "FileTreeProps",
       "_callable": true,
+      "_callable_class": true,
       "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
+      "community": 46,
+      "community_name": "VaultService",
       "file_type": "code",
-      "norm_label": "filetree()",
+      "norm_label": "filetreeprops",
       "source_file": "apps/web/src/components/vault/FileTree.tsx",
-      "source_location": "L12"
+      "source_location": "L5"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice",
+      "label": "VaultService",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "VaultService",
+      "file_type": "code",
+      "norm_label": "vaultservice",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L4"
+    },
+    {
+      "id": "apps_web_src_types_vault_vaultfile",
+      "label": "VaultFile",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "VaultService",
+      "file_type": "code",
+      "norm_label": "vaultfile",
+      "source_file": "apps/web/src/types/vault.ts",
+      "source_location": "L14"
     },
     {
       "id": "apps_web_src_components_vault_gitstatusbadge_gitstatusbadge",
@@ -527,18 +491,6 @@
       "norm_label": ".deletefile()",
       "source_file": "apps/web/src/services/mockVault.ts",
       "source_location": "L233"
-    },
-    {
-      "id": "apps_web_src_services_mockvault_mockvaultservice_getfile",
-      "label": ".getFile()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": ".getfile()",
-      "source_file": "apps/web/src/services/mockVault.ts",
-      "source_location": "L159"
     },
     {
       "id": "apps_web_src_services_mockvault_mockvaultservice_getsyncstatus",
@@ -647,162 +599,6 @@
       "norm_label": ".updatefile()",
       "source_file": "apps/web/src/services/mockVault.ts",
       "source_location": "L203"
-    },
-    {
-      "id": "apps_web_src_services_vault_vaultservice_createfile",
-      "label": ".createFile()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": ".createfile()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L67"
-    },
-    {
-      "id": "apps_web_src_services_vault_vaultservice_createvault",
-      "label": ".createVault()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": ".createvault()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L31"
-    },
-    {
-      "id": "apps_web_src_services_vault_vaultservice_deletefile",
-      "label": ".deleteFile()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": ".deletefile()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L93"
-    },
-    {
-      "id": "apps_web_src_services_vault_vaultservice_getfile",
-      "label": ".getFile()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": ".getfile()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L53"
-    },
-    {
-      "id": "apps_web_src_services_vault_vaultservice_getheaders",
-      "label": ".getHeaders()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": ".getheaders()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L5"
-    },
-    {
-      "id": "apps_web_src_services_vault_vaultservice_getsyncstatus",
-      "label": ".getSyncStatus()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": ".getsyncstatus()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L97"
-    },
-    {
-      "id": "apps_web_src_services_vault_vaultservice_getvault",
-      "label": ".getVault()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": ".getvault()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L27"
-    },
-    {
-      "id": "apps_web_src_services_vault_vaultservice_invoke",
-      "label": ".invoke()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": ".invoke()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L13"
-    },
-    {
-      "id": "apps_web_src_services_vault_vaultservice_listfiles",
-      "label": ".listFiles()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": ".listfiles()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L39"
-    },
-    {
-      "id": "apps_web_src_services_vault_vaultservice_resettodefaults",
-      "label": ".resetToDefaults()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": ".resettodefaults()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L129"
-    },
-    {
-      "id": "apps_web_src_services_vault_vaultservice_search",
-      "label": ".search()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": ".search()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L110"
-    },
-    {
-      "id": "apps_web_src_services_vault_vaultservice_syncvault",
-      "label": ".syncVault()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": ".syncvault()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L106"
-    },
-    {
-      "id": "apps_web_src_services_vault_vaultservice_updatefile",
-      "label": ".updateFile()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": ".updatefile()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L80"
     },
     {
       "id": "apps_web_src_components_common_button_button",
@@ -1127,6 +923,210 @@
       "norm_label": ".getuser()",
       "source_file": "supabase/functions/_shared/github.ts",
       "source_location": "L32"
+    },
+    {
+      "id": "apps_web_src_components_layout_sidebar_sidebar",
+      "label": "Sidebar()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "VaultService",
+      "file_type": "code",
+      "norm_label": "sidebar()",
+      "source_file": "apps/web/src/components/layout/Sidebar.tsx",
+      "source_location": "L15"
+    },
+    {
+      "id": "apps_web_src_components_vault_fileitem_fileitem",
+      "label": "FileItem()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "VaultService",
+      "file_type": "code",
+      "norm_label": "fileitem()",
+      "source_file": "apps/web/src/components/vault/FileItem.tsx",
+      "source_location": "L12"
+    },
+    {
+      "id": "apps_web_src_components_vault_filetree_filetree",
+      "label": "FileTree()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "VaultService",
+      "file_type": "code",
+      "norm_label": "filetree()",
+      "source_file": "apps/web/src/components/vault/FileTree.tsx",
+      "source_location": "L12"
+    },
+    {
+      "id": "apps_web_src_services_mockvault_mockvaultservice_getfile",
+      "label": ".getFile()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "VaultService",
+      "file_type": "code",
+      "norm_label": ".getfile()",
+      "source_file": "apps/web/src/services/mockVault.ts",
+      "source_location": "L159"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice_createfile",
+      "label": ".createFile()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "VaultService",
+      "file_type": "code",
+      "norm_label": ".createfile()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L67"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice_createvault",
+      "label": ".createVault()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "VaultService",
+      "file_type": "code",
+      "norm_label": ".createvault()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L31"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice_deletefile",
+      "label": ".deleteFile()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "VaultService",
+      "file_type": "code",
+      "norm_label": ".deletefile()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L93"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice_getfile",
+      "label": ".getFile()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "VaultService",
+      "file_type": "code",
+      "norm_label": ".getfile()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L53"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice_getheaders",
+      "label": ".getHeaders()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "VaultService",
+      "file_type": "code",
+      "norm_label": ".getheaders()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L5"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice_getsyncstatus",
+      "label": ".getSyncStatus()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "VaultService",
+      "file_type": "code",
+      "norm_label": ".getsyncstatus()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L97"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice_getvault",
+      "label": ".getVault()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "VaultService",
+      "file_type": "code",
+      "norm_label": ".getvault()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L27"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice_invoke",
+      "label": ".invoke()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "VaultService",
+      "file_type": "code",
+      "norm_label": ".invoke()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L13"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice_listfiles",
+      "label": ".listFiles()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "VaultService",
+      "file_type": "code",
+      "norm_label": ".listfiles()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L39"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice_resettodefaults",
+      "label": ".resetToDefaults()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "VaultService",
+      "file_type": "code",
+      "norm_label": ".resettodefaults()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L129"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice_search",
+      "label": ".search()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "VaultService",
+      "file_type": "code",
+      "norm_label": ".search()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L110"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice_syncvault",
+      "label": ".syncVault()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "VaultService",
+      "file_type": "code",
+      "norm_label": ".syncvault()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L106"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice_updatefile",
+      "label": ".updateFile()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "VaultService",
+      "file_type": "code",
+      "norm_label": ".updatefile()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L80"
     },
     {
       "id": "openapi_openapi_yaml_bearer_auth",
@@ -3475,17 +3475,6 @@
       "source_location": "L82"
     },
     {
-      "id": "apps_web_src_components_layout_sidebar",
-      "label": "Sidebar.tsx",
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": "sidebar.tsx",
-      "source_file": "apps/web/src/components/layout/Sidebar.tsx",
-      "source_location": "L1"
-    },
-    {
       "id": "apps_web_src_components_layout_topheader",
       "label": "TopHeader.tsx",
       "_origin": "ast",
@@ -3494,28 +3483,6 @@
       "file_type": "code",
       "norm_label": "topheader.tsx",
       "source_file": "apps/web/src/components/layout/TopHeader.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_web_src_components_vault_fileitem",
-      "label": "FileItem.tsx",
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": "fileitem.tsx",
-      "source_file": "apps/web/src/components/vault/FileItem.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_web_src_components_vault_filetree",
-      "label": "FileTree.tsx",
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": "filetree.tsx",
-      "source_file": "apps/web/src/components/vault/FileTree.tsx",
       "source_location": "L1"
     },
     {
@@ -5079,6 +5046,18 @@
       "source_location": "L33"
     },
     {
+      "id": "ai_context_deployment_learnings_6_supabase_oauth_redirect_to_localhost",
+      "label": "6. Supabase OAuth Redirect to Localhost",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "Deployment Learnings & Workarounds",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "6. supabase oauth redirect to localhost",
+      "source_file": "ai/context/deployment-learnings.md",
+      "source_location": "L37"
+    },
+    {
       "id": "ai_context_deployment_learnings_deployment_learnings_workarounds",
       "label": "Deployment Learnings & Workarounds",
       "_origin": "ast",
@@ -5099,6 +5078,39 @@
       "file_type": "code",
       "norm_label": "vite-env.d.ts",
       "source_file": "apps/web/src/vite-env.d.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_components_layout_sidebar",
+      "label": "Sidebar.tsx",
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "VaultService",
+      "file_type": "code",
+      "norm_label": "sidebar.tsx",
+      "source_file": "apps/web/src/components/layout/Sidebar.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_components_vault_fileitem",
+      "label": "FileItem.tsx",
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "VaultService",
+      "file_type": "code",
+      "norm_label": "fileitem.tsx",
+      "source_file": "apps/web/src/components/vault/FileItem.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_components_vault_filetree",
+      "label": "FileTree.tsx",
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "VaultService",
+      "file_type": "code",
+      "norm_label": "filetree.tsx",
+      "source_file": "apps/web/src/components/vault/FileTree.tsx",
       "source_location": "L1"
     },
     {
@@ -8864,6 +8876,17 @@
       "confidence_score": 1.0,
       "source_file": "ai/context/deployment-learnings.md",
       "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_deployment_learnings_deployment_learnings_workarounds",
+      "target": "ai_context_deployment_learnings_6_supabase_oauth_redirect_to_localhost",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/deployment-learnings.md",
+      "source_location": "L37",
       "weight": 1.0
     },
     {
@@ -12949,5 +12972,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "84cb85fd1f6dc9ec7cb4ef0a6db3d0a3659432df"
+  "built_at_commit": "93d8203601686d372c1789f5cd00b77adb2f7384"
 }
