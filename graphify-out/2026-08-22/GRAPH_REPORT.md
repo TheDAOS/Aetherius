@@ -1,16 +1,16 @@
 # Graph Report - Aetherius  (2026-08-22)
 
 ## Corpus Check
-- 71 files · ~24,331 words
+- 84 files · ~32,775 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 518 nodes · 613 edges · 45 communities (37 shown, 8 thin omitted)
+- 598 nodes · 771 edges · 47 communities (40 shown, 7 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `4980f479`
+- Built from commit: `b23ced05`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -28,7 +28,7 @@
 - ADR-005: PWA and Swift Share the Same API
 - 2. Step-by-Step Execution Sequence
 - ADR-001: GitHub Is the Source of Truth
-- Project Philosophy
+- 3. Step-by-Step Execution Sequence
 - Authentication Architecture
 - Data Flow
 - Project: {{name}}
@@ -49,40 +49,42 @@
 - compilerOptions
 - web/package.json
 - devDependencies
-- Badge.tsx
+- graphIndexer.ts
+- VaultFile
 - imports
 - GitHubClient
 - 2. Step-by-Step Execution Sequence
 - Deployment Learnings & Workarounds
+- 3. Step-by-Step Execution Sequence
 
 ## God Nodes (most connected - your core abstractions)
-1. `VaultFile` - 18 edges
-2. `compilerOptions` - 18 edges
-3. `VaultService` - 17 edges
+1. `VaultFile` - 25 edges
+2. `VaultService` - 18 edges
+3. `compilerOptions` - 18 edges
 4. `MockVaultService` - 16 edges
-5. `Git-Backed Personal Vault API (OpenAPI 3.1.0)` - 14 edges
-6. `SyncStatus` - 13 edges
-7. `GitHubClient` - 13 edges
-8. `Security Architecture` - 13 edges
-9. `Non-Negotiable Rules` - 11 edges
-10. `Vault` - 10 edges
+5. `OfflineDatabase` - 15 edges
+6. `Git-Backed Personal Vault API (OpenAPI 3.1.0)` - 14 edges
+7. `SyncStatus` - 13 edges
+8. `GitHubClient` - 13 edges
+9. `Security Architecture` - 13 edges
+10. `useAuth()` - 11 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `OpenAPI Validation Step (redocly lint)` --references--> `Git-Backed Personal Vault API (OpenAPI 3.1.0)`  [EXTRACTED]
   .github/workflows/ci.yml → openapi/openapi.yaml
-- `AppShellProps` --references--> `useVault()`  [EXTRACTED]
-  apps/web/src/components/layout/AppShell.tsx → apps/web/src/hooks/useVault.ts
-- `SidebarProps` --references--> `VaultFile`  [EXTRACTED]
-  apps/web/src/components/layout/Sidebar.tsx → apps/web/src/types/vault.ts
-- `TopHeaderProps` --references--> `SyncStatus`  [EXTRACTED]
-  apps/web/src/components/layout/TopHeader.tsx → apps/web/src/types/vault.ts
-- `FileItemProps` --references--> `VaultFile`  [EXTRACTED]
-  apps/web/src/components/vault/FileItem.tsx → apps/web/src/types/vault.ts
+- `BacklinksPanelProps` --references--> `BacklinkReference`  [EXTRACTED]
+  apps/web/src/components/editor/BacklinksPanel.tsx → apps/web/src/services/intelligence/graphIndexer.ts
+- `NotePreviewProps` --references--> `BacklinkReference`  [EXTRACTED]
+  apps/web/src/components/editor/NotePreview.tsx → apps/web/src/services/intelligence/graphIndexer.ts
+- `GraphCanvasProps` --references--> `VaultGraphIndex`  [EXTRACTED]
+  apps/web/src/components/graph/GraphCanvas.tsx → apps/web/src/services/intelligence/graphIndexer.ts
+- `GraphModalProps` --references--> `VaultGraphIndex`  [EXTRACTED]
+  apps/web/src/components/graph/GraphModal.tsx → apps/web/src/services/intelligence/graphIndexer.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (45 total, 8 thin omitted)
+## Communities (47 total, 7 thin omitted)
 
 ### Community 0 - "Git-Backed Personal Vault API (OpenAPI 3.1.0)"
 Cohesion: 0.12
@@ -93,8 +95,8 @@ Cohesion: 0.20
 Nodes (9): API Access, File Operations, Git History, GitHub Actions, GitHub Architecture, Purpose, Repository Ownership, Source of Truth (+1 more)
 
 ### Community 2 - "package.json"
-Cohesion: 0.10
-Nodes (20): author, description, devDependencies, supabase, devEngines, packageManager, keywords, license (+12 more)
+Cohesion: 0.08
+Nodes (24): fake-indexeddb, author, description, devDependencies, fake-indexeddb, supabase, vitest, devEngines (+16 more)
 
 ### Community 3 - "Architecture Overview"
 Cohesion: 0.15
@@ -121,8 +123,8 @@ Cohesion: 0.17
 Nodes (11): ADR-004: Markdown Vault Format, Alternatives Considered, Consequences, Constraints, Context, Decision, Negative, Positive (+3 more)
 
 ### Community 9 - "AGENTS.md"
-Cohesion: 0.05
-Nodes (34): 10. Keep the MVP Simple, 1. GitHub Is the Source of Truth, 2. Markdown Is the Canonical Note Format, 3. Supabase Is Not Canonical Note Storage, 4. Clients Must Not Perform Privileged GitHub Operations, 5. PWA and Swift Must Use the Same API, 6. OpenAPI Must Stay in Sync, 7. Database Changes Require Migrations (+26 more)
+Cohesion: 0.04
+Nodes (44): 10. Keep the MVP Simple, 1. GitHub Is the Source of Truth, 2. Markdown Is the Canonical Note Format, 3. Supabase Is Not Canonical Note Storage, 4. Clients Must Not Perform Privileged GitHub Operations, 5. PWA and Swift Must Use the Same API, 6. OpenAPI Must Stay in Sync, 7. Database Changes Require Migrations (+36 more)
 
 ### Community 10 - "ADR-005: PWA and Swift Share the Same API"
 Cohesion: 0.17
@@ -136,9 +138,9 @@ Nodes (10): 1. Overview & Objectives, 2. Step-by-Step Execution Sequence, 3. Adh
 Cohesion: 0.18
 Nodes (10): ADR-001: GitHub Is the Source of Truth, Alternatives Considered, Application-owned storage, Consequences, Context, Decision, Negative, Positive (+2 more)
 
-### Community 13 - "Project Philosophy"
-Cohesion: 0.20
-Nodes (10): AI-assisted development, AI is not the authority, API-first, Automated enforcement, Documented architecture, Open formats, Project Philosophy, Start simple (+2 more)
+### Community 13 - "3. Step-by-Step Execution Sequence"
+Cohesion: 0.17
+Nodes (11): 1. Overview & Objectives, 2. Architecture & Data Flow, 3. Step-by-Step Execution Sequence, 4. Definition of Done, Phase 5 Implementation Plan — Markdown Intelligence & Interactive Knowledge Graph, **Step 1 — Markdown AST & Frontmatter Parser**, **Step 2 — Graph & Backlink Indexing Engine**, **Step 3 — Frontmatter Card & Backlinks UI** (+3 more)
 
 ### Community 14 - "Authentication Architecture"
 Cohesion: 0.22
@@ -177,12 +179,12 @@ Cohesion: 0.25
 Nodes (7): ADR-006: Frontend PWA Design System and Architecture, Consequences, Context, Decision, Negative, Positive, Related Decisions
 
 ### Community 30 - "types/vault.ts"
-Cohesion: 0.06
-Nodes (32): AppShell(), AppShellProps, Sidebar(), SidebarProps, TopHeader(), TopHeaderProps, FileItem(), FileItemProps (+24 more)
+Cohesion: 0.09
+Nodes (19): TopHeader(), TopHeaderProps, GitStatusBadge(), GitStatusBadgeProps, SettingsModalProps, DEFAULT_FILES, DEFAULT_VAULT, generateSha() (+11 more)
 
 ### Community 31 - "WorkspaceView.tsx"
 Cohesion: 0.08
-Nodes (28): App(), Button(), ButtonProps, Input(), InputProps, Modal(), ModalProps, NoteEditor() (+20 more)
+Nodes (33): App(), Button(), ButtonProps, Input(), InputProps, Modal(), ModalProps, NoteEditor() (+25 more)
 
 ### Community 32 - "compilerOptions"
 Cohesion: 0.08
@@ -196,37 +198,49 @@ Nodes (23): dependencies, clsx, lucide-react, react, react-dom, @supabase/supaba
 Cohesion: 0.10
 Nodes (21): devDependencies, autoprefixer, postcss, tailwindcss, @types/node, @types/react, @types/react-dom, typescript (+13 more)
 
+### Community 35 - "graphIndexer.ts"
+Cohesion: 0.12
+Nodes (24): Badge(), BadgeProps, BacklinksPanel(), BacklinksPanelProps, FrontmatterCard(), FrontmatterCardProps, NotePreview(), NotePreviewProps (+16 more)
+
+### Community 40 - "VaultFile"
+Cohesion: 0.09
+Nodes (12): Sidebar(), SidebarProps, FileItem(), FileItemProps, FileTree(), FileTreeProps, TreeNode, OfflineDatabase (+4 more)
+
 ### Community 41 - "imports"
 Cohesion: 0.50
 Nodes (3): imports, @supabase/functions-js, @supabase/server
 
 ### Community 43 - "2. Step-by-Step Execution Sequence"
-Cohesion: 0.18
-Nodes (10): 1. Overview & Objectives, 2. Step-by-Step Execution Sequence, 3. Adherence to Rules & Constraints, 4. Definition of Done, Phase 3 Implementation Plan — GitHub Vault, **Step 1 — GitHub Integration & Auth Flow**, **Step 2 — Vault Initialization (`POST /v1/vault`)**, **Step 3 — File System Endpoints (GitHub Contents API)** (+2 more)
+Cohesion: 0.17
+Nodes (11): 1. Overview & Objectives, 2. Step-by-Step Execution Sequence, 3. Adherence to Rules & Constraints, 4. Definition of Done, 5. Status, Phase 3 Implementation Plan — GitHub Vault, **Step 1 — GitHub Integration & Auth Flow**, **Step 2 — Vault Initialization (`POST /v1/vault`)** (+3 more)
 
 ### Community 44 - "Deployment Learnings & Workarounds"
 Cohesion: 0.25
 Nodes (7): 1. Supabase CLI Edge Function Bundling, 2. Vercel `ERR_INVALID_THIS` (pnpm + Node 20/22 mismatch), 3. GitHub Actions `pnpm/action-setup` Conflict, 4. Vite Environment Variables, 5. Vercel Monorepo `package-lock.json` Pitfall, 6. Supabase OAuth Redirect to Localhost, Deployment Learnings & Workarounds
 
+### Community 47 - "3. Step-by-Step Execution Sequence"
+Cohesion: 0.17
+Nodes (11): 1. Overview & Objectives, 2. Architecture & Data Flow, 3. Step-by-Step Execution Sequence, 4. Definition of Done, Phase 4 Implementation Plan — Offline Cache & Synchronization Engine, **Step 1 — IndexedDB Storage Layer**, **Step 2 — Read-Through Caching & Offline Fallback**, **Step 3 — Offline Mutation Queue & Background Sync** (+3 more)
+
 ## Knowledge Gaps
-- **291 isolated node(s):** `name`, `private`, `version`, `type`, `packageManager` (+286 more)
+- **315 isolated node(s):** `name`, `private`, `version`, `type`, `packageManager` (+310 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **8 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **7 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `VaultService` connect `types/vault.ts` to `WorkspaceView.tsx`?**
-  _High betweenness centrality (0.007) - this node is a cross-community bridge._
-- **Why does `VaultFile` connect `types/vault.ts` to `WorkspaceView.tsx`?**
-  _High betweenness centrality (0.006) - this node is a cross-community bridge._
+- **Why does `VaultFile` connect `VaultFile` to `graphIndexer.ts`, `types/vault.ts`, `WorkspaceView.tsx`?**
+  _High betweenness centrality (0.018) - this node is a cross-community bridge._
+- **Why does `VaultService` connect `VaultFile` to `types/vault.ts`, `WorkspaceView.tsx`?**
+  _High betweenness centrality (0.008) - this node is a cross-community bridge._
 - **What connects `name`, `private`, `version` to the rest of the system?**
-  _291 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _315 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Git-Backed Personal Vault API (OpenAPI 3.1.0)` be split into smaller, more focused modules?**
   _Cohesion score 0.125 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**
-  _Cohesion score 0.09523809523809523 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08 - nodes in this community are weakly interconnected._
 - **Should `Security Architecture` be split into smaller, more focused modules?**
   _Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected._
 - **Should `AGENTS.md` be split into smaller, more focused modules?**
-  _Cohesion score 0.05405405405405406 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.0425531914893617 - nodes in this community are weakly interconnected._

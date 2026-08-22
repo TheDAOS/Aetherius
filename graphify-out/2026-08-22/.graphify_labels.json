@@ -12,7 +12,7 @@
   "10": "ADR-005: PWA and Swift Share the Same API",
   "11": "2. Step-by-Step Execution Sequence",
   "12": "ADR-001: GitHub Is the Source of Truth",
-  "13": "Project Philosophy",
+  "13": "3. Step-by-Step Execution Sequence",
   "14": "Authentication Architecture",
   "15": "Data Flow",
   "16": "Project: {{name}}",
@@ -34,14 +34,16 @@
   "32": "compilerOptions",
   "33": "web/package.json",
   "34": "devDependencies",
-  "35": "Badge.tsx",
+  "35": "graphIndexer.ts",
   "36": "postcss.config.js",
   "37": "tailwind.config.js",
   "38": "vite.config.ts",
   "39": "tailwindcss",
+  "40": "VaultFile",
   "41": "imports",
   "42": "GitHubClient",
   "43": "2. Step-by-Step Execution Sequence",
   "44": "Deployment Learnings & Workarounds",
-  "45": "vite-env.d.ts"
+  "45": "vite-env.d.ts",
+  "47": "3. Step-by-Step Execution Sequence"
 }

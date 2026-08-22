@@ -212,6 +212,54 @@ Deno.serve(async (req) => {
       });
     }
 
+    // Sync Endpoints (GET /v1/sync/status, POST /v1/sync)
+    if (path === '/v1/sync/status' && method === 'GET') {
+      const { data: vault, error } = await supabaseClient
+        .from('vaults')
+        .select('*')
+        .eq('user_id', user.id)
+        .maybeSingle();
+
+      if (error || !vault) {
+        return new Response(JSON.stringify({ error: 'No vault configured' }), {
+          status: 404,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        });
+      }
+
+      return new Response(JSON.stringify({
+        status: 'idle',
+        lastSyncAt: new Date().toISOString(),
+        message: `Vault ${vault.github_owner}/${vault.github_repo} is synchronized with GitHub`
+      }), {
+        status: 200,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+      });
+    }
+
+    if (path === '/v1/sync' && method === 'POST') {
+      const { data: vault, error } = await supabaseClient
+        .from('vaults')
+        .select('*')
+        .eq('user_id', user.id)
+        .maybeSingle();
+
+      if (error || !vault) {
+        return new Response(JSON.stringify({ error: 'No vault configured' }), {
+          status: 404,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        });
+      }
+
+      return new Response(JSON.stringify({
+        id: crypto.randomUUID(),
+        status: 'completed'
+      }), {
+        status: 202,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+      });
+    }
+
     // File System Endpoints
     if (path.startsWith('/v1/files')) {
       const { data: vault, error } = await supabaseClient

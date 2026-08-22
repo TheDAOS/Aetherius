@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plus, Search, Settings, Menu } from 'lucide-react';
+import { Plus, Search, Settings, Menu, Network } from 'lucide-react';
 import { Button } from '../common/Button';
 import { GitStatusBadge } from '../vault/GitStatusBadge';
 import { SyncStatus } from '../../types/vault';
@@ -7,6 +7,7 @@ import { SyncStatus } from '../../types/vault';
 interface TopHeaderProps {
   onNewNote: () => void;
   onOpenSearch: () => void;
+  onOpenGraph?: () => void;
   onOpenSettings: () => void;
   onToggleSidebar: () => void;
   syncStatus: SyncStatus | null;
@@ -18,6 +19,7 @@ interface TopHeaderProps {
 export const TopHeader: React.FC<TopHeaderProps> = ({
   onNewNote,
   onOpenSearch,
+  onOpenGraph,
   onOpenSettings,
   onToggleSidebar,
   syncStatus,
@@ -63,6 +65,17 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
             ⌘K
           </kbd>
         </button>
+
+        {onOpenGraph && (
+          <button
+            onClick={onOpenGraph}
+            className="neo-btn flex items-center gap-1.5 px-2.5 py-1.5 bg-white text-xs font-mono font-bold text-ink-primary hover:bg-accent-acid transition-colors"
+            title="Knowledge Graph (Ctrl+G)"
+          >
+            <Network size={14} className="text-accent-cobalt" />
+            <span className="hidden md:inline">Graph</span>
+          </button>
+        )}
 
         <div className="hidden sm:block">
           <GitStatusBadge

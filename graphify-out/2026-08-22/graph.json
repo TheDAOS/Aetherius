@@ -4,32 +4,6 @@
   "graph": {},
   "nodes": [
     {
-      "id": "apps_web_src_components_layout_appshell_appshellprops",
-      "label": "AppShellProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": "appshellprops",
-      "source_file": "apps/web/src/components/layout/AppShell.tsx",
-      "source_location": "L6"
-    },
-    {
-      "id": "apps_web_src_components_layout_sidebar_sidebarprops",
-      "label": "SidebarProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": "sidebarprops",
-      "source_file": "apps/web/src/components/layout/Sidebar.tsx",
-      "source_location": "L6"
-    },
-    {
       "id": "apps_web_src_components_layout_topheader_topheaderprops",
       "label": "TopHeaderProps",
       "_callable": true,
@@ -41,45 +15,6 @@
       "norm_label": "topheaderprops",
       "source_file": "apps/web/src/components/layout/TopHeader.tsx",
       "source_location": "L7"
-    },
-    {
-      "id": "apps_web_src_components_vault_fileitem_fileitemprops",
-      "label": "FileItemProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": "fileitemprops",
-      "source_file": "apps/web/src/components/vault/FileItem.tsx",
-      "source_location": "L5"
-    },
-    {
-      "id": "apps_web_src_components_vault_filetree_filetreeprops",
-      "label": "FileTreeProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": "filetreeprops",
-      "source_file": "apps/web/src/components/vault/FileTree.tsx",
-      "source_location": "L5"
-    },
-    {
-      "id": "apps_web_src_components_vault_filetree_treenode",
-      "label": "TreeNode",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": "treenode",
-      "source_file": "apps/web/src/components/vault/FileTree.tsx",
-      "source_location": "L12"
     },
     {
       "id": "apps_web_src_components_vault_gitstatusbadge_gitstatusbadgeprops",
@@ -119,19 +54,6 @@
       "norm_label": "mockvaultservice",
       "source_file": "apps/web/src/services/mockVault.ts",
       "source_location": "L54"
-    },
-    {
-      "id": "apps_web_src_services_vault_vaultservice",
-      "label": "VaultService",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": "vaultservice",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L4"
     },
     {
       "id": "apps_web_src_types_vault_apierror",
@@ -199,19 +121,6 @@
       "source_location": "L48"
     },
     {
-      "id": "apps_web_src_types_vault_searchresult",
-      "label": "SearchResult",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": "searchresult",
-      "source_file": "apps/web/src/types/vault.ts",
-      "source_location": "L41"
-    },
-    {
       "id": "apps_web_src_types_vault_syncoperation",
       "label": "SyncOperation",
       "_callable": true,
@@ -277,19 +186,6 @@
       "source_location": "L5"
     },
     {
-      "id": "apps_web_src_types_vault_vaultfile",
-      "label": "VaultFile",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": "vaultfile",
-      "source_file": "apps/web/src/types/vault.ts",
-      "source_location": "L14"
-    },
-    {
       "id": "apps_web_src_components_common_button_buttonprops",
       "label": "ButtonProps",
       "_callable": true,
@@ -339,20 +235,7 @@
       "file_type": "code",
       "norm_label": "noteeditorprops",
       "source_file": "apps/web/src/components/editor/NoteEditor.tsx",
-      "source_location": "L3"
-    },
-    {
-      "id": "apps_web_src_components_editor_notepreview_notepreviewprops",
-      "label": "NotePreviewProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "notepreviewprops",
-      "source_file": "apps/web/src/components/editor/NotePreview.tsx",
-      "source_location": "L3"
+      "source_location": "L4"
     },
     {
       "id": "apps_web_src_components_editor_notetoolbar_notetoolbarprops",
@@ -381,6 +264,19 @@
       "source_location": "L5"
     },
     {
+      "id": "apps_web_src_components_layout_appshell_appshellprops",
+      "label": "AppShellProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "WorkspaceView.tsx",
+      "file_type": "code",
+      "norm_label": "appshellprops",
+      "source_file": "apps/web/src/components/layout/AppShell.tsx",
+      "source_location": "L6"
+    },
+    {
       "id": "apps_web_src_contexts_authcontext_authcontexttype",
       "label": "AuthContextType",
       "_callable": true,
@@ -392,6 +288,19 @@
       "norm_label": "authcontexttype",
       "source_file": "apps/web/src/contexts/AuthContext.tsx",
       "source_location": "L5"
+    },
+    {
+      "id": "apps_web_src_routes_conflictmodal_conflictmodalprops",
+      "label": "ConflictModalProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "WorkspaceView.tsx",
+      "file_type": "code",
+      "norm_label": "conflictmodalprops",
+      "source_file": "apps/web/src/routes/ConflictModal.tsx",
+      "source_location": "L6"
     },
     {
       "id": "apps_web_src_routes_newnotemodal_newnotemodalprops",
@@ -420,17 +329,277 @@
       "source_location": "L8"
     },
     {
+      "id": "apps_web_src_types_vault_searchresult",
+      "label": "SearchResult",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "WorkspaceView.tsx",
+      "file_type": "code",
+      "norm_label": "searchresult",
+      "source_file": "apps/web/src/types/vault.ts",
+      "source_location": "L41"
+    },
+    {
       "id": "apps_web_src_components_common_badge_badgeprops",
       "label": "BadgeProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 35,
-      "community_name": "Badge.tsx",
+      "community_name": "graphIndexer.ts",
       "file_type": "code",
       "norm_label": "badgeprops",
       "source_file": "apps/web/src/components/common/Badge.tsx",
       "source_location": "L3"
+    },
+    {
+      "id": "apps_web_src_components_editor_backlinkspanel_backlinkspanelprops",
+      "label": "BacklinksPanelProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "graphIndexer.ts",
+      "file_type": "code",
+      "norm_label": "backlinkspanelprops",
+      "source_file": "apps/web/src/components/editor/BacklinksPanel.tsx",
+      "source_location": "L6"
+    },
+    {
+      "id": "apps_web_src_components_editor_frontmattercard_frontmattercardprops",
+      "label": "FrontmatterCardProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "graphIndexer.ts",
+      "file_type": "code",
+      "norm_label": "frontmattercardprops",
+      "source_file": "apps/web/src/components/editor/FrontmatterCard.tsx",
+      "source_location": "L5"
+    },
+    {
+      "id": "apps_web_src_components_editor_notepreview_notepreviewprops",
+      "label": "NotePreviewProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "graphIndexer.ts",
+      "file_type": "code",
+      "norm_label": "notepreviewprops",
+      "source_file": "apps/web/src/components/editor/NotePreview.tsx",
+      "source_location": "L7"
+    },
+    {
+      "id": "apps_web_src_components_graph_graphcanvas_graphcanvasprops",
+      "label": "GraphCanvasProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "graphIndexer.ts",
+      "file_type": "code",
+      "norm_label": "graphcanvasprops",
+      "source_file": "apps/web/src/components/graph/GraphCanvas.tsx",
+      "source_location": "L5"
+    },
+    {
+      "id": "apps_web_src_components_graph_graphcanvas_simnode",
+      "label": "SimNode",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "graphIndexer.ts",
+      "file_type": "code",
+      "norm_label": "simnode",
+      "source_file": "apps/web/src/components/graph/GraphCanvas.tsx",
+      "source_location": "L11"
+    },
+    {
+      "id": "apps_web_src_components_graph_graphmodal_graphmodalprops",
+      "label": "GraphModalProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "graphIndexer.ts",
+      "file_type": "code",
+      "norm_label": "graphmodalprops",
+      "source_file": "apps/web/src/components/graph/GraphModal.tsx",
+      "source_location": "L6"
+    },
+    {
+      "id": "apps_web_src_services_intelligence_graphindexer_backlinkreference",
+      "label": "BacklinkReference",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "graphIndexer.ts",
+      "file_type": "code",
+      "norm_label": "backlinkreference",
+      "source_file": "apps/web/src/services/intelligence/graphIndexer.ts",
+      "source_location": "L19"
+    },
+    {
+      "id": "apps_web_src_services_intelligence_graphindexer_graphedge",
+      "label": "GraphEdge",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "graphIndexer.ts",
+      "file_type": "code",
+      "norm_label": "graphedge",
+      "source_file": "apps/web/src/services/intelligence/graphIndexer.ts",
+      "source_location": "L13"
+    },
+    {
+      "id": "apps_web_src_services_intelligence_graphindexer_graphnode",
+      "label": "GraphNode",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "graphIndexer.ts",
+      "file_type": "code",
+      "norm_label": "graphnode",
+      "source_file": "apps/web/src/services/intelligence/graphIndexer.ts",
+      "source_location": "L4"
+    },
+    {
+      "id": "apps_web_src_services_intelligence_graphindexer_vaultgraphindex",
+      "label": "VaultGraphIndex",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "graphIndexer.ts",
+      "file_type": "code",
+      "norm_label": "vaultgraphindex",
+      "source_file": "apps/web/src/services/intelligence/graphIndexer.ts",
+      "source_location": "L26"
+    },
+    {
+      "id": "apps_web_src_services_intelligence_markdownparser_parsednote",
+      "label": "ParsedNote",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "graphIndexer.ts",
+      "file_type": "code",
+      "norm_label": "parsednote",
+      "source_file": "apps/web/src/services/intelligence/markdownParser.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_components_layout_sidebar_sidebarprops",
+      "label": "SidebarProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": "sidebarprops",
+      "source_file": "apps/web/src/components/layout/Sidebar.tsx",
+      "source_location": "L6"
+    },
+    {
+      "id": "apps_web_src_components_vault_fileitem_fileitemprops",
+      "label": "FileItemProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": "fileitemprops",
+      "source_file": "apps/web/src/components/vault/FileItem.tsx",
+      "source_location": "L5"
+    },
+    {
+      "id": "apps_web_src_components_vault_filetree_filetreeprops",
+      "label": "FileTreeProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": "filetreeprops",
+      "source_file": "apps/web/src/components/vault/FileTree.tsx",
+      "source_location": "L5"
+    },
+    {
+      "id": "apps_web_src_components_vault_filetree_treenode",
+      "label": "TreeNode",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": "treenode",
+      "source_file": "apps/web/src/components/vault/FileTree.tsx",
+      "source_location": "L12"
+    },
+    {
+      "id": "apps_web_src_services_storage_offlinedb_offlinedatabase",
+      "label": "OfflineDatabase",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": "offlinedatabase",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L16"
+    },
+    {
+      "id": "apps_web_src_services_storage_offlinedb_offlinemutation",
+      "label": "OfflineMutation",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": "offlinemutation",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L3"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice",
+      "label": "VaultService",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": "vaultservice",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L5"
+    },
+    {
+      "id": "apps_web_src_types_vault_vaultfile",
+      "label": "VaultFile",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": "vaultfile",
+      "source_file": "apps/web/src/types/vault.ts",
+      "source_location": "L14"
     },
     {
       "id": "supabase_functions_shared_github_githubclient",
@@ -446,30 +615,6 @@
       "source_location": "L1"
     },
     {
-      "id": "apps_web_src_components_layout_appshell_appshell",
-      "label": "AppShell()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": "appshell()",
-      "source_file": "apps/web/src/components/layout/AppShell.tsx",
-      "source_location": "L13"
-    },
-    {
-      "id": "apps_web_src_components_layout_sidebar_sidebar",
-      "label": "Sidebar()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": "sidebar()",
-      "source_file": "apps/web/src/components/layout/Sidebar.tsx",
-      "source_location": "L15"
-    },
-    {
       "id": "apps_web_src_components_layout_topheader_topheader",
       "label": "TopHeader()",
       "_callable": true,
@@ -479,31 +624,7 @@
       "file_type": "code",
       "norm_label": "topheader()",
       "source_file": "apps/web/src/components/layout/TopHeader.tsx",
-      "source_location": "L18"
-    },
-    {
-      "id": "apps_web_src_components_vault_fileitem_fileitem",
-      "label": "FileItem()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": "fileitem()",
-      "source_file": "apps/web/src/components/vault/FileItem.tsx",
-      "source_location": "L15"
-    },
-    {
-      "id": "apps_web_src_components_vault_filetree_filetree",
-      "label": "FileTree()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": "filetree()",
-      "source_file": "apps/web/src/components/vault/FileTree.tsx",
-      "source_location": "L20"
+      "source_location": "L19"
     },
     {
       "id": "apps_web_src_components_vault_gitstatusbadge_gitstatusbadge",
@@ -516,18 +637,6 @@
       "norm_label": "gitstatusbadge()",
       "source_file": "apps/web/src/components/vault/GitStatusBadge.tsx",
       "source_location": "L12"
-    },
-    {
-      "id": "apps_web_src_hooks_usevault_usevault",
-      "label": "useVault()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": "usevault()",
-      "source_file": "apps/web/src/hooks/useVault.ts",
-      "source_location": "L6"
     },
     {
       "id": "apps_web_src_services_mockvault_generatesha",
@@ -698,18 +807,6 @@
       "source_location": "L203"
     },
     {
-      "id": "apps_web_src_services_vault_vaultservice_createfile",
-      "label": ".createFile()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": ".createfile()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L68"
-    },
-    {
       "id": "apps_web_src_services_vault_vaultservice_createvault",
       "label": ".createVault()",
       "_callable": true,
@@ -719,43 +816,7 @@
       "file_type": "code",
       "norm_label": ".createvault()",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L31"
-    },
-    {
-      "id": "apps_web_src_services_vault_vaultservice_deletefile",
-      "label": ".deleteFile()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": ".deletefile()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L94"
-    },
-    {
-      "id": "apps_web_src_services_vault_vaultservice_getfile",
-      "label": ".getFile()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": ".getfile()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L54"
-    },
-    {
-      "id": "apps_web_src_services_vault_vaultservice_getheaders",
-      "label": ".getHeaders()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": ".getheaders()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L5"
+      "source_location": "L44"
     },
     {
       "id": "apps_web_src_services_vault_vaultservice_getsyncstatus",
@@ -767,7 +828,7 @@
       "file_type": "code",
       "norm_label": ".getsyncstatus()",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L98"
+      "source_location": "L276"
     },
     {
       "id": "apps_web_src_services_vault_vaultservice_getvault",
@@ -779,79 +840,7 @@
       "file_type": "code",
       "norm_label": ".getvault()",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L27"
-    },
-    {
-      "id": "apps_web_src_services_vault_vaultservice_invoke",
-      "label": ".invoke()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": ".invoke()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L13"
-    },
-    {
-      "id": "apps_web_src_services_vault_vaultservice_listfiles",
-      "label": ".listFiles()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": ".listfiles()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L39"
-    },
-    {
-      "id": "apps_web_src_services_vault_vaultservice_resettodefaults",
-      "label": ".resetToDefaults()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": ".resettodefaults()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L137"
-    },
-    {
-      "id": "apps_web_src_services_vault_vaultservice_search",
-      "label": ".search()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": ".search()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L110"
-    },
-    {
-      "id": "apps_web_src_services_vault_vaultservice_syncvault",
-      "label": ".syncVault()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": ".syncvault()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L106"
-    },
-    {
-      "id": "apps_web_src_services_vault_vaultservice_updatefile",
-      "label": ".updateFile()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": ".updatefile()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L81"
+      "source_location": "L28"
     },
     {
       "id": "apps_web_src_app_app",
@@ -911,19 +900,7 @@
       "file_type": "code",
       "norm_label": "noteeditor()",
       "source_file": "apps/web/src/components/editor/NoteEditor.tsx",
-      "source_location": "L9"
-    },
-    {
-      "id": "apps_web_src_components_editor_notepreview_notepreview",
-      "label": "NotePreview()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "notepreview()",
-      "source_file": "apps/web/src/components/editor/NotePreview.tsx",
-      "source_location": "L7"
+      "source_location": "L11"
     },
     {
       "id": "apps_web_src_components_editor_notetoolbar_notetoolbar",
@@ -935,7 +912,31 @@
       "file_type": "code",
       "norm_label": "notetoolbar()",
       "source_file": "apps/web/src/components/editor/NoteToolbar.tsx",
-      "source_location": "L16"
+      "source_location": "L18"
+    },
+    {
+      "id": "apps_web_src_components_graph_graphmodal_graphmodal",
+      "label": "GraphModal()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "WorkspaceView.tsx",
+      "file_type": "code",
+      "norm_label": "graphmodal()",
+      "source_file": "apps/web/src/components/graph/GraphModal.tsx",
+      "source_location": "L14"
+    },
+    {
+      "id": "apps_web_src_components_layout_appshell_appshell",
+      "label": "AppShell()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "WorkspaceView.tsx",
+      "file_type": "code",
+      "norm_label": "appshell()",
+      "source_file": "apps/web/src/components/layout/AppShell.tsx",
+      "source_location": "L14"
     },
     {
       "id": "apps_web_src_contexts_authcontext_authprovider",
@@ -972,6 +973,30 @@
       "norm_label": "usepwa()",
       "source_file": "apps/web/src/hooks/usePWA.ts",
       "source_location": "L3"
+    },
+    {
+      "id": "apps_web_src_hooks_usevault_usevault",
+      "label": "useVault()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "WorkspaceView.tsx",
+      "file_type": "code",
+      "norm_label": "usevault()",
+      "source_file": "apps/web/src/hooks/useVault.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "apps_web_src_routes_conflictmodal_conflictmodal",
+      "label": "ConflictModal()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "WorkspaceView.tsx",
+      "file_type": "code",
+      "norm_label": "conflictmodal()",
+      "source_file": "apps/web/src/routes/ConflictModal.tsx",
+      "source_location": "L17"
     },
     {
       "id": "apps_web_src_routes_loginview_loginview",
@@ -1031,7 +1056,7 @@
       "file_type": "code",
       "norm_label": "workspaceview()",
       "source_file": "apps/web/src/routes/WorkspaceView.tsx",
-      "source_location": "L11"
+      "source_location": "L16"
     },
     {
       "id": "apps_web_src_components_common_badge_badge",
@@ -1039,11 +1064,467 @@
       "_callable": true,
       "_origin": "ast",
       "community": 35,
-      "community_name": "Badge.tsx",
+      "community_name": "graphIndexer.ts",
       "file_type": "code",
       "norm_label": "badge()",
       "source_file": "apps/web/src/components/common/Badge.tsx",
       "source_location": "L10"
+    },
+    {
+      "id": "apps_web_src_components_editor_backlinkspanel_backlinkspanel",
+      "label": "BacklinksPanel()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "graphIndexer.ts",
+      "file_type": "code",
+      "norm_label": "backlinkspanel()",
+      "source_file": "apps/web/src/components/editor/BacklinksPanel.tsx",
+      "source_location": "L14"
+    },
+    {
+      "id": "apps_web_src_components_editor_frontmattercard_frontmattercard",
+      "label": "FrontmatterCard()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "graphIndexer.ts",
+      "file_type": "code",
+      "norm_label": "frontmattercard()",
+      "source_file": "apps/web/src/components/editor/FrontmatterCard.tsx",
+      "source_location": "L9"
+    },
+    {
+      "id": "apps_web_src_components_editor_notepreview_notepreview",
+      "label": "NotePreview()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "graphIndexer.ts",
+      "file_type": "code",
+      "norm_label": "notepreview()",
+      "source_file": "apps/web/src/components/editor/NotePreview.tsx",
+      "source_location": "L16"
+    },
+    {
+      "id": "apps_web_src_components_graph_graphcanvas_graphcanvas",
+      "label": "GraphCanvas()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "graphIndexer.ts",
+      "file_type": "code",
+      "norm_label": "graphcanvas()",
+      "source_file": "apps/web/src/components/graph/GraphCanvas.tsx",
+      "source_location": "L19"
+    },
+    {
+      "id": "apps_web_src_services_intelligence_graphindexer_buildgraphindex",
+      "label": "buildGraphIndex()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "graphIndexer.ts",
+      "file_type": "code",
+      "norm_label": "buildgraphindex()",
+      "source_file": "apps/web/src/services/intelligence/graphIndexer.ts",
+      "source_location": "L53"
+    },
+    {
+      "id": "apps_web_src_services_intelligence_graphindexer_extractsnippet",
+      "label": "extractSnippet()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "graphIndexer.ts",
+      "file_type": "code",
+      "norm_label": "extractsnippet()",
+      "source_file": "apps/web/src/services/intelligence/graphIndexer.ts",
+      "source_location": "L34"
+    },
+    {
+      "id": "apps_web_src_services_intelligence_markdownparser_extractinlinetags",
+      "label": "extractInlineTags()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "graphIndexer.ts",
+      "file_type": "code",
+      "norm_label": "extractinlinetags()",
+      "source_file": "apps/web/src/services/intelligence/markdownParser.ts",
+      "source_location": "L83"
+    },
+    {
+      "id": "apps_web_src_services_intelligence_markdownparser_extractwikilinks",
+      "label": "extractWikilinks()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "graphIndexer.ts",
+      "file_type": "code",
+      "norm_label": "extractwikilinks()",
+      "source_file": "apps/web/src/services/intelligence/markdownParser.ts",
+      "source_location": "L65"
+    },
+    {
+      "id": "apps_web_src_services_intelligence_markdownparser_parsefrontmatter",
+      "label": "parseFrontmatter()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "graphIndexer.ts",
+      "file_type": "code",
+      "norm_label": "parsefrontmatter()",
+      "source_file": "apps/web/src/services/intelligence/markdownParser.ts",
+      "source_location": "L10"
+    },
+    {
+      "id": "apps_web_src_services_intelligence_markdownparser_parsemarkdown",
+      "label": "parseMarkdown()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "graphIndexer.ts",
+      "file_type": "code",
+      "norm_label": "parsemarkdown()",
+      "source_file": "apps/web/src/services/intelligence/markdownParser.ts",
+      "source_location": "L99"
+    },
+    {
+      "id": "apps_web_src_services_intelligence_markdownparser_resolvewikilinkpath",
+      "label": "resolveWikilinkPath()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "graphIndexer.ts",
+      "file_type": "code",
+      "norm_label": "resolvewikilinkpath()",
+      "source_file": "apps/web/src/services/intelligence/markdownParser.ts",
+      "source_location": "L137"
+    },
+    {
+      "id": "apps_web_src_components_layout_sidebar_sidebar",
+      "label": "Sidebar()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": "sidebar()",
+      "source_file": "apps/web/src/components/layout/Sidebar.tsx",
+      "source_location": "L15"
+    },
+    {
+      "id": "apps_web_src_components_vault_fileitem_fileitem",
+      "label": "FileItem()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": "fileitem()",
+      "source_file": "apps/web/src/components/vault/FileItem.tsx",
+      "source_location": "L15"
+    },
+    {
+      "id": "apps_web_src_components_vault_filetree_filetree",
+      "label": "FileTree()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": "filetree()",
+      "source_file": "apps/web/src/components/vault/FileTree.tsx",
+      "source_location": "L20"
+    },
+    {
+      "id": "apps_web_src_services_storage_offlinedb_offlinedatabase_clearall",
+      "label": ".clearAll()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".clearall()",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L192"
+    },
+    {
+      "id": "apps_web_src_services_storage_offlinedb_offlinedatabase_clearfiles",
+      "label": ".clearFiles()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".clearfiles()",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L109"
+    },
+    {
+      "id": "apps_web_src_services_storage_offlinedb_offlinedatabase_clearmutations",
+      "label": ".clearMutations()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".clearmutations()",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L158"
+    },
+    {
+      "id": "apps_web_src_services_storage_offlinedb_offlinedatabase_deletefile",
+      "label": ".deleteFile()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".deletefile()",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L98"
+    },
+    {
+      "id": "apps_web_src_services_storage_offlinedb_offlinedatabase_deletemutation",
+      "label": ".deleteMutation()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".deletemutation()",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L147"
+    },
+    {
+      "id": "apps_web_src_services_storage_offlinedb_offlinedatabase_getallfiles",
+      "label": ".getAllFiles()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".getallfiles()",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L87"
+    },
+    {
+      "id": "apps_web_src_services_storage_offlinedb_offlinedatabase_getdb",
+      "label": ".getDB()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".getdb()",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L19"
+    },
+    {
+      "id": "apps_web_src_services_storage_offlinedb_offlinedatabase_getfile",
+      "label": ".getFile()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".getfile()",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L76"
+    },
+    {
+      "id": "apps_web_src_services_storage_offlinedb_offlinedatabase_getmetadata",
+      "label": ".getMetadata()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".getmetadata()",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L181"
+    },
+    {
+      "id": "apps_web_src_services_storage_offlinedb_offlinedatabase_getpendingmutations",
+      "label": ".getPendingMutations()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".getpendingmutations()",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L136"
+    },
+    {
+      "id": "apps_web_src_services_storage_offlinedb_offlinedatabase_queuemutation",
+      "label": ".queueMutation()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".queuemutation()",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L121"
+    },
+    {
+      "id": "apps_web_src_services_storage_offlinedb_offlinedatabase_savefile",
+      "label": ".saveFile()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".savefile()",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L52"
+    },
+    {
+      "id": "apps_web_src_services_storage_offlinedb_offlinedatabase_savefiles",
+      "label": ".saveFiles()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".savefiles()",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L63"
+    },
+    {
+      "id": "apps_web_src_services_storage_offlinedb_offlinedatabase_setmetadata",
+      "label": ".setMetadata()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".setmetadata()",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L170"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice_createfile",
+      "label": ".createFile()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".createfile()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L105"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice_deletefile",
+      "label": ".deleteFile()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".deletefile()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L191"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice_getfile",
+      "label": ".getFile()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".getfile()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L80"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice_getheaders",
+      "label": ".getHeaders()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".getheaders()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice_invoke",
+      "label": ".invoke()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".invoke()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L14"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice_listfiles",
+      "label": ".listFiles()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".listfiles()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L54"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice_resettodefaults",
+      "label": ".resetToDefaults()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".resettodefaults()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L332"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice_search",
+      "label": ".search()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".search()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L301"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice_syncpendingmutations",
+      "label": ".syncPendingMutations()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".syncpendingmutations()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L210"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice_updatefile",
+      "label": ".updateFile()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".updatefile()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L145"
     },
     {
       "id": "supabase_functions_shared_github_githubclient_constructor",
@@ -1961,124 +2442,148 @@
       "source_location": "L53"
     },
     {
-      "id": "agents_ai_assisted_development",
-      "label": "AI-assisted development",
+      "id": "ai_context_phase_5_markdown_intelligence_plan",
+      "label": "phase-5-markdown-intelligence-plan.md",
       "_origin": "ast",
       "community": 13,
-      "community_name": "Project Philosophy",
+      "community_name": "3. Step-by-Step Execution Sequence",
       "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "ai-assisted development",
-      "source_file": "AGENTS.md",
-      "source_location": "L599"
+      "node_kind": "page",
+      "norm_label": "phase-5-markdown-intelligence-plan.md",
+      "source_file": "ai/context/phase-5-markdown-intelligence-plan.md",
+      "source_location": "L1"
     },
     {
-      "id": "agents_ai_is_not_the_authority",
-      "label": "AI is not the authority",
+      "id": "ai_context_phase_5_markdown_intelligence_plan_1_overview_objectives",
+      "label": "1. Overview & Objectives",
       "_origin": "ast",
       "community": 13,
-      "community_name": "Project Philosophy",
+      "community_name": "3. Step-by-Step Execution Sequence",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "ai is not the authority",
-      "source_file": "AGENTS.md",
-      "source_location": "L603"
+      "norm_label": "1. overview & objectives",
+      "source_file": "ai/context/phase-5-markdown-intelligence-plan.md",
+      "source_location": "L3"
     },
     {
-      "id": "agents_api_first",
-      "label": "API-first",
+      "id": "ai_context_phase_5_markdown_intelligence_plan_2_architecture_data_flow",
+      "label": "2. Architecture & Data Flow",
       "_origin": "ast",
       "community": 13,
-      "community_name": "Project Philosophy",
+      "community_name": "3. Step-by-Step Execution Sequence",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "api-first",
-      "source_file": "AGENTS.md",
-      "source_location": "L595"
+      "norm_label": "2. architecture & data flow",
+      "source_file": "ai/context/phase-5-markdown-intelligence-plan.md",
+      "source_location": "L9"
     },
     {
-      "id": "agents_automated_enforcement",
-      "label": "Automated enforcement",
+      "id": "ai_context_phase_5_markdown_intelligence_plan_3_step_by_step_execution_sequence",
+      "label": "3. Step-by-Step Execution Sequence",
       "_origin": "ast",
       "community": 13,
-      "community_name": "Project Philosophy",
+      "community_name": "3. Step-by-Step Execution Sequence",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "automated enforcement",
-      "source_file": "AGENTS.md",
-      "source_location": "L615"
+      "norm_label": "3. step-by-step execution sequence",
+      "source_file": "ai/context/phase-5-markdown-intelligence-plan.md",
+      "source_location": "L37"
     },
     {
-      "id": "agents_documented_architecture",
-      "label": "Documented architecture",
+      "id": "ai_context_phase_5_markdown_intelligence_plan_4_definition_of_done",
+      "label": "4. Definition of Done",
       "_origin": "ast",
       "community": 13,
-      "community_name": "Project Philosophy",
+      "community_name": "3. Step-by-Step Execution Sequence",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "documented architecture",
-      "source_file": "AGENTS.md",
-      "source_location": "L611"
+      "norm_label": "4. definition of done",
+      "source_file": "ai/context/phase-5-markdown-intelligence-plan.md",
+      "source_location": "L70"
     },
     {
-      "id": "agents_open_formats",
-      "label": "Open formats",
+      "id": "ai_context_phase_5_markdown_intelligence_plan_phase_5_implementation_plan_markdown_intelligence_interactive_knowledge_graph",
+      "label": "Phase 5 Implementation Plan \u2014 Markdown Intelligence & Interactive Knowledge Graph",
       "_origin": "ast",
       "community": 13,
-      "community_name": "Project Philosophy",
+      "community_name": "3. Step-by-Step Execution Sequence",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "open formats",
-      "source_file": "AGENTS.md",
-      "source_location": "L591"
+      "norm_label": "phase 5 implementation plan \u2014 markdown intelligence & interactive knowledge graph",
+      "source_file": "ai/context/phase-5-markdown-intelligence-plan.md",
+      "source_location": "L1"
     },
     {
-      "id": "agents_project_philosophy",
-      "label": "Project Philosophy",
+      "id": "ai_context_phase_5_markdown_intelligence_plan_step_1_markdown_ast_frontmatter_parser",
+      "label": "**Step 1 \u2014 Markdown AST & Frontmatter Parser**",
       "_origin": "ast",
       "community": 13,
-      "community_name": "Project Philosophy",
+      "community_name": "3. Step-by-Step Execution Sequence",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "project philosophy",
-      "source_file": "AGENTS.md",
-      "source_location": "L583"
+      "norm_label": "**step 1 \u2014 markdown ast & frontmatter parser**",
+      "source_file": "ai/context/phase-5-markdown-intelligence-plan.md",
+      "source_location": "L39"
     },
     {
-      "id": "agents_start_simple",
-      "label": "Start simple",
+      "id": "ai_context_phase_5_markdown_intelligence_plan_step_2_graph_backlink_indexing_engine",
+      "label": "**Step 2 \u2014 Graph & Backlink Indexing Engine**",
       "_origin": "ast",
       "community": 13,
-      "community_name": "Project Philosophy",
+      "community_name": "3. Step-by-Step Execution Sequence",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "start simple",
-      "source_file": "AGENTS.md",
-      "source_location": "L619"
+      "norm_label": "**step 2 \u2014 graph & backlink indexing engine**",
+      "source_file": "ai/context/phase-5-markdown-intelligence-plan.md",
+      "source_location": "L46"
     },
     {
-      "id": "agents_user_owned_data",
-      "label": "User-owned data",
+      "id": "ai_context_phase_5_markdown_intelligence_plan_step_3_frontmatter_card_backlinks_ui",
+      "label": "**Step 3 \u2014 Frontmatter Card & Backlinks UI**",
       "_origin": "ast",
       "community": 13,
-      "community_name": "Project Philosophy",
+      "community_name": "3. Step-by-Step Execution Sequence",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "user-owned data",
-      "source_file": "AGENTS.md",
-      "source_location": "L587"
+      "norm_label": "**step 3 \u2014 frontmatter card & backlinks ui**",
+      "source_file": "ai/context/phase-5-markdown-intelligence-plan.md",
+      "source_location": "L52"
     },
     {
-      "id": "agents_zero_cost_first",
-      "label": "Zero-cost first",
+      "id": "ai_context_phase_5_markdown_intelligence_plan_step_4_interactive_2d_force_directed_knowledge_graph",
+      "label": "**Step 4 \u2014 Interactive 2D Force-Directed Knowledge Graph**",
       "_origin": "ast",
       "community": 13,
-      "community_name": "Project Philosophy",
+      "community_name": "3. Step-by-Step Execution Sequence",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "zero-cost first",
-      "source_file": "AGENTS.md",
-      "source_location": "L623"
+      "norm_label": "**step 4 \u2014 interactive 2d force-directed knowledge graph**",
+      "source_file": "ai/context/phase-5-markdown-intelligence-plan.md",
+      "source_location": "L56"
+    },
+    {
+      "id": "ai_context_phase_5_markdown_intelligence_plan_step_5_editor_autocomplete_indentation_conflict_diff_modal",
+      "label": "**Step 5 \u2014 Editor Autocomplete, Indentation & Conflict Diff Modal**",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "3. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "**step 5 \u2014 editor autocomplete, indentation & conflict diff modal**",
+      "source_file": "ai/context/phase-5-markdown-intelligence-plan.md",
+      "source_location": "L60"
+    },
+    {
+      "id": "ai_context_phase_5_markdown_intelligence_plan_step_6_verification_quality_checks",
+      "label": "**Step 6 \u2014 Verification & Quality Checks**",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "3. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "**step 6 \u2014 verification & quality checks**",
+      "source_file": "ai/context/phase-5-markdown-intelligence-plan.md",
+      "source_location": "L65"
     },
     {
       "id": "docs_architecture_authentication",
@@ -2604,6 +3109,17 @@
       "source_location": "L22"
     },
     {
+      "id": "package_devdependencies_fake_indexeddb",
+      "label": "fake-indexeddb",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "fake-indexeddb",
+      "source_file": "package.json",
+      "source_location": "L23"
+    },
+    {
       "id": "package_devdependencies_supabase",
       "label": "supabase",
       "_origin": "ast",
@@ -2612,7 +3128,18 @@
       "file_type": "code",
       "norm_label": "supabase",
       "source_file": "package.json",
-      "source_location": "L23"
+      "source_location": "L24"
+    },
+    {
+      "id": "package_devdependencies_vitest",
+      "label": "vitest",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "vitest",
+      "source_file": "package.json",
+      "source_location": "L25"
     },
     {
       "id": "package_devengines",
@@ -2780,6 +3307,17 @@
       "source_location": "L4"
     },
     {
+      "id": "fake_indexeddb",
+      "label": "fake-indexeddb",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "package.json",
+      "file_type": "concept",
+      "norm_label": "fake-indexeddb",
+      "source_file": "package.json",
+      "source_location": "L23"
+    },
+    {
       "id": "supabase",
       "label": "supabase",
       "_origin": "ast",
@@ -2788,7 +3326,18 @@
       "file_type": "concept",
       "norm_label": "supabase",
       "source_file": "package.json",
-      "source_location": "L23"
+      "source_location": "L24"
+    },
+    {
+      "id": "vitest",
+      "label": "vitest",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "package.json",
+      "file_type": "concept",
+      "norm_label": "vitest",
+      "source_file": "package.json",
+      "source_location": "L25"
     },
     {
       "id": "templates_vault_template_notes_miscellaneous_welcome",
@@ -3524,28 +4073,6 @@
       "source_location": "L82"
     },
     {
-      "id": "apps_web_src_components_layout_appshell",
-      "label": "AppShell.tsx",
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": "appshell.tsx",
-      "source_file": "apps/web/src/components/layout/AppShell.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_web_src_components_layout_sidebar",
-      "label": "Sidebar.tsx",
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": "sidebar.tsx",
-      "source_file": "apps/web/src/components/layout/Sidebar.tsx",
-      "source_location": "L1"
-    },
-    {
       "id": "apps_web_src_components_layout_topheader",
       "label": "TopHeader.tsx",
       "_origin": "ast",
@@ -3557,28 +4084,6 @@
       "source_location": "L1"
     },
     {
-      "id": "apps_web_src_components_vault_fileitem",
-      "label": "FileItem.tsx",
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": "fileitem.tsx",
-      "source_file": "apps/web/src/components/vault/FileItem.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_web_src_components_vault_filetree",
-      "label": "FileTree.tsx",
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": "filetree.tsx",
-      "source_file": "apps/web/src/components/vault/FileTree.tsx",
-      "source_location": "L1"
-    },
-    {
       "id": "apps_web_src_components_vault_gitstatusbadge",
       "label": "GitStatusBadge.tsx",
       "_origin": "ast",
@@ -3587,17 +4092,6 @@
       "file_type": "code",
       "norm_label": "gitstatusbadge.tsx",
       "source_file": "apps/web/src/components/vault/GitStatusBadge.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_web_src_hooks_usevault",
-      "label": "useVault.ts",
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": "usevault.ts",
-      "source_file": "apps/web/src/hooks/useVault.ts",
       "source_location": "L1"
     },
     {
@@ -3700,17 +4194,6 @@
       "source_location": "L1"
     },
     {
-      "id": "apps_web_src_components_editor_notepreview",
-      "label": "NotePreview.tsx",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "notepreview.tsx",
-      "source_file": "apps/web/src/components/editor/NotePreview.tsx",
-      "source_location": "L1"
-    },
-    {
       "id": "apps_web_src_components_editor_notetoolbar",
       "label": "NoteToolbar.tsx",
       "_origin": "ast",
@@ -3719,6 +4202,17 @@
       "file_type": "code",
       "norm_label": "notetoolbar.tsx",
       "source_file": "apps/web/src/components/editor/NoteToolbar.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_components_layout_appshell",
+      "label": "AppShell.tsx",
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "WorkspaceView.tsx",
+      "file_type": "code",
+      "norm_label": "appshell.tsx",
+      "source_file": "apps/web/src/components/layout/AppShell.tsx",
       "source_location": "L1"
     },
     {
@@ -3755,6 +4249,17 @@
       "source_location": "L1"
     },
     {
+      "id": "apps_web_src_hooks_usevault",
+      "label": "useVault.ts",
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "WorkspaceView.tsx",
+      "file_type": "code",
+      "norm_label": "usevault.ts",
+      "source_file": "apps/web/src/hooks/useVault.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "apps_web_src_main",
       "label": "main.tsx",
       "_origin": "ast",
@@ -3775,6 +4280,17 @@
       "norm_label": "rootelement",
       "source_file": "apps/web/src/main.tsx",
       "source_location": "L8"
+    },
+    {
+      "id": "apps_web_src_routes_conflictmodal",
+      "label": "ConflictModal.tsx",
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "WorkspaceView.tsx",
+      "file_type": "code",
+      "norm_label": "conflictmodal.tsx",
+      "source_file": "apps/web/src/routes/ConflictModal.tsx",
+      "source_location": "L1"
     },
     {
       "id": "apps_web_src_routes_loginview",
@@ -4628,10 +5144,109 @@
       "label": "Badge.tsx",
       "_origin": "ast",
       "community": 35,
-      "community_name": "Badge.tsx",
+      "community_name": "graphIndexer.ts",
       "file_type": "code",
       "norm_label": "badge.tsx",
       "source_file": "apps/web/src/components/common/Badge.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_components_editor_backlinkspanel",
+      "label": "BacklinksPanel.tsx",
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "graphIndexer.ts",
+      "file_type": "code",
+      "norm_label": "backlinkspanel.tsx",
+      "source_file": "apps/web/src/components/editor/BacklinksPanel.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_components_editor_frontmattercard",
+      "label": "FrontmatterCard.tsx",
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "graphIndexer.ts",
+      "file_type": "code",
+      "norm_label": "frontmattercard.tsx",
+      "source_file": "apps/web/src/components/editor/FrontmatterCard.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_components_editor_notepreview",
+      "label": "NotePreview.tsx",
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "graphIndexer.ts",
+      "file_type": "code",
+      "norm_label": "notepreview.tsx",
+      "source_file": "apps/web/src/components/editor/NotePreview.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_components_graph_graphcanvas",
+      "label": "GraphCanvas.tsx",
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "graphIndexer.ts",
+      "file_type": "code",
+      "norm_label": "graphcanvas.tsx",
+      "source_file": "apps/web/src/components/graph/GraphCanvas.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_components_graph_graphmodal",
+      "label": "GraphModal.tsx",
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "graphIndexer.ts",
+      "file_type": "code",
+      "norm_label": "graphmodal.tsx",
+      "source_file": "apps/web/src/components/graph/GraphModal.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_services_intelligence_graphindexer",
+      "label": "graphIndexer.ts",
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "graphIndexer.ts",
+      "file_type": "code",
+      "norm_label": "graphindexer.ts",
+      "source_file": "apps/web/src/services/intelligence/graphIndexer.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_services_intelligence_graphindexer_test",
+      "label": "graphIndexer.test.ts",
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "graphIndexer.ts",
+      "file_type": "code",
+      "norm_label": "graphindexer.test.ts",
+      "source_file": "apps/web/src/services/intelligence/graphIndexer.test.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_services_intelligence_markdownparser",
+      "label": "markdownParser.ts",
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "graphIndexer.ts",
+      "file_type": "code",
+      "norm_label": "markdownparser.ts",
+      "source_file": "apps/web/src/services/intelligence/markdownParser.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_services_intelligence_markdownparser_test",
+      "label": "markdownParser.test.ts",
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "graphIndexer.ts",
+      "file_type": "code",
+      "norm_label": "markdownparser.test.ts",
+      "source_file": "apps/web/src/services/intelligence/markdownParser.test.ts",
       "source_location": "L1"
     },
     {
@@ -4847,6 +5462,72 @@
       "source_location": "L11"
     },
     {
+      "id": "apps_web_src_components_layout_sidebar",
+      "label": "Sidebar.tsx",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": "sidebar.tsx",
+      "source_file": "apps/web/src/components/layout/Sidebar.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_components_vault_fileitem",
+      "label": "FileItem.tsx",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": "fileitem.tsx",
+      "source_file": "apps/web/src/components/vault/FileItem.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_components_vault_filetree",
+      "label": "FileTree.tsx",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": "filetree.tsx",
+      "source_file": "apps/web/src/components/vault/FileTree.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_services_storage_offlinedb",
+      "label": "offlineDb.ts",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": "offlinedb.ts",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_services_storage_offlinedb_offlinedb",
+      "label": "offlineDb",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": "offlinedb",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L205"
+    },
+    {
+      "id": "apps_web_src_services_storage_offlinedb_test",
+      "label": "offlineDb.test.ts",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": "offlinedb.test.ts",
+      "source_file": "apps/web/src/services/storage/offlineDb.test.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "supabase_functions_api_v1_deno",
       "label": "deno.json",
       "_origin": "ast",
@@ -4982,6 +5663,18 @@
       "norm_label": "4. definition of done",
       "source_file": "ai/context/phase-3-github-vault-plan.md",
       "source_location": "L45"
+    },
+    {
+      "id": "ai_context_phase_3_github_vault_plan_5_status",
+      "label": "5. Status",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "2. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "5. status",
+      "source_file": "ai/context/phase-3-github-vault-plan.md",
+      "source_location": "L48"
     },
     {
       "id": "ai_context_phase_3_github_vault_plan_phase_3_implementation_plan_github_vault",
@@ -5161,6 +5854,150 @@
       "norm_label": "vite-env.d.ts",
       "source_file": "apps/web/src/vite-env.d.ts",
       "source_location": "L1"
+    },
+    {
+      "id": "ai_context_phase_4_sync_offline_plan",
+      "label": "phase-4-sync-offline-plan.md",
+      "_origin": "ast",
+      "community": 47,
+      "community_name": "3. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "phase-4-sync-offline-plan.md",
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "ai_context_phase_4_sync_offline_plan_1_overview_objectives",
+      "label": "1. Overview & Objectives",
+      "_origin": "ast",
+      "community": 47,
+      "community_name": "3. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "1. overview & objectives",
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L3"
+    },
+    {
+      "id": "ai_context_phase_4_sync_offline_plan_2_architecture_data_flow",
+      "label": "2. Architecture & Data Flow",
+      "_origin": "ast",
+      "community": 47,
+      "community_name": "3. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "2. architecture & data flow",
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L10"
+    },
+    {
+      "id": "ai_context_phase_4_sync_offline_plan_3_step_by_step_execution_sequence",
+      "label": "3. Step-by-Step Execution Sequence",
+      "_origin": "ast",
+      "community": 47,
+      "community_name": "3. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "3. step-by-step execution sequence",
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L33"
+    },
+    {
+      "id": "ai_context_phase_4_sync_offline_plan_4_definition_of_done",
+      "label": "4. Definition of Done",
+      "_origin": "ast",
+      "community": 47,
+      "community_name": "3. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "4. definition of done",
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L73"
+    },
+    {
+      "id": "ai_context_phase_4_sync_offline_plan_phase_4_implementation_plan_offline_cache_synchronization_engine",
+      "label": "Phase 4 Implementation Plan \u2014 Offline Cache & Synchronization Engine",
+      "_origin": "ast",
+      "community": 47,
+      "community_name": "3. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "phase 4 implementation plan \u2014 offline cache & synchronization engine",
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "ai_context_phase_4_sync_offline_plan_step_1_indexeddb_storage_layer",
+      "label": "**Step 1 \u2014 IndexedDB Storage Layer**",
+      "_origin": "ast",
+      "community": 47,
+      "community_name": "3. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "**step 1 \u2014 indexeddb storage layer**",
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L35"
+    },
+    {
+      "id": "ai_context_phase_4_sync_offline_plan_step_2_read_through_caching_offline_fallback",
+      "label": "**Step 2 \u2014 Read-Through Caching & Offline Fallback**",
+      "_origin": "ast",
+      "community": 47,
+      "community_name": "3. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "**step 2 \u2014 read-through caching & offline fallback**",
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L42"
+    },
+    {
+      "id": "ai_context_phase_4_sync_offline_plan_step_3_offline_mutation_queue_background_sync",
+      "label": "**Step 3 \u2014 Offline Mutation Queue & Background Sync**",
+      "_origin": "ast",
+      "community": 47,
+      "community_name": "3. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "**step 3 \u2014 offline mutation queue & background sync**",
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L48"
+    },
+    {
+      "id": "ai_context_phase_4_sync_offline_plan_step_4_sync_api_endpoints_in_edge_functions",
+      "label": "**Step 4 \u2014 Sync API Endpoints in Edge Functions**",
+      "_origin": "ast",
+      "community": 47,
+      "community_name": "3. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "**step 4 \u2014 sync api endpoints in edge functions**",
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L57"
+    },
+    {
+      "id": "ai_context_phase_4_sync_offline_plan_step_5_asset_upload_support",
+      "label": "**Step 5 \u2014 Asset Upload Support**",
+      "_origin": "ast",
+      "community": 47,
+      "community_name": "3. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "**step 5 \u2014 asset upload support**",
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L61"
+    },
+    {
+      "id": "ai_context_phase_4_sync_offline_plan_step_6_verification_quality_checks",
+      "label": "**Step 6 \u2014 Verification & Quality Checks**",
+      "_origin": "ast",
+      "community": 47,
+      "community_name": "3. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "**step 6 \u2014 verification & quality checks**",
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L66"
     },
     {
       "id": "docs_architecture_supabase",
@@ -5931,6 +6768,18 @@
       "source_location": "L232"
     },
     {
+      "id": "agents_ai_assisted_development",
+      "label": "AI-assisted development",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "AGENTS.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "ai-assisted development",
+      "source_file": "AGENTS.md",
+      "source_location": "L599"
+    },
+    {
       "id": "agents_ai_context",
       "label": "AI Context",
       "_origin": "ast",
@@ -5955,6 +6804,30 @@
       "source_location": "L311"
     },
     {
+      "id": "agents_ai_is_not_the_authority",
+      "label": "AI is not the authority",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "AGENTS.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "ai is not the authority",
+      "source_file": "AGENTS.md",
+      "source_location": "L603"
+    },
+    {
+      "id": "agents_api_first",
+      "label": "API-first",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "AGENTS.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "api-first",
+      "source_file": "AGENTS.md",
+      "source_location": "L595"
+    },
+    {
       "id": "agents_api_rules",
       "label": "API Rules",
       "_origin": "ast",
@@ -5977,6 +6850,18 @@
       "norm_label": "architecture documentation",
       "source_file": "AGENTS.md",
       "source_location": "L268"
+    },
+    {
+      "id": "agents_automated_enforcement",
+      "label": "Automated enforcement",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "AGENTS.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "automated enforcement",
+      "source_file": "AGENTS.md",
+      "source_location": "L615"
     },
     {
       "id": "agents_ci_requirements",
@@ -6063,6 +6948,18 @@
       "source_location": "L228"
     },
     {
+      "id": "agents_documented_architecture",
+      "label": "Documented architecture",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "AGENTS.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "documented architecture",
+      "source_file": "AGENTS.md",
+      "source_location": "L611"
+    },
+    {
       "id": "agents_final_authority",
       "label": "Final Authority",
       "_origin": "ast",
@@ -6123,6 +7020,18 @@
       "source_location": "L57"
     },
     {
+      "id": "agents_open_formats",
+      "label": "Open formats",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "AGENTS.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "open formats",
+      "source_file": "AGENTS.md",
+      "source_location": "L591"
+    },
+    {
       "id": "agents_planning_requirements",
       "label": "Planning Requirements",
       "_origin": "ast",
@@ -6145,6 +7054,18 @@
       "norm_label": "project identity",
       "source_file": "AGENTS.md",
       "source_location": "L3"
+    },
+    {
+      "id": "agents_project_philosophy",
+      "label": "Project Philosophy",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "AGENTS.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "project philosophy",
+      "source_file": "AGENTS.md",
+      "source_location": "L583"
     },
     {
       "id": "agents_repository_structure",
@@ -6171,6 +7092,18 @@
       "source_location": "L439"
     },
     {
+      "id": "agents_start_simple",
+      "label": "Start simple",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "AGENTS.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "start simple",
+      "source_file": "AGENTS.md",
+      "source_location": "L619"
+    },
+    {
       "id": "agents_testing_requirements",
       "label": "Testing Requirements",
       "_origin": "ast",
@@ -6183,6 +7116,18 @@
       "source_location": "L388"
     },
     {
+      "id": "agents_user_owned_data",
+      "label": "User-owned data",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "AGENTS.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "user-owned data",
+      "source_file": "AGENTS.md",
+      "source_location": "L587"
+    },
+    {
       "id": "agents_when_the_agent_must_stop_and_ask",
       "label": "When the Agent Must Stop and Ask",
       "_origin": "ast",
@@ -6193,6 +7138,18 @@
       "norm_label": "when the agent must stop and ask",
       "source_file": "AGENTS.md",
       "source_location": "L545"
+    },
+    {
+      "id": "agents_zero_cost_first",
+      "label": "Zero-cost first",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "AGENTS.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "zero-cost first",
+      "source_file": "AGENTS.md",
+      "source_location": "L623"
     }
   ],
   "links": [
@@ -6209,6 +7166,18 @@
       "weight": 1.0
     },
     {
+      "source": "apps_web_src_components_editor_notepreview_notepreview",
+      "target": "apps_web_src_services_intelligence_markdownparser_parsemarkdown",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/components/editor/NotePreview.tsx",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
       "source": "apps_web_src_components_layout_appshell_appshell",
       "target": "apps_web_src_hooks_usevault_usevault",
       "relation": "calls",
@@ -6217,7 +7186,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/web/src/components/layout/AppShell.tsx",
-      "source_location": "L19",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -6266,6 +7235,102 @@
       "context": "call",
       "source_file": "apps/web/src/routes/SettingsModal.tsx",
       "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_routes_workspaceview_workspaceview",
+      "target": "apps_web_src_contexts_authcontext_useauth",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/routes/WorkspaceView.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_routes_workspaceview_workspaceview",
+      "target": "apps_web_src_services_intelligence_graphindexer_buildgraphindex",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/routes/WorkspaceView.tsx",
+      "source_location": "L58",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_graphindexer_buildgraphindex",
+      "target": "apps_web_src_services_intelligence_graphindexer_extractsnippet",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/services/intelligence/graphIndexer.ts",
+      "source_location": "L105",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_graphindexer_buildgraphindex",
+      "target": "apps_web_src_services_intelligence_markdownparser_parsemarkdown",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/services/intelligence/graphIndexer.ts",
+      "source_location": "L66",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_graphindexer_buildgraphindex",
+      "target": "apps_web_src_services_intelligence_markdownparser_resolvewikilinkpath",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/services/intelligence/graphIndexer.ts",
+      "source_location": "L99",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_markdownparser_parsemarkdown",
+      "target": "apps_web_src_services_intelligence_markdownparser_parsefrontmatter",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/services/intelligence/markdownParser.ts",
+      "source_location": "L100",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_markdownparser_parsemarkdown",
+      "target": "apps_web_src_services_intelligence_markdownparser_extractwikilinks",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/services/intelligence/markdownParser.ts",
+      "source_location": "L101",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_markdownparser_parsemarkdown",
+      "target": "apps_web_src_services_intelligence_markdownparser_extractinlinetags",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/services/intelligence/markdownParser.ts",
+      "source_location": "L102",
       "weight": 1.0
     },
     {
@@ -6365,6 +7430,162 @@
       "weight": 1.0
     },
     {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase_clearall",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_getdb",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L193",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase_clearfiles",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_getdb",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L110",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase_clearmutations",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_getdb",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L159",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase_deletefile",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_getdb",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L99",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase_deletemutation",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_getdb",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L148",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase_getallfiles",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_getdb",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L88",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase_getfile",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_getdb",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L77",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase_getmetadata",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_getdb",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L182",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase_getpendingmutations",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_getdb",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L137",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase_queuemutation",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_getdb",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L122",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase_savefile",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_getdb",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L53",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase_savefiles",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_getdb",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L64",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase_setmetadata",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_getdb",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L171",
+      "weight": 1.0
+    },
+    {
       "source": "apps_web_src_services_vault_vaultservice_createfile",
       "target": "apps_web_src_services_vault_vaultservice_getfile",
       "relation": "calls",
@@ -6373,31 +7594,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L78",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_web_src_services_vault_vaultservice_createvault",
-      "target": "apps_web_src_services_vault_vaultservice_invoke",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L32",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_web_src_services_vault_vaultservice_getvault",
-      "target": "apps_web_src_services_vault_vaultservice_invoke",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L28",
+      "source_location": "L126",
       "weight": 1.0
     },
     {
@@ -6409,7 +7606,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L17",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -6421,7 +7618,31 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L123",
+      "source_location": "L319",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_vault_vaultservice_syncpendingmutations",
+      "target": "apps_web_src_services_vault_vaultservice_invoke",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L219",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_vault_vaultservice_syncpendingmutations",
+      "target": "apps_web_src_services_vault_vaultservice_listfiles",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L271",
       "weight": 1.0
     },
     {
@@ -6433,7 +7654,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L91",
+      "source_location": "L167",
       "weight": 1.0
     },
     {
@@ -6557,6 +7778,54 @@
       "weight": 1.0
     },
     {
+      "source": "apps_web_src_components_editor_backlinkspanel_backlinkspanelprops",
+      "target": "apps_web_src_services_intelligence_graphindexer_backlinkreference",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "field",
+      "source_file": "apps/web/src/components/editor/BacklinksPanel.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_components_editor_notepreview_notepreviewprops",
+      "target": "apps_web_src_services_intelligence_graphindexer_backlinkreference",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "field",
+      "source_file": "apps/web/src/components/editor/NotePreview.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_components_graph_graphcanvas_graphcanvasprops",
+      "target": "apps_web_src_services_intelligence_graphindexer_vaultgraphindex",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "field",
+      "source_file": "apps/web/src/components/graph/GraphCanvas.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_components_graph_graphmodal_graphmodalprops",
+      "target": "apps_web_src_services_intelligence_graphindexer_vaultgraphindex",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "field",
+      "source_file": "apps/web/src/components/graph/GraphModal.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
       "source": "apps_web_src_components_layout_sidebar_sidebarprops",
       "target": "apps_web_src_types_vault_vaultfile",
       "relation": "references",
@@ -6577,7 +7846,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "apps/web/src/components/layout/TopHeader.tsx",
-      "source_location": "L12",
+      "source_location": "L13",
       "weight": 1.0
     },
     {
@@ -6785,6 +8054,30 @@
       "weight": 1.0
     },
     {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase_getallfiles",
+      "target": "apps_web_src_types_vault_vaultfile",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "generic_arg",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L87",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase_getfile",
+      "target": "apps_web_src_types_vault_vaultfile",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "generic_arg",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L76",
+      "weight": 1.0
+    },
+    {
       "source": "apps_web_src_services_vault_vaultservice_createfile",
       "target": "apps_web_src_types_vault_vaultfile",
       "relation": "references",
@@ -6793,7 +8086,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L68",
+      "source_location": "L105",
       "weight": 1.0
     },
     {
@@ -6805,7 +8098,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L31",
+      "source_location": "L44",
       "weight": 1.0
     },
     {
@@ -6817,7 +8110,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L54",
+      "source_location": "L80",
       "weight": 1.0
     },
     {
@@ -6829,7 +8122,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L98",
+      "source_location": "L276",
       "weight": 1.0
     },
     {
@@ -6841,7 +8134,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L27",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -6853,7 +8146,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L39",
+      "source_location": "L54",
       "weight": 1.0
     },
     {
@@ -6865,7 +8158,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L81",
+      "source_location": "L145",
       "weight": 1.0
     },
     {
@@ -7145,6 +8438,90 @@
       "weight": 1.0
     },
     {
+      "source": "apps_web_src_components_editor_backlinkspanel",
+      "target": "apps_web_src_services_intelligence_graphindexer_backlinkreference",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/components/editor/BacklinksPanel.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_components_editor_backlinkspanel",
+      "target": "apps_web_src_components_common_badge_badge",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/components/editor/BacklinksPanel.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_components_editor_frontmattercard",
+      "target": "apps_web_src_components_common_badge_badge",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/components/editor/FrontmatterCard.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_components_editor_notepreview",
+      "target": "apps_web_src_services_intelligence_markdownparser_parsemarkdown",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/components/editor/NotePreview.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_components_editor_notepreview",
+      "target": "apps_web_src_components_editor_frontmattercard_frontmattercard",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/components/editor/NotePreview.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_components_editor_notepreview",
+      "target": "apps_web_src_components_editor_backlinkspanel_backlinkspanel",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/components/editor/NotePreview.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_components_editor_notepreview",
+      "target": "apps_web_src_services_intelligence_graphindexer_backlinkreference",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/components/editor/NotePreview.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
       "source": "apps_web_src_components_editor_notetoolbar",
       "target": "apps_web_src_components_common_button_button",
       "relation": "imports",
@@ -7154,6 +8531,66 @@
       "context": "import",
       "source_file": "apps/web/src/components/editor/NoteToolbar.tsx",
       "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_components_graph_graphcanvas",
+      "target": "apps_web_src_services_intelligence_graphindexer_graphnode",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/components/graph/GraphCanvas.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_components_graph_graphcanvas",
+      "target": "apps_web_src_services_intelligence_graphindexer_vaultgraphindex",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/components/graph/GraphCanvas.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_components_graph_graphmodal",
+      "target": "apps_web_src_components_common_modal_modal",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/components/graph/GraphModal.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_components_graph_graphmodal",
+      "target": "apps_web_src_components_graph_graphcanvas_graphcanvas",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/components/graph/GraphModal.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_components_graph_graphmodal",
+      "target": "apps_web_src_services_intelligence_graphindexer_vaultgraphindex",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/components/graph/GraphModal.tsx",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -7397,6 +8834,30 @@
       "weight": 1.0
     },
     {
+      "source": "apps_web_src_routes_conflictmodal",
+      "target": "apps_web_src_components_common_modal_modal",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/routes/ConflictModal.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_routes_conflictmodal",
+      "target": "apps_web_src_components_common_button_button",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/routes/ConflictModal.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
       "source": "apps_web_src_routes_loginview",
       "target": "apps_web_src_contexts_authcontext_useauth",
       "relation": "imports",
@@ -7566,6 +9027,54 @@
     },
     {
       "source": "apps_web_src_routes_workspaceview",
+      "target": "apps_web_src_routes_conflictmodal_conflictmodal",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/routes/WorkspaceView.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_routes_workspaceview",
+      "target": "apps_web_src_services_intelligence_graphindexer_buildgraphindex",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/routes/WorkspaceView.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_routes_workspaceview",
+      "target": "apps_web_src_services_vault_vaultservice",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/routes/WorkspaceView.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_routes_workspaceview",
+      "target": "apps_web_src_contexts_authcontext_useauth",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/routes/WorkspaceView.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_routes_workspaceview",
       "target": "apps_web_src_components_layout_appshell_appshell",
       "relation": "imports",
       "_origin": "ast",
@@ -7658,6 +9167,162 @@
       "context": "import",
       "source_file": "apps/web/src/routes/WorkspaceView.tsx",
       "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_routes_workspaceview",
+      "target": "apps_web_src_components_graph_graphmodal_graphmodal",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/routes/WorkspaceView.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_graphindexer",
+      "target": "apps_web_src_types_vault_vaultfile",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/intelligence/graphIndexer.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_graphindexer",
+      "target": "apps_web_src_services_intelligence_markdownparser_parsednote",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/intelligence/graphIndexer.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_graphindexer",
+      "target": "apps_web_src_services_intelligence_markdownparser_parsemarkdown",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/intelligence/graphIndexer.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_graphindexer",
+      "target": "apps_web_src_services_intelligence_markdownparser_resolvewikilinkpath",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/intelligence/graphIndexer.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_graphindexer_test",
+      "target": "apps_web_src_services_intelligence_graphindexer_buildgraphindex",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/intelligence/graphIndexer.test.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_graphindexer_test",
+      "target": "apps_web_src_services_intelligence_graphindexer_extractsnippet",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/intelligence/graphIndexer.test.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_graphindexer_test",
+      "target": "apps_web_src_types_vault_vaultfile",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/intelligence/graphIndexer.test.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_markdownparser_test",
+      "target": "apps_web_src_services_intelligence_markdownparser_extractinlinetags",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/intelligence/markdownParser.test.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_markdownparser_test",
+      "target": "apps_web_src_services_intelligence_markdownparser_extractwikilinks",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/intelligence/markdownParser.test.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_markdownparser_test",
+      "target": "apps_web_src_services_intelligence_markdownparser_parsefrontmatter",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/intelligence/markdownParser.test.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_markdownparser_test",
+      "target": "apps_web_src_services_intelligence_markdownparser_parsemarkdown",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/intelligence/markdownParser.test.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_markdownparser_test",
+      "target": "apps_web_src_services_intelligence_markdownparser_resolvewikilinkpath",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/intelligence/markdownParser.test.ts",
+      "source_location": "L2",
       "weight": 1.0
     },
     {
@@ -7757,6 +9422,30 @@
       "weight": 1.0
     },
     {
+      "source": "apps_web_src_services_storage_offlinedb",
+      "target": "apps_web_src_types_vault_vaultfile",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_test",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedb",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/storage/offlineDb.test.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
       "source": "apps_web_src_services_vault",
       "target": "apps_web_src_services_supabaseclient_supabase",
       "relation": "imports",
@@ -7805,6 +9494,30 @@
       "weight": 1.0
     },
     {
+      "source": "apps_web_src_services_vault",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedb",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "package_devdependencies_fake_indexeddb",
+      "target": "fake_indexeddb",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "package.json",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
       "source": "package_devdependencies_supabase",
       "target": "supabase",
       "relation": "imports",
@@ -7813,7 +9526,19 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L23",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "package_devdependencies_vitest",
+      "target": "vitest",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "package.json",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -7865,6 +9590,90 @@
       "weight": 1.0
     },
     {
+      "source": "apps_web_src_components_editor_backlinkspanel",
+      "target": "apps_web_src_services_intelligence_graphindexer",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/components/editor/BacklinksPanel.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_components_editor_backlinkspanel",
+      "target": "apps_web_src_components_common_badge",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/components/editor/BacklinksPanel.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_components_editor_frontmattercard",
+      "target": "apps_web_src_components_common_badge",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/components/editor/FrontmatterCard.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_components_editor_notepreview",
+      "target": "apps_web_src_services_intelligence_markdownparser",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/components/editor/NotePreview.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_components_editor_notepreview",
+      "target": "apps_web_src_components_editor_frontmattercard",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/components/editor/NotePreview.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_components_editor_notepreview",
+      "target": "apps_web_src_components_editor_backlinkspanel",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/components/editor/NotePreview.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_components_editor_notepreview",
+      "target": "apps_web_src_services_intelligence_graphindexer",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/components/editor/NotePreview.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
       "source": "apps_web_src_components_editor_notetoolbar",
       "target": "apps_web_src_components_common_button",
       "relation": "imports_from",
@@ -7874,6 +9683,54 @@
       "context": "import",
       "source_file": "apps/web/src/components/editor/NoteToolbar.tsx",
       "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_components_graph_graphcanvas",
+      "target": "apps_web_src_services_intelligence_graphindexer",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/components/graph/GraphCanvas.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_components_graph_graphmodal",
+      "target": "apps_web_src_components_common_modal",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/components/graph/GraphModal.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_components_graph_graphmodal",
+      "target": "apps_web_src_components_graph_graphcanvas",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/components/graph/GraphModal.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_components_graph_graphmodal",
+      "target": "apps_web_src_services_intelligence_graphindexer",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/components/graph/GraphModal.tsx",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -8093,6 +9950,30 @@
       "weight": 1.0
     },
     {
+      "source": "apps_web_src_routes_conflictmodal",
+      "target": "apps_web_src_components_common_modal",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/routes/ConflictModal.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_routes_conflictmodal",
+      "target": "apps_web_src_components_common_button",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/routes/ConflictModal.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
       "source": "apps_web_src_routes_loginview",
       "target": "apps_web_src_contexts_authcontext",
       "relation": "imports_from",
@@ -8250,6 +10131,54 @@
     },
     {
       "source": "apps_web_src_routes_workspaceview",
+      "target": "apps_web_src_routes_conflictmodal",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/routes/WorkspaceView.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_routes_workspaceview",
+      "target": "apps_web_src_services_intelligence_graphindexer",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/routes/WorkspaceView.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_routes_workspaceview",
+      "target": "apps_web_src_services_vault",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/routes/WorkspaceView.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_routes_workspaceview",
+      "target": "apps_web_src_contexts_authcontext",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/routes/WorkspaceView.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_routes_workspaceview",
       "target": "apps_web_src_components_layout_appshell",
       "relation": "imports_from",
       "_origin": "ast",
@@ -8333,6 +10262,78 @@
       "weight": 1.0
     },
     {
+      "source": "apps_web_src_routes_workspaceview",
+      "target": "apps_web_src_components_graph_graphmodal",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/routes/WorkspaceView.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_graphindexer",
+      "target": "apps_web_src_types_vault",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/intelligence/graphIndexer.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_graphindexer",
+      "target": "apps_web_src_services_intelligence_markdownparser",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/intelligence/graphIndexer.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_graphindexer_test",
+      "target": "apps_web_src_services_intelligence_graphindexer",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/intelligence/graphIndexer.test.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_graphindexer_test",
+      "target": "apps_web_src_types_vault",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/intelligence/graphIndexer.test.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_markdownparser_test",
+      "target": "apps_web_src_services_intelligence_markdownparser",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/intelligence/markdownParser.test.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
       "source": "apps_web_src_services_mockvault",
       "target": "apps_web_src_types_vault",
       "relation": "imports_from",
@@ -8342,6 +10343,30 @@
       "context": "import",
       "source_file": "apps/web/src/services/mockVault.ts",
       "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb",
+      "target": "apps_web_src_types_vault",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_test",
+      "target": "apps_web_src_services_storage_offlinedb",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/storage/offlineDb.test.ts",
+      "source_location": "L3",
       "weight": 1.0
     },
     {
@@ -8366,6 +10391,18 @@
       "context": "import",
       "source_file": "apps/web/src/services/vault.ts",
       "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_vault",
+      "target": "apps_web_src_services_storage_offlinedb",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L3",
       "weight": 1.0
     },
     {
@@ -8402,6 +10439,42 @@
       "context": "parameter_type",
       "source_file": "apps/web/src/services/mockVault.ts",
       "source_location": "L203",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase_savefile",
+      "target": "apps_web_src_types_vault_vaultfile",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L52",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase_savefiles",
+      "target": "apps_web_src_types_vault_vaultfile",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L63",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_components_graph_graphcanvas_simnode",
+      "target": "apps_web_src_services_intelligence_graphindexer_graphnode",
+      "relation": "inherits",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "type",
+      "source_file": "apps/web/src/components/graph/GraphCanvas.tsx",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
@@ -9374,12 +11447,265 @@
     },
     {
       "source": "ai_context_phase_3_github_vault_plan_phase_3_implementation_plan_github_vault",
+      "target": "ai_context_phase_3_github_vault_plan_5_status",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-3-github-vault-plan.md",
+      "source_location": "L48",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_3_github_vault_plan_phase_3_implementation_plan_github_vault",
       "target": "ai_context_phase_3_github_vault_plan_2_step_by_step_execution_sequence",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "ai/context/phase-3-github-vault-plan.md",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_4_sync_offline_plan",
+      "target": "ai_context_phase_4_sync_offline_plan_phase_4_implementation_plan_offline_cache_synchronization_engine",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_4_sync_offline_plan_3_step_by_step_execution_sequence",
+      "target": "ai_context_phase_4_sync_offline_plan_step_1_indexeddb_storage_layer",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_4_sync_offline_plan_3_step_by_step_execution_sequence",
+      "target": "ai_context_phase_4_sync_offline_plan_step_2_read_through_caching_offline_fallback",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L42",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_4_sync_offline_plan_3_step_by_step_execution_sequence",
+      "target": "ai_context_phase_4_sync_offline_plan_step_3_offline_mutation_queue_background_sync",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L48",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_4_sync_offline_plan_3_step_by_step_execution_sequence",
+      "target": "ai_context_phase_4_sync_offline_plan_step_4_sync_api_endpoints_in_edge_functions",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L57",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_4_sync_offline_plan_3_step_by_step_execution_sequence",
+      "target": "ai_context_phase_4_sync_offline_plan_step_5_asset_upload_support",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L61",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_4_sync_offline_plan_3_step_by_step_execution_sequence",
+      "target": "ai_context_phase_4_sync_offline_plan_step_6_verification_quality_checks",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L66",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_4_sync_offline_plan_phase_4_implementation_plan_offline_cache_synchronization_engine",
+      "target": "ai_context_phase_4_sync_offline_plan_2_architecture_data_flow",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_4_sync_offline_plan_phase_4_implementation_plan_offline_cache_synchronization_engine",
+      "target": "ai_context_phase_4_sync_offline_plan_1_overview_objectives",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_4_sync_offline_plan_phase_4_implementation_plan_offline_cache_synchronization_engine",
+      "target": "ai_context_phase_4_sync_offline_plan_3_step_by_step_execution_sequence",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_4_sync_offline_plan_phase_4_implementation_plan_offline_cache_synchronization_engine",
+      "target": "ai_context_phase_4_sync_offline_plan_4_definition_of_done",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L73",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_5_markdown_intelligence_plan",
+      "target": "ai_context_phase_5_markdown_intelligence_plan_phase_5_implementation_plan_markdown_intelligence_interactive_knowledge_graph",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-5-markdown-intelligence-plan.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_5_markdown_intelligence_plan_3_step_by_step_execution_sequence",
+      "target": "ai_context_phase_5_markdown_intelligence_plan_step_1_markdown_ast_frontmatter_parser",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-5-markdown-intelligence-plan.md",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_5_markdown_intelligence_plan_3_step_by_step_execution_sequence",
+      "target": "ai_context_phase_5_markdown_intelligence_plan_step_2_graph_backlink_indexing_engine",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-5-markdown-intelligence-plan.md",
+      "source_location": "L46",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_5_markdown_intelligence_plan_3_step_by_step_execution_sequence",
+      "target": "ai_context_phase_5_markdown_intelligence_plan_step_3_frontmatter_card_backlinks_ui",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-5-markdown-intelligence-plan.md",
+      "source_location": "L52",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_5_markdown_intelligence_plan_3_step_by_step_execution_sequence",
+      "target": "ai_context_phase_5_markdown_intelligence_plan_step_4_interactive_2d_force_directed_knowledge_graph",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-5-markdown-intelligence-plan.md",
+      "source_location": "L56",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_5_markdown_intelligence_plan_3_step_by_step_execution_sequence",
+      "target": "ai_context_phase_5_markdown_intelligence_plan_step_5_editor_autocomplete_indentation_conflict_diff_modal",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-5-markdown-intelligence-plan.md",
+      "source_location": "L60",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_5_markdown_intelligence_plan_3_step_by_step_execution_sequence",
+      "target": "ai_context_phase_5_markdown_intelligence_plan_step_6_verification_quality_checks",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-5-markdown-intelligence-plan.md",
+      "source_location": "L65",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_5_markdown_intelligence_plan_phase_5_implementation_plan_markdown_intelligence_interactive_knowledge_graph",
+      "target": "ai_context_phase_5_markdown_intelligence_plan_1_overview_objectives",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-5-markdown-intelligence-plan.md",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_5_markdown_intelligence_plan_phase_5_implementation_plan_markdown_intelligence_interactive_knowledge_graph",
+      "target": "ai_context_phase_5_markdown_intelligence_plan_3_step_by_step_execution_sequence",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-5-markdown-intelligence-plan.md",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_5_markdown_intelligence_plan_phase_5_implementation_plan_markdown_intelligence_interactive_knowledge_graph",
+      "target": "ai_context_phase_5_markdown_intelligence_plan_4_definition_of_done",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-5-markdown-intelligence-plan.md",
+      "source_location": "L70",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_5_markdown_intelligence_plan_phase_5_implementation_plan_markdown_intelligence_interactive_knowledge_graph",
+      "target": "ai_context_phase_5_markdown_intelligence_plan_2_architecture_data_flow",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-5-markdown-intelligence-plan.md",
       "source_location": "L9",
       "weight": 1.0
     },
@@ -9791,14 +12117,47 @@
       "weight": 1.0
     },
     {
-      "source": "apps_web_src_components_editor_noteeditor",
-      "target": "apps_web_src_components_editor_noteeditor_noteeditorprops",
+      "source": "apps_web_src_components_editor_backlinkspanel",
+      "target": "apps_web_src_components_editor_backlinkspanel_backlinkspanel",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "apps/web/src/components/editor/NoteEditor.tsx",
-      "source_location": "L3",
+      "source_file": "apps/web/src/components/editor/BacklinksPanel.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_components_editor_backlinkspanel",
+      "target": "apps_web_src_components_editor_backlinkspanel_backlinkspanelprops",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/components/editor/BacklinksPanel.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_components_editor_frontmattercard",
+      "target": "apps_web_src_components_editor_frontmattercard_frontmattercardprops",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/components/editor/FrontmatterCard.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_components_editor_frontmattercard",
+      "target": "apps_web_src_components_editor_frontmattercard_frontmattercard",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/components/editor/FrontmatterCard.tsx",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -9809,23 +12168,34 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/web/src/components/editor/NoteEditor.tsx",
-      "source_location": "L9",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
-      "source": "apps_web_src_components_editor_notepreview",
-      "target": "apps_web_src_components_editor_notepreview_notepreviewprops",
+      "source": "apps_web_src_components_editor_noteeditor",
+      "target": "apps_web_src_components_editor_noteeditor_noteeditorprops",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "apps/web/src/components/editor/NotePreview.tsx",
-      "source_location": "L3",
+      "source_file": "apps/web/src/components/editor/NoteEditor.tsx",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
       "source": "apps_web_src_components_editor_notepreview",
       "target": "apps_web_src_components_editor_notepreview_notepreview",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/components/editor/NotePreview.tsx",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_components_editor_notepreview",
+      "target": "apps_web_src_components_editor_notepreview_notepreviewprops",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -9842,7 +12212,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/web/src/components/editor/NoteToolbar.tsx",
-      "source_location": "L16",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -9868,6 +12238,61 @@
       "weight": 1.0
     },
     {
+      "source": "apps_web_src_components_graph_graphcanvas",
+      "target": "apps_web_src_components_graph_graphcanvas_simnode",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/components/graph/GraphCanvas.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_components_graph_graphcanvas",
+      "target": "apps_web_src_components_graph_graphcanvas_graphcanvas",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/components/graph/GraphCanvas.tsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_components_graph_graphcanvas",
+      "target": "apps_web_src_components_graph_graphcanvas_graphcanvasprops",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/components/graph/GraphCanvas.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_components_graph_graphmodal",
+      "target": "apps_web_src_components_graph_graphmodal_graphmodal",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/components/graph/GraphModal.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_components_graph_graphmodal",
+      "target": "apps_web_src_components_graph_graphmodal_graphmodalprops",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/components/graph/GraphModal.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
       "source": "apps_web_src_components_layout_appshell",
       "target": "apps_web_src_components_layout_appshell_appshell",
       "relation": "contains",
@@ -9875,7 +12300,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/web/src/components/layout/AppShell.tsx",
-      "source_location": "L13",
+      "source_location": "L14",
       "weight": 1.0
     },
     {
@@ -9919,7 +12344,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/web/src/components/layout/TopHeader.tsx",
-      "source_location": "L18",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -10088,6 +12513,28 @@
       "weight": 1.0
     },
     {
+      "source": "apps_web_src_routes_conflictmodal",
+      "target": "apps_web_src_routes_conflictmodal_conflictmodal",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/routes/ConflictModal.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_routes_conflictmodal",
+      "target": "apps_web_src_routes_conflictmodal_conflictmodalprops",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/routes/ConflictModal.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
       "source": "apps_web_src_routes_loginview",
       "target": "apps_web_src_routes_loginview_loginview",
       "relation": "contains",
@@ -10172,7 +12619,139 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/web/src/routes/WorkspaceView.tsx",
-      "source_location": "L11",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_graphindexer",
+      "target": "apps_web_src_services_intelligence_graphindexer_graphedge",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/intelligence/graphIndexer.ts",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_graphindexer",
+      "target": "apps_web_src_services_intelligence_graphindexer_backlinkreference",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/intelligence/graphIndexer.ts",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_graphindexer",
+      "target": "apps_web_src_services_intelligence_graphindexer_vaultgraphindex",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/intelligence/graphIndexer.ts",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_graphindexer",
+      "target": "apps_web_src_services_intelligence_graphindexer_extractsnippet",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/intelligence/graphIndexer.ts",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_graphindexer",
+      "target": "apps_web_src_services_intelligence_graphindexer_graphnode",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/intelligence/graphIndexer.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_graphindexer",
+      "target": "apps_web_src_services_intelligence_graphindexer_buildgraphindex",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/intelligence/graphIndexer.ts",
+      "source_location": "L53",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_markdownparser",
+      "target": "apps_web_src_services_intelligence_markdownparser_parsednote",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/intelligence/markdownParser.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_markdownparser",
+      "target": "apps_web_src_services_intelligence_markdownparser_parsefrontmatter",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/intelligence/markdownParser.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_markdownparser",
+      "target": "apps_web_src_services_intelligence_markdownparser_resolvewikilinkpath",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/intelligence/markdownParser.ts",
+      "source_location": "L137",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_markdownparser",
+      "target": "apps_web_src_services_intelligence_markdownparser_extractwikilinks",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/intelligence/markdownParser.ts",
+      "source_location": "L65",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_markdownparser",
+      "target": "apps_web_src_services_intelligence_markdownparser_extractinlinetags",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/intelligence/markdownParser.ts",
+      "source_location": "L83",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_markdownparser",
+      "target": "apps_web_src_services_intelligence_markdownparser_parsemarkdown",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/intelligence/markdownParser.ts",
+      "source_location": "L99",
       "weight": 1.0
     },
     {
@@ -10220,6 +12799,39 @@
       "weight": 1.0
     },
     {
+      "source": "apps_web_src_services_storage_offlinedb",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedb",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L205",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb",
+      "target": "apps_web_src_services_storage_offlinedb_offlinemutation",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
       "source": "apps_web_src_services_supabaseclient",
       "target": "apps_web_src_services_supabaseclient_supabase",
       "relation": "contains",
@@ -10238,7 +12850,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L142",
+      "source_location": "L337",
       "weight": 1.0
     },
     {
@@ -12223,13 +14835,35 @@
     },
     {
       "source": "package_devdependencies",
-      "target": "package_devdependencies_supabase",
+      "target": "package_devdependencies_fake_indexeddb",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
       "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_supabase",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "package.json",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_vitest",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "package.json",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -12695,102 +15329,157 @@
       "weight": 1.0
     },
     {
-      "source": "apps_web_src_services_vault_vaultservice",
-      "target": "apps_web_src_services_vault_vaultservice_syncvault",
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_clearfiles",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L106",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L109",
       "weight": 1.0
     },
     {
-      "source": "apps_web_src_services_vault_vaultservice",
-      "target": "apps_web_src_services_vault_vaultservice_search",
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_queuemutation",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L110",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L121",
       "weight": 1.0
     },
     {
-      "source": "apps_web_src_services_vault_vaultservice",
-      "target": "apps_web_src_services_vault_vaultservice_invoke",
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_getpendingmutations",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L13",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L136",
       "weight": 1.0
     },
     {
-      "source": "apps_web_src_services_vault_vaultservice",
-      "target": "apps_web_src_services_vault_vaultservice_resettodefaults",
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_deletemutation",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L137",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L147",
       "weight": 1.0
     },
     {
-      "source": "apps_web_src_services_vault_vaultservice",
-      "target": "apps_web_src_services_vault_vaultservice_getvault",
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_clearmutations",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L27",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L158",
       "weight": 1.0
     },
     {
-      "source": "apps_web_src_services_vault_vaultservice",
-      "target": "apps_web_src_services_vault_vaultservice_createvault",
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_setmetadata",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L31",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L170",
       "weight": 1.0
     },
     {
-      "source": "apps_web_src_services_vault_vaultservice",
-      "target": "apps_web_src_services_vault_vaultservice_listfiles",
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_getmetadata",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L39",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L181",
       "weight": 1.0
     },
     {
-      "source": "apps_web_src_services_vault_vaultservice",
-      "target": "apps_web_src_services_vault_vaultservice_getheaders",
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_getdb",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L5",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
-      "source": "apps_web_src_services_vault_vaultservice",
-      "target": "apps_web_src_services_vault_vaultservice_getfile",
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_clearall",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L54",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L192",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_savefile",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L52",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_savefiles",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L63",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_getfile",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L76",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_getallfiles",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L87",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_deletefile",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L98",
       "weight": 1.0
     },
     {
@@ -12801,7 +15490,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L68",
+      "source_location": "L105",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_vault_vaultservice",
+      "target": "apps_web_src_services_vault_vaultservice_invoke",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L14",
       "weight": 1.0
     },
     {
@@ -12812,7 +15512,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L81",
+      "source_location": "L145",
       "weight": 1.0
     },
     {
@@ -12823,7 +15523,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L94",
+      "source_location": "L191",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_vault_vaultservice",
+      "target": "apps_web_src_services_vault_vaultservice_syncpendingmutations",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L210",
       "weight": 1.0
     },
     {
@@ -12834,7 +15545,84 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L98",
+      "source_location": "L276",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_vault_vaultservice",
+      "target": "apps_web_src_services_vault_vaultservice_getvault",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_vault_vaultservice",
+      "target": "apps_web_src_services_vault_vaultservice_search",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L301",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_vault_vaultservice",
+      "target": "apps_web_src_services_vault_vaultservice_resettodefaults",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L332",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_vault_vaultservice",
+      "target": "apps_web_src_services_vault_vaultservice_createvault",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L44",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_vault_vaultservice",
+      "target": "apps_web_src_services_vault_vaultservice_listfiles",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L54",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_vault_vaultservice",
+      "target": "apps_web_src_services_vault_vaultservice_getheaders",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_vault_vaultservice",
+      "target": "apps_web_src_services_vault_vaultservice_getfile",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L80",
       "weight": 1.0
     },
     {
@@ -13125,5 +15913,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "4980f4793d6cdddc9e56eee322c729d29c87ea57"
+  "built_at_commit": "b23ced05c007864bb56ca47b77b195906f013e02"
 }
