@@ -16,6 +16,8 @@ export function useVault() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
+  const [hasConflict, setHasConflict] = useState<boolean>(false);
+
   // Load vault metadata & file list
   const refreshVault = useCallback(async () => {
     if (!providerToken) return;
@@ -41,31 +43,27 @@ export function useVault() {
     refreshVault();
   }, [refreshVault]);
 
-  // Load active file
+  const loadActiveFile = useCallback(async (path: string) => {
+    if (!path || !providerToken) return;
+
+    try {
+      setError(null);
+      setHasConflict(false);
+      const file = await vaultService.getFile(providerToken, path);
+      setActiveFile(file);
+      setContent(file.content || '');
+      setIsDirty(false);
+    } catch (err: any) {
+      setError(`File not found or failed to load: ${path}`);
+    }
+  }, [providerToken]);
+
+  // Load active file on path change
   useEffect(() => {
-    if (!activeFilePath || !providerToken) return;
-
-    let mounted = true;
-    const fetchFile = async () => {
-      try {
-        const file = await vaultService.getFile(providerToken, activeFilePath);
-        if (mounted) {
-          setActiveFile(file);
-          setContent(file.content || '');
-          setIsDirty(false);
-        }
-      } catch (err: any) {
-        if (mounted) {
-          setError(`File not found: ${activeFilePath}`);
-        }
-      }
-    };
-
-    fetchFile();
-    return () => {
-      mounted = false;
-    };
-  }, [activeFilePath, providerToken]);
+    if (activeFilePath && providerToken) {
+      loadActiveFile(activeFilePath);
+    }
+  }, [activeFilePath, providerToken, loadActiveFile]);
 
   const selectFile = useCallback((path: string) => {
     setActiveFilePath(path);
@@ -80,6 +78,8 @@ export function useVault() {
     if (!activeFilePath || !activeFile || !providerToken) return;
 
     try {
+      setError(null);
+      setHasConflict(false);
       const updated = await vaultService.updateFile(providerToken, activeFilePath, {
         content,
         expectedSha: activeFile.sha!,
@@ -92,9 +92,22 @@ export function useVault() {
       const filesData = await vaultService.listFiles(providerToken);
       setFiles(filesData.entries);
     } catch (err: any) {
-      setError(err?.message || 'Failed to save file');
+      const isConflict = err?.message?.toLowerCase().includes('conflict') || err?.message?.includes('409') || err?.code === 'CONFLICT';
+      if (isConflict) {
+        setHasConflict(true);
+        setError('Conflict detected: This file was modified remotely on GitHub. Reload the file or resolve changes before saving.');
+      } else {
+        setError(err?.message || 'Failed to save file');
+      }
     }
   }, [activeFilePath, activeFile, content, providerToken]);
+
+  const reloadActiveFile = useCallback(async () => {
+    if (activeFilePath) {
+      await loadActiveFile(activeFilePath);
+      setHasConflict(false);
+    }
+  }, [activeFilePath, loadActiveFile]);
 
   const createFile = useCallback(async (path: string, initialContent: string = '# New Note\n\nStart typing...') => {
     if (!providerToken) throw new Error("Not authenticated");
@@ -150,12 +163,14 @@ export function useVault() {
     activeFile,
     content,
     isDirty,
+    hasConflict,
     syncStatus,
     isLoading,
     error,
     selectFile,
     updateContent,
     saveActiveFile,
+    reloadActiveFile,
     createFile,
     deleteFile,
     sync,

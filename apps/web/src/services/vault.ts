@@ -37,14 +37,15 @@ export class VaultService {
   }
 
   async listFiles(providerToken: string | null): Promise<{ entries: VaultFile[] }> {
-    const res = await this.invoke<{ files: any[] }>('/v1/files', { method: 'GET', providerToken });
+    const res = await this.invoke<any>('/v1/files', { method: 'GET', providerToken });
+    const rawEntries = Array.isArray(res) ? res : (res?.entries || res?.files || []);
     return {
-      entries: res.files.map(f => ({
+      entries: rawEntries.map((f: any) => ({
         path: f.path,
-        name: f.name,
-        type: f.type,
-        size: f.size,
-        lastModified: new Date().toISOString(), // GitHub tree doesn't return date
+        name: f.name || f.path.split('/').pop() || f.path,
+        type: f.type === 'directory' || f.type === 'dir' || f.type === 'tree' ? 'directory' : 'file',
+        size: f.size || 0,
+        lastModified: f.lastModified || new Date().toISOString(),
         sha: f.sha
       }))
     };
@@ -54,13 +55,13 @@ export class VaultService {
     const f = await this.invoke<any>(`/v1/files/${path}`, { method: 'GET', providerToken });
     return {
       path: f.path,
-      name: f.name,
-      type: f.type,
+      name: f.name || f.path.split('/').pop() || f.path,
+      type: f.type === 'directory' || f.type === 'dir' ? 'directory' : 'file',
       size: f.size,
-      lastModified: new Date().toISOString(),
+      lastModified: f.lastModified || new Date().toISOString(),
       sha: f.sha,
       // GitHub content is base64
-      content: f.content ? atob(f.content.replace(/\n/g, '')) : ''
+      content: f.content ? atob(f.content.replace(/\s/g, '')) : ''
     };
   }
 
@@ -70,7 +71,7 @@ export class VaultService {
       body: {
         path: params.path,
         content: btoa(params.content),
-        message: params.commitMessage
+        commitMessage: params.commitMessage
       },
       providerToken
     });
@@ -83,7 +84,7 @@ export class VaultService {
       body: {
         content: btoa(params.content),
         sha: params.expectedSha,
-        message: params.commitMessage
+        commitMessage: params.commitMessage
       },
       providerToken
     });
@@ -91,11 +92,10 @@ export class VaultService {
   }
 
   async deleteFile(providerToken: string | null, path: string, sha: string): Promise<void> {
-    await this.invoke<void>(`/v1/files/${path}?sha=${sha}`, { method: 'DELETE', providerToken });
+    await this.invoke<void>(`/v1/files/${path}?sha=${encodeURIComponent(sha)}`, { method: 'DELETE', providerToken });
   }
 
   async getSyncStatus(_providerToken: string | null): Promise<SyncStatus> {
-    // Stub
     return {
       lastSyncAt: new Date().toISOString(),
       status: 'idle',
@@ -104,26 +104,34 @@ export class VaultService {
   }
 
   async syncVault(_providerToken: string | null): Promise<void> {
-    // Stub
+    // Sync trigger stub
   }
 
-  async search(providerToken: string | null, query: string, pathPrefix?: string): Promise<any> {
-    // Basic implementation that fetches list and filters by name.
-    // Content search would require fetching all file contents or using GitHub Search API.
-    const q = query.toLowerCase().trim();
+  async search(providerToken: string | null, query: string, pathPrefix?: string): Promise<{ query: string; results: any[] }> {
+    const q = query.trim();
     if (!q) return { query, results: [] };
     
-    const list = await this.listFiles(providerToken);
-    const results = list.entries
-      .filter(f => f.name.toLowerCase().includes(q) && (!pathPrefix || f.path.startsWith(pathPrefix)))
-      .map(f => ({
-        path: f.path,
-        title: f.name,
-        snippet: 'Match in title',
-        score: 1,
-      }));
-      
-    return { query, results };
+    try {
+      const url = `/v1/search?q=${encodeURIComponent(q)}${pathPrefix ? `&path=${encodeURIComponent(pathPrefix)}` : ''}`;
+      const res = await this.invoke<{ query: string; results: any[] }>(url, {
+        method: 'GET',
+        providerToken
+      });
+      return res;
+    } catch (_err) {
+      // Fallback client-side filter
+      const list = await this.listFiles(providerToken);
+      const queryLower = q.toLowerCase();
+      const results = list.entries
+        .filter(f => f.name.toLowerCase().includes(queryLower) && (!pathPrefix || f.path.startsWith(pathPrefix)))
+        .map(f => ({
+          path: f.path,
+          title: f.name,
+          snippet: `Match in ${f.path}`,
+          score: 1,
+        }));
+      return { query, results };
+    }
   }
 
   resetToDefaults(): void {
