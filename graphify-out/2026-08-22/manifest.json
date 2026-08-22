@@ -18,9 +18,9 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1787229750.5808616,
-    "seen": 1787230088.3003485,
-    "ast_hash": "57c7593d6b2726cbdcb5e56f4266b16e",
+    "mtime": 1787420119.2579823,
+    "seen": 1787420201.489658,
+    "ast_hash": "97ff7e03adf908688492e5f5487e2790",
     "semantic_hash": ""
   },
   ".agents/rules/graphify.md": {
@@ -444,9 +444,9 @@
     "semantic_hash": ""
   },
   "apps/web/src/services/storage/offlineDb.ts": {
-    "mtime": 1787418520.5963876,
-    "seen": 1787418620.9319184,
-    "ast_hash": "f62d508c1d289513f1849e08e4e8c6d9",
+    "mtime": 1787420134.0754569,
+    "seen": 1787420201.4893954,
+    "ast_hash": "d8fa35f3a5b47ea0cea443a34a42d77f",
     "semantic_hash": ""
   },
   "ai/context/phase-4-sync-offline-plan.md": {
@@ -486,21 +486,39 @@
     "semantic_hash": ""
   },
   "apps/web/src/services/intelligence/graphIndexer.ts": {
-    "mtime": 1787419889.1906896,
-    "seen": 1787420009.4988635,
-    "ast_hash": "8bc438b6a359394c29164c4687e9a5f8",
+    "mtime": 1787420108.1013367,
+    "seen": 1787420201.4893322,
+    "ast_hash": "82c7d8196b5a686da432df7070825c1a",
     "semantic_hash": ""
   },
   "apps/web/src/services/intelligence/markdownParser.ts": {
-    "mtime": 1787419882.963652,
-    "seen": 1787420009.4988647,
-    "ast_hash": "8a5d13dea46afbd77b92ddce6b5d5d8b",
+    "mtime": 1787420099.753308,
+    "seen": 1787420201.4893434,
+    "ast_hash": "f8a5c9feeadd614323f34ec83eac2bc5",
     "semantic_hash": ""
   },
   "ai/context/phase-5-markdown-intelligence-plan.md": {
     "mtime": 1787419872.0725858,
     "seen": 1787420009.4997463,
     "ast_hash": "86e7d38e01f24db4574715bdeb96ea1b",
+    "semantic_hash": ""
+  },
+  "apps/web/src/services/intelligence/graphIndexer.test.ts": {
+    "mtime": 1787420157.3847468,
+    "seen": 1787420201.489327,
+    "ast_hash": "760e3876d36908200d0fdb0296509035",
+    "semantic_hash": ""
+  },
+  "apps/web/src/services/intelligence/markdownParser.test.ts": {
+    "mtime": 1787420082.1232476,
+    "seen": 1787420201.4893343,
+    "ast_hash": "bc2c6997d4360aff99d03a3c158b19fe",
+    "semantic_hash": ""
+  },
+  "apps/web/src/services/storage/offlineDb.test.ts": {
+    "mtime": 1787420173.3459454,
+    "seen": 1787420201.4893932,
+    "ast_hash": "87c5466c6a5ea7f3fd81c21a1fa54075",
     "semantic_hash": ""
   }
 }

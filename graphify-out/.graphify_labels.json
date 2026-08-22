@@ -45,5 +45,9 @@
   "43": "2. Step-by-Step Execution Sequence",
   "44": "Deployment Learnings & Workarounds",
   "45": "vite-env.d.ts",
-  "47": "3. Step-by-Step Execution Sequence"
+  "46": "ADR-007: Offline Storage, Mutation Queue, and Conflict Resolution",
+  "47": "3. Step-by-Step Execution Sequence",
+  "48": "ADR-008: Derived Markdown Intelligence, Wikilinks, and Knowledge Graph",
+  "49": "Offline Caching & Synchronization Architecture",
+  "50": "Markdown Intelligence & Knowledge Graph Architecture"
 }

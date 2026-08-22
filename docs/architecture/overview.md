@@ -180,6 +180,24 @@ It does not replace Git, documentation, contracts, tests, or human architectural
 
 ---
 
+## Offline Caching & Sync Layer
+
+The application operates offline-first using client-side IndexedDB:
+- Derived cache of vault files for instant loading without network round-trips.
+- Sequential mutation queue that replays edits against GitHub upon network reconnection.
+- Visual side-by-side 3-way conflict resolution on SHA mismatch (`409 Conflict`).
+
+---
+
+## Derived Markdown Intelligence & Knowledge Graph
+
+All relational note intelligence is computed on-the-fly from plain Markdown files:
+- `[[Wikilinks]]` and YAML frontmatter parsing.
+- Bi-directional linked references and unlinked mention discovery.
+- Interactive 2D force-directed knowledge graph canvas without server-side graph databases.
+
+---
+
 ## Architectural Principles
 
 The architecture follows these principles:

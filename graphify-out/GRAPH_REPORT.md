@@ -1,16 +1,16 @@
 # Graph Report - Aetherius  (2026-08-22)
 
 ## Corpus Check
-- 84 files · ~32,775 words
+- 88 files · ~34,147 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 598 nodes · 771 edges · 47 communities (40 shown, 7 thin omitted)
+- 627 nodes · 796 edges · 51 communities (44 shown, 7 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `b23ced05`
+- Built from commit: `02f369a8`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -55,7 +55,11 @@
 - GitHubClient
 - 2. Step-by-Step Execution Sequence
 - Deployment Learnings & Workarounds
+- ADR-007: Offline Storage, Mutation Queue, and Conflict Resolution
 - 3. Step-by-Step Execution Sequence
+- ADR-008: Derived Markdown Intelligence, Wikilinks, and Knowledge Graph
+- Offline Caching & Synchronization Architecture
+- Markdown Intelligence & Knowledge Graph Architecture
 
 ## God Nodes (most connected - your core abstractions)
 1. `VaultFile` - 25 edges
@@ -67,7 +71,7 @@
 7. `SyncStatus` - 13 edges
 8. `GitHubClient` - 13 edges
 9. `Security Architecture` - 13 edges
-10. `useAuth()` - 11 edges
+10. `Architecture Overview` - 12 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `OpenAPI Validation Step (redocly lint)` --references--> `Git-Backed Personal Vault API (OpenAPI 3.1.0)`  [EXTRACTED]
@@ -84,7 +88,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (47 total, 7 thin omitted)
+## Communities (51 total, 7 thin omitted)
 
 ### Community 0 - "Git-Backed Personal Vault API (OpenAPI 3.1.0)"
 Cohesion: 0.12
@@ -99,8 +103,8 @@ Cohesion: 0.08
 Nodes (24): fake-indexeddb, author, description, devDependencies, fake-indexeddb, supabase, vitest, devEngines (+16 more)
 
 ### Community 3 - "Architecture Overview"
-Cohesion: 0.15
-Nodes (12): API Boundary, Architectural Principles, Architecture Overview, Backend, Clients, Development Architecture, GitHub, High-Level Architecture (+4 more)
+Cohesion: 0.13
+Nodes (14): API Boundary, Architectural Principles, Architecture Overview, Backend, Clients, Derived Markdown Intelligence & Knowledge Graph, Development Architecture, GitHub (+6 more)
 
 ### Community 4 - "Security Architecture"
 Cohesion: 0.14
@@ -179,12 +183,12 @@ Cohesion: 0.25
 Nodes (7): ADR-006: Frontend PWA Design System and Architecture, Consequences, Context, Decision, Negative, Positive, Related Decisions
 
 ### Community 30 - "types/vault.ts"
-Cohesion: 0.09
-Nodes (19): TopHeader(), TopHeaderProps, GitStatusBadge(), GitStatusBadgeProps, SettingsModalProps, DEFAULT_FILES, DEFAULT_VAULT, generateSha() (+11 more)
+Cohesion: 0.07
+Nodes (30): Button(), ButtonProps, Input(), InputProps, Modal(), ModalProps, TopHeaderProps, GitStatusBadge() (+22 more)
 
 ### Community 31 - "WorkspaceView.tsx"
-Cohesion: 0.08
-Nodes (33): App(), Button(), ButtonProps, Input(), InputProps, Modal(), ModalProps, NoteEditor() (+25 more)
+Cohesion: 0.12
+Nodes (22): App(), NoteEditor(), NoteEditorProps, NoteToolbar(), NoteToolbarProps, ViewMode, GraphModal(), AppShell() (+14 more)
 
 ### Community 32 - "compilerOptions"
 Cohesion: 0.08
@@ -218,12 +222,28 @@ Nodes (11): 1. Overview & Objectives, 2. Step-by-Step Execution Sequence, 3. Adh
 Cohesion: 0.25
 Nodes (7): 1. Supabase CLI Edge Function Bundling, 2. Vercel `ERR_INVALID_THIS` (pnpm + Node 20/22 mismatch), 3. GitHub Actions `pnpm/action-setup` Conflict, 4. Vite Environment Variables, 5. Vercel Monorepo `package-lock.json` Pitfall, 6. Supabase OAuth Redirect to Localhost, Deployment Learnings & Workarounds
 
+### Community 46 - "ADR-007: Offline Storage, Mutation Queue, and Conflict Resolution"
+Cohesion: 0.25
+Nodes (7): ADR-007: Offline Storage, Mutation Queue, and Conflict Resolution, Consequences, Context, Decision, Negative, Positive, Related Decisions
+
 ### Community 47 - "3. Step-by-Step Execution Sequence"
 Cohesion: 0.17
 Nodes (11): 1. Overview & Objectives, 2. Architecture & Data Flow, 3. Step-by-Step Execution Sequence, 4. Definition of Done, Phase 4 Implementation Plan — Offline Cache & Synchronization Engine, **Step 1 — IndexedDB Storage Layer**, **Step 2 — Read-Through Caching & Offline Fallback**, **Step 3 — Offline Mutation Queue & Background Sync** (+3 more)
 
+### Community 48 - "ADR-008: Derived Markdown Intelligence, Wikilinks, and Knowledge Graph"
+Cohesion: 0.25
+Nodes (7): ADR-008: Derived Markdown Intelligence, Wikilinks, and Knowledge Graph, Consequences, Context, Decision, Negative, Positive, Related Decisions
+
+### Community 49 - "Offline Caching & Synchronization Architecture"
+Cohesion: 0.33
+Nodes (5): Conflict Resolution, Mutation Lifecycle, Offline Caching & Synchronization Architecture, Overview, Storage Layer (`offlineDb.ts`)
+
+### Community 50 - "Markdown Intelligence & Knowledge Graph Architecture"
+Cohesion: 0.40
+Nodes (4): Knowledge Graph Visualization, Markdown Intelligence & Knowledge Graph Architecture, Pipeline, Principles
+
 ## Knowledge Gaps
-- **315 isolated node(s):** `name`, `private`, `version`, `type`, `packageManager` (+310 more)
+- **334 isolated node(s):** `name`, `private`, `version`, `type`, `packageManager` (+329 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **7 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -231,16 +251,16 @@ Nodes (11): 1. Overview & Objectives, 2. Architecture & Data Flow, 3. Step-by-St
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `VaultFile` connect `VaultFile` to `graphIndexer.ts`, `types/vault.ts`, `WorkspaceView.tsx`?**
-  _High betweenness centrality (0.018) - this node is a cross-community bridge._
+  _High betweenness centrality (0.016) - this node is a cross-community bridge._
 - **Why does `VaultService` connect `VaultFile` to `types/vault.ts`, `WorkspaceView.tsx`?**
-  _High betweenness centrality (0.008) - this node is a cross-community bridge._
+  _High betweenness centrality (0.007) - this node is a cross-community bridge._
 - **What connects `name`, `private`, `version` to the rest of the system?**
-  _315 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _334 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Git-Backed Personal Vault API (OpenAPI 3.1.0)` be split into smaller, more focused modules?**
   _Cohesion score 0.125 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**
   _Cohesion score 0.08 - nodes in this community are weakly interconnected._
+- **Should `Architecture Overview` be split into smaller, more focused modules?**
+  _Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected._
 - **Should `Security Architecture` be split into smaller, more focused modules?**
   _Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected._
-- **Should `AGENTS.md` be split into smaller, more focused modules?**
-  _Cohesion score 0.0425531914893617 - nodes in this community are weakly interconnected._

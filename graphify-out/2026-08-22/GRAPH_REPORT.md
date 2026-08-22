@@ -1,16 +1,16 @@
 # Graph Report - Aetherius  (2026-08-22)
 
 ## Corpus Check
-- 81 files · ~31,852 words
+- 84 files · ~32,775 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 590 nodes · 752 edges · 47 communities (40 shown, 7 thin omitted)
+- 598 nodes · 771 edges · 47 communities (40 shown, 7 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `5b038705`
+- Built from commit: `b23ced05`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -58,11 +58,11 @@
 - 3. Step-by-Step Execution Sequence
 
 ## God Nodes (most connected - your core abstractions)
-1. `VaultFile` - 24 edges
+1. `VaultFile` - 25 edges
 2. `VaultService` - 18 edges
 3. `compilerOptions` - 18 edges
 4. `MockVaultService` - 16 edges
-5. `OfflineDatabase` - 14 edges
+5. `OfflineDatabase` - 15 edges
 6. `Git-Backed Personal Vault API (OpenAPI 3.1.0)` - 14 edges
 7. `SyncStatus` - 13 edges
 8. `GitHubClient` - 13 edges
@@ -95,8 +95,8 @@ Cohesion: 0.20
 Nodes (9): API Access, File Operations, Git History, GitHub Actions, GitHub Architecture, Purpose, Repository Ownership, Source of Truth (+1 more)
 
 ### Community 2 - "package.json"
-Cohesion: 0.10
-Nodes (20): author, description, devDependencies, supabase, devEngines, packageManager, keywords, license (+12 more)
+Cohesion: 0.08
+Nodes (24): fake-indexeddb, author, description, devDependencies, fake-indexeddb, supabase, vitest, devEngines (+16 more)
 
 ### Community 3 - "Architecture Overview"
 Cohesion: 0.15
@@ -179,12 +179,12 @@ Cohesion: 0.25
 Nodes (7): ADR-006: Frontend PWA Design System and Architecture, Consequences, Context, Decision, Negative, Positive, Related Decisions
 
 ### Community 30 - "types/vault.ts"
-Cohesion: 0.10
-Nodes (18): TopHeaderProps, GitStatusBadge(), GitStatusBadgeProps, SettingsModalProps, DEFAULT_FILES, DEFAULT_VAULT, generateSha(), MockVaultService (+10 more)
+Cohesion: 0.09
+Nodes (19): TopHeader(), TopHeaderProps, GitStatusBadge(), GitStatusBadgeProps, SettingsModalProps, DEFAULT_FILES, DEFAULT_VAULT, generateSha() (+11 more)
 
 ### Community 31 - "WorkspaceView.tsx"
-Cohesion: 0.07
-Nodes (36): App(), Button(), ButtonProps, Input(), InputProps, Modal(), ModalProps, NoteEditor() (+28 more)
+Cohesion: 0.08
+Nodes (33): App(), Button(), ButtonProps, Input(), InputProps, Modal(), ModalProps, NoteEditor() (+25 more)
 
 ### Community 32 - "compilerOptions"
 Cohesion: 0.08
@@ -203,8 +203,8 @@ Cohesion: 0.12
 Nodes (24): Badge(), BadgeProps, BacklinksPanel(), BacklinksPanelProps, FrontmatterCard(), FrontmatterCardProps, NotePreview(), NotePreviewProps (+16 more)
 
 ### Community 40 - "VaultFile"
-Cohesion: 0.10
-Nodes (10): Sidebar(), SidebarProps, FileItem(), FileItemProps, FileTree(), FileTreeProps, TreeNode, OfflineDatabase (+2 more)
+Cohesion: 0.09
+Nodes (12): Sidebar(), SidebarProps, FileItem(), FileItemProps, FileTree(), FileTreeProps, TreeNode, OfflineDatabase (+4 more)
 
 ### Community 41 - "imports"
 Cohesion: 0.50
@@ -223,7 +223,7 @@ Cohesion: 0.17
 Nodes (11): 1. Overview & Objectives, 2. Architecture & Data Flow, 3. Step-by-Step Execution Sequence, 4. Definition of Done, Phase 4 Implementation Plan — Offline Cache & Synchronization Engine, **Step 1 — IndexedDB Storage Layer**, **Step 2 — Read-Through Caching & Offline Fallback**, **Step 3 — Offline Mutation Queue & Background Sync** (+3 more)
 
 ## Knowledge Gaps
-- **313 isolated node(s):** `name`, `private`, `version`, `type`, `packageManager` (+308 more)
+- **315 isolated node(s):** `name`, `private`, `version`, `type`, `packageManager` (+310 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **7 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -231,16 +231,16 @@ Nodes (11): 1. Overview & Objectives, 2. Architecture & Data Flow, 3. Step-by-St
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `VaultFile` connect `VaultFile` to `graphIndexer.ts`, `types/vault.ts`, `WorkspaceView.tsx`?**
-  _High betweenness centrality (0.017) - this node is a cross-community bridge._
+  _High betweenness centrality (0.018) - this node is a cross-community bridge._
 - **Why does `VaultService` connect `VaultFile` to `types/vault.ts`, `WorkspaceView.tsx`?**
   _High betweenness centrality (0.008) - this node is a cross-community bridge._
-- **Why does `OfflineDatabase` connect `VaultFile` to `WorkspaceView.tsx`?**
-  _High betweenness centrality (0.006) - this node is a cross-community bridge._
 - **What connects `name`, `private`, `version` to the rest of the system?**
-  _313 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _315 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Git-Backed Personal Vault API (OpenAPI 3.1.0)` be split into smaller, more focused modules?**
   _Cohesion score 0.125 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**
-  _Cohesion score 0.09523809523809523 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08 - nodes in this community are weakly interconnected._
 - **Should `Security Architecture` be split into smaller, more focused modules?**
   _Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected._
+- **Should `AGENTS.md` be split into smaller, more focused modules?**
+  _Cohesion score 0.0425531914893617 - nodes in this community are weakly interconnected._

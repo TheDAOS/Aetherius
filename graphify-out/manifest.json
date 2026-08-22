@@ -84,10 +84,10 @@
     "semantic_hash": "04416afd6791102a61e5dfb127277238"
   },
   "docs/architecture/overview.md": {
-    "mtime": 1787053267.433949,
-    "seen": 1787167358.617902,
-    "ast_hash": "e44472dc8bf2b4e88cae522c36db6f78",
-    "semantic_hash": "e44472dc8bf2b4e88cae522c36db6f78"
+    "mtime": 1787420309.6839874,
+    "seen": 1787420341.344169,
+    "ast_hash": "2796350b7fdbf31bb93bb9a560801e5b",
+    "semantic_hash": ""
   },
   "docs/architecture/security.md": {
     "mtime": 1787053353.79173,
@@ -519,6 +519,30 @@
     "mtime": 1787420173.3459454,
     "seen": 1787420201.4893932,
     "ast_hash": "87c5466c6a5ea7f3fd81c21a1fa54075",
+    "semantic_hash": ""
+  },
+  "docs/architecture/markdown-intelligence.md": {
+    "mtime": 1787420300.523911,
+    "seen": 1787420341.3441634,
+    "ast_hash": "ab62448fe6132c9bb517629a5d9f9811",
+    "semantic_hash": ""
+  },
+  "docs/architecture/offline-sync.md": {
+    "mtime": 1787420296.586878,
+    "seen": 1787420341.3441668,
+    "ast_hash": "768ecc12be88653dd02751592bcd02cc",
+    "semantic_hash": ""
+  },
+  "docs/decisions/ADR-007-offline-storage-and-sync-engine.md": {
+    "mtime": 1787420286.7611704,
+    "seen": 1787420341.344448,
+    "ast_hash": "c21541d05a5cb72c3289e2d490119f17",
+    "semantic_hash": ""
+  },
+  "docs/decisions/ADR-008-derived-markdown-intelligence-and-graph.md": {
+    "mtime": 1787420291.9678395,
+    "seen": 1787420341.34445,
+    "ast_hash": "bcd8971a027cf5e4ecd91a8b8aafc06c",
     "semantic_hash": ""
   }
 }

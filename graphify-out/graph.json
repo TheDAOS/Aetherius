@@ -4,6 +4,45 @@
   "graph": {},
   "nodes": [
     {
+      "id": "apps_web_src_components_common_button_buttonprops",
+      "label": "ButtonProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": "buttonprops",
+      "source_file": "apps/web/src/components/common/Button.tsx",
+      "source_location": "L3"
+    },
+    {
+      "id": "apps_web_src_components_common_input_inputprops",
+      "label": "InputProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": "inputprops",
+      "source_file": "apps/web/src/components/common/Input.tsx",
+      "source_location": "L3"
+    },
+    {
+      "id": "apps_web_src_components_common_modal_modalprops",
+      "label": "ModalProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": "modalprops",
+      "source_file": "apps/web/src/components/common/Modal.tsx",
+      "source_location": "L4"
+    },
+    {
       "id": "apps_web_src_components_layout_topheader_topheaderprops",
       "label": "TopHeaderProps",
       "_callable": true,
@@ -28,6 +67,32 @@
       "norm_label": "gitstatusbadgeprops",
       "source_file": "apps/web/src/components/vault/GitStatusBadge.tsx",
       "source_location": "L5"
+    },
+    {
+      "id": "apps_web_src_routes_conflictmodal_conflictmodalprops",
+      "label": "ConflictModalProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": "conflictmodalprops",
+      "source_file": "apps/web/src/routes/ConflictModal.tsx",
+      "source_location": "L6"
+    },
+    {
+      "id": "apps_web_src_routes_newnotemodal_newnotemodalprops",
+      "label": "NewNoteModalProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": "newnotemodalprops",
+      "source_file": "apps/web/src/routes/NewNoteModal.tsx",
+      "source_location": "L7"
     },
     {
       "id": "apps_web_src_routes_settingsmodal_settingsmodalprops",
@@ -186,45 +251,6 @@
       "source_location": "L5"
     },
     {
-      "id": "apps_web_src_components_common_button_buttonprops",
-      "label": "ButtonProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "buttonprops",
-      "source_file": "apps/web/src/components/common/Button.tsx",
-      "source_location": "L3"
-    },
-    {
-      "id": "apps_web_src_components_common_input_inputprops",
-      "label": "InputProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "inputprops",
-      "source_file": "apps/web/src/components/common/Input.tsx",
-      "source_location": "L3"
-    },
-    {
-      "id": "apps_web_src_components_common_modal_modalprops",
-      "label": "ModalProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "modalprops",
-      "source_file": "apps/web/src/components/common/Modal.tsx",
-      "source_location": "L4"
-    },
-    {
       "id": "apps_web_src_components_editor_noteeditor_noteeditorprops",
       "label": "NoteEditorProps",
       "_callable": true,
@@ -288,32 +314,6 @@
       "norm_label": "authcontexttype",
       "source_file": "apps/web/src/contexts/AuthContext.tsx",
       "source_location": "L5"
-    },
-    {
-      "id": "apps_web_src_routes_conflictmodal_conflictmodalprops",
-      "label": "ConflictModalProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "conflictmodalprops",
-      "source_file": "apps/web/src/routes/ConflictModal.tsx",
-      "source_location": "L6"
-    },
-    {
-      "id": "apps_web_src_routes_newnotemodal_newnotemodalprops",
-      "label": "NewNoteModalProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "newnotemodalprops",
-      "source_file": "apps/web/src/routes/NewNoteModal.tsx",
-      "source_location": "L7"
     },
     {
       "id": "apps_web_src_routes_searchmodal_searchmodalprops",
@@ -615,16 +615,40 @@
       "source_location": "L1"
     },
     {
-      "id": "apps_web_src_components_layout_topheader_topheader",
-      "label": "TopHeader()",
+      "id": "apps_web_src_components_common_button_button",
+      "label": "Button()",
       "_callable": true,
       "_origin": "ast",
       "community": 30,
       "community_name": "types/vault.ts",
       "file_type": "code",
-      "norm_label": "topheader()",
-      "source_file": "apps/web/src/components/layout/TopHeader.tsx",
-      "source_location": "L19"
+      "norm_label": "button()",
+      "source_file": "apps/web/src/components/common/Button.tsx",
+      "source_location": "L9"
+    },
+    {
+      "id": "apps_web_src_components_common_input_input",
+      "label": "Input()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": "input()",
+      "source_file": "apps/web/src/components/common/Input.tsx",
+      "source_location": "L9"
+    },
+    {
+      "id": "apps_web_src_components_common_modal_modal",
+      "label": "Modal()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": "modal()",
+      "source_file": "apps/web/src/components/common/Modal.tsx",
+      "source_location": "L13"
     },
     {
       "id": "apps_web_src_components_vault_gitstatusbadge_gitstatusbadge",
@@ -637,6 +661,54 @@
       "norm_label": "gitstatusbadge()",
       "source_file": "apps/web/src/components/vault/GitStatusBadge.tsx",
       "source_location": "L12"
+    },
+    {
+      "id": "apps_web_src_hooks_usepwa_usepwa",
+      "label": "usePWA()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": "usepwa()",
+      "source_file": "apps/web/src/hooks/usePWA.ts",
+      "source_location": "L3"
+    },
+    {
+      "id": "apps_web_src_routes_conflictmodal_conflictmodal",
+      "label": "ConflictModal()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": "conflictmodal()",
+      "source_file": "apps/web/src/routes/ConflictModal.tsx",
+      "source_location": "L17"
+    },
+    {
+      "id": "apps_web_src_routes_newnotemodal_newnotemodal",
+      "label": "NewNoteModal()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": "newnotemodal()",
+      "source_file": "apps/web/src/routes/NewNoteModal.tsx",
+      "source_location": "L13"
+    },
+    {
+      "id": "apps_web_src_routes_settingsmodal_settingsmodal",
+      "label": "SettingsModal()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": "settingsmodal()",
+      "source_file": "apps/web/src/routes/SettingsModal.tsx",
+      "source_location": "L17"
     },
     {
       "id": "apps_web_src_services_mockvault_generatesha",
@@ -819,18 +891,6 @@
       "source_location": "L44"
     },
     {
-      "id": "apps_web_src_services_vault_vaultservice_getsyncstatus",
-      "label": ".getSyncStatus()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 30,
-      "community_name": "types/vault.ts",
-      "file_type": "code",
-      "norm_label": ".getsyncstatus()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L276"
-    },
-    {
       "id": "apps_web_src_services_vault_vaultservice_getvault",
       "label": ".getVault()",
       "_callable": true,
@@ -853,42 +913,6 @@
       "norm_label": "app()",
       "source_file": "apps/web/src/App.tsx",
       "source_location": "L6"
-    },
-    {
-      "id": "apps_web_src_components_common_button_button",
-      "label": "Button()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "button()",
-      "source_file": "apps/web/src/components/common/Button.tsx",
-      "source_location": "L9"
-    },
-    {
-      "id": "apps_web_src_components_common_input_input",
-      "label": "Input()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "input()",
-      "source_file": "apps/web/src/components/common/Input.tsx",
-      "source_location": "L9"
-    },
-    {
-      "id": "apps_web_src_components_common_modal_modal",
-      "label": "Modal()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "modal()",
-      "source_file": "apps/web/src/components/common/Modal.tsx",
-      "source_location": "L13"
     },
     {
       "id": "apps_web_src_components_editor_noteeditor_noteeditor",
@@ -939,6 +963,18 @@
       "source_location": "L14"
     },
     {
+      "id": "apps_web_src_components_layout_topheader_topheader",
+      "label": "TopHeader()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "WorkspaceView.tsx",
+      "file_type": "code",
+      "norm_label": "topheader()",
+      "source_file": "apps/web/src/components/layout/TopHeader.tsx",
+      "source_location": "L19"
+    },
+    {
       "id": "apps_web_src_contexts_authcontext_authprovider",
       "label": "AuthProvider()",
       "_callable": true,
@@ -963,18 +999,6 @@
       "source_location": "L66"
     },
     {
-      "id": "apps_web_src_hooks_usepwa_usepwa",
-      "label": "usePWA()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "usepwa()",
-      "source_file": "apps/web/src/hooks/usePWA.ts",
-      "source_location": "L3"
-    },
-    {
       "id": "apps_web_src_hooks_usevault_usevault",
       "label": "useVault()",
       "_callable": true,
@@ -985,18 +1009,6 @@
       "norm_label": "usevault()",
       "source_file": "apps/web/src/hooks/useVault.ts",
       "source_location": "L6"
-    },
-    {
-      "id": "apps_web_src_routes_conflictmodal_conflictmodal",
-      "label": "ConflictModal()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "conflictmodal()",
-      "source_file": "apps/web/src/routes/ConflictModal.tsx",
-      "source_location": "L17"
     },
     {
       "id": "apps_web_src_routes_loginview_loginview",
@@ -1011,18 +1023,6 @@
       "source_location": "L4"
     },
     {
-      "id": "apps_web_src_routes_newnotemodal_newnotemodal",
-      "label": "NewNoteModal()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "newnotemodal()",
-      "source_file": "apps/web/src/routes/NewNoteModal.tsx",
-      "source_location": "L13"
-    },
-    {
       "id": "apps_web_src_routes_searchmodal_searchmodal",
       "label": "SearchModal()",
       "_callable": true,
@@ -1033,18 +1033,6 @@
       "norm_label": "searchmodal()",
       "source_file": "apps/web/src/routes/SearchModal.tsx",
       "source_location": "L14"
-    },
-    {
-      "id": "apps_web_src_routes_settingsmodal_settingsmodal",
-      "label": "SettingsModal()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "settingsmodal()",
-      "source_file": "apps/web/src/routes/SettingsModal.tsx",
-      "source_location": "L17"
     },
     {
       "id": "apps_web_src_routes_workspaceview_workspaceview",
@@ -1453,6 +1441,18 @@
       "norm_label": ".getheaders()",
       "source_file": "apps/web/src/services/vault.ts",
       "source_location": "L6"
+    },
+    {
+      "id": "apps_web_src_services_vault_vaultservice_getsyncstatus",
+      "label": ".getSyncStatus()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".getsyncstatus()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L276"
     },
     {
       "id": "apps_web_src_services_vault_vaultservice_invoke",
@@ -3950,7 +3950,7 @@
       "node_kind": "heading",
       "norm_label": "architectural principles",
       "source_file": "docs/architecture/overview.md",
-      "source_location": "L183"
+      "source_location": "L201"
     },
     {
       "id": "docs_architecture_overview_architecture_overview",
@@ -3989,6 +3989,18 @@
       "source_location": "L64"
     },
     {
+      "id": "docs_architecture_overview_derived_markdown_intelligence_knowledge_graph",
+      "label": "Derived Markdown Intelligence & Knowledge Graph",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "Architecture Overview",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "derived markdown intelligence & knowledge graph",
+      "source_file": "docs/architecture/overview.md",
+      "source_location": "L192"
+    },
+    {
       "id": "docs_architecture_overview_development_architecture",
       "label": "Development Architecture",
       "_origin": "ast",
@@ -4023,6 +4035,18 @@
       "norm_label": "high-level architecture",
       "source_file": "docs/architecture/overview.md",
       "source_location": "L11"
+    },
+    {
+      "id": "docs_architecture_overview_offline_caching_sync_layer",
+      "label": "Offline Caching & Sync Layer",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "Architecture Overview",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "offline caching & sync layer",
+      "source_file": "docs/architecture/overview.md",
+      "source_location": "L183"
     },
     {
       "id": "docs_architecture_overview_progressive_web_app",
@@ -4073,6 +4097,39 @@
       "source_location": "L82"
     },
     {
+      "id": "apps_web_src_components_common_button",
+      "label": "Button.tsx",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": "button.tsx",
+      "source_file": "apps/web/src/components/common/Button.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_components_common_input",
+      "label": "Input.tsx",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": "input.tsx",
+      "source_file": "apps/web/src/components/common/Input.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_components_common_modal",
+      "label": "Modal.tsx",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": "modal.tsx",
+      "source_file": "apps/web/src/components/common/Modal.tsx",
+      "source_location": "L1"
+    },
+    {
       "id": "apps_web_src_components_layout_topheader",
       "label": "TopHeader.tsx",
       "_origin": "ast",
@@ -4092,6 +4149,50 @@
       "file_type": "code",
       "norm_label": "gitstatusbadge.tsx",
       "source_file": "apps/web/src/components/vault/GitStatusBadge.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_hooks_usepwa",
+      "label": "usePWA.ts",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": "usepwa.ts",
+      "source_file": "apps/web/src/hooks/usePWA.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_routes_conflictmodal",
+      "label": "ConflictModal.tsx",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": "conflictmodal.tsx",
+      "source_file": "apps/web/src/routes/ConflictModal.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_routes_newnotemodal",
+      "label": "NewNoteModal.tsx",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": "newnotemodal.tsx",
+      "source_file": "apps/web/src/routes/NewNoteModal.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_routes_settingsmodal",
+      "label": "SettingsModal.tsx",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": "settingsmodal.tsx",
+      "source_file": "apps/web/src/routes/SettingsModal.tsx",
       "source_location": "L1"
     },
     {
@@ -4150,39 +4251,6 @@
       "source_location": "L1"
     },
     {
-      "id": "apps_web_src_components_common_button",
-      "label": "Button.tsx",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "button.tsx",
-      "source_file": "apps/web/src/components/common/Button.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_web_src_components_common_input",
-      "label": "Input.tsx",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "input.tsx",
-      "source_file": "apps/web/src/components/common/Input.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_web_src_components_common_modal",
-      "label": "Modal.tsx",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "modal.tsx",
-      "source_file": "apps/web/src/components/common/Modal.tsx",
-      "source_location": "L1"
-    },
-    {
       "id": "apps_web_src_components_editor_noteeditor",
       "label": "NoteEditor.tsx",
       "_origin": "ast",
@@ -4238,17 +4306,6 @@
       "source_location": "L14"
     },
     {
-      "id": "apps_web_src_hooks_usepwa",
-      "label": "usePWA.ts",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "usepwa.ts",
-      "source_file": "apps/web/src/hooks/usePWA.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "apps_web_src_hooks_usevault",
       "label": "useVault.ts",
       "_origin": "ast",
@@ -4282,17 +4339,6 @@
       "source_location": "L8"
     },
     {
-      "id": "apps_web_src_routes_conflictmodal",
-      "label": "ConflictModal.tsx",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "conflictmodal.tsx",
-      "source_file": "apps/web/src/routes/ConflictModal.tsx",
-      "source_location": "L1"
-    },
-    {
       "id": "apps_web_src_routes_loginview",
       "label": "LoginView.tsx",
       "_origin": "ast",
@@ -4304,17 +4350,6 @@
       "source_location": "L1"
     },
     {
-      "id": "apps_web_src_routes_newnotemodal",
-      "label": "NewNoteModal.tsx",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "newnotemodal.tsx",
-      "source_file": "apps/web/src/routes/NewNoteModal.tsx",
-      "source_location": "L1"
-    },
-    {
       "id": "apps_web_src_routes_searchmodal",
       "label": "SearchModal.tsx",
       "_origin": "ast",
@@ -4323,17 +4358,6 @@
       "file_type": "code",
       "norm_label": "searchmodal.tsx",
       "source_file": "apps/web/src/routes/SearchModal.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_web_src_routes_settingsmodal",
-      "label": "SettingsModal.tsx",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "settingsmodal.tsx",
-      "source_file": "apps/web/src/routes/SettingsModal.tsx",
       "source_location": "L1"
     },
     {
@@ -5856,6 +5880,102 @@
       "source_location": "L1"
     },
     {
+      "id": "docs_decisions_adr_007_offline_storage_and_sync_engine",
+      "label": "ADR-007-offline-storage-and-sync-engine.md",
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "ADR-007: Offline Storage, Mutation Queue, and Conflict Resolution",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "adr-007-offline-storage-and-sync-engine.md",
+      "source_file": "docs/decisions/ADR-007-offline-storage-and-sync-engine.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "docs_decisions_adr_007_offline_storage_and_sync_engine_adr_007_offline_storage_mutation_queue_and_conflict_resolution",
+      "label": "ADR-007: Offline Storage, Mutation Queue, and Conflict Resolution",
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "ADR-007: Offline Storage, Mutation Queue, and Conflict Resolution",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "adr-007: offline storage, mutation queue, and conflict resolution",
+      "source_file": "docs/decisions/ADR-007-offline-storage-and-sync-engine.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "docs_decisions_adr_007_offline_storage_and_sync_engine_consequences",
+      "label": "Consequences",
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "ADR-007: Offline Storage, Mutation Queue, and Conflict Resolution",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "consequences",
+      "source_file": "docs/decisions/ADR-007-offline-storage-and-sync-engine.md",
+      "source_location": "L39"
+    },
+    {
+      "id": "docs_decisions_adr_007_offline_storage_and_sync_engine_context",
+      "label": "Context",
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "ADR-007: Offline Storage, Mutation Queue, and Conflict Resolution",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "context",
+      "source_file": "docs/decisions/ADR-007-offline-storage-and-sync-engine.md",
+      "source_location": "L5"
+    },
+    {
+      "id": "docs_decisions_adr_007_offline_storage_and_sync_engine_decision",
+      "label": "Decision",
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "ADR-007: Offline Storage, Mutation Queue, and Conflict Resolution",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "decision",
+      "source_file": "docs/decisions/ADR-007-offline-storage-and-sync-engine.md",
+      "source_location": "L17"
+    },
+    {
+      "id": "docs_decisions_adr_007_offline_storage_and_sync_engine_negative",
+      "label": "Negative",
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "ADR-007: Offline Storage, Mutation Queue, and Conflict Resolution",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "negative",
+      "source_file": "docs/decisions/ADR-007-offline-storage-and-sync-engine.md",
+      "source_location": "L46"
+    },
+    {
+      "id": "docs_decisions_adr_007_offline_storage_and_sync_engine_positive",
+      "label": "Positive",
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "ADR-007: Offline Storage, Mutation Queue, and Conflict Resolution",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "positive",
+      "source_file": "docs/decisions/ADR-007-offline-storage-and-sync-engine.md",
+      "source_location": "L41"
+    },
+    {
+      "id": "docs_decisions_adr_007_offline_storage_and_sync_engine_related_decisions",
+      "label": "Related Decisions",
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "ADR-007: Offline Storage, Mutation Queue, and Conflict Resolution",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "related decisions",
+      "source_file": "docs/decisions/ADR-007-offline-storage-and-sync-engine.md",
+      "source_location": "L50"
+    },
+    {
       "id": "ai_context_phase_4_sync_offline_plan",
       "label": "phase-4-sync-offline-plan.md",
       "_origin": "ast",
@@ -5998,6 +6118,174 @@
       "norm_label": "**step 6 \u2014 verification & quality checks**",
       "source_file": "ai/context/phase-4-sync-offline-plan.md",
       "source_location": "L66"
+    },
+    {
+      "id": "docs_decisions_adr_008_derived_markdown_intelligence_and_graph",
+      "label": "ADR-008-derived-markdown-intelligence-and-graph.md",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "ADR-008: Derived Markdown Intelligence, Wikilinks, and Knowledge Graph",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "adr-008-derived-markdown-intelligence-and-graph.md",
+      "source_file": "docs/decisions/ADR-008-derived-markdown-intelligence-and-graph.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "docs_decisions_adr_008_derived_markdown_intelligence_and_graph_adr_008_derived_markdown_intelligence_wikilinks_and_knowledge_graph",
+      "label": "ADR-008: Derived Markdown Intelligence, Wikilinks, and Knowledge Graph",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "ADR-008: Derived Markdown Intelligence, Wikilinks, and Knowledge Graph",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "adr-008: derived markdown intelligence, wikilinks, and knowledge graph",
+      "source_file": "docs/decisions/ADR-008-derived-markdown-intelligence-and-graph.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "docs_decisions_adr_008_derived_markdown_intelligence_and_graph_consequences",
+      "label": "Consequences",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "ADR-008: Derived Markdown Intelligence, Wikilinks, and Knowledge Graph",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "consequences",
+      "source_file": "docs/decisions/ADR-008-derived-markdown-intelligence-and-graph.md",
+      "source_location": "L39"
+    },
+    {
+      "id": "docs_decisions_adr_008_derived_markdown_intelligence_and_graph_context",
+      "label": "Context",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "ADR-008: Derived Markdown Intelligence, Wikilinks, and Knowledge Graph",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "context",
+      "source_file": "docs/decisions/ADR-008-derived-markdown-intelligence-and-graph.md",
+      "source_location": "L5"
+    },
+    {
+      "id": "docs_decisions_adr_008_derived_markdown_intelligence_and_graph_decision",
+      "label": "Decision",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "ADR-008: Derived Markdown Intelligence, Wikilinks, and Knowledge Graph",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "decision",
+      "source_file": "docs/decisions/ADR-008-derived-markdown-intelligence-and-graph.md",
+      "source_location": "L13"
+    },
+    {
+      "id": "docs_decisions_adr_008_derived_markdown_intelligence_and_graph_negative",
+      "label": "Negative",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "ADR-008: Derived Markdown Intelligence, Wikilinks, and Knowledge Graph",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "negative",
+      "source_file": "docs/decisions/ADR-008-derived-markdown-intelligence-and-graph.md",
+      "source_location": "L46"
+    },
+    {
+      "id": "docs_decisions_adr_008_derived_markdown_intelligence_and_graph_positive",
+      "label": "Positive",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "ADR-008: Derived Markdown Intelligence, Wikilinks, and Knowledge Graph",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "positive",
+      "source_file": "docs/decisions/ADR-008-derived-markdown-intelligence-and-graph.md",
+      "source_location": "L41"
+    },
+    {
+      "id": "docs_decisions_adr_008_derived_markdown_intelligence_and_graph_related_decisions",
+      "label": "Related Decisions",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "ADR-008: Derived Markdown Intelligence, Wikilinks, and Knowledge Graph",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "related decisions",
+      "source_file": "docs/decisions/ADR-008-derived-markdown-intelligence-and-graph.md",
+      "source_location": "L49"
+    },
+    {
+      "id": "docs_architecture_offline_sync",
+      "label": "offline-sync.md",
+      "_origin": "ast",
+      "community": 49,
+      "community_name": "Offline Caching & Synchronization Architecture",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "offline-sync.md",
+      "source_file": "docs/architecture/offline-sync.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "docs_architecture_offline_sync_conflict_resolution",
+      "label": "Conflict Resolution",
+      "_origin": "ast",
+      "community": 49,
+      "community_name": "Offline Caching & Synchronization Architecture",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "conflict resolution",
+      "source_file": "docs/architecture/offline-sync.md",
+      "source_location": "L42"
+    },
+    {
+      "id": "docs_architecture_offline_sync_mutation_lifecycle",
+      "label": "Mutation Lifecycle",
+      "_origin": "ast",
+      "community": 49,
+      "community_name": "Offline Caching & Synchronization Architecture",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "mutation lifecycle",
+      "source_file": "docs/architecture/offline-sync.md",
+      "source_location": "L23"
+    },
+    {
+      "id": "docs_architecture_offline_sync_offline_caching_synchronization_architecture",
+      "label": "Offline Caching & Synchronization Architecture",
+      "_origin": "ast",
+      "community": 49,
+      "community_name": "Offline Caching & Synchronization Architecture",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "offline caching & synchronization architecture",
+      "source_file": "docs/architecture/offline-sync.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "docs_architecture_offline_sync_overview",
+      "label": "Overview",
+      "_origin": "ast",
+      "community": 49,
+      "community_name": "Offline Caching & Synchronization Architecture",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "overview",
+      "source_file": "docs/architecture/offline-sync.md",
+      "source_location": "L3"
+    },
+    {
+      "id": "docs_architecture_offline_sync_storage_layer_offlinedb_ts",
+      "label": "Storage Layer (`offlineDb.ts`)",
+      "_origin": "ast",
+      "community": 49,
+      "community_name": "Offline Caching & Synchronization Architecture",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "storage layer (`offlinedb.ts`)",
+      "source_file": "docs/architecture/offline-sync.md",
+      "source_location": "L6"
     },
     {
       "id": "docs_architecture_supabase",
@@ -6154,6 +6442,66 @@
       "norm_label": "supabase architecture",
       "source_file": "docs/architecture/supabase.md",
       "source_location": "L1"
+    },
+    {
+      "id": "docs_architecture_markdown_intelligence",
+      "label": "markdown-intelligence.md",
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "Markdown Intelligence & Knowledge Graph Architecture",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "markdown-intelligence.md",
+      "source_file": "docs/architecture/markdown-intelligence.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "docs_architecture_markdown_intelligence_knowledge_graph_visualization",
+      "label": "Knowledge Graph Visualization",
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "Markdown Intelligence & Knowledge Graph Architecture",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "knowledge graph visualization",
+      "source_file": "docs/architecture/markdown-intelligence.md",
+      "source_location": "L33"
+    },
+    {
+      "id": "docs_architecture_markdown_intelligence_markdown_intelligence_knowledge_graph_architecture",
+      "label": "Markdown Intelligence & Knowledge Graph Architecture",
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "Markdown Intelligence & Knowledge Graph Architecture",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "markdown intelligence & knowledge graph architecture",
+      "source_file": "docs/architecture/markdown-intelligence.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "docs_architecture_markdown_intelligence_pipeline",
+      "label": "Pipeline",
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "Markdown Intelligence & Knowledge Graph Architecture",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "pipeline",
+      "source_file": "docs/architecture/markdown-intelligence.md",
+      "source_location": "L7"
+    },
+    {
+      "id": "docs_architecture_markdown_intelligence_principles",
+      "label": "Principles",
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "Markdown Intelligence & Knowledge Graph Architecture",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "principles",
+      "source_file": "docs/architecture/markdown-intelligence.md",
+      "source_location": "L3"
     },
     {
       "id": "docs_decisions_adr_002_supabase_responsibilities",
@@ -13602,6 +13950,105 @@
       "weight": 1.0
     },
     {
+      "source": "docs_architecture_markdown_intelligence",
+      "target": "docs_architecture_markdown_intelligence_markdown_intelligence_knowledge_graph_architecture",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/architecture/markdown-intelligence.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_architecture_markdown_intelligence_markdown_intelligence_knowledge_graph_architecture",
+      "target": "docs_architecture_markdown_intelligence_principles",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/architecture/markdown-intelligence.md",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_architecture_markdown_intelligence_markdown_intelligence_knowledge_graph_architecture",
+      "target": "docs_architecture_markdown_intelligence_knowledge_graph_visualization",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/architecture/markdown-intelligence.md",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_architecture_markdown_intelligence_markdown_intelligence_knowledge_graph_architecture",
+      "target": "docs_architecture_markdown_intelligence_pipeline",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/architecture/markdown-intelligence.md",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_architecture_offline_sync",
+      "target": "docs_architecture_offline_sync_offline_caching_synchronization_architecture",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/architecture/offline-sync.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_architecture_offline_sync_offline_caching_synchronization_architecture",
+      "target": "docs_architecture_offline_sync_mutation_lifecycle",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/architecture/offline-sync.md",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_architecture_offline_sync_offline_caching_synchronization_architecture",
+      "target": "docs_architecture_offline_sync_overview",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/architecture/offline-sync.md",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_architecture_offline_sync_offline_caching_synchronization_architecture",
+      "target": "docs_architecture_offline_sync_conflict_resolution",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/architecture/offline-sync.md",
+      "source_location": "L42",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_architecture_offline_sync_offline_caching_synchronization_architecture",
+      "target": "docs_architecture_offline_sync_storage_layer_offlinedb_ts",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/architecture/offline-sync.md",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
       "source": "docs_architecture_overview",
       "target": "docs_architecture_overview_architecture_overview",
       "relation": "contains",
@@ -13658,13 +14105,35 @@
     },
     {
       "source": "docs_architecture_overview_architecture_overview",
-      "target": "docs_architecture_overview_architectural_principles",
+      "target": "docs_architecture_overview_offline_caching_sync_layer",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/architecture/overview.md",
       "source_location": "L183",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_architecture_overview_architecture_overview",
+      "target": "docs_architecture_overview_derived_markdown_intelligence_knowledge_graph",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/architecture/overview.md",
+      "source_location": "L192",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_architecture_overview_architecture_overview",
+      "target": "docs_architecture_overview_architectural_principles",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/architecture/overview.md",
+      "source_location": "L201",
       "weight": 1.0
     },
     {
@@ -14677,6 +15146,160 @@
       "confidence_score": 1.0,
       "source_file": "docs/decisions/ADR-006-frontend-pwa-design-system.md",
       "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_decisions_adr_007_offline_storage_and_sync_engine",
+      "target": "docs_decisions_adr_007_offline_storage_and_sync_engine_adr_007_offline_storage_mutation_queue_and_conflict_resolution",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/decisions/ADR-007-offline-storage-and-sync-engine.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_decisions_adr_007_offline_storage_and_sync_engine_adr_007_offline_storage_mutation_queue_and_conflict_resolution",
+      "target": "docs_decisions_adr_007_offline_storage_and_sync_engine_decision",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/decisions/ADR-007-offline-storage-and-sync-engine.md",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_decisions_adr_007_offline_storage_and_sync_engine_adr_007_offline_storage_mutation_queue_and_conflict_resolution",
+      "target": "docs_decisions_adr_007_offline_storage_and_sync_engine_consequences",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/decisions/ADR-007-offline-storage-and-sync-engine.md",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_decisions_adr_007_offline_storage_and_sync_engine_adr_007_offline_storage_mutation_queue_and_conflict_resolution",
+      "target": "docs_decisions_adr_007_offline_storage_and_sync_engine_context",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/decisions/ADR-007-offline-storage-and-sync-engine.md",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_decisions_adr_007_offline_storage_and_sync_engine_adr_007_offline_storage_mutation_queue_and_conflict_resolution",
+      "target": "docs_decisions_adr_007_offline_storage_and_sync_engine_related_decisions",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/decisions/ADR-007-offline-storage-and-sync-engine.md",
+      "source_location": "L50",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_decisions_adr_007_offline_storage_and_sync_engine_consequences",
+      "target": "docs_decisions_adr_007_offline_storage_and_sync_engine_positive",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/decisions/ADR-007-offline-storage-and-sync-engine.md",
+      "source_location": "L41",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_decisions_adr_007_offline_storage_and_sync_engine_consequences",
+      "target": "docs_decisions_adr_007_offline_storage_and_sync_engine_negative",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/decisions/ADR-007-offline-storage-and-sync-engine.md",
+      "source_location": "L46",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_decisions_adr_008_derived_markdown_intelligence_and_graph",
+      "target": "docs_decisions_adr_008_derived_markdown_intelligence_and_graph_adr_008_derived_markdown_intelligence_wikilinks_and_knowledge_graph",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/decisions/ADR-008-derived-markdown-intelligence-and-graph.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_decisions_adr_008_derived_markdown_intelligence_and_graph_adr_008_derived_markdown_intelligence_wikilinks_and_knowledge_graph",
+      "target": "docs_decisions_adr_008_derived_markdown_intelligence_and_graph_decision",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/decisions/ADR-008-derived-markdown-intelligence-and-graph.md",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_decisions_adr_008_derived_markdown_intelligence_and_graph_adr_008_derived_markdown_intelligence_wikilinks_and_knowledge_graph",
+      "target": "docs_decisions_adr_008_derived_markdown_intelligence_and_graph_consequences",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/decisions/ADR-008-derived-markdown-intelligence-and-graph.md",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_decisions_adr_008_derived_markdown_intelligence_and_graph_adr_008_derived_markdown_intelligence_wikilinks_and_knowledge_graph",
+      "target": "docs_decisions_adr_008_derived_markdown_intelligence_and_graph_related_decisions",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/decisions/ADR-008-derived-markdown-intelligence-and-graph.md",
+      "source_location": "L49",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_decisions_adr_008_derived_markdown_intelligence_and_graph_adr_008_derived_markdown_intelligence_wikilinks_and_knowledge_graph",
+      "target": "docs_decisions_adr_008_derived_markdown_intelligence_and_graph_context",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/decisions/ADR-008-derived-markdown-intelligence-and-graph.md",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_decisions_adr_008_derived_markdown_intelligence_and_graph_consequences",
+      "target": "docs_decisions_adr_008_derived_markdown_intelligence_and_graph_positive",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/decisions/ADR-008-derived-markdown-intelligence-and-graph.md",
+      "source_location": "L41",
+      "weight": 1.0
+    },
+    {
+      "source": "docs_decisions_adr_008_derived_markdown_intelligence_and_graph_consequences",
+      "target": "docs_decisions_adr_008_derived_markdown_intelligence_and_graph_negative",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "docs/decisions/ADR-008-derived-markdown-intelligence-and-graph.md",
+      "source_location": "L46",
       "weight": 1.0
     },
     {
@@ -15913,5 +16536,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "b23ced05c007864bb56ca47b77b195906f013e02"
+  "built_at_commit": "02f369a8934a945aaa31802c02d29d03abf184c7"
 }
