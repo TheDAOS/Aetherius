@@ -68,7 +68,12 @@ Deno.serve(async (req) => {
         });
       }
 
-      return new Response(JSON.stringify(vault), {
+      return new Response(JSON.stringify({
+        id: vault.id,
+        owner: vault.github_owner,
+        repository: vault.github_repo,
+        branch: vault.branch
+      }), {
         status: 200,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' }
       });
@@ -103,7 +108,10 @@ Deno.serve(async (req) => {
       const ghUser = await github.getUser();
 
       // Create GitHub repository
-      const repoResult = await github.createRepository(repository, description, true);
+      await github.createRepository(repository, description, true);
+
+      // Seed initial vault template files
+      await github.initTemplateFiles(ghUser.login, repository, 'main');
 
       // Save to Supabase
       const { data: newVault, error: insertError } = await supabaseClient
@@ -119,8 +127,87 @@ Deno.serve(async (req) => {
 
       if (insertError) throw insertError;
 
-      return new Response(JSON.stringify(newVault), {
+      return new Response(JSON.stringify({
+        id: newVault.id,
+        owner: newVault.github_owner,
+        repository: newVault.github_repo,
+        branch: newVault.branch
+      }), {
         status: 201,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+      });
+    }
+
+    // Vault Search Endpoint (GET /v1/search?q=...)
+    if (method === 'GET' && path === '/v1/search') {
+      const { data: vault, error } = await supabaseClient
+        .from('vaults')
+        .select('*')
+        .eq('user_id', user.id)
+        .maybeSingle();
+
+      if (error || !vault) {
+        return new Response(JSON.stringify({ error: 'No vault configured' }), {
+          status: 404,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        });
+      }
+
+      const q = url.searchParams.get('q') || '';
+      const pathPrefix = url.searchParams.get('path') || '';
+
+      if (!q.trim()) {
+        return new Response(JSON.stringify({ error: 'Search query parameter "q" is required' }), {
+          status: 400,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        });
+      }
+
+      const results: Array<{ path: string; title: string; snippet: string; score?: number }> = [];
+
+      try {
+        // First try GitHub search code API
+        const ghSearch = await github.searchCode(vault.github_owner, vault.github_repo, q);
+        if (ghSearch && Array.isArray(ghSearch.items)) {
+          for (const item of ghSearch.items) {
+            if (pathPrefix && !item.path.startsWith(pathPrefix)) continue;
+            results.push({
+              path: item.path,
+              title: item.name,
+              snippet: `Match found in ${item.path}`,
+              score: item.score || 1.0
+            });
+          }
+        }
+      } catch (_searchErr) {
+        // Fallback: tree match on path and filename if search code is unavailable / not yet indexed
+        try {
+          const treeData = await github.getTree(vault.github_owner, vault.github_repo, vault.branch || 'main', true);
+          if (treeData && Array.isArray(treeData.tree)) {
+            const queryLower = q.toLowerCase();
+            for (const item of treeData.tree) {
+              if (item.type === 'blob' && item.path.toLowerCase().includes(queryLower)) {
+                if (pathPrefix && !item.path.startsWith(pathPrefix)) continue;
+                const filename = item.path.split('/').pop() || item.path;
+                results.push({
+                  path: item.path,
+                  title: filename,
+                  snippet: `Matched path: ${item.path}`,
+                  score: 1.0
+                });
+              }
+            }
+          }
+        } catch (_treeErr) {
+          // No results on fallback
+        }
+      }
+
+      return new Response(JSON.stringify({
+        query: q,
+        results
+      }), {
+        status: 200,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' }
       });
     }
@@ -143,32 +230,78 @@ Deno.serve(async (req) => {
       const filePath = path.replace('/v1/files', '').replace(/^\//, '');
 
       if (method === 'GET') {
-        // GET /v1/files or GET /v1/files/{path}
+        // If no specific file is requested, return full recursive tree list conforming to FileList schema
+        if (!filePath) {
+          try {
+            const treeData = await github.getTree(vault.github_owner, vault.github_repo, vault.branch || 'main', true);
+            const entries = (treeData.tree || []).map((item: any) => ({
+              path: item.path,
+              name: item.path.split('/').pop() || item.path,
+              type: item.type === 'tree' ? 'directory' : 'file',
+              size: item.size || 0,
+              sha: item.sha,
+              lastModified: new Date().toISOString()
+            }));
+
+            return new Response(JSON.stringify({
+              path: '',
+              entries
+            }), {
+              status: 200,
+              headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+            });
+          } catch (_treeErr) {
+            // Fallback to getContents
+            const contents = await github.getContents(vault.github_owner, vault.github_repo, '');
+            const entries = Array.isArray(contents)
+              ? contents.map((c: any) => ({
+                  path: c.path,
+                  name: c.name,
+                  type: c.type === 'dir' ? 'directory' : 'file',
+                  size: c.size,
+                  sha: c.sha,
+                  lastModified: new Date().toISOString()
+                }))
+              : [];
+
+            return new Response(JSON.stringify({
+              path: '',
+              entries
+            }), {
+              status: 200,
+              headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+            });
+          }
+        }
+
+        // Specific file or subpath requested
         const contents = await github.getContents(vault.github_owner, vault.github_repo, filePath);
         
-        // If it's a directory (or root), GitHub returns an array
+        // If it's a directory, return FileList schema
         if (Array.isArray(contents)) {
-          const files = contents.map((c: any) => ({
+          const entries = contents.map((c: any) => ({
             name: c.name,
             path: c.path,
-            type: c.type,
+            type: c.type === 'dir' ? 'directory' : 'file',
             size: c.size,
             sha: c.sha,
+            lastModified: new Date().toISOString()
           }));
-          return new Response(JSON.stringify({ files }), {
+          return new Response(JSON.stringify({ path: filePath, entries }), {
             status: 200,
             headers: { ...corsHeaders, 'Content-Type': 'application/json' }
           });
         }
         
-        // If it's a file, format the response
+        // If it's a file, format single File schema response
         return new Response(JSON.stringify({
           name: contents.name,
           path: contents.path,
-          type: contents.type,
+          type: contents.type === 'dir' ? 'directory' : 'file',
           size: contents.size,
           sha: contents.sha,
           content: contents.content, // base64 encoded
+          lastModified: new Date().toISOString()
         }), {
           status: 200,
           headers: { ...corsHeaders, 'Content-Type': 'application/json' }
@@ -177,7 +310,7 @@ Deno.serve(async (req) => {
       } else if (method === 'POST' || method === 'PUT') {
         // POST /v1/files (create) or PUT /v1/files/{path} (update)
         const body = await req.json();
-        const { path: bodyPath, content, sha } = body;
+        const { path: bodyPath, content, sha, commitMessage } = body;
         const targetPath = method === 'POST' ? bodyPath : filePath;
         
         if (!targetPath || typeof content !== 'string') {
@@ -187,30 +320,46 @@ Deno.serve(async (req) => {
           });
         }
 
-        const message = method === 'POST' ? `Create note: ${targetPath}` : `Update note: ${targetPath}`;
+        const message = commitMessage || (method === 'POST' ? `Create note: ${targetPath}` : `Update note: ${targetPath}`);
         
-        const result = await github.createOrUpdateFile(
-          vault.github_owner,
-          vault.github_repo,
-          targetPath,
-          message,
-          content,
-          sha,
-          vault.branch
-        );
+        try {
+          const result = await github.createOrUpdateFile(
+            vault.github_owner,
+            vault.github_repo,
+            targetPath,
+            message,
+            content,
+            sha,
+            vault.branch
+          );
 
-        return new Response(JSON.stringify({
-          name: result.content.name,
-          path: result.content.path,
-          sha: result.content.sha,
-        }), {
-          status: method === 'POST' ? 201 : 200,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-        });
+          return new Response(JSON.stringify({
+            name: result.content.name,
+            path: result.content.path,
+            type: 'file',
+            sha: result.content.sha,
+            size: result.content.size,
+            lastModified: new Date().toISOString()
+          }), {
+            status: method === 'POST' ? 201 : 200,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          });
+        } catch (ghErr: any) {
+          if (ghErr.status === 409 || ghErr.status === 422) {
+            return new Response(JSON.stringify({
+              code: 'CONFLICT',
+              message: 'Conflict: File was modified remotely or SHA mismatch'
+            }), {
+              status: 409,
+              headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+            });
+          }
+          throw ghErr;
+        }
 
       } else if (method === 'DELETE') {
         const urlParams = new URL(req.url).searchParams;
-        const sha = urlParams.get('sha'); // Need sha to delete
+        const sha = urlParams.get('sha');
         
         if (!sha) {
           return new Response(JSON.stringify({ error: 'sha query parameter is required for deletion' }), {
@@ -241,10 +390,11 @@ Deno.serve(async (req) => {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' }
     });
 
-  } catch (error) {
+  } catch (error: any) {
     console.error(error);
-    return new Response(JSON.stringify({ error: error.message }), {
-      status: 500,
+    const status = error.status || 500;
+    return new Response(JSON.stringify({ error: error.message || 'Internal server error' }), {
+      status: status >= 400 && status < 600 ? status : 500,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' }
     });
   }

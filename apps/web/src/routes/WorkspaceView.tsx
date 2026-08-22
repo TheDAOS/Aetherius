@@ -53,6 +53,19 @@ export const WorkspaceView: React.FC = () => {
             }}
           />
 
+          {/* Conflict / Error Banner */}
+          {vaultState.hasConflict && (
+            <div className="px-4 py-2 bg-accent-pink text-ink-primary font-mono text-xs border-b-2 border-ink-primary flex items-center justify-between">
+              <span className="font-bold">⚠️ Conflict: Remote file changed on GitHub.</span>
+              <button
+                onClick={vaultState.reloadActiveFile}
+                className="neo-btn px-2 py-0.5 bg-white text-ink-primary text-xs hover:bg-cream-muted"
+              >
+                Reload from GitHub
+              </button>
+            </div>
+          )}
+
           {/* Breadcrumb Path Bar */}
           <div className="px-4 py-1.5 bg-paper-canvas border-b border-cream-border flex items-center justify-between text-xs font-mono text-ink-muted">
             <div className="flex items-center gap-1.5 truncate">

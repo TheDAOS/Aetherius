@@ -20,7 +20,10 @@ export class GitHubClient {
     if (!response.ok) {
       const errorText = await response.text();
       console.error(`GitHub API Error (${response.status}):`, errorText);
-      throw new Error(`GitHub API error: ${response.status} ${response.statusText}`);
+      const err: any = new Error(`GitHub API error: ${response.status} ${response.statusText}`);
+      err.status = response.status;
+      err.body = errorText;
+      throw err;
     }
 
     // Return null for 204 No Content
@@ -51,6 +54,11 @@ export class GitHubClient {
 
   async getContents(owner: string, repo: string, path: string = "") {
     return this.fetch(`/repos/${owner}/${repo}/contents/${path}`);
+  }
+
+  async getTree(owner: string, repo: string, treeSha: string = "main", recursive: boolean = true) {
+    const url = `/repos/${owner}/${repo}/git/trees/${treeSha}${recursive ? "?recursive=1" : ""}`;
+    return this.fetch(url);
   }
 
   async createOrUpdateFile(
@@ -89,5 +97,57 @@ export class GitHubClient {
         branch,
       }),
     });
+  }
+
+  async searchCode(owner: string, repo: string, query: string) {
+    const encodedQuery = encodeURIComponent(`${query} repo:${owner}/${repo}`);
+    return this.fetch(`/search/code?q=${encodedQuery}`);
+  }
+
+  async initTemplateFiles(owner: string, repo: string, branch: string = "main") {
+    const templateFiles = [
+      {
+        path: "README.md",
+        content: btoa(`# Personal Knowledge Vault\n\nWelcome to your personal knowledge vault!\n\nThis repository is your private, Git-backed vault for Markdown notes and assets.\n\n## Structure\n\n\`\`\`text\n├── notes/\n│   ├── programming/       # Technical & programming notes\n│   ├── projects/          # Active project documentation and specs\n│   └── miscellaneous/     # Quick notes, ideas, and scratchpads\n├── assets/\n│   └── images/            # Embedded images, diagrams, and attachments\n├── templates/             # Markdown templates for new notes\n├── .vault/\n│   └── config.json        # Vault configuration and metadata\n└── README.md              # Vault root overview\n\`\`\`\n`),
+        message: "chore: initialize vault README"
+      },
+      {
+        path: ".vault/config.json",
+        content: btoa(JSON.stringify({ version: "1.0.0", name: repo, created: new Date().toISOString() }, null, 2)),
+        message: "chore: initialize vault configuration"
+      },
+      {
+        path: "notes/miscellaneous/welcome.md",
+        content: btoa(`---\ntitle: Welcome to Your Vault\ntags:\n  - welcome\n  - guide\ncreated: ${new Date().toISOString().split('T')[0]}\nupdated: ${new Date().toISOString().split('T')[0]}\n---\n\n# Welcome to Your Vault\n\nThis is your first note in your personal knowledge vault!\n\n## Key Features\n\n- **Markdown-first**: Write in standard Markdown with YAML frontmatter.\n- **Git-backed**: Every save is committed directly to your private GitHub repository.\n- **Hierarchical organization**: Create folders and subfolders to organize your notes.\n- **Templates**: Start new notes quickly using templates in the \`templates/\` folder.\n`),
+        message: "chore: add welcome note"
+      },
+      {
+        path: "templates/daily-note.md",
+        content: btoa(`---\ntitle: Daily Note - {{date}}\ntags:\n  - daily\ncreated: {{date}}\nupdated: {{date}}\n---\n\n# Daily Note - {{date}}\n\n## Objectives\n- [ ] \n\n## Notes & Thoughts\n\n## Tasks & Follow-ups\n- [ ] \n`),
+        message: "chore: add daily note template"
+      },
+      {
+        path: "templates/project-spec.md",
+        content: btoa(`---\ntitle: Project - {{name}}\ntags:\n  - project\nstatus: planning\ncreated: {{date}}\nupdated: {{date}}\n---\n\n# Project: {{name}}\n\n## Overview\n\n## Goals & Non-Goals\n\n## Architecture & Design\n\n## Next Steps\n- [ ] \n`),
+        message: "chore: add project spec template"
+      }
+    ];
+
+    for (const file of templateFiles) {
+      try {
+        let sha: string | undefined;
+        try {
+          const existing = await this.getContents(owner, repo, file.path);
+          if (existing && !Array.isArray(existing)) {
+            sha = existing.sha;
+          }
+        } catch {
+          // File does not exist yet, no sha needed
+        }
+        await this.createOrUpdateFile(owner, repo, file.path, file.message, file.content, sha, branch);
+      } catch (err) {
+        console.warn(`Could not seed template file ${file.path}:`, err);
+      }
+    }
   }
 }
