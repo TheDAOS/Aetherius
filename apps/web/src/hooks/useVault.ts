@@ -16,7 +16,53 @@ export function useVault() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
+  const [isOnline, setIsOnline] = useState<boolean>(navigator.onLine);
   const [hasConflict, setHasConflict] = useState<boolean>(false);
+
+  // Sync pending offline mutations when online
+  const sync = useCallback(async () => {
+    if (!providerToken) return;
+    try {
+      setSyncStatus(prev => prev ? { ...prev, status: 'running' } : { status: 'running', lastSyncAt: null });
+      const result = await vaultService.syncPendingMutations(providerToken);
+      const status = await vaultService.getSyncStatus(providerToken);
+      setSyncStatus(status);
+
+      if (result.errors && result.errors.length > 0) {
+        setError(`Sync completed with ${result.errors.length} error(s)`);
+      } else {
+        setError(null);
+      }
+
+      // Refresh files list
+      const filesData = await vaultService.listFiles(providerToken);
+      setFiles(filesData.entries);
+    } catch (err: any) {
+      setError(err?.message || 'Sync failed');
+    }
+  }, [providerToken]);
+
+  // Network online/offline event listeners
+  useEffect(() => {
+    const handleOnline = () => {
+      setIsOnline(true);
+      if (providerToken) {
+        sync();
+      }
+    };
+    const handleOffline = () => {
+      setIsOnline(false);
+      setSyncStatus({ status: 'idle', lastSyncAt: null, message: 'Offline mode' });
+    };
+
+    window.addEventListener('online', handleOnline);
+    window.addEventListener('offline', handleOffline);
+
+    return () => {
+      window.removeEventListener('online', handleOnline);
+      window.removeEventListener('offline', handleOffline);
+    };
+  }, [providerToken, sync]);
 
   // Load vault metadata & file list
   const refreshVault = useCallback(async () => {
@@ -82,7 +128,7 @@ export function useVault() {
       setHasConflict(false);
       const updated = await vaultService.updateFile(providerToken, activeFilePath, {
         content,
-        expectedSha: activeFile.sha!,
+        expectedSha: activeFile.sha,
         commitMessage: `Update ${activeFile.name}`
       });
       setActiveFile(updated);
@@ -130,10 +176,9 @@ export function useVault() {
   const deleteFile = useCallback(async (path: string) => {
     if (!providerToken) throw new Error("Not authenticated");
     const fileToDelete = files.find(f => f.path === path);
-    if (!fileToDelete?.sha) throw new Error("File missing SHA");
 
     try {
-      await vaultService.deleteFile(providerToken, path, fileToDelete.sha);
+      await vaultService.deleteFile(providerToken, path, fileToDelete?.sha);
       const filesData = await vaultService.listFiles(providerToken);
       setFiles(filesData.entries);
       if (activeFilePath === path) {
@@ -145,17 +190,6 @@ export function useVault() {
     }
   }, [activeFilePath, files, providerToken]);
 
-  const sync = useCallback(async () => {
-    if (!providerToken) return;
-    try {
-      await vaultService.syncVault(providerToken);
-      const status = await vaultService.getSyncStatus(providerToken);
-      setSyncStatus(status);
-    } catch (err: any) {
-      setError(err?.message || 'Sync failed');
-    }
-  }, [providerToken]);
-
   return {
     vault,
     files,
@@ -163,6 +197,7 @@ export function useVault() {
     activeFile,
     content,
     isDirty,
+    isOnline,
     hasConflict,
     syncStatus,
     isLoading,

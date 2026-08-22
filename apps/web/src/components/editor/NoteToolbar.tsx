@@ -1,5 +1,5 @@
-import React from 'react';
-import { Eye, Edit3, Columns, Save, Code, CheckSquare } from 'lucide-react';
+import React, { useRef } from 'react';
+import { Eye, Edit3, Columns, Save, Code, CheckSquare, Image as ImageIcon, WifiOff } from 'lucide-react';
 import { Button } from '../common/Button';
 
 export type ViewMode = 'edit' | 'preview' | 'split';
@@ -8,19 +8,33 @@ interface NoteToolbarProps {
   viewMode: ViewMode;
   onChangeViewMode: (mode: ViewMode) => void;
   isDirty: boolean;
+  isOnline?: boolean;
   sha?: string;
   onSave: () => void;
   onInsertMarkdown?: (snippet: string) => void;
+  onAttachImage?: (file: File) => void;
 }
 
 export const NoteToolbar: React.FC<NoteToolbarProps> = ({
   viewMode,
   onChangeViewMode,
   isDirty,
+  isOnline = true,
   sha,
   onSave,
-  onInsertMarkdown
+  onInsertMarkdown,
+  onAttachImage
 }) => {
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file && onAttachImage) {
+      onAttachImage(file);
+    }
+    if (e.target) e.target.value = '';
+  };
+
   return (
     <div className="border-b-2 border-ink-primary bg-cream-muted px-3 py-2 flex flex-wrap items-center justify-between gap-2 select-none">
       {/* Left: View Mode Switcher */}
@@ -64,7 +78,7 @@ export const NoteToolbar: React.FC<NoteToolbarProps> = ({
           </button>
         </div>
 
-        {/* Mobile Markdown Formatting Helpers */}
+        {/* Markdown Formatting Helpers */}
         {onInsertMarkdown && viewMode !== 'preview' && (
           <div className="flex items-center gap-1 ml-2">
             <button
@@ -88,12 +102,36 @@ export const NoteToolbar: React.FC<NoteToolbarProps> = ({
             >
               <Code size={13} />
             </button>
+            {onAttachImage && (
+              <>
+                <input
+                  type="file"
+                  ref={fileInputRef}
+                  onChange={handleFileChange}
+                  accept="image/*"
+                  className="hidden"
+                />
+                <button
+                  onClick={() => fileInputRef.current?.click()}
+                  className="neo-btn p-1 bg-white text-ink-primary"
+                  title="Attach Image"
+                >
+                  <ImageIcon size={13} />
+                </button>
+              </>
+            )}
           </div>
         )}
       </div>
 
-      {/* Right: Commit SHA & Save Action */}
+      {/* Right: Commit SHA, Offline state & Save Action */}
       <div className="flex items-center gap-2">
+        {!isOnline && (
+          <span className="neo-box-sm px-2 py-0.5 text-[10px] font-mono text-accent-pink bg-white flex items-center gap-1" title="Working in offline mode">
+            <WifiOff size={11} /> OFFLINE
+          </span>
+        )}
+
         {sha && (
           <span className="neo-box-sm px-2 py-0.5 text-[10px] font-mono text-ink-muted bg-white hidden sm:inline" title={`Commit SHA: ${sha}`}>
             SHA: {sha.slice(0, 7)}
@@ -107,7 +145,7 @@ export const NoteToolbar: React.FC<NoteToolbarProps> = ({
           onClick={onSave}
           disabled={!isDirty}
         >
-          {isDirty ? 'Commit (Ctrl+S)' : 'Committed'}
+          {isDirty ? (isOnline ? 'Commit (Ctrl+S)' : 'Save Offline') : 'Saved'}
         </Button>
       </div>
     </div>

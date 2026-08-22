@@ -69,6 +69,19 @@
       "source_location": "L54"
     },
     {
+      "id": "apps_web_src_services_storage_offlinedb_offlinemutation",
+      "label": "OfflineMutation",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": "offlinemutation",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L3"
+    },
+    {
       "id": "apps_web_src_types_vault_apierror",
       "label": "ApiError",
       "_callable": true,
@@ -290,19 +303,6 @@
       "source_location": "L5"
     },
     {
-      "id": "apps_web_src_contexts_authcontext_authcontexttype",
-      "label": "AuthContextType",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "authcontexttype",
-      "source_file": "apps/web/src/contexts/AuthContext.tsx",
-      "source_location": "L5"
-    },
-    {
       "id": "apps_web_src_routes_newnotemodal_newnotemodalprops",
       "label": "NewNoteModalProps",
       "_callable": true,
@@ -407,6 +407,19 @@
       "source_location": "L12"
     },
     {
+      "id": "apps_web_src_services_storage_offlinedb_offlinedatabase",
+      "label": "OfflineDatabase",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": "offlinedatabase",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L16"
+    },
+    {
       "id": "apps_web_src_services_vault_vaultservice",
       "label": "VaultService",
       "_callable": true,
@@ -417,7 +430,7 @@
       "file_type": "code",
       "norm_label": "vaultservice",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L4"
+      "source_location": "L5"
     },
     {
       "id": "apps_web_src_types_vault_vaultfile",
@@ -444,6 +457,19 @@
       "norm_label": "githubclient",
       "source_file": "supabase/functions/_shared/github.ts",
       "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_contexts_authcontext_authcontexttype",
+      "label": "AuthContextType",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "authcontexttype",
+      "source_file": "apps/web/src/contexts/AuthContext.tsx",
+      "source_location": "L5"
     },
     {
       "id": "apps_web_src_components_layout_appshell_appshell",
@@ -540,6 +566,18 @@
       "norm_label": ".deletefile()",
       "source_file": "apps/web/src/services/mockVault.ts",
       "source_location": "L233"
+    },
+    {
+      "id": "apps_web_src_services_mockvault_mockvaultservice_getfile",
+      "label": ".getFile()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": ".getfile()",
+      "source_file": "apps/web/src/services/mockVault.ts",
+      "source_location": "L159"
     },
     {
       "id": "apps_web_src_services_mockvault_mockvaultservice_getsyncstatus",
@@ -650,28 +688,28 @@
       "source_location": "L203"
     },
     {
-      "id": "apps_web_src_services_vault_vaultservice_getsyncstatus",
-      "label": ".getSyncStatus()",
+      "id": "apps_web_src_services_vault_vaultservice_createvault",
+      "label": ".createVault()",
       "_callable": true,
       "_origin": "ast",
       "community": 30,
       "community_name": "types/vault.ts",
       "file_type": "code",
-      "norm_label": ".getsyncstatus()",
+      "norm_label": ".createvault()",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L98"
+      "source_location": "L44"
     },
     {
-      "id": "apps_web_src_app_app",
-      "label": "App()",
+      "id": "apps_web_src_services_vault_vaultservice_getvault",
+      "label": ".getVault()",
       "_callable": true,
       "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
+      "community": 30,
+      "community_name": "types/vault.ts",
       "file_type": "code",
-      "norm_label": "app()",
-      "source_file": "apps/web/src/App.tsx",
-      "source_location": "L6"
+      "norm_label": ".getvault()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L28"
     },
     {
       "id": "apps_web_src_components_common_button_button",
@@ -743,31 +781,7 @@
       "file_type": "code",
       "norm_label": "notetoolbar()",
       "source_file": "apps/web/src/components/editor/NoteToolbar.tsx",
-      "source_location": "L16"
-    },
-    {
-      "id": "apps_web_src_contexts_authcontext_authprovider",
-      "label": "AuthProvider()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "authprovider()",
-      "source_file": "apps/web/src/contexts/AuthContext.tsx",
-      "source_location": "L23"
-    },
-    {
-      "id": "apps_web_src_contexts_authcontext_useauth",
-      "label": "useAuth()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "useauth()",
-      "source_file": "apps/web/src/contexts/AuthContext.tsx",
-      "source_location": "L66"
+      "source_location": "L18"
     },
     {
       "id": "apps_web_src_hooks_usepwa_usepwa",
@@ -780,18 +794,6 @@
       "norm_label": "usepwa()",
       "source_file": "apps/web/src/hooks/usePWA.ts",
       "source_location": "L3"
-    },
-    {
-      "id": "apps_web_src_routes_loginview_loginview",
-      "label": "LoginView()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "loginview()",
-      "source_file": "apps/web/src/routes/LoginView.tsx",
-      "source_location": "L4"
     },
     {
       "id": "apps_web_src_routes_newnotemodal_newnotemodal",
@@ -828,18 +830,6 @@
       "norm_label": "settingsmodal()",
       "source_file": "apps/web/src/routes/SettingsModal.tsx",
       "source_location": "L17"
-    },
-    {
-      "id": "apps_web_src_routes_workspaceview_workspaceview",
-      "label": "WorkspaceView()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "workspaceview()",
-      "source_file": "apps/web/src/routes/WorkspaceView.tsx",
-      "source_location": "L11"
     },
     {
       "id": "apps_web_src_components_common_badge_badge",
@@ -890,7 +880,79 @@
       "source_location": "L20"
     },
     {
-      "id": "apps_web_src_services_mockvault_mockvaultservice_getfile",
+      "id": "apps_web_src_services_storage_offlinedb_offlinedatabase_clearfiles",
+      "label": ".clearFiles()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".clearfiles()",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L109"
+    },
+    {
+      "id": "apps_web_src_services_storage_offlinedb_offlinedatabase_clearmutations",
+      "label": ".clearMutations()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".clearmutations()",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L158"
+    },
+    {
+      "id": "apps_web_src_services_storage_offlinedb_offlinedatabase_deletefile",
+      "label": ".deleteFile()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".deletefile()",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L98"
+    },
+    {
+      "id": "apps_web_src_services_storage_offlinedb_offlinedatabase_deletemutation",
+      "label": ".deleteMutation()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".deletemutation()",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L147"
+    },
+    {
+      "id": "apps_web_src_services_storage_offlinedb_offlinedatabase_getallfiles",
+      "label": ".getAllFiles()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".getallfiles()",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L87"
+    },
+    {
+      "id": "apps_web_src_services_storage_offlinedb_offlinedatabase_getdb",
+      "label": ".getDB()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".getdb()",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L19"
+    },
+    {
+      "id": "apps_web_src_services_storage_offlinedb_offlinedatabase_getfile",
       "label": ".getFile()",
       "_callable": true,
       "_origin": "ast",
@@ -898,8 +960,80 @@
       "community_name": "VaultFile",
       "file_type": "code",
       "norm_label": ".getfile()",
-      "source_file": "apps/web/src/services/mockVault.ts",
-      "source_location": "L159"
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L76"
+    },
+    {
+      "id": "apps_web_src_services_storage_offlinedb_offlinedatabase_getmetadata",
+      "label": ".getMetadata()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".getmetadata()",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L181"
+    },
+    {
+      "id": "apps_web_src_services_storage_offlinedb_offlinedatabase_getpendingmutations",
+      "label": ".getPendingMutations()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".getpendingmutations()",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L136"
+    },
+    {
+      "id": "apps_web_src_services_storage_offlinedb_offlinedatabase_queuemutation",
+      "label": ".queueMutation()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".queuemutation()",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L121"
+    },
+    {
+      "id": "apps_web_src_services_storage_offlinedb_offlinedatabase_savefile",
+      "label": ".saveFile()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".savefile()",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L52"
+    },
+    {
+      "id": "apps_web_src_services_storage_offlinedb_offlinedatabase_savefiles",
+      "label": ".saveFiles()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".savefiles()",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L63"
+    },
+    {
+      "id": "apps_web_src_services_storage_offlinedb_offlinedatabase_setmetadata",
+      "label": ".setMetadata()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".setmetadata()",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L170"
     },
     {
       "id": "apps_web_src_services_vault_vaultservice_createfile",
@@ -911,19 +1045,7 @@
       "file_type": "code",
       "norm_label": ".createfile()",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L68"
-    },
-    {
-      "id": "apps_web_src_services_vault_vaultservice_createvault",
-      "label": ".createVault()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 40,
-      "community_name": "VaultFile",
-      "file_type": "code",
-      "norm_label": ".createvault()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L31"
+      "source_location": "L105"
     },
     {
       "id": "apps_web_src_services_vault_vaultservice_deletefile",
@@ -935,7 +1057,7 @@
       "file_type": "code",
       "norm_label": ".deletefile()",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L94"
+      "source_location": "L191"
     },
     {
       "id": "apps_web_src_services_vault_vaultservice_getfile",
@@ -947,7 +1069,7 @@
       "file_type": "code",
       "norm_label": ".getfile()",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L54"
+      "source_location": "L80"
     },
     {
       "id": "apps_web_src_services_vault_vaultservice_getheaders",
@@ -959,19 +1081,19 @@
       "file_type": "code",
       "norm_label": ".getheaders()",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L5"
+      "source_location": "L6"
     },
     {
-      "id": "apps_web_src_services_vault_vaultservice_getvault",
-      "label": ".getVault()",
+      "id": "apps_web_src_services_vault_vaultservice_getsyncstatus",
+      "label": ".getSyncStatus()",
       "_callable": true,
       "_origin": "ast",
       "community": 40,
       "community_name": "VaultFile",
       "file_type": "code",
-      "norm_label": ".getvault()",
+      "norm_label": ".getsyncstatus()",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L27"
+      "source_location": "L276"
     },
     {
       "id": "apps_web_src_services_vault_vaultservice_invoke",
@@ -983,7 +1105,7 @@
       "file_type": "code",
       "norm_label": ".invoke()",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L13"
+      "source_location": "L14"
     },
     {
       "id": "apps_web_src_services_vault_vaultservice_listfiles",
@@ -995,7 +1117,7 @@
       "file_type": "code",
       "norm_label": ".listfiles()",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L39"
+      "source_location": "L54"
     },
     {
       "id": "apps_web_src_services_vault_vaultservice_resettodefaults",
@@ -1007,7 +1129,7 @@
       "file_type": "code",
       "norm_label": ".resettodefaults()",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L137"
+      "source_location": "L332"
     },
     {
       "id": "apps_web_src_services_vault_vaultservice_search",
@@ -1019,19 +1141,19 @@
       "file_type": "code",
       "norm_label": ".search()",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L110"
+      "source_location": "L301"
     },
     {
-      "id": "apps_web_src_services_vault_vaultservice_syncvault",
-      "label": ".syncVault()",
+      "id": "apps_web_src_services_vault_vaultservice_syncpendingmutations",
+      "label": ".syncPendingMutations()",
       "_callable": true,
       "_origin": "ast",
       "community": 40,
       "community_name": "VaultFile",
       "file_type": "code",
-      "norm_label": ".syncvault()",
+      "norm_label": ".syncpendingmutations()",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L106"
+      "source_location": "L210"
     },
     {
       "id": "apps_web_src_services_vault_vaultservice_updatefile",
@@ -1043,7 +1165,7 @@
       "file_type": "code",
       "norm_label": ".updatefile()",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L81"
+      "source_location": "L145"
     },
     {
       "id": "supabase_functions_shared_github_githubclient_constructor",
@@ -1176,6 +1298,66 @@
       "norm_label": ".searchcode()",
       "source_file": "supabase/functions/_shared/github.ts",
       "source_location": "L102"
+    },
+    {
+      "id": "apps_web_src_app_app",
+      "label": "App()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "app()",
+      "source_file": "apps/web/src/App.tsx",
+      "source_location": "L6"
+    },
+    {
+      "id": "apps_web_src_contexts_authcontext_authprovider",
+      "label": "AuthProvider()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "authprovider()",
+      "source_file": "apps/web/src/contexts/AuthContext.tsx",
+      "source_location": "L23"
+    },
+    {
+      "id": "apps_web_src_contexts_authcontext_useauth",
+      "label": "useAuth()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "useauth()",
+      "source_file": "apps/web/src/contexts/AuthContext.tsx",
+      "source_location": "L66"
+    },
+    {
+      "id": "apps_web_src_routes_loginview_loginview",
+      "label": "LoginView()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "loginview()",
+      "source_file": "apps/web/src/routes/LoginView.tsx",
+      "source_location": "L4"
+    },
+    {
+      "id": "apps_web_src_routes_workspaceview_workspaceview",
+      "label": "WorkspaceView()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "workspaceview()",
+      "source_file": "apps/web/src/routes/WorkspaceView.tsx",
+      "source_location": "L11"
     },
     {
       "id": "openapi_openapi_yaml_bearer_auth",
@@ -3601,6 +3783,39 @@
       "source_location": "L14"
     },
     {
+      "id": "apps_web_src_services_storage_offlinedb",
+      "label": "offlineDb.ts",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": "offlinedb.ts",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_services_storage_offlinedb_offlinedb",
+      "label": "offlineDb",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": "offlinedb",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L193"
+    },
+    {
+      "id": "apps_web_src_services_vault",
+      "label": "services/vault.ts",
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": "services/vault.ts",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "apps_web_src_types_vault",
       "label": "types/vault.ts",
       "_origin": "ast",
@@ -3609,17 +3824,6 @@
       "file_type": "code",
       "norm_label": "types/vault.ts",
       "source_file": "apps/web/src/types/vault.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_web_src_app",
-      "label": "App.tsx",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "app.tsx",
-      "source_file": "apps/web/src/App.tsx",
       "source_location": "L1"
     },
     {
@@ -3689,28 +3893,6 @@
       "source_location": "L1"
     },
     {
-      "id": "apps_web_src_contexts_authcontext",
-      "label": "AuthContext.tsx",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "authcontext.tsx",
-      "source_file": "apps/web/src/contexts/AuthContext.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_web_src_contexts_authcontext_authcontext",
-      "label": "AuthContext",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "authcontext",
-      "source_file": "apps/web/src/contexts/AuthContext.tsx",
-      "source_location": "L14"
-    },
-    {
       "id": "apps_web_src_hooks_usepwa",
       "label": "usePWA.ts",
       "_origin": "ast",
@@ -3719,39 +3901,6 @@
       "file_type": "code",
       "norm_label": "usepwa.ts",
       "source_file": "apps/web/src/hooks/usePWA.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_web_src_main",
-      "label": "main.tsx",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "main.tsx",
-      "source_file": "apps/web/src/main.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_web_src_main_rootelement",
-      "label": "rootElement",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "rootelement",
-      "source_file": "apps/web/src/main.tsx",
-      "source_location": "L8"
-    },
-    {
-      "id": "apps_web_src_routes_loginview",
-      "label": "LoginView.tsx",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "loginview.tsx",
-      "source_file": "apps/web/src/routes/LoginView.tsx",
       "source_location": "L1"
     },
     {
@@ -3796,39 +3945,6 @@
       "file_type": "code",
       "norm_label": "workspaceview.tsx",
       "source_file": "apps/web/src/routes/WorkspaceView.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_web_src_services_supabaseclient",
-      "label": "supabaseClient.ts",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "supabaseclient.ts",
-      "source_file": "apps/web/src/services/supabaseClient.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_web_src_services_supabaseclient_supabase",
-      "label": "supabase",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "supabase",
-      "source_file": "apps/web/src/services/supabaseClient.ts",
-      "source_location": "L6"
-    },
-    {
-      "id": "apps_web_src_services_vault",
-      "label": "services/vault.ts",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "services/vault.ts",
-      "source_file": "apps/web/src/services/vault.ts",
       "source_location": "L1"
     },
     {
@@ -5175,6 +5291,238 @@
       "source_location": "L1"
     },
     {
+      "id": "apps_web_src_app",
+      "label": "App.tsx",
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "app.tsx",
+      "source_file": "apps/web/src/App.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_contexts_authcontext",
+      "label": "AuthContext.tsx",
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "authcontext.tsx",
+      "source_file": "apps/web/src/contexts/AuthContext.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_contexts_authcontext_authcontext",
+      "label": "AuthContext",
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "authcontext",
+      "source_file": "apps/web/src/contexts/AuthContext.tsx",
+      "source_location": "L14"
+    },
+    {
+      "id": "apps_web_src_main",
+      "label": "main.tsx",
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "main.tsx",
+      "source_file": "apps/web/src/main.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_main_rootelement",
+      "label": "rootElement",
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "rootelement",
+      "source_file": "apps/web/src/main.tsx",
+      "source_location": "L8"
+    },
+    {
+      "id": "apps_web_src_routes_loginview",
+      "label": "LoginView.tsx",
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "loginview.tsx",
+      "source_file": "apps/web/src/routes/LoginView.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_services_supabaseclient",
+      "label": "supabaseClient.ts",
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "supabaseclient.ts",
+      "source_file": "apps/web/src/services/supabaseClient.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_services_supabaseclient_supabase",
+      "label": "supabase",
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "AuthContext.tsx",
+      "file_type": "code",
+      "norm_label": "supabase",
+      "source_file": "apps/web/src/services/supabaseClient.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "ai_context_phase_4_sync_offline_plan",
+      "label": "phase-4-sync-offline-plan.md",
+      "_origin": "ast",
+      "community": 47,
+      "community_name": "3. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "phase-4-sync-offline-plan.md",
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "ai_context_phase_4_sync_offline_plan_1_overview_objectives",
+      "label": "1. Overview & Objectives",
+      "_origin": "ast",
+      "community": 47,
+      "community_name": "3. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "1. overview & objectives",
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L3"
+    },
+    {
+      "id": "ai_context_phase_4_sync_offline_plan_2_architecture_data_flow",
+      "label": "2. Architecture & Data Flow",
+      "_origin": "ast",
+      "community": 47,
+      "community_name": "3. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "2. architecture & data flow",
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L10"
+    },
+    {
+      "id": "ai_context_phase_4_sync_offline_plan_3_step_by_step_execution_sequence",
+      "label": "3. Step-by-Step Execution Sequence",
+      "_origin": "ast",
+      "community": 47,
+      "community_name": "3. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "3. step-by-step execution sequence",
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L33"
+    },
+    {
+      "id": "ai_context_phase_4_sync_offline_plan_4_definition_of_done",
+      "label": "4. Definition of Done",
+      "_origin": "ast",
+      "community": 47,
+      "community_name": "3. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "4. definition of done",
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L73"
+    },
+    {
+      "id": "ai_context_phase_4_sync_offline_plan_phase_4_implementation_plan_offline_cache_synchronization_engine",
+      "label": "Phase 4 Implementation Plan \u2014 Offline Cache & Synchronization Engine",
+      "_origin": "ast",
+      "community": 47,
+      "community_name": "3. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "phase 4 implementation plan \u2014 offline cache & synchronization engine",
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "ai_context_phase_4_sync_offline_plan_step_1_indexeddb_storage_layer",
+      "label": "**Step 1 \u2014 IndexedDB Storage Layer**",
+      "_origin": "ast",
+      "community": 47,
+      "community_name": "3. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "**step 1 \u2014 indexeddb storage layer**",
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L35"
+    },
+    {
+      "id": "ai_context_phase_4_sync_offline_plan_step_2_read_through_caching_offline_fallback",
+      "label": "**Step 2 \u2014 Read-Through Caching & Offline Fallback**",
+      "_origin": "ast",
+      "community": 47,
+      "community_name": "3. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "**step 2 \u2014 read-through caching & offline fallback**",
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L42"
+    },
+    {
+      "id": "ai_context_phase_4_sync_offline_plan_step_3_offline_mutation_queue_background_sync",
+      "label": "**Step 3 \u2014 Offline Mutation Queue & Background Sync**",
+      "_origin": "ast",
+      "community": 47,
+      "community_name": "3. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "**step 3 \u2014 offline mutation queue & background sync**",
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L48"
+    },
+    {
+      "id": "ai_context_phase_4_sync_offline_plan_step_4_sync_api_endpoints_in_edge_functions",
+      "label": "**Step 4 \u2014 Sync API Endpoints in Edge Functions**",
+      "_origin": "ast",
+      "community": 47,
+      "community_name": "3. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "**step 4 \u2014 sync api endpoints in edge functions**",
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L57"
+    },
+    {
+      "id": "ai_context_phase_4_sync_offline_plan_step_5_asset_upload_support",
+      "label": "**Step 5 \u2014 Asset Upload Support**",
+      "_origin": "ast",
+      "community": 47,
+      "community_name": "3. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "**step 5 \u2014 asset upload support**",
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L61"
+    },
+    {
+      "id": "ai_context_phase_4_sync_offline_plan_step_6_verification_quality_checks",
+      "label": "**Step 6 \u2014 Verification & Quality Checks**",
+      "_origin": "ast",
+      "community": 47,
+      "community_name": "3. Step-by-Step Execution Sequence",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "**step 6 \u2014 verification & quality checks**",
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L66"
+    },
+    {
       "id": "docs_architecture_supabase",
       "label": "supabase.md",
       "_origin": "ast",
@@ -6377,6 +6725,150 @@
       "weight": 1.0
     },
     {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase_clearfiles",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_getdb",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L110",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase_clearmutations",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_getdb",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L159",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase_deletefile",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_getdb",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L99",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase_deletemutation",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_getdb",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L148",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase_getallfiles",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_getdb",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L88",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase_getfile",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_getdb",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L77",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase_getmetadata",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_getdb",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L182",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase_getpendingmutations",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_getdb",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L137",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase_queuemutation",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_getdb",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L122",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase_savefile",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_getdb",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L53",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase_savefiles",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_getdb",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L64",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase_setmetadata",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_getdb",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L171",
+      "weight": 1.0
+    },
+    {
       "source": "apps_web_src_services_vault_vaultservice_createfile",
       "target": "apps_web_src_services_vault_vaultservice_getfile",
       "relation": "calls",
@@ -6385,31 +6877,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L78",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_web_src_services_vault_vaultservice_createvault",
-      "target": "apps_web_src_services_vault_vaultservice_invoke",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L32",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_web_src_services_vault_vaultservice_getvault",
-      "target": "apps_web_src_services_vault_vaultservice_invoke",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L28",
+      "source_location": "L126",
       "weight": 1.0
     },
     {
@@ -6421,7 +6889,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L17",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -6433,7 +6901,31 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L123",
+      "source_location": "L319",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_vault_vaultservice_syncpendingmutations",
+      "target": "apps_web_src_services_vault_vaultservice_invoke",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L219",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_vault_vaultservice_syncpendingmutations",
+      "target": "apps_web_src_services_vault_vaultservice_listfiles",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L271",
       "weight": 1.0
     },
     {
@@ -6445,7 +6937,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L91",
+      "source_location": "L167",
       "weight": 1.0
     },
     {
@@ -6797,6 +7289,30 @@
       "weight": 1.0
     },
     {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase_getallfiles",
+      "target": "apps_web_src_types_vault_vaultfile",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "generic_arg",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L87",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase_getfile",
+      "target": "apps_web_src_types_vault_vaultfile",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "generic_arg",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L76",
+      "weight": 1.0
+    },
+    {
       "source": "apps_web_src_services_vault_vaultservice_createfile",
       "target": "apps_web_src_types_vault_vaultfile",
       "relation": "references",
@@ -6805,7 +7321,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L68",
+      "source_location": "L105",
       "weight": 1.0
     },
     {
@@ -6817,7 +7333,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L31",
+      "source_location": "L44",
       "weight": 1.0
     },
     {
@@ -6829,7 +7345,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L54",
+      "source_location": "L80",
       "weight": 1.0
     },
     {
@@ -6841,7 +7357,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L98",
+      "source_location": "L276",
       "weight": 1.0
     },
     {
@@ -6853,7 +7369,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L27",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -6865,7 +7381,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L39",
+      "source_location": "L54",
       "weight": 1.0
     },
     {
@@ -6877,7 +7393,7 @@
       "confidence_score": 1.0,
       "context": "generic_arg",
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L81",
+      "source_location": "L145",
       "weight": 1.0
     },
     {
@@ -7769,6 +8285,18 @@
       "weight": 1.0
     },
     {
+      "source": "apps_web_src_services_storage_offlinedb",
+      "target": "apps_web_src_types_vault_vaultfile",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
       "source": "apps_web_src_services_vault",
       "target": "apps_web_src_services_supabaseclient_supabase",
       "relation": "imports",
@@ -7814,6 +8342,18 @@
       "context": "import",
       "source_file": "apps/web/src/services/vault.ts",
       "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_vault",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedb",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L3",
       "weight": 1.0
     },
     {
@@ -8357,6 +8897,18 @@
       "weight": 1.0
     },
     {
+      "source": "apps_web_src_services_storage_offlinedb",
+      "target": "apps_web_src_types_vault",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
       "source": "apps_web_src_services_vault",
       "target": "apps_web_src_services_supabaseclient",
       "relation": "imports_from",
@@ -8378,6 +8930,18 @@
       "context": "import",
       "source_file": "apps/web/src/services/vault.ts",
       "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_vault",
+      "target": "apps_web_src_services_storage_offlinedb",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L3",
       "weight": 1.0
     },
     {
@@ -8414,6 +8978,30 @@
       "context": "parameter_type",
       "source_file": "apps/web/src/services/mockVault.ts",
       "source_location": "L203",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase_savefile",
+      "target": "apps_web_src_types_vault_vaultfile",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L52",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase_savefiles",
+      "target": "apps_web_src_types_vault_vaultfile",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "parameter_type",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L63",
       "weight": 1.0
     },
     {
@@ -9407,6 +9995,127 @@
       "weight": 1.0
     },
     {
+      "source": "ai_context_phase_4_sync_offline_plan",
+      "target": "ai_context_phase_4_sync_offline_plan_phase_4_implementation_plan_offline_cache_synchronization_engine",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_4_sync_offline_plan_3_step_by_step_execution_sequence",
+      "target": "ai_context_phase_4_sync_offline_plan_step_1_indexeddb_storage_layer",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_4_sync_offline_plan_3_step_by_step_execution_sequence",
+      "target": "ai_context_phase_4_sync_offline_plan_step_2_read_through_caching_offline_fallback",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L42",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_4_sync_offline_plan_3_step_by_step_execution_sequence",
+      "target": "ai_context_phase_4_sync_offline_plan_step_3_offline_mutation_queue_background_sync",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L48",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_4_sync_offline_plan_3_step_by_step_execution_sequence",
+      "target": "ai_context_phase_4_sync_offline_plan_step_4_sync_api_endpoints_in_edge_functions",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L57",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_4_sync_offline_plan_3_step_by_step_execution_sequence",
+      "target": "ai_context_phase_4_sync_offline_plan_step_5_asset_upload_support",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L61",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_4_sync_offline_plan_3_step_by_step_execution_sequence",
+      "target": "ai_context_phase_4_sync_offline_plan_step_6_verification_quality_checks",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L66",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_4_sync_offline_plan_phase_4_implementation_plan_offline_cache_synchronization_engine",
+      "target": "ai_context_phase_4_sync_offline_plan_2_architecture_data_flow",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_4_sync_offline_plan_phase_4_implementation_plan_offline_cache_synchronization_engine",
+      "target": "ai_context_phase_4_sync_offline_plan_1_overview_objectives",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_4_sync_offline_plan_phase_4_implementation_plan_offline_cache_synchronization_engine",
+      "target": "ai_context_phase_4_sync_offline_plan_3_step_by_step_execution_sequence",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_context_phase_4_sync_offline_plan_phase_4_implementation_plan_offline_cache_synchronization_engine",
+      "target": "ai_context_phase_4_sync_offline_plan_4_definition_of_done",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "ai/context/phase-4-sync-offline-plan.md",
+      "source_location": "L73",
+      "weight": 1.0
+    },
+    {
       "source": "apps_web_package",
       "target": "apps_web_package_dependencies",
       "relation": "contains",
@@ -9865,7 +10574,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/web/src/components/editor/NoteToolbar.tsx",
-      "source_location": "L16",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -10243,6 +10952,39 @@
       "weight": 1.0
     },
     {
+      "source": "apps_web_src_services_storage_offlinedb",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedb",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L193",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb",
+      "target": "apps_web_src_services_storage_offlinedb_offlinemutation",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
       "source": "apps_web_src_services_supabaseclient",
       "target": "apps_web_src_services_supabaseclient_supabase",
       "relation": "contains",
@@ -10261,7 +11003,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L142",
+      "source_location": "L337",
       "weight": 1.0
     },
     {
@@ -12718,102 +13460,146 @@
       "weight": 1.0
     },
     {
-      "source": "apps_web_src_services_vault_vaultservice",
-      "target": "apps_web_src_services_vault_vaultservice_syncvault",
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_clearfiles",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L106",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L109",
       "weight": 1.0
     },
     {
-      "source": "apps_web_src_services_vault_vaultservice",
-      "target": "apps_web_src_services_vault_vaultservice_search",
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_queuemutation",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L110",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L121",
       "weight": 1.0
     },
     {
-      "source": "apps_web_src_services_vault_vaultservice",
-      "target": "apps_web_src_services_vault_vaultservice_invoke",
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_getpendingmutations",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L13",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L136",
       "weight": 1.0
     },
     {
-      "source": "apps_web_src_services_vault_vaultservice",
-      "target": "apps_web_src_services_vault_vaultservice_resettodefaults",
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_deletemutation",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L137",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L147",
       "weight": 1.0
     },
     {
-      "source": "apps_web_src_services_vault_vaultservice",
-      "target": "apps_web_src_services_vault_vaultservice_getvault",
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_clearmutations",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L27",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L158",
       "weight": 1.0
     },
     {
-      "source": "apps_web_src_services_vault_vaultservice",
-      "target": "apps_web_src_services_vault_vaultservice_createvault",
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_setmetadata",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L31",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L170",
       "weight": 1.0
     },
     {
-      "source": "apps_web_src_services_vault_vaultservice",
-      "target": "apps_web_src_services_vault_vaultservice_listfiles",
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_getmetadata",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L39",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L181",
       "weight": 1.0
     },
     {
-      "source": "apps_web_src_services_vault_vaultservice",
-      "target": "apps_web_src_services_vault_vaultservice_getheaders",
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_getdb",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L5",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
-      "source": "apps_web_src_services_vault_vaultservice",
-      "target": "apps_web_src_services_vault_vaultservice_getfile",
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_savefile",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L54",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L52",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_savefiles",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L63",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_getfile",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L76",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_getallfiles",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L87",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_deletefile",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L98",
       "weight": 1.0
     },
     {
@@ -12824,7 +13610,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L68",
+      "source_location": "L105",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_vault_vaultservice",
+      "target": "apps_web_src_services_vault_vaultservice_invoke",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L14",
       "weight": 1.0
     },
     {
@@ -12835,7 +13632,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L81",
+      "source_location": "L145",
       "weight": 1.0
     },
     {
@@ -12846,7 +13643,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L94",
+      "source_location": "L191",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_vault_vaultservice",
+      "target": "apps_web_src_services_vault_vaultservice_syncpendingmutations",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L210",
       "weight": 1.0
     },
     {
@@ -12857,7 +13665,84 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L98",
+      "source_location": "L276",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_vault_vaultservice",
+      "target": "apps_web_src_services_vault_vaultservice_getvault",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_vault_vaultservice",
+      "target": "apps_web_src_services_vault_vaultservice_search",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L301",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_vault_vaultservice",
+      "target": "apps_web_src_services_vault_vaultservice_resettodefaults",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L332",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_vault_vaultservice",
+      "target": "apps_web_src_services_vault_vaultservice_createvault",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L44",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_vault_vaultservice",
+      "target": "apps_web_src_services_vault_vaultservice_listfiles",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L54",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_vault_vaultservice",
+      "target": "apps_web_src_services_vault_vaultservice_getheaders",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_vault_vaultservice",
+      "target": "apps_web_src_services_vault_vaultservice_getfile",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L80",
       "weight": 1.0
     },
     {
@@ -13148,5 +14033,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "4980f4793d6cdddc9e56eee322c729d29c87ea57"
+  "built_at_commit": "558b18648af0f439575b3ff7f79c61aaf149ee15"
 }

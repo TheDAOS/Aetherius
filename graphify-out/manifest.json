@@ -246,9 +246,9 @@
     "semantic_hash": ""
   },
   "apps/web/src/components/editor/NoteToolbar.tsx": {
-    "mtime": 1787229750.5598264,
-    "seen": 1787230088.3003128,
-    "ast_hash": "39be1b3be7246addf27d542fc719439d",
+    "mtime": 1787418583.4098651,
+    "seen": 1787418620.9306145,
+    "ast_hash": "3e814e3657df47676b56b96408e49df3",
     "semantic_hash": ""
   },
   "apps/web/src/components/layout/AppShell.tsx": {
@@ -294,9 +294,9 @@
     "semantic_hash": ""
   },
   "apps/web/src/hooks/useVault.ts": {
-    "mtime": 1787417939.6474006,
-    "seen": 1787417994.922957,
-    "ast_hash": "66f2fec3cab7c303a8d1be718fbc9a40",
+    "mtime": 1787418562.8977094,
+    "seen": 1787418620.9313982,
+    "ast_hash": "151eb2ae4bff96e03980a7b53a4a8858",
     "semantic_hash": ""
   },
   "apps/web/src/main.tsx": {
@@ -324,9 +324,9 @@
     "semantic_hash": ""
   },
   "apps/web/src/routes/WorkspaceView.tsx": {
-    "mtime": 1787417963.718566,
-    "seen": 1787417994.9233491,
-    "ast_hash": "09c5865047f903224bdc6e92f53af488",
+    "mtime": 1787418589.3349104,
+    "seen": 1787418620.9318292,
+    "ast_hash": "2b7b4a4868e876d553a6fa7dab439e36",
     "semantic_hash": ""
   },
   "apps/web/src/services/mockVault.ts": {
@@ -408,9 +408,9 @@
     "semantic_hash": ""
   },
   "supabase/functions/api-v1/index.ts": {
-    "mtime": 1787417918.9153337,
-    "seen": 1787417994.9240296,
-    "ast_hash": "37f861a41b38dbc7e99918bac64626a3",
+    "mtime": 1787418534.05449,
+    "seen": 1787418620.932628,
+    "ast_hash": "316ab1c2cf88f97b7e7057a2066d34c0",
     "semantic_hash": ""
   },
   "ai/context/phase-3-github-vault-plan.md": {
@@ -420,9 +420,9 @@
     "semantic_hash": ""
   },
   "apps/web/src/services/vault.ts": {
-    "mtime": 1787417929.345363,
-    "seen": 1787417994.923512,
-    "ast_hash": "5208e2400b2e66547d8f8a1a1b13f254",
+    "mtime": 1787418551.1396198,
+    "seen": 1787418620.9320083,
+    "ast_hash": "39447d6f0743a1802a0223fee3781f89",
     "semantic_hash": ""
   },
   "supabase/functions/_shared/github.ts": {
@@ -441,6 +441,18 @@
     "mtime": 1787231054.4097874,
     "seen": 1787231061.7275832,
     "ast_hash": "e41858770c42d5433076dd766a41a0a8",
+    "semantic_hash": ""
+  },
+  "apps/web/src/services/storage/offlineDb.ts": {
+    "mtime": 1787418520.5963876,
+    "seen": 1787418620.9319184,
+    "ast_hash": "f62d508c1d289513f1849e08e4e8c6d9",
+    "semantic_hash": ""
+  },
+  "ai/context/phase-4-sync-offline-plan.md": {
+    "mtime": 1787418514.2940714,
+    "seen": 1787418620.9333968,
+    "ast_hash": "df5452cdcdec9102fb4cc5dfb9398674",
     "semantic_hash": ""
   }
 }

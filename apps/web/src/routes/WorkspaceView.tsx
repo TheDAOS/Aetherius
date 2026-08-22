@@ -46,10 +46,26 @@ export const WorkspaceView: React.FC = () => {
             viewMode={viewMode}
             onChangeViewMode={setViewMode}
             isDirty={vaultState.isDirty}
+            isOnline={vaultState.isOnline}
             sha={vaultState.activeFile?.sha}
             onSave={vaultState.saveActiveFile}
             onInsertMarkdown={(snippet) => {
               vaultState.updateContent(vaultState.content + snippet);
+            }}
+            onAttachImage={async (file) => {
+              const reader = new FileReader();
+              reader.onload = async () => {
+                const base64Content = (reader.result as string).split(',')[1] || '';
+                const sanitizedName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+                const imagePath = `assets/images/${Date.now()}_${sanitizedName}`;
+                try {
+                  await vaultState.createFile(imagePath, atob(base64Content));
+                  vaultState.updateContent(vaultState.content + `\n\n![${file.name}](${imagePath})\n\n`);
+                } catch (e: any) {
+                  alert(`Failed to attach image: ${e?.message || 'Error'}`);
+                }
+              };
+              reader.readAsDataURL(file);
             }}
           />
 
