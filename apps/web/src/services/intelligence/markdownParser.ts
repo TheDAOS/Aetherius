@@ -134,20 +134,34 @@ export function parseMarkdown(content: string, defaultPath: string = ''): Parsed
   };
 }
 
-export function resolveWikilinkPath(target: string, allFilePaths: string[]): string | null {
+export function resolveWikilinkPath(
+  target: string,
+  allFilePaths: string[],
+  titleToPathMap?: Map<string, string>
+): string | null {
   const cleanTarget = target.trim().replace(/\.md$/, '').toLowerCase();
+  const normalizedTarget = cleanTarget.replace(/[\s\-_]+/g, '-');
 
-  // 1. Exact path match
+  // 1. Check title/alias map if provided
+  if (titleToPathMap) {
+    const fromMap = titleToPathMap.get(cleanTarget) || titleToPathMap.get(normalizedTarget);
+    if (fromMap) return fromMap;
+  }
+
+  // 2. Exact path match
   for (const path of allFilePaths) {
-    if (path.replace(/\.md$/, '').toLowerCase() === cleanTarget) {
+    const cleanPath = path.replace(/\.md$/, '').toLowerCase();
+    if (cleanPath === cleanTarget || cleanPath.replace(/[\s\-_]+/g, '-') === normalizedTarget) {
       return path;
     }
   }
 
-  // 2. Basename match
+  // 3. Basename match (e.g. [[System Design]] -> notes/system-design.md)
   for (const path of allFilePaths) {
     const filename = path.split('/').pop()?.replace(/\.md$/, '').toLowerCase();
-    if (filename === cleanTarget) {
+    if (!filename) continue;
+    const normalizedFilename = filename.replace(/[\s\-_]+/g, '-');
+    if (filename === cleanTarget || normalizedFilename === normalizedTarget) {
       return path;
     }
   }

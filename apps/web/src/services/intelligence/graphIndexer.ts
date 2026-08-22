@@ -82,10 +82,21 @@ export function buildGraphIndex(files: VaultFile[]): VaultGraphIndex {
     }
   }
 
-  // 2. Build forward links and backlinks
+  // 2. Build title and alias lookup map
+  const titleToPathMap = new Map<string, string>();
+  for (const [path, parsed] of parsedNotesMap.entries()) {
+    if (parsed.title) {
+      titleToPathMap.set(parsed.title.toLowerCase(), path);
+    }
+    for (const alias of parsed.aliases) {
+      titleToPathMap.set(alias.toLowerCase(), path);
+    }
+  }
+
+  // 3. Build forward links and backlinks
   for (const [sourcePath, parsed] of parsedNotesMap.entries()) {
     for (const link of parsed.outgoingLinks) {
-      const targetPath = resolveWikilinkPath(link.target, allPaths);
+      const targetPath = resolveWikilinkPath(link.target, allPaths, titleToPathMap);
       if (targetPath && targetPath !== sourcePath) {
         edges.push({ source: sourcePath, target: targetPath, label: 'links' });
 
@@ -108,7 +119,7 @@ export function buildGraphIndex(files: VaultFile[]): VaultGraphIndex {
     }
   }
 
-  // 3. Scan Unlinked Mentions
+  // 4. Scan Unlinked Mentions
   for (const [targetPath, targetParsed] of parsedNotesMap.entries()) {
     const targetPhrases = [targetParsed.title, ...targetParsed.aliases].filter(
       p => p && p.length > 2 && p.toLowerCase() !== 'untitled'
@@ -125,9 +136,15 @@ export function buildGraphIndex(files: VaultFile[]): VaultGraphIndex {
       );
       if (alreadyLinked) continue;
 
+      // Strip explicit links and code blocks from text to avoid false positives
+      const cleanBody = sourceParsed.body
+        .replace(/\[\[[^\]]+\]\]/g, '')
+        .replace(/```[\s\S]*?```/g, '')
+        .replace(/`[^`]+`/g, '');
+
       for (const phrase of targetPhrases) {
         const regex = new RegExp(`\\b${phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
-        if (regex.test(sourceParsed.body)) {
+        if (regex.test(cleanBody)) {
           if (!unlinkedMentions.has(targetPath)) unlinkedMentions.set(targetPath, []);
           const snippet = extractSnippet(sourceParsed.body, phrase);
           unlinkedMentions.get(targetPath)!.push({

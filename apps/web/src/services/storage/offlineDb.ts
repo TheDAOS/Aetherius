@@ -188,6 +188,18 @@ class OfflineDatabase {
       req.onerror = () => reject(req.error);
     });
   }
+
+  async clearAll(): Promise<void> {
+    const db = await this.getDB();
+    return new Promise((resolve, reject) => {
+      const tx = db.transaction(['files', 'mutations', 'metadata'], 'readwrite');
+      tx.objectStore('files').clear();
+      tx.objectStore('mutations').clear();
+      tx.objectStore('metadata').clear();
+      tx.oncomplete = () => resolve();
+      tx.onerror = () => reject(tx.error);
+    });
+  }
 }
 
 export const offlineDb = new OfflineDatabase();

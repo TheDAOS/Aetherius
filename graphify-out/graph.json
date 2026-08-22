@@ -329,19 +329,6 @@
       "source_location": "L8"
     },
     {
-      "id": "apps_web_src_services_storage_offlinedb_offlinemutation",
-      "label": "OfflineMutation",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "offlinemutation",
-      "source_file": "apps/web/src/services/storage/offlineDb.ts",
-      "source_location": "L3"
-    },
-    {
       "id": "apps_web_src_types_vault_searchresult",
       "label": "SearchResult",
       "_callable": true,
@@ -576,6 +563,19 @@
       "source_location": "L16"
     },
     {
+      "id": "apps_web_src_services_storage_offlinedb_offlinemutation",
+      "label": "OfflineMutation",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": "offlinemutation",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L3"
+    },
+    {
       "id": "apps_web_src_services_vault_vaultservice",
       "label": "VaultService",
       "_callable": true,
@@ -613,6 +613,18 @@
       "norm_label": "githubclient",
       "source_file": "supabase/functions/_shared/github.ts",
       "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_components_layout_topheader_topheader",
+      "label": "TopHeader()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": "topheader()",
+      "source_file": "apps/web/src/components/layout/TopHeader.tsx",
+      "source_location": "L19"
     },
     {
       "id": "apps_web_src_components_vault_gitstatusbadge_gitstatusbadge",
@@ -807,6 +819,18 @@
       "source_location": "L44"
     },
     {
+      "id": "apps_web_src_services_vault_vaultservice_getsyncstatus",
+      "label": ".getSyncStatus()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 30,
+      "community_name": "types/vault.ts",
+      "file_type": "code",
+      "norm_label": ".getsyncstatus()",
+      "source_file": "apps/web/src/services/vault.ts",
+      "source_location": "L276"
+    },
+    {
       "id": "apps_web_src_services_vault_vaultservice_getvault",
       "label": ".getVault()",
       "_callable": true,
@@ -913,18 +937,6 @@
       "norm_label": "appshell()",
       "source_file": "apps/web/src/components/layout/AppShell.tsx",
       "source_location": "L14"
-    },
-    {
-      "id": "apps_web_src_components_layout_topheader_topheader",
-      "label": "TopHeader()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "topheader()",
-      "source_file": "apps/web/src/components/layout/TopHeader.tsx",
-      "source_location": "L19"
     },
     {
       "id": "apps_web_src_contexts_authcontext_authprovider",
@@ -1227,6 +1239,18 @@
       "source_location": "L20"
     },
     {
+      "id": "apps_web_src_services_storage_offlinedb_offlinedatabase_clearall",
+      "label": ".clearAll()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": ".clearall()",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L192"
+    },
+    {
       "id": "apps_web_src_services_storage_offlinedb_offlinedatabase_clearfiles",
       "label": ".clearFiles()",
       "_callable": true,
@@ -1429,18 +1453,6 @@
       "norm_label": ".getheaders()",
       "source_file": "apps/web/src/services/vault.ts",
       "source_location": "L6"
-    },
-    {
-      "id": "apps_web_src_services_vault_vaultservice_getsyncstatus",
-      "label": ".getSyncStatus()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 40,
-      "community_name": "VaultFile",
-      "file_type": "code",
-      "norm_label": ".getsyncstatus()",
-      "source_file": "apps/web/src/services/vault.ts",
-      "source_location": "L276"
     },
     {
       "id": "apps_web_src_services_vault_vaultservice_invoke",
@@ -3097,6 +3109,17 @@
       "source_location": "L22"
     },
     {
+      "id": "package_devdependencies_fake_indexeddb",
+      "label": "fake-indexeddb",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "fake-indexeddb",
+      "source_file": "package.json",
+      "source_location": "L23"
+    },
+    {
       "id": "package_devdependencies_supabase",
       "label": "supabase",
       "_origin": "ast",
@@ -3105,7 +3128,18 @@
       "file_type": "code",
       "norm_label": "supabase",
       "source_file": "package.json",
-      "source_location": "L23"
+      "source_location": "L24"
+    },
+    {
+      "id": "package_devdependencies_vitest",
+      "label": "vitest",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "vitest",
+      "source_file": "package.json",
+      "source_location": "L25"
     },
     {
       "id": "package_devengines",
@@ -3273,6 +3307,17 @@
       "source_location": "L4"
     },
     {
+      "id": "fake_indexeddb",
+      "label": "fake-indexeddb",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "package.json",
+      "file_type": "concept",
+      "norm_label": "fake-indexeddb",
+      "source_file": "package.json",
+      "source_location": "L23"
+    },
+    {
       "id": "supabase",
       "label": "supabase",
       "_origin": "ast",
@@ -3281,7 +3326,18 @@
       "file_type": "concept",
       "norm_label": "supabase",
       "source_file": "package.json",
-      "source_location": "L23"
+      "source_location": "L24"
+    },
+    {
+      "id": "vitest",
+      "label": "vitest",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "package.json",
+      "file_type": "concept",
+      "norm_label": "vitest",
+      "source_file": "package.json",
+      "source_location": "L25"
     },
     {
       "id": "templates_vault_template_notes_miscellaneous_welcome",
@@ -4292,28 +4348,6 @@
       "source_location": "L1"
     },
     {
-      "id": "apps_web_src_services_storage_offlinedb",
-      "label": "offlineDb.ts",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "offlinedb.ts",
-      "source_file": "apps/web/src/services/storage/offlineDb.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "apps_web_src_services_storage_offlinedb_offlinedb",
-      "label": "offlineDb",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "WorkspaceView.tsx",
-      "file_type": "code",
-      "norm_label": "offlinedb",
-      "source_file": "apps/web/src/services/storage/offlineDb.ts",
-      "source_location": "L193"
-    },
-    {
       "id": "apps_web_src_services_supabaseclient",
       "label": "supabaseClient.ts",
       "_origin": "ast",
@@ -5183,6 +5217,17 @@
       "source_location": "L1"
     },
     {
+      "id": "apps_web_src_services_intelligence_graphindexer_test",
+      "label": "graphIndexer.test.ts",
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "graphIndexer.ts",
+      "file_type": "code",
+      "norm_label": "graphindexer.test.ts",
+      "source_file": "apps/web/src/services/intelligence/graphIndexer.test.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "apps_web_src_services_intelligence_markdownparser",
       "label": "markdownParser.ts",
       "_origin": "ast",
@@ -5191,6 +5236,17 @@
       "file_type": "code",
       "norm_label": "markdownparser.ts",
       "source_file": "apps/web/src/services/intelligence/markdownParser.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_services_intelligence_markdownparser_test",
+      "label": "markdownParser.test.ts",
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "graphIndexer.ts",
+      "file_type": "code",
+      "norm_label": "markdownparser.test.ts",
+      "source_file": "apps/web/src/services/intelligence/markdownParser.test.ts",
       "source_location": "L1"
     },
     {
@@ -5436,6 +5492,39 @@
       "file_type": "code",
       "norm_label": "filetree.tsx",
       "source_file": "apps/web/src/components/vault/FileTree.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_services_storage_offlinedb",
+      "label": "offlineDb.ts",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": "offlinedb.ts",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "apps_web_src_services_storage_offlinedb_offlinedb",
+      "label": "offlineDb",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": "offlinedb",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L205"
+    },
+    {
+      "id": "apps_web_src_services_storage_offlinedb_test",
+      "label": "offlineDb.test.ts",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "VaultFile",
+      "file_type": "code",
+      "norm_label": "offlinedb.test.ts",
+      "source_file": "apps/web/src/services/storage/offlineDb.test.ts",
       "source_location": "L1"
     },
     {
@@ -7174,6 +7263,18 @@
     },
     {
       "source": "apps_web_src_services_intelligence_graphindexer_buildgraphindex",
+      "target": "apps_web_src_services_intelligence_graphindexer_extractsnippet",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/services/intelligence/graphIndexer.ts",
+      "source_location": "L105",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_graphindexer_buildgraphindex",
       "target": "apps_web_src_services_intelligence_markdownparser_parsemarkdown",
       "relation": "calls",
       "_origin": "ast",
@@ -7193,19 +7294,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "apps/web/src/services/intelligence/graphIndexer.ts",
-      "source_location": "L88",
-      "weight": 1.0
-    },
-    {
-      "source": "apps_web_src_services_intelligence_graphindexer_buildgraphindex",
-      "target": "apps_web_src_services_intelligence_graphindexer_extractsnippet",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "apps/web/src/services/intelligence/graphIndexer.ts",
-      "source_location": "L94",
+      "source_location": "L99",
       "weight": 1.0
     },
     {
@@ -7338,6 +7427,18 @@
       "context": "call",
       "source_file": "apps/web/src/services/mockVault.ts",
       "source_location": "L219",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase_clearall",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_getdb",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L193",
       "weight": 1.0
     },
     {
@@ -9129,6 +9230,102 @@
       "weight": 1.0
     },
     {
+      "source": "apps_web_src_services_intelligence_graphindexer_test",
+      "target": "apps_web_src_services_intelligence_graphindexer_buildgraphindex",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/intelligence/graphIndexer.test.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_graphindexer_test",
+      "target": "apps_web_src_services_intelligence_graphindexer_extractsnippet",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/intelligence/graphIndexer.test.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_graphindexer_test",
+      "target": "apps_web_src_types_vault_vaultfile",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/intelligence/graphIndexer.test.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_markdownparser_test",
+      "target": "apps_web_src_services_intelligence_markdownparser_extractinlinetags",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/intelligence/markdownParser.test.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_markdownparser_test",
+      "target": "apps_web_src_services_intelligence_markdownparser_extractwikilinks",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/intelligence/markdownParser.test.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_markdownparser_test",
+      "target": "apps_web_src_services_intelligence_markdownparser_parsefrontmatter",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/intelligence/markdownParser.test.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_markdownparser_test",
+      "target": "apps_web_src_services_intelligence_markdownparser_parsemarkdown",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/intelligence/markdownParser.test.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_markdownparser_test",
+      "target": "apps_web_src_services_intelligence_markdownparser_resolvewikilinkpath",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/intelligence/markdownParser.test.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
       "source": "apps_web_src_services_mockvault",
       "target": "apps_web_src_types_vault_createfilerequest",
       "relation": "imports",
@@ -9237,6 +9434,18 @@
       "weight": 1.0
     },
     {
+      "source": "apps_web_src_services_storage_offlinedb_test",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedb",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/storage/offlineDb.test.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
       "source": "apps_web_src_services_vault",
       "target": "apps_web_src_services_supabaseclient_supabase",
       "relation": "imports",
@@ -9297,6 +9506,18 @@
       "weight": 1.0
     },
     {
+      "source": "package_devdependencies_fake_indexeddb",
+      "target": "fake_indexeddb",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "package.json",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
       "source": "package_devdependencies_supabase",
       "target": "supabase",
       "relation": "imports",
@@ -9305,7 +9526,19 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L23",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "package_devdependencies_vitest",
+      "target": "vitest",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "package.json",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -10065,6 +10298,42 @@
       "weight": 1.0
     },
     {
+      "source": "apps_web_src_services_intelligence_graphindexer_test",
+      "target": "apps_web_src_services_intelligence_graphindexer",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/intelligence/graphIndexer.test.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_graphindexer_test",
+      "target": "apps_web_src_types_vault",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/intelligence/graphIndexer.test.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_intelligence_markdownparser_test",
+      "target": "apps_web_src_services_intelligence_markdownparser",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/intelligence/markdownParser.test.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
       "source": "apps_web_src_services_mockvault",
       "target": "apps_web_src_types_vault",
       "relation": "imports_from",
@@ -10086,6 +10355,18 @@
       "context": "import",
       "source_file": "apps/web/src/services/storage/offlineDb.ts",
       "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_test",
+      "target": "apps_web_src_services_storage_offlinedb",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "apps/web/src/services/storage/offlineDb.test.ts",
+      "source_location": "L3",
       "weight": 1.0
     },
     {
@@ -12536,7 +12817,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "apps/web/src/services/storage/offlineDb.ts",
-      "source_location": "L193",
+      "source_location": "L205",
       "weight": 1.0
     },
     {
@@ -14554,13 +14835,35 @@
     },
     {
       "source": "package_devdependencies",
-      "target": "package_devdependencies_supabase",
+      "target": "package_devdependencies_fake_indexeddb",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
       "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_supabase",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "package.json",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_vitest",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "package.json",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -15115,6 +15418,17 @@
     },
     {
       "source": "apps_web_src_services_storage_offlinedb_offlinedatabase",
+      "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_clearall",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "apps/web/src/services/storage/offlineDb.ts",
+      "source_location": "L192",
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_src_services_storage_offlinedb_offlinedatabase",
       "target": "apps_web_src_services_storage_offlinedb_offlinedatabase_savefile",
       "relation": "method",
       "_origin": "ast",
@@ -15599,5 +15913,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "5b038705e7908cb381eab0815ef43b89f9fbb43d"
+  "built_at_commit": "b23ced05c007864bb56ca47b77b195906f013e02"
 }
