@@ -6,6 +6,7 @@ import { useVault } from '../../hooks/useVault';
 interface AppShellProps {
   children: (vaultState: ReturnType<typeof useVault>) => React.ReactNode;
   onOpenSearch: () => void;
+  onOpenGraph?: () => void;
   onOpenSettings: () => void;
   onNewNote: () => void;
 }
@@ -13,6 +14,7 @@ interface AppShellProps {
 export const AppShell: React.FC<AppShellProps> = ({
   children,
   onOpenSearch,
+  onOpenGraph,
   onOpenSettings,
   onNewNote
 }) => {
@@ -25,6 +27,7 @@ export const AppShell: React.FC<AppShellProps> = ({
       <TopHeader
         onNewNote={onNewNote}
         onOpenSearch={onOpenSearch}
+        onOpenGraph={onOpenGraph}
         onOpenSettings={onOpenSettings}
         onToggleSidebar={() => setIsSidebarMobileOpen(!isSidebarMobileOpen)}
         syncStatus={vaultState.syncStatus}
