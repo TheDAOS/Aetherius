@@ -6,13 +6,13 @@ import { NotePreview } from "../components/editor/NotePreview";
 import { NoteToolbar, type ViewMode } from "../components/editor/NoteToolbar";
 import { GraphModal } from "../components/graph/GraphModal";
 import { AppShell } from "../components/layout/AppShell";
+import { useVault } from "../hooks/useVault";
 import { buildGraphIndex } from "../services/intelligence/graphIndexer";
 import { vaultService } from "../services/vault";
 import { ConflictModal } from "./ConflictModal";
 import { NewNoteModal } from "./NewNoteModal";
 import { SearchModal } from "./SearchModal";
 import { SettingsModal } from "./SettingsModal";
-import { useVault } from "../hooks/useVault";
 
 export const WorkspaceView: React.FC = () => {
   const vaultState = useVault();

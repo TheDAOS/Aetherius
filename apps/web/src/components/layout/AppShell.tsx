@@ -1,8 +1,8 @@
 import type React from "react";
 import { useState } from "react";
+import type { useVault } from "../../hooks/useVault";
 import { Sidebar } from "./Sidebar";
 import { TopHeader } from "./TopHeader";
-import type { useVault } from "../../hooks/useVault";
 
 interface AppShellProps {
   children: React.ReactNode;
