@@ -1,6 +1,10 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { VaultGraphIndex, GraphNode } from '../../services/intelligence/graphIndexer';
-import { ZoomIn, ZoomOut, RotateCcw, Radio } from 'lucide-react';
+import { Radio, RotateCcw, ZoomIn, ZoomOut } from "lucide-react";
+import type React from "react";
+import { useEffect, useRef, useState } from "react";
+import type {
+  GraphNode,
+  VaultGraphIndex,
+} from "../../services/intelligence/graphIndexer";
 
 interface GraphCanvasProps {
   graphIndex: VaultGraphIndex;
@@ -18,11 +22,11 @@ interface SimNode extends GraphNode {
 
 export const GraphCanvas: React.FC<GraphCanvasProps> = ({
   graphIndex,
-  activeFilePath = '',
-  onSelectNode
+  activeFilePath = "",
+  onSelectNode,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [filterText, setFilterText] = useState('');
+  const [filterText, setFilterText] = useState("");
   const [isLocalOnly, setIsLocalOnly] = useState(false);
   const [hoveredNode, setHoveredNode] = useState<SimNode | null>(null);
 
@@ -30,6 +34,7 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({
   const isDraggingRef = useRef(false);
   const dragStartRef = useRef({ x: 0, y: 0 });
   const draggedNodeRef = useRef<SimNode | null>(null);
+  const hoveredNodeRef = useRef<SimNode | null>(null);
   const simNodesRef = useRef<SimNode[]>([]);
   const animationFrameRef = useRef<number>(0);
 
@@ -47,12 +52,12 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({
         if (edge.source === activeFilePath) neighborSet.add(edge.target);
         if (edge.target === activeFilePath) neighborSet.add(edge.source);
       }
-      visibleNodes = graphIndex.nodes.filter(n => neighborSet.has(n.path));
+      visibleNodes = graphIndex.nodes.filter((n) => neighborSet.has(n.path));
     }
 
-    const prevMap = new Map(simNodesRef.current.map(n => [n.path, n]));
+    const prevMap = new Map(simNodesRef.current.map((n) => [n.path, n]));
 
-    simNodesRef.current = visibleNodes.map(n => {
+    simNodesRef.current = visibleNodes.map((n) => {
       const existing = prevMap.get(n.path);
       const radius = n.path === activeFilePath ? 14 : n.isHub ? 11 : 8;
       return {
@@ -61,7 +66,7 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({
         y: existing ? existing.y : height / 2 + (Math.random() - 0.5) * 300,
         vx: existing ? existing.vx : 0,
         vy: existing ? existing.vy : 0,
-        radius
+        radius,
       };
     });
 
@@ -69,7 +74,7 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({
     transformRef.current = {
       x: width / 2,
       y: height / 2,
-      scale: 1
+      scale: 1,
     };
   }, [graphIndex, isLocalOnly, activeFilePath]);
 
@@ -77,7 +82,7 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     let running = true;
@@ -94,7 +99,7 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({
 
       const nodes = simNodesRef.current;
       const edges = graphIndex.edges;
-      const nodeMap = new Map(nodes.map(n => [n.path, n]));
+      const nodeMap = new Map(nodes.map((n) => [n.path, n]));
 
       // Physics Simulation Step
       const charge = 400;
@@ -158,10 +163,10 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({
 
       // Background Grid Dots
       ctx.save();
-      ctx.fillStyle = '#E5E0D4';
+      ctx.fillStyle = "#E5E0D4";
       const gridSize = 30 * transformRef.current.scale;
-      const startX = (transformRef.current.x % gridSize);
-      const startY = (transformRef.current.y % gridSize);
+      const startX = transformRef.current.x % gridSize;
+      const startY = transformRef.current.y % gridSize;
       for (let x = startX; x < width; x += gridSize) {
         for (let y = startY; y < height; y += gridSize) {
           ctx.beginPath();
@@ -183,7 +188,7 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({
         if (source && target) {
           const isHighlighted =
             source.path === activeFilePath || target.path === activeFilePath;
-          ctx.strokeStyle = isHighlighted ? '#111111' : '#B8B3A8';
+          ctx.strokeStyle = isHighlighted ? "#111111" : "#B8B3A8";
           ctx.beginPath();
           ctx.moveTo(source.x, source.y);
           ctx.lineTo(target.x, target.y);
@@ -196,7 +201,10 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({
 
       for (const node of nodes) {
         const isActive = node.path === activeFilePath;
-        const matchesQuery = query ? node.title.toLowerCase().includes(query) || node.path.toLowerCase().includes(query) : true;
+        const matchesQuery = query
+          ? node.title.toLowerCase().includes(query) ||
+            node.path.toLowerCase().includes(query)
+          : true;
 
         ctx.save();
         ctx.beginPath();
@@ -204,13 +212,13 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({
 
         // Fill color
         if (isActive) {
-          ctx.fillStyle = '#E2FF00'; // Acid Lime
+          ctx.fillStyle = "#E2FF00"; // Acid Lime
         } else if (node.isHub) {
-          ctx.fillStyle = '#FF5500'; // Tangerine
-        } else if (node.path.startsWith('templates/')) {
-          ctx.fillStyle = '#FF1493'; // Pink
+          ctx.fillStyle = "#FF5500"; // Tangerine
+        } else if (node.path.startsWith("templates/")) {
+          ctx.fillStyle = "#FF1493"; // Pink
         } else {
-          ctx.fillStyle = '#00F5D4'; // Mint
+          ctx.fillStyle = "#00F5D4"; // Mint
         }
 
         if (!matchesQuery) {
@@ -221,14 +229,19 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({
 
         // 2px Neo-Memphis stroke
         ctx.lineWidth = 2;
-        ctx.strokeStyle = '#111111';
+        ctx.strokeStyle = "#111111";
         ctx.stroke();
 
         // Node Label
-        if (transformRef.current.scale > 0.6 || isActive || node.isHub || (hoveredNode && hoveredNode.path === node.path)) {
-          ctx.font = `${isActive ? 'bold' : 'normal'} 10px monospace`;
-          ctx.fillStyle = '#111111';
-          ctx.textAlign = 'center';
+        if (
+          transformRef.current.scale > 0.6 ||
+          isActive ||
+          node.isHub ||
+          (hoveredNodeRef.current && hoveredNodeRef.current.path === node.path)
+        ) {
+          ctx.font = `${isActive ? "bold" : "normal"} 10px monospace`;
+          ctx.fillStyle = "#111111";
+          ctx.textAlign = "center";
           ctx.fillText(node.title, node.x, node.y + node.radius + 12);
         }
 
@@ -245,13 +258,32 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({
       running = false;
       cancelAnimationFrame(animationFrameRef.current);
     };
-  }, [graphIndex, activeFilePath, filterText, hoveredNode]);
+  }, [graphIndex, activeFilePath, filterText]);
+
+  // Native wheel handler to avoid passive event listener violation
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const handleWheelNative = (e: WheelEvent) => {
+      e.preventDefault();
+      const zoomFactor = e.deltaY < 0 ? 1.1 : 0.9;
+      const newScale = Math.min(
+        Math.max(0.3, transformRef.current.scale * zoomFactor),
+        3.0,
+      );
+      transformRef.current.scale = newScale;
+    };
+
+    canvas.addEventListener("wheel", handleWheelNative, { passive: false });
+    return () => canvas.removeEventListener("wheel", handleWheelNative);
+  }, []);
 
   // Screen Coordinates to World Coordinates
   const toWorld = (screenX: number, screenY: number) => {
     return {
       x: (screenX - transformRef.current.x) / transformRef.current.scale,
-      y: (screenY - transformRef.current.y) / transformRef.current.scale
+      y: (screenY - transformRef.current.y) / transformRef.current.scale,
     };
   };
 
@@ -274,7 +306,10 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({
 
     // Otherwise pan canvas
     isDraggingRef.current = true;
-    dragStartRef.current = { x: mouseX - transformRef.current.x, y: mouseY - transformRef.current.y };
+    dragStartRef.current = {
+      x: mouseX - transformRef.current.x,
+      y: mouseY - transformRef.current.y,
+    };
   };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLCanvasElement>) => {
@@ -308,6 +343,7 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({
         break;
       }
     }
+    hoveredNodeRef.current = found;
     setHoveredNode(found);
   };
 
@@ -329,13 +365,6 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({
     isDraggingRef.current = false;
   };
 
-  const handleWheel = (e: React.WheelEvent<HTMLCanvasElement>) => {
-    e.preventDefault();
-    const zoomFactor = e.deltaY < 0 ? 1.1 : 0.9;
-    const newScale = Math.min(Math.max(0.3, transformRef.current.scale * zoomFactor), 3.0);
-    transformRef.current.scale = newScale;
-  };
-
   return (
     <div className="relative w-full h-full bg-paper-canvas overflow-hidden select-none">
       {/* Graph Toolbar & Controls */}
@@ -343,7 +372,7 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({
         <input
           type="text"
           value={filterText}
-          onChange={e => setFilterText(e.target.value)}
+          onChange={(e) => setFilterText(e.target.value)}
           placeholder="Filter graph notes..."
           className="neo-box-sm px-3 py-1.5 bg-white text-ink-primary font-mono text-xs outline-none focus:ring-2 focus:ring-accent-acid w-48 sm:w-60 shadow-neo"
         />
@@ -351,12 +380,14 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({
         <button
           onClick={() => setIsLocalOnly(!isLocalOnly)}
           className={`neo-btn px-2.5 py-1.5 text-xs font-mono font-bold flex items-center gap-1.5 transition-colors ${
-            isLocalOnly ? 'bg-accent-acid text-ink-primary' : 'bg-white text-ink-secondary'
+            isLocalOnly
+              ? "bg-accent-acid text-ink-primary"
+              : "bg-white text-ink-secondary"
           }`}
           title="Toggle Local Neighborhood Graph"
         >
           <Radio size={13} />
-          <span>{isLocalOnly ? 'Local (1-hop)' : 'Global'}</span>
+          <span>{isLocalOnly ? "Local (1-hop)" : "Global"}</span>
         </button>
       </div>
 
@@ -364,7 +395,10 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({
       <div className="absolute bottom-4 right-4 z-10 flex flex-col gap-1.5 neo-box-sm p-1 bg-white shadow-neo">
         <button
           onClick={() => {
-            transformRef.current.scale = Math.min(3.0, transformRef.current.scale * 1.2);
+            transformRef.current.scale = Math.min(
+              3.0,
+              transformRef.current.scale * 1.2,
+            );
           }}
           className="p-1.5 hover:bg-cream-shell text-ink-primary transition-colors"
           title="Zoom In"
@@ -373,7 +407,10 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({
         </button>
         <button
           onClick={() => {
-            transformRef.current.scale = Math.max(0.3, transformRef.current.scale * 0.8);
+            transformRef.current.scale = Math.max(
+              0.3,
+              transformRef.current.scale * 0.8,
+            );
           }}
           className="p-1.5 hover:bg-cream-shell text-ink-primary transition-colors"
           title="Zoom Out"
@@ -396,10 +433,13 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({
       {/* Tooltip on Hover */}
       {hoveredNode && (
         <div className="absolute bottom-4 left-4 z-10 neo-box-sm bg-white p-2.5 shadow-neo border-2 border-ink-primary font-mono text-xs">
-          <div className="font-bold text-accent-cobalt">{hoveredNode.title}</div>
+          <div className="font-bold text-accent-cobalt">
+            {hoveredNode.title}
+          </div>
           <div className="text-[10px] text-ink-muted">{hoveredNode.path}</div>
           <div className="text-[10px] text-ink-primary mt-1 font-bold">
-            {hoveredNode.degree} connection(s) {hoveredNode.isHub && '· Hub Note ⭐'}
+            {hoveredNode.degree} connection(s){" "}
+            {hoveredNode.isHub && "· Hub Note ⭐"}
           </div>
         </div>
       )}
@@ -409,8 +449,27 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
-        onWheel={handleWheel}
-        className="w-full h-full cursor-grab active:cursor-grabbing block"
+        onKeyDown={(e) => {
+          const PAN_SPEED = 20;
+          if (e.key === "ArrowUp") transformRef.current.y += PAN_SPEED;
+          if (e.key === "ArrowDown") transformRef.current.y -= PAN_SPEED;
+          if (e.key === "ArrowLeft") transformRef.current.x += PAN_SPEED;
+          if (e.key === "ArrowRight") transformRef.current.x -= PAN_SPEED;
+          if (e.key === "+" || e.key === "=")
+            transformRef.current.scale = Math.min(
+              3.0,
+              transformRef.current.scale * 1.1,
+            );
+          if (e.key === "-")
+            transformRef.current.scale = Math.max(
+              0.3,
+              transformRef.current.scale * 0.9,
+            );
+        }}
+        tabIndex={0}
+        role="application"
+        aria-label="Interactive note graph. Use arrow keys to pan, plus and minus to zoom."
+        className="w-full h-full cursor-grab active:cursor-grabbing block focus:outline-none focus:ring-2 focus:ring-inset focus:ring-accent-acid"
       />
     </div>
   );

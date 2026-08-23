@@ -10,8 +10,8 @@ permissions:
   contents: read
 
 jobs:
-  foundation:
-    name: Foundation checks
+  quality:
+    name: Quality checks
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -30,6 +30,18 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Test
+        run: pnpm test
+
+      - name: Build
+        run: pnpm build
 
       - name: Validate OpenAPI
         run: |

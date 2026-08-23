@@ -17,6 +17,8 @@ servers:
     description: Production API placeholder
 
 tags:
+  - name: Auth
+    description: Authentication and token management
   - name: Vault
     description: Vault metadata and information
   - name: Files
@@ -27,6 +29,39 @@ tags:
     description: Synchronization operations
 
 paths:
+
+  /v1/auth/github-token:
+    post:
+      operationId: storeGitHubToken
+      summary: Store GitHub token server-side
+      description: |
+        Stores the user's GitHub provider token server-side after OAuth
+        authentication. The token is stored securely and used by Edge
+        Functions to perform GitHub API operations on behalf of the user.
+
+        This endpoint should be called once after the OAuth callback.
+        Subsequent API calls use JWT-only authentication.
+      tags:
+        - Auth
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StoreTokenRequest"
+      responses:
+        "200":
+          description: Token stored successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TokenResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
 
   /v1/vault:
     get:
@@ -531,6 +566,26 @@ components:
         - conflict
 
     Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+
+    StoreTokenRequest:
+      type: object
+      required:
+        - token
+      properties:
+        token:
+          type: string
+          description: GitHub OAuth provider token to store server-side
+
+    TokenResponse:
       type: object
       required:
         - code

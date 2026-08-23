@@ -1,7 +1,7 @@
-import React from 'react';
-import { Modal } from '../common/Modal';
-import { GraphCanvas } from './GraphCanvas';
-import { VaultGraphIndex } from '../../services/intelligence/graphIndexer';
+import type React from "react";
+import type { VaultGraphIndex } from "../../services/intelligence/graphIndexer";
+import { Modal } from "../common/Modal";
+import { GraphCanvas } from "./GraphCanvas";
 
 interface GraphModalProps {
   isOpen: boolean;
@@ -16,7 +16,7 @@ export const GraphModal: React.FC<GraphModalProps> = ({
   onClose,
   graphIndex,
   activeFilePath,
-  onSelectFile
+  onSelectFile,
 }) => {
   return (
     <Modal

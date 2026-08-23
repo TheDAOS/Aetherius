@@ -278,7 +278,10 @@ docs/architecture/
 ├── authentication.md
 ├── github.md
 ├── supabase.md
-└── security.md
+├── security.md
+├── frontend.md
+├── markdown-intelligence.md
+└── offline-sync.md
 ```
 
 When architecture changes, update the relevant documentation.

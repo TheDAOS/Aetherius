@@ -1,10 +1,10 @@
-import React from 'react';
-import { GitFork, HardDrive, Download, RefreshCw } from 'lucide-react';
-import { Modal } from '../components/common/Modal';
-import { Button } from '../components/common/Button';
-import { Vault, SyncStatus } from '../types/vault';
-import { usePWA } from '../hooks/usePWA';
-import { vaultService } from '../services/vault';
+import { Download, GitFork, HardDrive, RefreshCw } from "lucide-react";
+import type React from "react";
+import { Button } from "../components/common/Button";
+import { Modal } from "../components/common/Modal";
+import { usePWA } from "../hooks/usePWA";
+import { vaultService } from "../services/vault";
+import type { SyncStatus, Vault } from "../types/vault";
 
 interface SettingsModalProps {
   isOpen: boolean;
@@ -19,7 +19,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   onClose,
   vault,
   syncStatus,
-  onResetVault
+  onResetVault,
 }) => {
   const { isInstallable, installApp, isOnline } = usePWA();
 
@@ -41,15 +41,21 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           <div className="neo-box p-3.5 bg-paper-canvas flex flex-col gap-2 font-mono text-xs">
             <div className="flex justify-between">
               <span className="text-ink-muted">Owner / Repo:</span>
-              <span className="font-bold text-ink-primary">{vault?.owner}/{vault?.repository}</span>
+              <span className="font-bold text-ink-primary">
+                {vault?.owner}/{vault?.repository}
+              </span>
             </div>
             <div className="flex justify-between">
               <span className="text-ink-muted">Active Branch:</span>
-              <span className="font-bold text-accent-cobalt">{vault?.branch}</span>
+              <span className="font-bold text-accent-cobalt">
+                {vault?.branch}
+              </span>
             </div>
             <div className="flex justify-between">
               <span className="text-ink-muted">Vault UUID:</span>
-              <span className="text-[11px] text-ink-muted truncate max-w-[240px]">{vault?.id}</span>
+              <span className="text-[11px] text-ink-muted truncate max-w-[240px]">
+                {vault?.id}
+              </span>
             </div>
           </div>
         </section>
@@ -64,14 +70,18 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
             <div className="flex items-center justify-between">
               <span className="text-ink-muted">Network Status:</span>
               <span className="flex items-center gap-1.5 font-bold">
-                <span className={`w-2 h-2 rounded-full ${isOnline ? 'bg-accent-mint' : 'bg-accent-pink'}`} />
-                {isOnline ? 'ONLINE' : 'OFFLINE'}
+                <span
+                  className={`w-2 h-2 rounded-full ${isOnline ? "bg-accent-mint" : "bg-accent-pink"}`}
+                />
+                {isOnline ? "ONLINE" : "OFFLINE"}
               </span>
             </div>
             <div className="flex items-center justify-between">
               <span className="text-ink-muted">Last Sync:</span>
               <span className="text-[11px] text-ink-secondary">
-                {syncStatus?.lastSyncAt ? new Date(syncStatus.lastSyncAt).toLocaleTimeString() : 'Never'}
+                {syncStatus?.lastSyncAt
+                  ? new Date(syncStatus.lastSyncAt).toLocaleTimeString()
+                  : "Never"}
               </span>
             </div>
             {isInstallable && (
@@ -101,7 +111,11 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               size="sm"
               icon={<RefreshCw size={13} />}
               onClick={() => {
-                if (window.confirm('Reset local mock vault back to starter notes?')) {
+                if (
+                  window.confirm(
+                    "Reset local mock vault back to starter notes?",
+                  )
+                ) {
                   vaultService.resetToDefaults();
                   onResetVault();
                   onClose();

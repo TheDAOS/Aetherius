@@ -1,8 +1,8 @@
-import React from 'react';
-import { Plus, Search, Settings, Menu, Network } from 'lucide-react';
-import { Button } from '../common/Button';
-import { GitStatusBadge } from '../vault/GitStatusBadge';
-import { SyncStatus } from '../../types/vault';
+import { Menu, Network, Plus, Search, Settings } from "lucide-react";
+import type React from "react";
+import type { SyncStatus } from "../../types/vault";
+import { Button } from "../common/Button";
+import { GitStatusBadge } from "../vault/GitStatusBadge";
 
 interface TopHeaderProps {
   onNewNote: () => void;
@@ -25,7 +25,7 @@ export const TopHeader: React.FC<TopHeaderProps> = ({
   syncStatus,
   branch,
   isDirty,
-  onSync
+  onSync,
 }) => {
   return (
     <header className="h-14 border-b-2 border-ink-primary bg-cream-shell px-3 sm:px-4 flex items-center justify-between z-30 select-none">

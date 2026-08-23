@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { FolderTree, X } from 'lucide-react';
-import { VaultFile } from '../../types/vault';
-import { FileTree } from '../vault/FileTree';
+import { FolderTree, X } from "lucide-react";
+import type React from "react";
+import { useState } from "react";
+import type { VaultFile } from "../../types/vault";
+import { FileTree } from "../vault/FileTree";
 
 interface SidebarProps {
   files: VaultFile[];
@@ -18,13 +19,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onSelectFile,
   onDeleteFile,
   isOpenMobile,
-  onCloseMobile
+  onCloseMobile,
 }) => {
-  const [filter, setFilter] = useState<'all' | 'notes' | 'templates'>('all');
+  const [filter, setFilter] = useState<"all" | "notes" | "templates">("all");
 
   const filteredFiles = files.filter((f) => {
-    if (filter === 'notes') return f.path.startsWith('notes/') || f.path === 'README.md';
-    if (filter === 'templates') return f.path.startsWith('templates/');
+    if (filter === "notes")
+      return f.path.startsWith("notes/") || f.path === "README.md";
+    if (filter === "templates") return f.path.startsWith("templates/");
     return true;
   });
 
@@ -40,7 +42,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
       <aside
         className={`fixed md:static inset-y-0 left-0 z-40 w-64 md:w-60 lg:w-64 bg-cream-shell border-r-2 border-ink-primary flex flex-col transition-transform duration-200 ease-in-out md:translate-x-0 ${
-          isOpenMobile ? 'translate-x-0' : '-translate-x-full'
+          isOpenMobile ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         {/* Sidebar Header */}
@@ -62,31 +64,31 @@ export const Sidebar: React.FC<SidebarProps> = ({
         {/* Filter Tabs */}
         <div className="flex border-b border-cream-border text-[11px] font-mono font-semibold bg-cream-shell">
           <button
-            onClick={() => setFilter('all')}
+            onClick={() => setFilter("all")}
             className={`flex-1 py-1.5 text-center border-r border-cream-border transition-colors ${
-              filter === 'all'
-                ? 'bg-paper-canvas text-ink-primary font-bold border-b-2 border-b-ink-primary'
-                : 'text-ink-muted hover:text-ink-primary'
+              filter === "all"
+                ? "bg-paper-canvas text-ink-primary font-bold border-b-2 border-b-ink-primary"
+                : "text-ink-muted hover:text-ink-primary"
             }`}
           >
             ALL
           </button>
           <button
-            onClick={() => setFilter('notes')}
+            onClick={() => setFilter("notes")}
             className={`flex-1 py-1.5 text-center border-r border-cream-border transition-colors ${
-              filter === 'notes'
-                ? 'bg-paper-canvas text-ink-primary font-bold border-b-2 border-b-ink-primary'
-                : 'text-ink-muted hover:text-ink-primary'
+              filter === "notes"
+                ? "bg-paper-canvas text-ink-primary font-bold border-b-2 border-b-ink-primary"
+                : "text-ink-muted hover:text-ink-primary"
             }`}
           >
             NOTES
           </button>
           <button
-            onClick={() => setFilter('templates')}
+            onClick={() => setFilter("templates")}
             className={`flex-1 py-1.5 text-center transition-colors ${
-              filter === 'templates'
-                ? 'bg-paper-canvas text-ink-primary font-bold border-b-2 border-b-ink-primary'
-                : 'text-ink-muted hover:text-ink-primary'
+              filter === "templates"
+                ? "bg-paper-canvas text-ink-primary font-bold border-b-2 border-b-ink-primary"
+                : "text-ink-muted hover:text-ink-primary"
             }`}
           >
             TEMPLATES

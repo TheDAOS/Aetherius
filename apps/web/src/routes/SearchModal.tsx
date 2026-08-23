@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Search, FileText, CornerDownLeft } from 'lucide-react';
-import { Modal } from '../components/common/Modal';
-import { SearchResult } from '../types/vault';
-import { vaultService } from '../services/vault';
-import { useAuth } from '../contexts/AuthContext';
+import { CornerDownLeft, FileText, Search } from "lucide-react";
+import type React from "react";
+import { useEffect, useState } from "react";
+import { Modal } from "../components/common/Modal";
+import { vaultService } from "../services/vault";
+import type { SearchResult } from "../types/vault";
 
 interface SearchModalProps {
   isOpen: boolean;
@@ -14,51 +14,66 @@ interface SearchModalProps {
 export const SearchModal: React.FC<SearchModalProps> = ({
   isOpen,
   onClose,
-  onSelectFile
+  onSelectFile,
 }) => {
-  const { providerToken } = useAuth();
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const [results, setResults] = useState<SearchResult[]>([]);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   useEffect(() => {
-    if (!isOpen || !providerToken) {
-      setQuery('');
+    if (!isOpen) {
+      setQuery("");
       setResults([]);
       setSelectedIndex(0);
       return;
     }
 
+    const abortController = new AbortController();
+
     const timer = setTimeout(async () => {
-      if (query.trim()) {
-        const res = await vaultService.search(providerToken, query);
-        setResults(res.results);
-        setSelectedIndex(0);
-      } else {
-        // Show recent / all files by default
-        const list = await vaultService.listFiles(providerToken);
-        const initialResults: SearchResult[] = list.entries
-          .filter(e => e.type === 'file')
-          .map(e => ({
-            path: e.path,
-            title: e.name,
-            snippet: 'Quick open file...'
-          }));
-        setResults(initialResults);
+      if (abortController.signal.aborted) return;
+      try {
+        if (query.trim()) {
+          const res = await vaultService.search(query);
+          if (!abortController.signal.aborted) {
+            setResults(res.results);
+            setSelectedIndex(0);
+          }
+        } else {
+          // Show recent / all files by default
+          const list = await vaultService.listFiles();
+          if (!abortController.signal.aborted) {
+            const initialResults: SearchResult[] = list.entries
+              .filter((e) => e.type === "file")
+              .map((e) => ({
+                path: e.path,
+                title: e.name,
+                snippet: "Quick open file...",
+              }));
+            setResults(initialResults);
+          }
+        }
+      } catch {
+        // Request was cancelled or failed - ignore
       }
     }, 100);
 
-    return () => clearTimeout(timer);
+    return () => {
+      abortController.abort();
+      clearTimeout(timer);
+    };
   }, [query, isOpen]);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'ArrowDown') {
+    if (e.key === "ArrowDown") {
       e.preventDefault();
       setSelectedIndex((prev) => (prev + 1) % (results.length || 1));
-    } else if (e.key === 'ArrowUp') {
+    } else if (e.key === "ArrowUp") {
       e.preventDefault();
-      setSelectedIndex((prev) => (prev - 1 + results.length) % (results.length || 1));
-    } else if (e.key === 'Enter' && results[selectedIndex]) {
+      setSelectedIndex(
+        (prev) => (prev - 1 + results.length) % (results.length || 1),
+      );
+    } else if (e.key === "Enter" && results[selectedIndex]) {
       e.preventDefault();
       onSelectFile(results[selectedIndex].path);
       onClose();
@@ -75,7 +90,10 @@ export const SearchModal: React.FC<SearchModalProps> = ({
     >
       <div className="flex flex-col gap-3">
         <div className="relative">
-          <Search className="absolute left-3.5 top-3 text-ink-muted" size={16} />
+          <Search
+            className="absolute left-3.5 top-3 text-ink-muted"
+            size={16}
+          />
           <input
             type="text"
             value={query}
@@ -103,12 +121,15 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                 }}
                 className={`p-3 flex items-start justify-between cursor-pointer transition-colors ${
                   idx === selectedIndex
-                    ? 'bg-accent-acid/40 border-l-4 border-l-ink-primary'
-                    : 'hover:bg-cream-shell'
+                    ? "bg-accent-acid/40 border-l-4 border-l-ink-primary"
+                    : "hover:bg-cream-shell"
                 }`}
               >
                 <div className="flex items-start gap-2.5 truncate">
-                  <FileText size={15} className="text-accent-orange mt-0.5 flex-shrink-0" />
+                  <FileText
+                    size={15}
+                    className="text-accent-orange mt-0.5 flex-shrink-0"
+                  />
                   <div className="truncate">
                     <div className="font-mono text-xs font-bold text-ink-primary">
                       {item.path}
@@ -119,7 +140,10 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                   </div>
                 </div>
 
-                <CornerDownLeft size={12} className="text-ink-muted mt-1 flex-shrink-0" />
+                <CornerDownLeft
+                  size={12}
+                  className="text-ink-muted mt-1 flex-shrink-0"
+                />
               </div>
             ))
           )}
