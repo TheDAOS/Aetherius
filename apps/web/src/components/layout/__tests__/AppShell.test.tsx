@@ -1,11 +1,13 @@
-import { describe, it, expect, vi, beforeEach } from "vitest";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { AppShell } from "../AppShell";
 
 vi.mock("../Sidebar", () => ({
   Sidebar: ({ isOpenMobile, onCloseMobile, files, activeFilePath }: any) => (
     <div data-testid="sidebar" data-open={isOpenMobile}>
-      <button onClick={onCloseMobile} data-testid="close-sidebar">Close Sidebar</button>
+      <button onClick={onCloseMobile} data-testid="close-sidebar">
+        Close Sidebar
+      </button>
       <div data-testid="sidebar-files">{files?.length}</div>
       <div data-testid="sidebar-active">{activeFilePath}</div>
     </div>
@@ -13,17 +15,39 @@ vi.mock("../Sidebar", () => ({
 }));
 
 vi.mock("../TopHeader", () => ({
-  TopHeader: ({ onToggleSidebar, branch, syncStatus, isDirty, onNewNote, onOpenSearch, onOpenGraph, onOpenSettings, onSync }: any) => (
+  TopHeader: ({
+    onToggleSidebar,
+    branch,
+    syncStatus,
+    isDirty,
+    onNewNote,
+    onOpenSearch,
+    onOpenGraph,
+    onOpenSettings,
+    onSync,
+  }: any) => (
     <div data-testid="top-header">
-      <button onClick={onToggleSidebar} data-testid="toggle-sidebar">Toggle Sidebar</button>
+      <button onClick={onToggleSidebar} data-testid="toggle-sidebar">
+        Toggle Sidebar
+      </button>
       <div data-testid="th-branch">{branch}</div>
       <div data-testid="th-sync">{syncStatus}</div>
       <div data-testid="th-dirty">{isDirty ? "yes" : "no"}</div>
-      <button onClick={onNewNote} data-testid="th-new-note">New</button>
-      <button onClick={onOpenSearch} data-testid="th-search">Search</button>
-      <button onClick={onOpenGraph} data-testid="th-graph">Graph</button>
-      <button onClick={onOpenSettings} data-testid="th-settings">Settings</button>
-      <button onClick={onSync} data-testid="th-onsync">Sync</button>
+      <button onClick={onNewNote} data-testid="th-new-note">
+        New
+      </button>
+      <button onClick={onOpenSearch} data-testid="th-search">
+        Search
+      </button>
+      <button onClick={onOpenGraph} data-testid="th-graph">
+        Graph
+      </button>
+      <button onClick={onOpenSettings} data-testid="th-settings">
+        Settings
+      </button>
+      <button onClick={onSync} data-testid="th-onsync">
+        Sync
+      </button>
     </div>
   ),
 }));
@@ -56,18 +80,18 @@ describe("AppShell", () => {
     render(
       <AppShell {...defaultProps}>
         <div data-testid="child-content">Content</div>
-      </AppShell>
+      </AppShell>,
     );
 
     expect(screen.getByTestId("top-header")).toBeInTheDocument();
     expect(screen.getByTestId("sidebar")).toBeInTheDocument();
     expect(screen.getByTestId("child-content")).toBeInTheDocument();
-    
+
     // Check TopHeader props passed correctly
     expect(screen.getByTestId("th-branch")).toHaveTextContent("main");
     expect(screen.getByTestId("th-sync")).toHaveTextContent("idle");
     expect(screen.getByTestId("th-dirty")).toHaveTextContent("no");
-    
+
     // Check Sidebar props passed correctly
     expect(screen.getByTestId("sidebar-files")).toHaveTextContent("1");
     expect(screen.getByTestId("sidebar-active")).toHaveTextContent("test.md");
@@ -78,18 +102,18 @@ describe("AppShell", () => {
     render(
       <AppShell {...defaultProps} vaultState={noVaultState as any}>
         <div>Content</div>
-      </AppShell>
+      </AppShell>,
     );
     expect(screen.getByTestId("th-branch")).toHaveTextContent("main");
   });
-  
+
   it("passes handlers to TopHeader correctly", () => {
     render(
       <AppShell {...defaultProps}>
         <div>Content</div>
-      </AppShell>
+      </AppShell>,
     );
-    
+
     fireEvent.click(screen.getByTestId("th-new-note"));
     expect(defaultProps.onNewNote).toHaveBeenCalled();
 
@@ -110,7 +134,7 @@ describe("AppShell", () => {
     render(
       <AppShell {...defaultProps}>
         <div>Content</div>
-      </AppShell>
+      </AppShell>,
     );
 
     const sidebar = screen.getByTestId("sidebar");
@@ -120,17 +144,17 @@ describe("AppShell", () => {
     fireEvent.click(toggleBtn);
 
     expect(sidebar).toHaveAttribute("data-open", "true");
-    
+
     // Toggle again
     fireEvent.click(toggleBtn);
     expect(sidebar).toHaveAttribute("data-open", "false");
   });
-  
+
   it("closes sidebar when close is called from sidebar", () => {
     render(
       <AppShell {...defaultProps}>
         <div>Content</div>
-      </AppShell>
+      </AppShell>,
     );
 
     // Open it first

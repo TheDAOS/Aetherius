@@ -1,5 +1,5 @@
-import { describe, it, expect, vi } from "vitest";
-import { render, fireEvent, waitFor } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
+import { describe, expect, it, vi } from "vitest";
 import { Modal } from "./Modal";
 
 describe("Modal", () => {
@@ -7,7 +7,7 @@ describe("Modal", () => {
     const { queryByRole } = render(
       <Modal isOpen={false} onClose={() => {}} title="Test Modal">
         Content
-      </Modal>
+      </Modal>,
     );
     expect(queryByRole("dialog")).toBeNull();
   });
@@ -16,7 +16,7 @@ describe("Modal", () => {
     const { getByRole, getByText } = render(
       <Modal isOpen={true} onClose={() => {}} title="Test Modal">
         Content
-      </Modal>
+      </Modal>,
     );
     expect(getByRole("dialog")).toBeInTheDocument();
     expect(getByText("Test Modal")).toBeInTheDocument();
@@ -25,9 +25,14 @@ describe("Modal", () => {
 
   it("renders badgeText when provided", () => {
     const { getByText } = render(
-      <Modal isOpen={true} onClose={() => {}} title="Test Modal" badgeText="New">
+      <Modal
+        isOpen={true}
+        onClose={() => {}}
+        title="Test Modal"
+        badgeText="New"
+      >
         Content
-      </Modal>
+      </Modal>,
     );
     expect(getByText("New")).toBeInTheDocument();
   });
@@ -37,7 +42,7 @@ describe("Modal", () => {
     const { getByTitle } = render(
       <Modal isOpen={true} onClose={onClose} title="Test Modal">
         Content
-      </Modal>
+      </Modal>,
     );
     fireEvent.click(getByTitle("Close (Esc)"));
     expect(onClose).toHaveBeenCalledTimes(1);
@@ -48,7 +53,7 @@ describe("Modal", () => {
     const { container } = render(
       <Modal isOpen={true} onClose={onClose} title="Test Modal">
         Content
-      </Modal>
+      </Modal>,
     );
     // Background overlay is the first div inside the outer div, just before the dialog
     const overlay = container.querySelector('div[aria-hidden="true"]');
@@ -63,7 +68,7 @@ describe("Modal", () => {
     render(
       <Modal isOpen={true} onClose={onClose} title="Test Modal">
         Content
-      </Modal>
+      </Modal>,
     );
     fireEvent.keyDown(window, { key: "Escape" });
     expect(onClose).toHaveBeenCalledTimes(1);
@@ -74,7 +79,7 @@ describe("Modal", () => {
     render(
       <Modal isOpen={true} onClose={onClose} title="Test Modal">
         Content
-      </Modal>
+      </Modal>,
     );
     fireEvent.keyDown(window, { key: "Enter" });
     expect(onClose).not.toHaveBeenCalled();
@@ -85,11 +90,13 @@ describe("Modal", () => {
       <Modal isOpen={true} onClose={() => {}} title="Test Modal">
         <input data-testid="input1" />
         <input data-testid="input2" />
-      </Modal>
+      </Modal>,
     );
 
     const dialog = getByRole("dialog");
-    const closeBtn = container.querySelector('button[title="Close (Esc)"]') as HTMLElement;
+    const closeBtn = container.querySelector(
+      'button[title="Close (Esc)"]',
+    ) as HTMLElement;
     const input1 = getByTestId("input1") as HTMLElement;
     const input2 = getByTestId("input2") as HTMLElement;
 
@@ -118,12 +125,14 @@ describe("Modal", () => {
     const { getByRole, container } = render(
       <Modal isOpen={true} onClose={() => {}} title="Test Modal">
         <input />
-      </Modal>
+      </Modal>,
     );
-    
+
     const dialog = getByRole("dialog");
-    const closeBtn = container.querySelector('button[title="Close (Esc)"]') as HTMLElement;
-    
+    const closeBtn = container.querySelector(
+      'button[title="Close (Esc)"]',
+    ) as HTMLElement;
+
     expect(document.activeElement).toBe(closeBtn);
     fireEvent.keyDown(dialog, { key: "Enter" });
     expect(document.activeElement).toBe(closeBtn); // Still same

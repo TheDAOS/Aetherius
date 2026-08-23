@@ -1,5 +1,5 @@
-import { describe, it, expect } from "vitest";
 import { render } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
 import { Badge } from "./Badge";
 
 describe("Badge", () => {
@@ -22,9 +22,16 @@ describe("Badge", () => {
   });
 
   it("renders with all variants", () => {
-    const variants = ["acid", "orange", "pink", "cobalt", "mint", "muted"] as const;
+    const variants = [
+      "acid",
+      "orange",
+      "pink",
+      "cobalt",
+      "mint",
+      "muted",
+    ] as const;
     const { getByText, rerender } = render(<Badge variant="acid">Hello</Badge>);
-    
+
     for (const variant of variants) {
       rerender(<Badge variant={variant}>Hello</Badge>);
       const badge = getByText("Hello");

@@ -130,7 +130,7 @@ See [[System Design]] for details. Also tagged #knowledge-management.`;
   it("falls back to default path if no title and no heading", () => {
     const parsed = parseMarkdown("Just some text", "folder/my-note.md");
     expect(parsed.title).toBe("my-note");
-    
+
     // hit the fallback if .pop() is empty string (e.g. trailing slash)
     const parsedSlash = parseMarkdown("Just some text", "/");
     expect(parsedSlash.title).toBe("/");

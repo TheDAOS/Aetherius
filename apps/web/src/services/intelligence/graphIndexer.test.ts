@@ -109,7 +109,7 @@ Mentions [[Welcome Note]] and [[System Design]].`,
     const text = "A short sentence.";
     const snippet = extractSnippet(text, "not found");
     expect(snippet).toBe("A short sentence.");
-    
+
     const longText = "a".repeat(150);
     const longSnippet = extractSnippet(longText, "not found", 120);
     expect(longSnippet).toContain("a".repeat(120) + "...");
@@ -126,7 +126,12 @@ Mentions [[Welcome Note]] and [[System Design]].`,
 
   it("handles edge cases to achieve 100% coverage", () => {
     // extractSnippet with a very long text where the phrase is in the middle
-    const longText = "Start padding. " + "a".repeat(100) + " match phrase " + "b".repeat(100) + " End padding.";
+    const longText =
+      "Start padding. " +
+      "a".repeat(100) +
+      " match phrase " +
+      "b".repeat(100) +
+      " End padding.";
     const longSnippet = extractSnippet(longText, "match phrase");
     expect(longSnippet).toContain("..."); // both start and end ...
 
@@ -146,7 +151,7 @@ Mentions [[Welcome Note]] and [[System Design]].`,
         content: `---
 title: Self Link
 ---
-I link to [[Self Link]] and [[empty]].`
+I link to [[Self Link]] and [[empty]].`,
       },
       {
         name: "unlinked.md",
@@ -156,29 +161,31 @@ I link to [[Self Link]] and [[empty]].`
         content: `---
 title: A Very Specific Title That Wont Be Linked
 ---
-I mention Self Link twice to hit unlinkedMentions already set branch.`
+I mention Self Link twice to hit unlinkedMentions already set branch.`,
       },
       {
         name: "unlinked2.md",
         path: "unlinked2.md",
         type: "file",
         sha: "3.5",
-        content: `I also mention Self Link again so that unlinkedMentions already has it.`
+        content: `I also mention Self Link again so that unlinkedMentions already has it.`,
       },
       {
         name: "untitled.md",
         path: "untitled.md",
         type: "file",
         sha: "4",
-        content: `I mention A Very Specific Title That Wont Be Linked`
-      }
+        content: `I mention A Very Specific Title That Wont Be Linked`,
+      },
     ];
 
     const graph = buildGraphIndex(edgeFiles);
     expect(graph.nodes.length).toBe(5);
-    
+
     // Check if self-link was ignored
-    const selfLinkEdges = graph.edges.filter(e => e.source === "self-link.md" && e.target === "self-link.md");
+    const selfLinkEdges = graph.edges.filter(
+      (e) => e.source === "self-link.md" && e.target === "self-link.md",
+    );
     expect(selfLinkEdges.length).toBe(0);
   });
 });

@@ -1,17 +1,17 @@
 import { assertEquals } from "https://deno.land/std@0.208.0/assert/mod.ts";
-import { assertSpyCalls, stub, returnsNext } from "https://deno.land/std@0.208.0/testing/mock.ts";
+import {
+  assertSpyCalls,
+  returnsNext,
+  stub,
+} from "https://deno.land/std@0.208.0/testing/mock.ts";
 
 let handler: (req: Request) => Promise<Response>;
 
 // Stub Deno.serve before importing the module
-const serveStub = stub(
-  Deno,
-  "serve",
-  (arg1: any, arg2?: any) => {
-    handler = typeof arg1 === "function" ? arg1 : arg2;
-    return {} as any;
-  }
-);
+const serveStub = stub(Deno, "serve", (arg1: any, arg2?: any) => {
+  handler = typeof arg1 === "function" ? arg1 : arg2;
+  return {} as any;
+});
 
 Deno.env.set("SUPABASE_URL", "https://mock.supabase.co");
 Deno.env.set("SUPABASE_ANON_KEY", "mock-anon-key");
@@ -27,7 +27,10 @@ Deno.test("CORS Preflight (OPTIONS) returns 200 OK", async () => {
 
   const res = await handler(req);
   assertEquals(res.status, 200);
-  assertEquals(res.headers.get("Access-Control-Allow-Origin"), "https://aetherius.sanju.fyi");
+  assertEquals(
+    res.headers.get("Access-Control-Allow-Origin"),
+    "https://aetherius.sanju.fyi",
+  );
 });
 
 Deno.test("Missing Authorization returns 401 UNAUTHORIZED", async () => {
@@ -47,9 +50,9 @@ Deno.test("Missing Authorization returns 401 UNAUTHORIZED", async () => {
 Deno.test("Invalid Authorization returns 401 UNAUTHORIZED", async () => {
   const req = new Request("https://mock.supabase.co/api-v1/vaults", {
     method: "GET",
-    headers: { 
+    headers: {
       Origin: "https://aetherius.sanju.fyi",
-      Authorization: "Bearer invalid-token"
+      Authorization: "Bearer invalid-token",
     },
   });
 

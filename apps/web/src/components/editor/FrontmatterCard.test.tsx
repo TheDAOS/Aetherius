@@ -1,5 +1,5 @@
-import { render, screen, fireEvent } from "@testing-library/react";
-import { describe, it, expect } from "vitest";
+import { fireEvent, render, screen } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
 import { FrontmatterCard } from "./FrontmatterCard";
 
 describe("FrontmatterCard", () => {
@@ -9,7 +9,11 @@ describe("FrontmatterCard", () => {
   });
 
   it("renders tags correctly when tags is an array", () => {
-    render(<FrontmatterCard frontmatter={{ tags: ["react", "vitest"], title: "Test" }} />);
+    render(
+      <FrontmatterCard
+        frontmatter={{ tags: ["react", "vitest"], title: "Test" }}
+      />,
+    );
     expect(screen.getByText("#react")).toBeInTheDocument();
     expect(screen.getByText("#vitest")).toBeInTheDocument();
     expect(screen.getByText("(2 tags)")).toBeInTheDocument();
@@ -22,7 +26,9 @@ describe("FrontmatterCard", () => {
   });
 
   it("ignores title but renders other properties", () => {
-    render(<FrontmatterCard frontmatter={{ title: "My Title", author: "John" }} />);
+    render(
+      <FrontmatterCard frontmatter={{ title: "My Title", author: "John" }} />,
+    );
     expect(screen.queryByText("title:")).not.toBeInTheDocument();
     expect(screen.getByText("author:")).toBeInTheDocument();
     expect(screen.getByText("John")).toBeInTheDocument();
@@ -37,7 +43,7 @@ describe("FrontmatterCard", () => {
   it("toggles expanded state", () => {
     render(<FrontmatterCard frontmatter={{ author: "John" }} />);
     const header = screen.getByText("PROPERTIES / METADATA");
-    
+
     // Initially expanded
     expect(screen.getByText("author:")).toBeInTheDocument();
 
@@ -51,7 +57,15 @@ describe("FrontmatterCard", () => {
   });
 
   it("shows calendar icon for date fields", () => {
-    render(<FrontmatterCard frontmatter={{ created: "2023-01-01", updated: "2023-01-02", published_date: "2023-01-03" }} />);
+    render(
+      <FrontmatterCard
+        frontmatter={{
+          created: "2023-01-01",
+          updated: "2023-01-02",
+          published_date: "2023-01-03",
+        }}
+      />,
+    );
     expect(screen.getByText("created:")).toBeInTheDocument();
     expect(screen.getByText("updated:")).toBeInTheDocument();
     expect(screen.getByText("published_date:")).toBeInTheDocument();

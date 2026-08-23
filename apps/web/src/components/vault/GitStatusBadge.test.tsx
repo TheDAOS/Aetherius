@@ -1,5 +1,4 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import React from "react";
 import { describe, expect, it, vi } from "vitest";
 import { GitStatusBadge } from "./GitStatusBadge";
 
@@ -33,16 +32,28 @@ describe("GitStatusBadge", () => {
   });
 
   it("shows spinning icon when status is running", () => {
-    render(<GitStatusBadge status={{ status: "running", progress: 50, phase: "pushing" }} branch="main" onSync={() => {}} />);
-    
+    render(
+      <GitStatusBadge
+        status={{ status: "running", lastSyncAt: null }}
+        branch="main"
+        onSync={() => {}}
+      />
+    );
+
     const syncBtn = screen.getByTitle("Trigger Git Sync") as HTMLButtonElement;
     expect(syncBtn.disabled).toBe(true);
     expect(screen.getByTestId("RefreshCw").className).toContain("animate-spin");
   });
 
   it("shows spinning icon when status is pending", () => {
-    render(<GitStatusBadge status={{ status: "pending", progress: 0, phase: "pulling" }} branch="main" onSync={() => {}} />);
-    
+    render(
+      <GitStatusBadge
+        status={{ status: "pending", lastSyncAt: null }}
+        branch="main"
+        onSync={() => {}}
+      />
+    );
+
     const syncBtn = screen.getByTitle("Trigger Git Sync") as HTMLButtonElement;
     expect(syncBtn.disabled).toBe(true);
     expect(screen.getByTestId("RefreshCw").className).toContain("animate-spin");

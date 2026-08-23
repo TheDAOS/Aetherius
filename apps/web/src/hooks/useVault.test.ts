@@ -1,7 +1,6 @@
 import { renderHook, act } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { useVault } from "./useVault";
-import { vaultService } from "../services/vault";
 import { offlineDb } from "../services/storage/offlineDb";
 
 vi.mock("../services/vault", () => ({
