@@ -1,8 +1,9 @@
-import { Download, GitFork, HardDrive, RefreshCw } from "lucide-react";
+import { Download, GitFork, HardDrive, RefreshCw, LogOut } from "lucide-react";
 import type React from "react";
 import { Button } from "../components/common/Button";
 import { Modal } from "../components/common/Modal";
 import { usePWA } from "../hooks/usePWA";
+import { useAuth } from "../contexts/AuthContext";
 import { vaultService } from "../services/vault";
 import type { SyncStatus, Vault } from "../types/vault";
 
@@ -11,6 +12,7 @@ interface SettingsModalProps {
   onClose: () => void;
   vault: Vault | null;
   syncStatus: SyncStatus | null;
+  isDirty?: boolean;
   onResetVault: () => void;
 }
 
@@ -19,9 +21,11 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   onClose,
   vault,
   syncStatus,
+  isDirty = false,
   onResetVault,
 }) => {
   const { isInstallable, installApp, isOnline } = usePWA();
+  const { signOut } = useAuth();
 
   return (
     <Modal
@@ -123,6 +127,35 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               }}
             >
               Reset to Defaults
+            </Button>
+          </div>
+        </section>
+
+        {/* Account Management */}
+        <section className="flex flex-col gap-2.5 pt-4 border-t border-cream-border">
+          <div className="flex items-center justify-between">
+            <span className="font-display font-bold text-xs uppercase tracking-wider text-ink-secondary">
+              Account
+            </span>
+            <Button
+              variant="secondary"
+              size="sm"
+              icon={<LogOut size={13} />}
+              onClick={() => {
+                if (isDirty) {
+                  if (
+                    !window.confirm(
+                      "You have unsynced offline changes. Signing out will discard them permanently. Are you sure you want to sign out?"
+                    )
+                  ) {
+                    return;
+                  }
+                }
+                signOut();
+                onClose();
+              }}
+            >
+              Sign Out
             </Button>
           </div>
         </section>

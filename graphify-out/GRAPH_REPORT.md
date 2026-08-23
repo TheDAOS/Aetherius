@@ -1,16 +1,16 @@
 # Graph Report - Aetherius  (2026-08-23)
 
 ## Corpus Check
-- 111 files · ~46,484 words
+- 113 files · ~47,413 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 853 nodes · 1037 edges · 66 communities (60 shown, 6 thin omitted)
+- 865 nodes · 1053 edges · 67 communities (61 shown, 6 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `44cc51a1`
+- Built from commit: `08b34010`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -44,12 +44,12 @@
 - Phase 1 Implementation Plan — Frontend / PWA Foundation
 - Frontend & PWA Architecture
 - ADR-006: Frontend PWA Design System and Architecture
-- MockVaultService
+- types/vault.ts
 - WorkspaceView.tsx
 - compilerOptions
 - web/package.json
 - devDependencies
-- types/vault.ts
+- graphIndexer.ts
 - VaultFile
 - imports
 - GitHubClient
@@ -61,6 +61,7 @@
 - Offline Caching & Synchronization Architecture
 - Markdown Intelligence & Knowledge Graph Architecture
 - includes
+- ADR 010: Testing Strategy
 - 1. 🚨 CRITICAL Security Vulnerabilities
 - 2. Line-by-Line Frontend Review (`apps/web/src/`)
 - 4. Frontend Code Quality & UX
@@ -103,7 +104,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (66 total, 6 thin omitted)
+## Communities (67 total, 6 thin omitted)
 
 ### Community 0 - "Git-Backed Personal Vault API (OpenAPI 3.1.0)"
 Cohesion: 0.12
@@ -182,8 +183,8 @@ Cohesion: 0.40
 Nodes (4): Daily Note - {{date}}, Notes & Thoughts, Objectives, Tasks & Follow-ups
 
 ### Community 19 - "Git-Backed Personal Vault"
-Cohesion: 0.40
-Nodes (4): Aetherius, Architecture, Git-Backed Personal Vault, Project Status
+Cohesion: 0.33
+Nodes (5): Aetherius, Architecture, Git-Backed Personal Vault, Project Status, Testing
 
 ### Community 27 - "Phase 1 Implementation Plan — Frontend / PWA Foundation"
 Cohesion: 0.13
@@ -197,13 +198,13 @@ Nodes (11): 1. Technical Stack, 2. Design System: "Warm Cream & Acid Neo-Memphis
 Cohesion: 0.25
 Nodes (7): ADR-006: Frontend PWA Design System and Architecture, Consequences, Context, Decision, Negative, Positive, Related Decisions
 
-### Community 30 - "MockVaultService"
-Cohesion: 0.08
-Nodes (18): TopHeader(), TopHeaderProps, GitStatusBadge(), GitStatusBadgeProps, usePWA(), SettingsModal(), SettingsModalProps, DEFAULT_FILES (+10 more)
+### Community 30 - "types/vault.ts"
+Cohesion: 0.10
+Nodes (17): TopHeader(), TopHeaderProps, GitStatusBadge(), GitStatusBadgeProps, DEFAULT_FILES, DEFAULT_VAULT, generateSha(), MockVaultService (+9 more)
 
 ### Community 31 - "WorkspaceView.tsx"
-Cohesion: 0.06
-Nodes (35): App(), Button(), ButtonProps, Input(), InputProps, Modal(), ModalProps, NoteEditor() (+27 more)
+Cohesion: 0.05
+Nodes (39): App(), Button(), ButtonProps, Input(), InputProps, Modal(), ModalProps, NoteEditor() (+31 more)
 
 ### Community 32 - "compilerOptions"
 Cohesion: 0.07
@@ -217,9 +218,9 @@ Nodes (27): dependencies, clsx, lucide-react, markdown-it, react, react-dom, @su
 Cohesion: 0.06
 Nodes (35): devDependencies, autoprefixer, jsdom, postcss, tailwindcss, @testing-library/jest-dom, @testing-library/react, @testing-library/user-event (+27 more)
 
-### Community 35 - "types/vault.ts"
-Cohesion: 0.09
-Nodes (30): Badge(), BadgeProps, BacklinksPanel(), BacklinksPanelProps, FrontmatterCard(), FrontmatterCardProps, md, NotePreview() (+22 more)
+### Community 35 - "graphIndexer.ts"
+Cohesion: 0.10
+Nodes (27): Badge(), BadgeProps, BacklinksPanel(), BacklinksPanelProps, FrontmatterCard(), FrontmatterCardProps, md, NotePreview() (+19 more)
 
 ### Community 40 - "VaultFile"
 Cohesion: 0.13
@@ -264,6 +265,10 @@ Nodes (4): Knowledge Graph Visualization, Markdown Intelligence & Knowledge Grap
 ### Community 51 - "includes"
 Cohesion: 0.05
 Nodes (40): noAutofocus, noInteractiveElementToNoninteractiveRole, noLabelWithoutControl, noNoninteractiveElementToInteractiveRole, noStaticElementInteractions, noSvgWithoutTitle, useButtonType, useFocusableInteractive (+32 more)
+
+### Community 52 - "ADR 010: Testing Strategy"
+Cohesion: 0.20
+Nodes (9): ADR 010: Testing Strategy, Backend (Supabase Edge Functions), Consequences, Context, Coverage Targets, Decision, Frontend (React & Services), Notes (+1 more)
 
 ### Community 53 - "1. 🚨 CRITICAL Security Vulnerabilities"
 Cohesion: 0.12
@@ -322,21 +327,21 @@ Cohesion: 0.40
 Nodes (5): 6. Data Loss on File Switch, 7. Unicode/Emoji Crash (btoa/atob), 8. Edge Function OOM on Large Vaults, 9. Unhandled Promise / Infinite Loading, 🔴 CRITICAL: Data Loss & Crash Vectors
 
 ## Knowledge Gaps
-- **477 isolated node(s):** `name`, `private`, `version`, `type`, `packageManager` (+472 more)
+- **485 isolated node(s):** `name`, `private`, `version`, `type`, `packageManager` (+480 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **6 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `VaultFile` connect `VaultFile` to `types/vault.ts`, `MockVaultService`, `WorkspaceView.tsx`?**
+- **Why does `VaultFile` connect `VaultFile` to `graphIndexer.ts`, `types/vault.ts`, `WorkspaceView.tsx`?**
   _High betweenness centrality (0.010) - this node is a cross-community bridge._
-- **Why does `VaultService` connect `WorkspaceView.tsx` to `MockVaultService`?**
-  _High betweenness centrality (0.005) - this node is a cross-community bridge._
 - **Why does `OfflineDatabase` connect `VaultFile` to `WorkspaceView.tsx`?**
-  _High betweenness centrality (0.005) - this node is a cross-community bridge._
+  _High betweenness centrality (0.004) - this node is a cross-community bridge._
+- **Why does `VaultService` connect `WorkspaceView.tsx` to `types/vault.ts`?**
+  _High betweenness centrality (0.004) - this node is a cross-community bridge._
 - **What connects `name`, `private`, `version` to the rest of the system?**
-  _477 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _485 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Git-Backed Personal Vault API (OpenAPI 3.1.0)` be split into smaller, more focused modules?**
   _Cohesion score 0.125 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**

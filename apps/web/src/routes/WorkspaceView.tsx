@@ -296,6 +296,7 @@ export const WorkspaceView: React.FC = () => {
               onClose={() => setIsSettingsOpen(false)}
               vault={vaultState.vault}
               syncStatus={vaultState.syncStatus}
+              isDirty={vaultState.isDirty}
               onResetVault={vaultState.refreshVault}
             />
 
