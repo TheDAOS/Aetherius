@@ -53,6 +53,8 @@ Today I reviewed the Architecture of our project and wrote some notes.`,
       sha: "sha4",
       content: `---
 title: Extra Notes
+tags:
+  - onboarding
 ---
 # Extra Notes
 Mentions [[Welcome Note]] and [[System Design]].`,
@@ -157,6 +159,13 @@ title: A Very Specific Title That Wont Be Linked
 I mention Self Link twice to hit unlinkedMentions already set branch.`
       },
       {
+        name: "unlinked2.md",
+        path: "unlinked2.md",
+        type: "file",
+        sha: "3.5",
+        content: `I also mention Self Link again so that unlinkedMentions already has it.`
+      },
+      {
         name: "untitled.md",
         path: "untitled.md",
         type: "file",
@@ -166,7 +175,7 @@ I mention Self Link twice to hit unlinkedMentions already set branch.`
     ];
 
     const graph = buildGraphIndex(edgeFiles);
-    expect(graph.nodes.length).toBe(4);
+    expect(graph.nodes.length).toBe(5);
     
     // Check if self-link was ignored
     const selfLinkEdges = graph.edges.filter(e => e.source === "self-link.md" && e.target === "self-link.md");

@@ -133,7 +133,7 @@ See [[System Design]] for details. Also tagged #knowledge-management.`;
     
     // hit the fallback if .pop() is empty string (e.g. trailing slash)
     const parsedSlash = parseMarkdown("Just some text", "/");
-    expect(parsedSlash.title).toBe("Untitled");
+    expect(parsedSlash.title).toBe("/");
   });
 
   it("defaults to Untitled if absolutely no title can be found", () => {
@@ -144,6 +144,7 @@ See [[System Design]] for details. Also tagged #knowledge-management.`;
   it("covers all frontmatter parsing edge cases", () => {
     const raw = `---
 # comment line
+invalid text no colon
 
 listKey:
   - "quoted item"
@@ -193,5 +194,9 @@ body with #tag1`);
     // empty filename to hit !filename continue branch
     const res4 = resolveWikilinkPath("target", ["/", "target.md"]);
     expect(res4).toBe("target.md");
+
+    // hit the continue branch in basename loop
+    const res5 = resolveWikilinkPath("something-else", ["/", ".md"]);
+    expect(res5).toBeNull();
   });
 });

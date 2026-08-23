@@ -176,7 +176,9 @@ export function resolveWikilinkPath(
 
   // 3. Basename match (e.g. [[System Design]] -> notes/system-design.md)
   for (const path of allFilePaths) {
-    const filename = path.split("/").pop()?.replace(/\.md$/, "").toLowerCase();
+    const popResult = path.split("/").pop();
+    if (!popResult) continue;
+    const filename = popResult.replace(/\.md$/, "").toLowerCase();
     if (!filename) continue;
     const normalizedFilename = filename.replace(/[\s\-_]+/g, "-");
     if (filename === cleanTarget || normalizedFilename === normalizedTarget) {
