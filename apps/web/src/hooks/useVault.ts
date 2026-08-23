@@ -220,6 +220,8 @@ export function useVault() {
     [activeFilePath, files],
   );
 
+  const clearError = useCallback(() => setError(null), []);
+
   return {
     vault,
     files,
@@ -240,5 +242,6 @@ export function useVault() {
     deleteFile,
     sync,
     refreshVault,
+    clearError,
   };
 }

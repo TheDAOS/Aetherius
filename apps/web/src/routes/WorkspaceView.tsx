@@ -1,4 +1,4 @@
-import { Plus } from "lucide-react";
+import { Plus, X } from "lucide-react";
 import type React from "react";
 import { useEffect, useMemo, useState } from "react";
 import { NoteEditor } from "../components/editor/NoteEditor";
@@ -184,6 +184,21 @@ export const WorkspaceView: React.FC = () => {
                     Reload
                   </button>
                 </div>
+              </div>
+            )}
+
+            {vaultState.error && !vaultState.hasConflict && (
+              <div className="px-4 py-2 bg-accent-orange text-white font-mono text-xs border-b-2 border-ink-primary flex items-center justify-between">
+                <span className="font-bold flex-1 truncate mr-4">
+                  ⚠️ Error: {vaultState.error}
+                </span>
+                <button
+                  onClick={vaultState.clearError}
+                  className="p-1 hover:bg-white/20 rounded transition-colors"
+                  title="Dismiss"
+                >
+                  <X size={14} />
+                </button>
               </div>
             )}
 
