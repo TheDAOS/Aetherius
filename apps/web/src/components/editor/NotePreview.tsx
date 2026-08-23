@@ -125,6 +125,7 @@ export const NotePreview: React.FC<NotePreviewProps> = ({
         <div
           className="note-preview-content"
           onClick={handleClick}
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: Sanitized via markdown-it (html: false)
           dangerouslySetInnerHTML={{ __html: renderedHtml }}
         />
 

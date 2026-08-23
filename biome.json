@@ -6,7 +6,20 @@
     "rules": {
       "preset": "recommended",
       "suspicious": {
-        "noExplicitAny": "warn"
+        "noExplicitAny": "warn",
+        "noArrayIndexKey": "warn",
+        "noAssignInExpressions": "warn"
+      },
+      "a11y": {
+        "noSvgWithoutTitle": "warn",
+        "noLabelWithoutControl": "warn",
+        "useButtonType": "warn",
+        "noStaticElementInteractions": "warn",
+        "useKeyWithClickEvents": "warn",
+        "noAutofocus": "warn",
+        "noNoninteractiveElementToInteractiveRole": "warn",
+        "noInteractiveElementToNoninteractiveRole": "warn",
+        "useFocusableInteractive": "warn"
       },
       "correctness": {
         "useExhaustiveDependencies": "warn"
@@ -21,8 +34,10 @@
   "files": {
     "includes": [
       "**",
+      "!**/*.css",
       "!**/node_modules",
       "!**/dist",
+      "!**/coverage",
       "!**/build",
       "!**/.next",
       "!**/graphify-out",
