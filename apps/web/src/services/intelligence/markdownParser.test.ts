@@ -38,6 +38,13 @@ This is the note body.`;
     expect(body).toBe(raw);
   });
 
+  it("handles unclosed frontmatter", () => {
+    const raw = "---\ntitle: Missing end";
+    const { frontmatter, body } = parseFrontmatter(raw);
+    expect(frontmatter).toEqual({});
+    expect(body).toBe(raw);
+  });
+
   it("extracts standard and aliased wikilinks", () => {
     const text =
       "Reference to [[Welcome Note]] and [[notes/system-design|System Design]] and [[Architecture#Overview]].";
@@ -113,5 +120,83 @@ See [[System Design]] for details. Also tagged #knowledge-management.`;
     expect(parsed.tags).toContain("graph");
     expect(parsed.tags).toContain("knowledge-management");
     expect(parsed.outgoingLinks[0].target).toBe("System Design");
+  });
+
+  it("falls back to heading title if no frontmatter title", () => {
+    const parsed = parseMarkdown("# First Heading\nSome text");
+    expect(parsed.title).toBe("First Heading");
+  });
+
+  it("falls back to default path if no title and no heading", () => {
+    const parsed = parseMarkdown("Just some text", "folder/my-note.md");
+    expect(parsed.title).toBe("my-note");
+
+    // hit the fallback if .pop() is empty string (e.g. trailing slash)
+    const parsedSlash = parseMarkdown("Just some text", "/");
+    expect(parsedSlash.title).toBe("/");
+  });
+
+  it("defaults to Untitled if absolutely no title can be found", () => {
+    const parsed = parseMarkdown("Just some text");
+    expect(parsed.title).toBe("Untitled");
+  });
+
+  it("covers all frontmatter parsing edge cases", () => {
+    const raw = `---
+# comment line
+invalid text no colon
+
+listKey:
+  - "quoted item"
+stringKey: "true"
+falseKey: "false"
+numberKey: 123
+zeroKey: 0
+emptyStrKey: ""
+tags: single-tag
+aliases: single-alias
+---
+# Heading`;
+    const { frontmatter } = parseFrontmatter(raw);
+    expect(frontmatter.listKey).toEqual(["quoted item"]);
+    expect(frontmatter.stringKey).toBe(true);
+    expect(frontmatter.falseKey).toBe(false);
+    expect(frontmatter.numberKey).toBe(123);
+    expect(frontmatter.zeroKey).toBe(0);
+    expect(frontmatter.emptyStrKey).toBe("");
+    expect(frontmatter.tags).toBe("single-tag");
+    expect(frontmatter.aliases).toBe("single-alias");
+  });
+
+  it("covers parseMarkdown single string tag/alias and heading match branches", () => {
+    const parsed = parseMarkdown(`---
+tags: tag1
+aliases: alias1
+---
+body with #tag1`);
+    expect(parsed.tags).toEqual(["tag1"]);
+    expect(parsed.aliases).toEqual(["alias1"]);
+  });
+
+  it("covers resolveWikilinkPath titleToPathMap normalized and default fallback", () => {
+    const map = new Map();
+    map.set("some-normalized-target", "found/path.md");
+    const res1 = resolveWikilinkPath("Some Normalized Target", [], map);
+    expect(res1).toBe("found/path.md");
+
+    const res2 = resolveWikilinkPath("My-File", ["My-File.md"]);
+    expect(res2).toBe("My-File.md");
+
+    // target not in map, fallback to allFilePaths
+    const res3 = resolveWikilinkPath("Not In Map", ["Not In Map.md"], map);
+    expect(res3).toBe("Not In Map.md");
+
+    // empty filename to hit !filename continue branch
+    const res4 = resolveWikilinkPath("target", ["/", "target.md"]);
+    expect(res4).toBe("target.md");
+
+    // hit the continue branch in basename loop
+    const res5 = resolveWikilinkPath("something-else", ["/", ".md"]);
+    expect(res5).toBeNull();
   });
 });

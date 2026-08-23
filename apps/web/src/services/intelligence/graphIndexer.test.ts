@@ -53,6 +53,8 @@ Today I reviewed the Architecture of our project and wrote some notes.`,
       sha: "sha4",
       content: `---
 title: Extra Notes
+tags:
+  - onboarding
 ---
 # Extra Notes
 Mentions [[Welcome Note]] and [[System Design]].`,
@@ -103,6 +105,16 @@ Mentions [[Welcome Note]] and [[System Design]].`,
     expect(snippet).toContain("graph indexing");
   });
 
+  it("returns truncated start of content if phrase not found", () => {
+    const text = "A short sentence.";
+    const snippet = extractSnippet(text, "not found");
+    expect(snippet).toBe("A short sentence.");
+
+    const longText = "a".repeat(150);
+    const longSnippet = extractSnippet(longText, "not found", 120);
+    expect(longSnippet).toContain("a".repeat(120) + "...");
+  });
+
   it("populates tag mapping across all notes", () => {
     const graph = buildGraphIndex(sampleFiles);
     expect(
@@ -110,5 +122,70 @@ Mentions [[Welcome Note]] and [[System Design]].`,
     ).toBe(true);
     expect(graph.tagMap.get("onboarding")?.has("notes/welcome.md")).toBe(true);
     expect(graph.tagMap.get("journal")?.has("notes/daily-log.md")).toBe(true);
+  });
+
+  it("handles edge cases to achieve 100% coverage", () => {
+    // extractSnippet with a very long text where the phrase is in the middle
+    const longText =
+      "Start padding. " +
+      "a".repeat(100) +
+      " match phrase " +
+      "b".repeat(100) +
+      " End padding.";
+    const longSnippet = extractSnippet(longText, "match phrase");
+    expect(longSnippet).toContain("..."); // both start and end ...
+
+    const edgeFiles: VaultFile[] = [
+      {
+        name: "empty.md",
+        path: "empty.md",
+        type: "file",
+        sha: "1",
+        // no content to hit `file.content || ""`
+      },
+      {
+        name: "self-link.md",
+        path: "self-link.md",
+        type: "file",
+        sha: "2",
+        content: `---
+title: Self Link
+---
+I link to [[Self Link]] and [[empty]].`,
+      },
+      {
+        name: "unlinked.md",
+        path: "unlinked.md",
+        type: "file",
+        sha: "3",
+        content: `---
+title: A Very Specific Title That Wont Be Linked
+---
+I mention Self Link twice to hit unlinkedMentions already set branch.`,
+      },
+      {
+        name: "unlinked2.md",
+        path: "unlinked2.md",
+        type: "file",
+        sha: "3.5",
+        content: `I also mention Self Link again so that unlinkedMentions already has it.`,
+      },
+      {
+        name: "untitled.md",
+        path: "untitled.md",
+        type: "file",
+        sha: "4",
+        content: `I mention A Very Specific Title That Wont Be Linked`,
+      },
+    ];
+
+    const graph = buildGraphIndex(edgeFiles);
+    expect(graph.nodes.length).toBe(5);
+
+    // Check if self-link was ignored
+    const selfLinkEdges = graph.edges.filter(
+      (e) => e.source === "self-link.md" && e.target === "self-link.md",
+    );
+    expect(selfLinkEdges.length).toBe(0);
   });
 });

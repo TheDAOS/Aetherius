@@ -98,9 +98,7 @@ export function buildGraphIndex(files: VaultFile[]): VaultGraphIndex {
   // 2. Build title and alias lookup map
   const titleToPathMap = new Map<string, string>();
   for (const [path, parsed] of parsedNotesMap.entries()) {
-    if (parsed.title) {
-      titleToPathMap.set(parsed.title.toLowerCase(), path);
-    }
+    titleToPathMap.set(parsed.title.toLowerCase(), path);
     for (const alias of parsed.aliases) {
       titleToPathMap.set(alias.toLowerCase(), path);
     }
@@ -128,10 +126,8 @@ export function buildGraphIndex(files: VaultFile[]): VaultGraphIndex {
         });
 
         // Increment degree
-        const sourceNode = nodesMap.get(sourcePath);
-        const targetNode = nodesMap.get(targetPath);
-        if (sourceNode) sourceNode.degree++;
-        if (targetNode) targetNode.degree++;
+        nodesMap.get(sourcePath)!.degree++;
+        nodesMap.get(targetPath)!.degree++;
       }
     }
   }

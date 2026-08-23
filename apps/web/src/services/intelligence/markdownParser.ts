@@ -38,9 +38,7 @@ export function parseFrontmatter(rawContent: string): {
         .slice(2)
         .trim()
         .replace(/^["']|["']$/g, "");
-      if (Array.isArray(frontmatter[currentKey])) {
-        frontmatter[currentKey].push(val);
-      }
+      frontmatter[currentKey].push(val);
       continue;
     }
 
@@ -99,7 +97,7 @@ export function extractInlineTags(text: string): string[] {
   while ((match = tagRegex.exec(noCode)) !== null) {
     const tag = match[1].toLowerCase();
     // Exclude markdown headings (which have space after #, e.g. # Heading)
-    if (tag) tags.add(tag);
+    tags.add(tag);
   }
 
   return Array.from(tags);
@@ -178,7 +176,9 @@ export function resolveWikilinkPath(
 
   // 3. Basename match (e.g. [[System Design]] -> notes/system-design.md)
   for (const path of allFilePaths) {
-    const filename = path.split("/").pop()?.replace(/\.md$/, "").toLowerCase();
+    const popResult = path.split("/").pop();
+    if (!popResult) continue;
+    const filename = popResult.replace(/\.md$/, "").toLowerCase();
     if (!filename) continue;
     const normalizedFilename = filename.replace(/[\s\-_]+/g, "-");
     if (filename === cleanTarget || normalizedFilename === normalizedTarget) {

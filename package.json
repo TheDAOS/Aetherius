@@ -5,7 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "vitest run",
+    "test": "pnpm --filter web test",
     "lint": "biome check .",
     "lint:fix": "biome check --fix .",
     "format": "biome format --write .",
