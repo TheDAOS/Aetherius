@@ -1,7 +1,7 @@
-import { renderHook, act } from "@testing-library/react";
-import { describe, it, expect, vi, beforeEach } from "vitest";
-import { useVault } from "./useVault";
+import { act, renderHook } from "@testing-library/react";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { offlineDb } from "../services/storage/offlineDb";
+import { useVault } from "./useVault";
 
 vi.mock("../services/vault", () => ({
   vaultService: {
@@ -35,7 +35,7 @@ describe("useVault", () => {
       const { result } = renderHook(() => useVault());
       resultRef = result;
     });
-    
+
     expect(resultRef.current.files).toEqual([]);
     expect(resultRef.current.activeFilePath).toBe("README.md");
   });

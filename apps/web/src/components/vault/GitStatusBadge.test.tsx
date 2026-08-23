@@ -5,7 +5,9 @@ import { GitStatusBadge } from "./GitStatusBadge";
 vi.mock("lucide-react", () => ({
   GitBranch: () => <div data-testid="GitBranch" />,
   CheckCircle2: () => <div data-testid="CheckCircle2" />,
-  RefreshCw: (props: any) => <div data-testid="RefreshCw" className={props.className} />,
+  RefreshCw: (props: any) => (
+    <div data-testid="RefreshCw" className={props.className} />
+  ),
 }));
 
 describe("GitStatusBadge", () => {
@@ -25,7 +27,7 @@ describe("GitStatusBadge", () => {
   it("renders sync button when onSync is provided", () => {
     const onSync = vi.fn();
     render(<GitStatusBadge status={null} branch="main" onSync={onSync} />);
-    
+
     const syncBtn = screen.getByTitle("Trigger Git Sync");
     fireEvent.click(syncBtn);
     expect(onSync).toHaveBeenCalled();
@@ -37,7 +39,7 @@ describe("GitStatusBadge", () => {
         status={{ status: "running", lastSyncAt: null }}
         branch="main"
         onSync={() => {}}
-      />
+      />,
     );
 
     const syncBtn = screen.getByTitle("Trigger Git Sync") as HTMLButtonElement;
@@ -51,7 +53,7 @@ describe("GitStatusBadge", () => {
         status={{ status: "pending", lastSyncAt: null }}
         branch="main"
         onSync={() => {}}
-      />
+      />,
     );
 
     const syncBtn = screen.getByTitle("Trigger Git Sync") as HTMLButtonElement;
