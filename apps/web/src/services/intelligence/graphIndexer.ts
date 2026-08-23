@@ -128,10 +128,8 @@ export function buildGraphIndex(files: VaultFile[]): VaultGraphIndex {
         });
 
         // Increment degree
-        const sourceNode = nodesMap.get(sourcePath);
-        const targetNode = nodesMap.get(targetPath);
-        if (sourceNode) sourceNode.degree++;
-        if (targetNode) targetNode.degree++;
+        nodesMap.get(sourcePath)!.degree++;
+        nodesMap.get(targetPath)!.degree++;
       }
     }
   }

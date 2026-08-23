@@ -217,4 +217,18 @@ describe("NoteToolbar", () => {
     );
     expect(screen.getByRole("button", { name: "Save Offline" })).not.toBeDisabled();
   });
+
+  it("applies active styles when viewMode is split", () => {
+    render(
+      <NoteToolbar
+        viewMode="split"
+        onChangeViewMode={vi.fn()}
+        isDirty={false}
+        onSave={vi.fn()}
+      />
+    );
+    const splitBtn = screen.getByTitle("Split Mode");
+    expect(splitBtn.className).toContain("bg-accent-acid");
+  });
 });
+
