@@ -40,7 +40,7 @@ describe("SettingsModal", () => {
 
   const mockSyncStatus = {
     lastSyncAt: new Date().toISOString(),
-    isSyncing: false,
+    status: "idle" as const,
   };
 
   const defaultProps = {

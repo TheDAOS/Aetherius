@@ -112,3 +112,9 @@ During Phase 1, `apps/web/src/services/mockVault.ts` provides client-side reposi
 - Note creation, modification, and deletion.
 - Dirty vs. clean Git status tracking.
 - Local storage persistence across browser refreshes.
+
+---
+
+## 6. UX & Implementation Rules
+1. **No Silent Failures on Missing State**: When implementing frontend views that depend on backend state (e.g., a user's vault), always handle the "empty" or "null" state gracefully. Provide explicit onboarding UI (like a creation or setup screen) rather than silently failing, hanging, or rendering blank layouts.
+2. **No Silent Auto-Generation**: Do not automatically generate important user assets (such as GitHub repositories) silently in the background. Always present a UI where the user can consent to the action, choose identifiers (e.g., repository names), and clearly understand what is being created on their behalf.

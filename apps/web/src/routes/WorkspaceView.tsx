@@ -13,6 +13,7 @@ import { ConflictModal } from "./ConflictModal";
 import { NewNoteModal } from "./NewNoteModal";
 import { SearchModal } from "./SearchModal";
 import { SettingsModal } from "./SettingsModal";
+import { CreateVaultView } from "./CreateVaultView";
 
 export const WorkspaceView: React.FC = () => {
   const vaultState = useVault();
@@ -24,6 +25,10 @@ export const WorkspaceView: React.FC = () => {
   const [isConflictOpen, setIsConflictOpen] = useState(false);
   const [remoteConflictContent, setRemoteConflictContent] =
     useState<string>("");
+
+  if (!vaultState.isLoading && !vaultState.vault) {
+    return <CreateVaultView onVaultCreated={vaultState.refreshVault} />;
+  }
 
   // Global Keyboard Shortcuts
   useEffect(() => {

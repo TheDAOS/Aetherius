@@ -42,9 +42,9 @@
     "semantic_hash": ""
   },
   "AGENTS.md": {
-    "mtime": 1787424070.051099,
-    "seen": 1787467806.4420395,
-    "ast_hash": "72a645f2c82026746f3948df0a0e037c",
+    "mtime": 1787477521.6852565,
+    "seen": 1787477527.1718743,
+    "ast_hash": "d6f2abba6d6b062b46bf19e46982ef49",
     "semantic_hash": ""
   },
   "CLAUDE.md": {
@@ -168,9 +168,9 @@
     "semantic_hash": ""
   },
   "ai/context/project-blueprint.md": {
-    "mtime": 1787229750.557945,
-    "seen": 1787230088.3003693,
-    "ast_hash": "1c5861a8c544d31fd343834ee57d544d",
+    "mtime": 1787477607.2998817,
+    "seen": 1787477612.1668062,
+    "ast_hash": "c7a3bbbc5c9de76c1d017b134dabf1c9",
     "semantic_hash": ""
   },
   "ai/context/phase-1-frontend-plan.md": {
@@ -180,9 +180,9 @@
     "semantic_hash": ""
   },
   "docs/architecture/frontend.md": {
-    "mtime": 1787229750.5633986,
-    "seen": 1787230088.3005178,
-    "ast_hash": "e92f00a148897a8d3ef952e9344ee877",
+    "mtime": 1787477599.537825,
+    "seen": 1787477612.1669064,
+    "ast_hash": "bd6eb4609b7d69502f0ae4316844e42b",
     "semantic_hash": ""
   },
   "docs/decisions/ADR-006-frontend-pwa-design-system.md": {
@@ -324,9 +324,9 @@
     "semantic_hash": ""
   },
   "apps/web/src/routes/WorkspaceView.tsx": {
-    "mtime": 1787475637.0276637,
-    "seen": 1787475818.4937036,
-    "ast_hash": "e82863d5ded625f1a04f4e32fdebea88",
+    "mtime": 1787477029.6186626,
+    "seen": 1787477527.171194,
+    "ast_hash": "d25767dbc93b21fded3cab3a908937ac",
     "semantic_hash": ""
   },
   "apps/web/src/services/mockVault.ts": {
@@ -672,15 +672,21 @@
     "semantic_hash": ""
   },
   "apps/web/src/routes/SettingsModal.test.tsx": {
-    "mtime": 1787475799.1842873,
-    "seen": 1787475818.4937015,
-    "ast_hash": "d32a429e9009b0b8b8b46ec1b4b35c1b",
+    "mtime": 1787477043.5357642,
+    "seen": 1787477527.1711702,
+    "ast_hash": "0231538e4592d23fc1add3f9ff52d55d",
     "semantic_hash": ""
   },
   "docs/decisions/ADR-010-testing-strategy.md": {
     "mtime": 1787470286.2343113,
     "seen": 1787475818.4947581,
     "ast_hash": "311f178dc9ed69674c5b8034771d2584",
+    "semantic_hash": ""
+  },
+  "apps/web/src/routes/CreateVaultView.tsx": {
+    "mtime": 1787477009.9265687,
+    "seen": 1787477527.1710992,
+    "ast_hash": "997914a2c9331b5ef305c691bcdbb369",
     "semantic_hash": ""
   }
 }
