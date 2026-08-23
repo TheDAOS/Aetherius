@@ -1,16 +1,13 @@
-import { useState, useEffect, useCallback } from 'react';
-import { Vault, VaultFile, SyncStatus } from '../types/vault';
-import { vaultService } from '../services/vault';
-import { useAuth } from '../contexts/AuthContext';
+import { useCallback, useEffect, useState } from "react";
+import { vaultService } from "../services/vault";
+import type { SyncStatus, Vault, VaultFile } from "../types/vault";
 
 export function useVault() {
-  const { providerToken } = useAuth();
-  
   const [vault, setVault] = useState<Vault | null>(null);
   const [files, setFiles] = useState<VaultFile[]>([]);
-  const [activeFilePath, setActiveFilePath] = useState<string>('README.md');
+  const [activeFilePath, setActiveFilePath] = useState<string>("README.md");
   const [activeFile, setActiveFile] = useState<VaultFile | null>(null);
-  const [content, setContent] = useState<string>('');
+  const [content, setContent] = useState<string>("");
   const [isDirty, setIsDirty] = useState<boolean>(false);
   const [syncStatus, setSyncStatus] = useState<SyncStatus | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -21,11 +18,14 @@ export function useVault() {
 
   // Sync pending offline mutations when online
   const sync = useCallback(async () => {
-    if (!providerToken) return;
     try {
-      setSyncStatus(prev => prev ? { ...prev, status: 'running' } : { status: 'running', lastSyncAt: null });
-      const result = await vaultService.syncPendingMutations(providerToken);
-      const status = await vaultService.getSyncStatus(providerToken);
+      setSyncStatus((prev) =>
+        prev
+          ? { ...prev, status: "running" }
+          : { status: "running", lastSyncAt: null },
+      );
+      const result = await vaultService.syncPendingMutations();
+      const status = await vaultService.getSyncStatus();
       setSyncStatus(status);
 
       if (result.errors && result.errors.length > 0) {
@@ -35,85 +35,100 @@ export function useVault() {
       }
 
       // Refresh files list
-      const filesData = await vaultService.listFiles(providerToken);
+      const filesData = await vaultService.listFiles();
       setFiles(filesData.entries);
-    } catch (err: any) {
-      setError(err?.message || 'Sync failed');
+    } catch (err: unknown) {
+      const error = err as { message?: string };
+      setError(error?.message || "Sync failed");
     }
-  }, [providerToken]);
+  }, []);
 
   // Network online/offline event listeners
   useEffect(() => {
     const handleOnline = () => {
       setIsOnline(true);
-      if (providerToken) {
-        sync();
-      }
+      sync();
     };
     const handleOffline = () => {
       setIsOnline(false);
-      setSyncStatus({ status: 'idle', lastSyncAt: null, message: 'Offline mode' });
+      setSyncStatus({
+        status: "idle",
+        lastSyncAt: null,
+        message: "Offline mode",
+      });
     };
 
-    window.addEventListener('online', handleOnline);
-    window.addEventListener('offline', handleOffline);
+    window.addEventListener("online", handleOnline);
+    window.addEventListener("offline", handleOffline);
 
     return () => {
-      window.removeEventListener('online', handleOnline);
-      window.removeEventListener('offline', handleOffline);
+      window.removeEventListener("online", handleOnline);
+      window.removeEventListener("offline", handleOffline);
     };
-  }, [providerToken, sync]);
+  }, [sync]);
 
   // Load vault metadata & file list
   const refreshVault = useCallback(async () => {
-    if (!providerToken) return;
     try {
       setIsLoading(true);
       setError(null);
       const [vaultData, filesData, syncData] = await Promise.all([
-        vaultService.getVault(providerToken),
-        vaultService.listFiles(providerToken),
-        vaultService.getSyncStatus(providerToken)
+        vaultService.getVault(),
+        vaultService.listFiles(),
+        vaultService.getSyncStatus(),
       ]);
       setVault(vaultData);
       setFiles(filesData.entries);
       setSyncStatus(syncData);
-    } catch (err: any) {
-      setError(err?.message || 'Failed to load vault');
+    } catch (err: unknown) {
+      const error = err as { message?: string };
+      setError(error?.message || "Failed to load vault");
     } finally {
       setIsLoading(false);
     }
-  }, [providerToken]);
+  }, []);
 
   useEffect(() => {
     refreshVault();
   }, [refreshVault]);
 
   const loadActiveFile = useCallback(async (path: string) => {
-    if (!path || !providerToken) return;
+    if (!path) return;
 
     try {
       setError(null);
       setHasConflict(false);
-      const file = await vaultService.getFile(providerToken, path);
+      const file = await vaultService.getFile(path);
       setActiveFile(file);
-      setContent(file.content || '');
+      setContent(file.content || "");
       setIsDirty(false);
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const error = err as { message?: string };
       setError(`File not found or failed to load: ${path}`);
+      console.error("loadActiveFile error:", error?.message);
     }
-  }, [providerToken]);
+  }, []);
 
   // Load active file on path change
   useEffect(() => {
-    if (activeFilePath && providerToken) {
+    if (activeFilePath) {
       loadActiveFile(activeFilePath);
     }
-  }, [activeFilePath, providerToken, loadActiveFile]);
+  }, [activeFilePath, loadActiveFile]);
 
-  const selectFile = useCallback((path: string) => {
-    setActiveFilePath(path);
-  }, []);
+  // Dirty file guard: prompt before switching if unsaved changes exist
+  const selectFile = useCallback(
+    (path: string) => {
+      if (isDirty) {
+        const confirmed = window.confirm(
+          "You have unsaved changes. Are you sure you want to switch files? Your changes will be lost.",
+        );
+        if (!confirmed) return;
+      }
+      setActiveFilePath(path);
+    },
+    [isDirty],
+  );
 
   const updateContent = useCallback((newContent: string) => {
     setContent(newContent);
@@ -121,32 +136,38 @@ export function useVault() {
   }, []);
 
   const saveActiveFile = useCallback(async () => {
-    if (!activeFilePath || !activeFile || !providerToken) return;
+    if (!activeFilePath || !activeFile) return;
 
     try {
       setError(null);
       setHasConflict(false);
-      const updated = await vaultService.updateFile(providerToken, activeFilePath, {
+      const updated = await vaultService.updateFile(activeFilePath, {
         content,
         expectedSha: activeFile.sha,
-        commitMessage: `Update ${activeFile.name}`
+        commitMessage: `Update ${activeFile.name}`,
       });
       setActiveFile(updated);
       setIsDirty(false);
-      
+
       // Update file list info
-      const filesData = await vaultService.listFiles(providerToken);
+      const filesData = await vaultService.listFiles();
       setFiles(filesData.entries);
-    } catch (err: any) {
-      const isConflict = err?.message?.toLowerCase().includes('conflict') || err?.message?.includes('409') || err?.code === 'CONFLICT';
+    } catch (err: unknown) {
+      const error = err as { message?: string; code?: string };
+      const isConflict =
+        error?.message?.toLowerCase().includes("conflict") ||
+        error?.message?.includes("409") ||
+        error?.code === "CONFLICT";
       if (isConflict) {
         setHasConflict(true);
-        setError('Conflict detected: This file was modified remotely on GitHub. Reload the file or resolve changes before saving.');
+        setError(
+          "Conflict detected: This file was modified remotely on GitHub. Reload the file or resolve changes before saving.",
+        );
       } else {
-        setError(err?.message || 'Failed to save file');
+        setError(error?.message || "Failed to save file");
       }
     }
-  }, [activeFilePath, activeFile, content, providerToken]);
+  }, [activeFilePath, activeFile, content]);
 
   const reloadActiveFile = useCallback(async () => {
     if (activeFilePath) {
@@ -155,40 +176,49 @@ export function useVault() {
     }
   }, [activeFilePath, loadActiveFile]);
 
-  const createFile = useCallback(async (path: string, initialContent: string = '# New Note\n\nStart typing...') => {
-    if (!providerToken) throw new Error("Not authenticated");
-    try {
-      const newFile = await vaultService.createFile(providerToken, {
-        path,
-        content: initialContent,
-        commitMessage: `Create ${path}`
-      });
-      const filesData = await vaultService.listFiles(providerToken);
-      setFiles(filesData.entries);
-      setActiveFilePath(newFile.path);
-      return newFile;
-    } catch (err: any) {
-      setError(err?.message || 'Failed to create file');
-      throw err;
-    }
-  }, [providerToken]);
-
-  const deleteFile = useCallback(async (path: string) => {
-    if (!providerToken) throw new Error("Not authenticated");
-    const fileToDelete = files.find(f => f.path === path);
-
-    try {
-      await vaultService.deleteFile(providerToken, path, fileToDelete?.sha);
-      const filesData = await vaultService.listFiles(providerToken);
-      setFiles(filesData.entries);
-      if (activeFilePath === path) {
-        setActiveFilePath('README.md');
+  const createFile = useCallback(
+    async (
+      path: string,
+      initialContent: string = "# New Note\n\nStart typing...",
+    ) => {
+      try {
+        const newFile = await vaultService.createFile({
+          path,
+          content: initialContent,
+          commitMessage: `Create ${path}`,
+        });
+        const filesData = await vaultService.listFiles();
+        setFiles(filesData.entries);
+        setActiveFilePath(newFile.path);
+        return newFile;
+      } catch (err: unknown) {
+        const error = err as { message?: string };
+        setError(error?.message || "Failed to create file");
+        throw err;
       }
-    } catch (err: any) {
-      setError(err?.message || 'Failed to delete file');
-      throw err;
-    }
-  }, [activeFilePath, files, providerToken]);
+    },
+    [],
+  );
+
+  const deleteFile = useCallback(
+    async (path: string) => {
+      const fileToDelete = files.find((f) => f.path === path);
+
+      try {
+        await vaultService.deleteFile(path, fileToDelete?.sha);
+        const filesData = await vaultService.listFiles();
+        setFiles(filesData.entries);
+        if (activeFilePath === path) {
+          setActiveFilePath("README.md");
+        }
+      } catch (err: unknown) {
+        const error = err as { message?: string };
+        setError(error?.message || "Failed to delete file");
+        throw err;
+      }
+    },
+    [activeFilePath, files],
+  );
 
   return {
     vault,
@@ -209,6 +239,6 @@ export function useVault() {
     createFile,
     deleteFile,
     sync,
-    refreshVault
+    refreshVault,
   };
 }

@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import { FilePlus } from 'lucide-react';
-import { Modal } from '../components/common/Modal';
-import { Input } from '../components/common/Input';
-import { Button } from '../components/common/Button';
+import { FilePlus } from "lucide-react";
+import type React from "react";
+import { useState } from "react";
+import { Button } from "../components/common/Button";
+import { Input } from "../components/common/Input";
+import { Modal } from "../components/common/Modal";
 
 interface NewNoteModalProps {
   isOpen: boolean;
@@ -13,31 +14,33 @@ interface NewNoteModalProps {
 export const NewNoteModal: React.FC<NewNoteModalProps> = ({
   isOpen,
   onClose,
-  onCreateNote
+  onCreateNote,
 }) => {
-  const [folder, setFolder] = useState('notes');
-  const [filename, setFilename] = useState('');
+  const [folder, setFolder] = useState("notes");
+  const [filename, setFilename] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!filename.trim()) {
-      setError('Filename is required');
+      setError("Filename is required");
       return;
     }
 
-    const cleanName = filename.endsWith('.md') ? filename.trim() : `${filename.trim()}.md`;
+    const cleanName = filename.endsWith(".md")
+      ? filename.trim()
+      : `${filename.trim()}.md`;
     const fullPath = folder ? `${folder}/${cleanName}` : cleanName;
 
     try {
       setIsSubmitting(true);
       setError(null);
       await onCreateNote(fullPath);
-      setFilename('');
+      setFilename("");
       onClose();
     } catch (err: any) {
-      setError(err?.message || 'Failed to create note');
+      setError(err?.message || "Failed to create note");
     } finally {
       setIsSubmitting(false);
     }
@@ -78,12 +81,7 @@ export const NewNoteModal: React.FC<NewNoteModalProps> = ({
         />
 
         <div className="flex justify-end gap-2 pt-2">
-          <Button
-            type="button"
-            variant="ghost"
-            size="sm"
-            onClick={onClose}
-          >
+          <Button type="button" variant="ghost" size="sm" onClick={onClose}>
             Cancel
           </Button>
           <Button
@@ -93,7 +91,7 @@ export const NewNoteModal: React.FC<NewNoteModalProps> = ({
             disabled={isSubmitting}
             icon={<FilePlus size={14} />}
           >
-            {isSubmitting ? 'Creating...' : 'Create Note'}
+            {isSubmitting ? "Creating..." : "Create Note"}
           </Button>
         </div>
       </form>

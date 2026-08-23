@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { VaultFile } from '../../types/vault';
-import { FileItem } from './FileItem';
+import React, { useState } from "react";
+import type { VaultFile } from "../../types/vault";
+import { FileItem } from "./FileItem";
 
 interface FileTreeProps {
   files: VaultFile[];
@@ -12,7 +12,7 @@ interface FileTreeProps {
 interface TreeNode {
   name: string;
   path: string;
-  type: 'file' | 'directory';
+  type: "file" | "directory";
   file?: VaultFile;
   children: Record<string, TreeNode>;
 }
@@ -21,12 +21,14 @@ export const FileTree: React.FC<FileTreeProps> = ({
   files,
   activeFilePath,
   onSelectFile,
-  onDeleteFile
+  onDeleteFile,
 }) => {
-  const [collapsedFolders, setCollapsedFolders] = useState<Record<string, boolean>>({});
+  const [collapsedFolders, setCollapsedFolders] = useState<
+    Record<string, boolean>
+  >({});
 
   const toggleFolder = (path: string) => {
-    setCollapsedFolders(prev => ({ ...prev, [path]: !prev[path] }));
+    setCollapsedFolders((prev) => ({ ...prev, [path]: !prev[path] }));
   };
 
   if (files.length === 0) {
@@ -38,23 +40,30 @@ export const FileTree: React.FC<FileTreeProps> = ({
   }
 
   // Build tree from flat list of file paths
-  const root: TreeNode = { name: '', path: '', type: 'directory', children: {} };
+  const root: TreeNode = {
+    name: "",
+    path: "",
+    type: "directory",
+    children: {},
+  };
 
-  files.forEach(file => {
-    const parts = file.path.split('/').filter(Boolean);
+  files.forEach((file) => {
+    const parts = file.path.split("/").filter(Boolean);
     let current = root;
 
     parts.forEach((part, index) => {
       const isLast = index === parts.length - 1;
-      const subpath = parts.slice(0, index + 1).join('/');
+      const subpath = parts.slice(0, index + 1).join("/");
 
       if (!current.children[part]) {
         current.children[part] = {
           name: part,
           path: subpath,
-          type: isLast ? file.type : 'directory',
-          file: isLast ? file : { path: subpath, name: part, type: 'directory' },
-          children: {}
+          type: isLast ? file.type : "directory",
+          file: isLast
+            ? file
+            : { path: subpath, name: part, type: "directory" },
+          children: {},
         };
       } else if (isLast) {
         current.children[part].file = file;
@@ -65,12 +74,12 @@ export const FileTree: React.FC<FileTreeProps> = ({
   });
 
   const renderNode = (node: TreeNode, depth: number = 0): React.ReactNode => {
-    const isDir = node.type === 'directory';
+    const isDir = node.type === "directory";
     const isCollapsed = collapsedFolders[node.path];
     const fileObj = node.file || {
       path: node.path,
       name: node.name,
-      type: node.type
+      type: node.type,
     };
 
     return (
@@ -84,9 +93,11 @@ export const FileTree: React.FC<FileTreeProps> = ({
           onSelect={onSelectFile}
           onDelete={onDeleteFile}
         />
-        {isDir && !isCollapsed && Object.values(node.children).map(child =>
-          renderNode(child, depth + 1)
-        )}
+        {isDir &&
+          !isCollapsed &&
+          Object.values(node.children).map((child) =>
+            renderNode(child, depth + 1),
+          )}
       </React.Fragment>
     );
   };
@@ -94,7 +105,7 @@ export const FileTree: React.FC<FileTreeProps> = ({
   // Sort: directories first, then alphabetical
   const sortNodes = (a: TreeNode, b: TreeNode) => {
     if (a.type !== b.type) {
-      return a.type === 'directory' ? -1 : 1;
+      return a.type === "directory" ? -1 : 1;
     }
     return a.name.localeCompare(b.name);
   };
@@ -103,7 +114,7 @@ export const FileTree: React.FC<FileTreeProps> = ({
 
   return (
     <div className="flex flex-col overflow-y-auto">
-      {topLevelNodes.map(node => renderNode(node, 0))}
+      {topLevelNodes.map((node) => renderNode(node, 0))}
     </div>
   );
 };

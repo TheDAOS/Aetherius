@@ -1,7 +1,7 @@
-import React from 'react';
-import { AlertTriangle, Check, RefreshCw, Copy } from 'lucide-react';
-import { Modal } from '../components/common/Modal';
-import { Button } from '../components/common/Button';
+import { AlertTriangle, Check, Copy, RefreshCw } from "lucide-react";
+import type React from "react";
+import { Button } from "../components/common/Button";
+import { Modal } from "../components/common/Modal";
 
 interface ConflictModalProps {
   isOpen: boolean;
@@ -22,7 +22,7 @@ export const ConflictModal: React.FC<ConflictModalProps> = ({
   remoteContent,
   onAcceptRemote,
   onForceOverwrite,
-  onSaveAsCopy
+  onSaveAsCopy,
 }) => {
   return (
     <Modal
@@ -34,9 +34,14 @@ export const ConflictModal: React.FC<ConflictModalProps> = ({
     >
       <div className="flex flex-col gap-4">
         <div className="flex items-center gap-2 p-3 bg-accent-pink/30 border-2 border-ink-primary font-mono text-xs text-ink-primary">
-          <AlertTriangle size={16} className="text-accent-orange flex-shrink-0" />
+          <AlertTriangle
+            size={16}
+            className="text-accent-orange flex-shrink-0"
+          />
           <div>
-            <strong>Conflict in {filePath}:</strong> The note has been modified on GitHub since you last retrieved it. Review the differences below and choose how to resolve:
+            <strong>Conflict in {filePath}:</strong> The note has been modified
+            on GitHub since you last retrieved it. Review the differences below
+            and choose how to resolve:
           </div>
         </div>
 

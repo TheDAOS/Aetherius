@@ -1,69 +1,98 @@
-import { supabase } from './supabaseClient';
-import { Vault, VaultFile, SyncStatus } from '../types/vault';
-import { offlineDb } from './storage/offlineDb';
+import type { SyncStatus, Vault, VaultFile } from "../types/vault";
+import { offlineDb } from "./storage/offlineDb";
+import { supabase } from "./supabaseClient";
+
+// UTF-8-safe base64 encoding/decoding (btoa/atob only support Latin-1)
+function utf8ToBase64(str: string): string {
+  return btoa(String.fromCodePoint(...new TextEncoder().encode(str)));
+}
+
+function base64ToUtf8(base64: string): string {
+  const binary = atob(base64.replace(/\s/g, ""));
+  const bytes = Uint8Array.from(binary, (c) => c.codePointAt(0)!);
+  return new TextDecoder().decode(bytes);
+}
 
 export class VaultService {
-  private getHeaders(providerToken?: string | null) {
-    const headers: Record<string, string> = {};
-    if (providerToken) {
-      headers['x-github-token'] = providerToken;
-    }
-    return headers;
-  }
-
-  private async invoke<T>(path: string, options: { method: 'GET' | 'POST' | 'PUT' | 'DELETE', body?: any, providerToken?: string | null }): Promise<T> {
+  private async invoke<T>(
+    path: string,
+    options: {
+      method: "GET" | "POST" | "PUT" | "DELETE";
+      body?: Record<string, unknown>;
+    },
+  ): Promise<T> {
     const { data, error } = await supabase.functions.invoke(`api-v1${path}`, {
       method: options.method,
       body: options.body,
-      headers: this.getHeaders(options.providerToken),
     });
 
     if (error) {
-      throw new Error(error.message || 'API request failed');
+      throw new Error(error.message || "API request failed");
     }
-    
+
     return data;
   }
 
-  async getVault(providerToken: string | null): Promise<Vault> {
+  // Store GitHub token server-side (called once after OAuth login)
+  async storeGitHubToken(token: string): Promise<void> {
+    await this.invoke("/v1/auth/github-token", {
+      method: "POST",
+      body: { token },
+    });
+  }
+
+  async getVault(): Promise<Vault> {
     try {
-      if (navigator.onLine && providerToken) {
-        const vault = await this.invoke<Vault>('/v1/vault', { method: 'GET', providerToken });
-        await offlineDb.setMetadata('vault', vault);
+      if (navigator.onLine) {
+        const vault = await this.invoke<Vault>("/v1/vault", { method: "GET" });
+        await offlineDb.setMetadata("vault", vault);
         return vault;
       }
     } catch (_err) {
       // Fallback to offline storage
     }
 
-    const cachedVault = await offlineDb.getMetadata<Vault>('vault');
+    const cachedVault = await offlineDb.getMetadata<Vault>("vault");
     if (cachedVault) return cachedVault;
-    throw new Error('Vault not available offline and not yet cached');
+    throw new Error("Vault not available offline and not yet cached");
   }
 
-  async createVault(providerToken: string | null, repository: string, description?: string): Promise<Vault> {
-    const vault = await this.invoke<Vault>('/v1/vault', { 
-      method: 'POST', 
+  async createVault(repository: string, description?: string): Promise<Vault> {
+    const vault = await this.invoke<Vault>("/v1/vault", {
+      method: "POST",
       body: { repository, description },
-      providerToken 
     });
-    await offlineDb.setMetadata('vault', vault);
+    await offlineDb.setMetadata("vault", vault);
     return vault;
   }
 
-  async listFiles(providerToken: string | null): Promise<{ entries: VaultFile[] }> {
+  async listFiles(): Promise<{ entries: VaultFile[] }> {
     try {
-      if (navigator.onLine && providerToken) {
-        const res = await this.invoke<any>('/v1/files', { method: 'GET', providerToken });
-        const rawEntries = Array.isArray(res) ? res : (res?.entries || res?.files || []);
-        const entries: VaultFile[] = rawEntries.map((f: any) => ({
-          path: f.path,
-          name: f.name || f.path.split('/').pop() || f.path,
-          type: f.type === 'directory' || f.type === 'dir' || f.type === 'tree' ? 'directory' : 'file',
-          size: f.size || 0,
-          lastModified: f.lastModified || new Date().toISOString(),
-          sha: f.sha
-        }));
+      if (navigator.onLine) {
+        const res = await this.invoke<Record<string, unknown>>("/v1/files", {
+          method: "GET",
+        });
+        const rawEntries = Array.isArray(res)
+          ? res
+          : ((res?.entries || res?.files || []) as Record<string, unknown>[]);
+        const entries: VaultFile[] = rawEntries.map(
+          (f: Record<string, unknown>) => ({
+            path: f.path as string,
+            name:
+              (f.name as string) ||
+              (f.path as string).split("/").pop() ||
+              (f.path as string),
+            type: (f.type === "directory" ||
+            f.type === "dir" ||
+            f.type === "tree"
+              ? "directory"
+              : "file") as "file" | "directory",
+            size: (f.size as number) || 0,
+            lastModified:
+              (f.lastModified as string) || new Date().toISOString(),
+            sha: f.sha as string | undefined,
+          }),
+        );
 
         // Cache files list to IndexedDB
         await offlineDb.saveFiles(entries);
@@ -77,18 +106,26 @@ export class VaultService {
     return { entries: cached };
   }
 
-  async getFile(providerToken: string | null, path: string): Promise<VaultFile> {
+  async getFile(path: string): Promise<VaultFile> {
     try {
-      if (navigator.onLine && providerToken) {
-        const f = await this.invoke<any>(`/v1/files/${path}`, { method: 'GET', providerToken });
+      if (navigator.onLine) {
+        const f = await this.invoke<Record<string, unknown>>(
+          `/v1/files/${path}`,
+          { method: "GET" },
+        );
         const file: VaultFile = {
-          path: f.path,
-          name: f.name || f.path.split('/').pop() || f.path,
-          type: f.type === 'directory' || f.type === 'dir' ? 'directory' : 'file',
-          size: f.size,
-          lastModified: f.lastModified || new Date().toISOString(),
-          sha: f.sha,
-          content: f.content ? atob(f.content.replace(/\s/g, '')) : ''
+          path: f.path as string,
+          name:
+            (f.name as string) ||
+            (f.path as string).split("/").pop() ||
+            (f.path as string),
+          type: (f.type === "directory" || f.type === "dir"
+            ? "directory"
+            : "file") as "file" | "directory",
+          size: f.size as number,
+          lastModified: (f.lastModified as string) || new Date().toISOString(),
+          sha: f.sha as string | undefined,
+          content: f.content ? base64ToUtf8(f.content as string) : "",
         };
         await offlineDb.saveFile(file);
         return file;
@@ -102,121 +139,137 @@ export class VaultService {
     throw new Error(`File ${path} not found in offline cache`);
   }
 
-  async createFile(providerToken: string | null, params: { path: string; content: string; commitMessage?: string }): Promise<VaultFile> {
-    const filename = params.path.split('/').pop() || params.path;
+  async createFile(params: {
+    path: string;
+    content: string;
+    commitMessage?: string;
+  }): Promise<VaultFile> {
+    const filename = params.path.split("/").pop() || params.path;
     const optimisticFile: VaultFile = {
       path: params.path,
       name: filename,
-      type: 'file',
+      type: "file",
       content: params.content,
-      lastModified: new Date().toISOString()
+      lastModified: new Date().toISOString(),
     };
 
-    if (navigator.onLine && providerToken) {
+    if (navigator.onLine) {
       try {
-        const res = await this.invoke<any>('/v1/files', {
-          method: 'POST',
+        const res = await this.invoke<{ path: string }>("/v1/files", {
+          method: "POST",
           body: {
             path: params.path,
-            content: btoa(params.content),
-            commitMessage: params.commitMessage
+            content: utf8ToBase64(params.content),
+            commitMessage: params.commitMessage,
           },
-          providerToken
         });
-        const saved = await this.getFile(providerToken, res.path);
+        const saved = await this.getFile(res.path);
         return saved;
       } catch (err) {
-        console.warn('Online create failed, queuing offline mutation:', err);
+        console.warn("Online create failed, queuing offline mutation:", err);
       }
     }
 
     // Save optimistically to offline cache & queue mutation
     await offlineDb.saveFile(optimisticFile);
     await offlineDb.queueMutation({
-      action: 'create',
+      action: "create",
       path: params.path,
       content: params.content,
-      commitMessage: params.commitMessage
+      commitMessage: params.commitMessage,
     });
 
     return optimisticFile;
   }
 
-  async updateFile(providerToken: string | null, path: string, params: { content: string; expectedSha?: string; commitMessage?: string }): Promise<VaultFile> {
-    const filename = path.split('/').pop() || path;
+  async updateFile(
+    path: string,
+    params: { content: string; expectedSha?: string; commitMessage?: string },
+  ): Promise<VaultFile> {
+    const filename = path.split("/").pop() || path;
     const optimisticFile: VaultFile = {
       path,
       name: filename,
-      type: 'file',
+      type: "file",
       content: params.content,
       sha: params.expectedSha,
-      lastModified: new Date().toISOString()
+      lastModified: new Date().toISOString(),
     };
 
-    if (navigator.onLine && providerToken) {
+    if (navigator.onLine) {
       try {
-        const res = await this.invoke<any>(`/v1/files/${path}`, {
-          method: 'PUT',
+        const res = await this.invoke<{ path: string }>(`/v1/files/${path}`, {
+          method: "PUT",
           body: {
-            content: btoa(params.content),
-            sha: params.expectedSha,
-            commitMessage: params.commitMessage
+            content: utf8ToBase64(params.content),
+            expectedSha: params.expectedSha,
+            commitMessage: params.commitMessage,
           },
-          providerToken
         });
-        const saved = await this.getFile(providerToken, res.path);
+        const saved = await this.getFile(res.path);
         return saved;
-      } catch (err: any) {
+      } catch (err: unknown) {
+        const error = err as { message?: string; code?: string };
         // If conflict, propagate error so user is notified
-        if (err?.message?.includes('conflict') || err?.message?.includes('409') || err?.code === 'CONFLICT') {
+        if (
+          error?.message?.includes("conflict") ||
+          error?.message?.includes("409") ||
+          error?.code === "CONFLICT"
+        ) {
           throw err;
         }
-        console.warn('Online update failed, queuing offline mutation:', err);
+        console.warn("Online update failed, queuing offline mutation:", err);
       }
     }
 
     // Save optimistically to offline cache & queue mutation
     await offlineDb.saveFile(optimisticFile);
     await offlineDb.queueMutation({
-      action: 'update',
+      action: "update",
       path,
       content: params.content,
       expectedSha: params.expectedSha,
-      commitMessage: params.commitMessage
+      commitMessage: params.commitMessage,
     });
 
     return optimisticFile;
   }
 
-  async deleteFile(providerToken: string | null, path: string, sha?: string): Promise<void> {
-    if (navigator.onLine && providerToken && sha) {
+  async deleteFile(path: string, sha?: string): Promise<void> {
+    if (navigator.onLine && sha) {
       try {
-        await this.invoke<void>(`/v1/files/${path}?sha=${encodeURIComponent(sha)}`, { method: 'DELETE', providerToken });
+        await this.invoke<void>(`/v1/files/${path}`, {
+          method: "DELETE",
+          body: { expectedSha: sha },
+        });
         await offlineDb.deleteFile(path);
         return;
       } catch (err) {
-        console.warn('Online delete failed, queuing offline mutation:', err);
+        console.warn("Online delete failed, queuing offline mutation:", err);
       }
     }
 
     await offlineDb.deleteFile(path);
     await offlineDb.queueMutation({
-      action: 'delete',
+      action: "delete",
       path,
-      expectedSha: sha
+      expectedSha: sha,
     });
   }
 
-  async syncPendingMutations(providerToken: string | null): Promise<{ syncedCount: number; errors: any[] }> {
-    if (!navigator.onLine || !providerToken) {
-      return { syncedCount: 0, errors: ['Offline / No token'] };
+  async syncPendingMutations(): Promise<{
+    syncedCount: number;
+    errors: Array<{ mutation: unknown; error: string }>;
+  }> {
+    if (!navigator.onLine) {
+      return { syncedCount: 0, errors: [{ mutation: null, error: "Offline" }] };
     }
 
     const mutations = await offlineDb.getPendingMutations();
     if (mutations.length === 0) {
       // Trigger cloud sync status ping
       try {
-        await this.invoke('/v1/sync', { method: 'POST', providerToken });
+        await this.invoke("/v1/sync", { method: "POST" });
       } catch (_e) {
         // Ignore ping error
       }
@@ -224,34 +277,34 @@ export class VaultService {
     }
 
     let syncedCount = 0;
-    const errors: any[] = [];
+    const errors: Array<{ mutation: unknown; error: string }> = [];
 
     for (const m of mutations) {
       try {
-        if (m.action === 'create' && m.content !== undefined) {
-          await this.invoke('/v1/files', {
-            method: 'POST',
+        if (m.action === "create" && m.content !== undefined) {
+          await this.invoke("/v1/files", {
+            method: "POST",
             body: {
               path: m.path,
-              content: btoa(m.content),
-              commitMessage: m.commitMessage || `Create note: ${m.path} (offline sync)`
+              content: utf8ToBase64(m.content),
+              commitMessage:
+                m.commitMessage || `Create note: ${m.path} (offline sync)`,
             },
-            providerToken
           });
-        } else if (m.action === 'update' && m.content !== undefined) {
+        } else if (m.action === "update" && m.content !== undefined) {
           await this.invoke(`/v1/files/${m.path}`, {
-            method: 'PUT',
+            method: "PUT",
             body: {
-              content: btoa(m.content),
-              sha: m.expectedSha,
-              commitMessage: m.commitMessage || `Update note: ${m.path} (offline sync)`
+              content: utf8ToBase64(m.content),
+              expectedSha: m.expectedSha,
+              commitMessage:
+                m.commitMessage || `Update note: ${m.path} (offline sync)`,
             },
-            providerToken
           });
-        } else if (m.action === 'delete') {
-          await this.invoke(`/v1/files/${m.path}${m.expectedSha ? `?sha=${encodeURIComponent(m.expectedSha)}` : ''}`, {
-            method: 'DELETE',
-            providerToken
+        } else if (m.action === "delete") {
+          await this.invoke(`/v1/files/${m.path}`, {
+            method: "DELETE",
+            body: m.expectedSha ? { expectedSha: m.expectedSha } : {},
           });
         }
 
@@ -259,33 +312,36 @@ export class VaultService {
           await offlineDb.deleteMutation(m.id);
         }
         syncedCount++;
-      } catch (err: any) {
+      } catch (err: unknown) {
+        const error = err as { message?: string };
         console.error(`Sync error on mutation ${m.path}:`, err);
-        errors.push({ mutation: m, error: err?.message || err });
+        errors.push({ mutation: m, error: error?.message || "Unknown error" });
         // Stop batch on conflict or critical error
         break;
       }
     }
 
     // Refresh file cache from GitHub after sync
-    await this.listFiles(providerToken);
+    await this.listFiles();
 
     return { syncedCount, errors };
   }
 
-  async getSyncStatus(providerToken: string | null): Promise<SyncStatus> {
+  async getSyncStatus(): Promise<SyncStatus> {
     const mutations = await offlineDb.getPendingMutations();
     if (mutations.length > 0) {
       return {
-        status: 'pending',
+        status: "pending",
         lastSyncAt: null,
-        message: `${mutations.length} change(s) queued for sync`
+        message: `${mutations.length} change(s) queued for sync`,
       };
     }
 
-    if (navigator.onLine && providerToken) {
+    if (navigator.onLine) {
       try {
-        return await this.invoke<SyncStatus>('/v1/sync/status', { method: 'GET', providerToken });
+        return await this.invoke<SyncStatus>("/v1/sync/status", {
+          method: "GET",
+        });
       } catch (_e) {
         // Fallback
       }
@@ -293,21 +349,39 @@ export class VaultService {
 
     return {
       lastSyncAt: new Date().toISOString(),
-      status: 'idle',
-      message: navigator.onLine ? 'Vault synchronized' : 'Offline mode'
+      status: "idle",
+      message: navigator.onLine ? "Vault synchronized" : "Offline mode",
     };
   }
 
-  async search(providerToken: string | null, query: string, pathPrefix?: string): Promise<{ query: string; results: any[] }> {
+  async search(
+    query: string,
+    pathPrefix?: string,
+  ): Promise<{
+    query: string;
+    results: Array<{
+      path: string;
+      title: string;
+      snippet: string;
+      score: number;
+    }>;
+  }> {
     const q = query.trim();
     if (!q) return { query, results: [] };
-    
-    if (navigator.onLine && providerToken) {
+
+    if (navigator.onLine) {
       try {
-        const url = `/v1/search?q=${encodeURIComponent(q)}${pathPrefix ? `&path=${encodeURIComponent(pathPrefix)}` : ''}`;
-        const res = await this.invoke<{ query: string; results: any[] }>(url, {
-          method: 'GET',
-          providerToken
+        const url = `/v1/search?q=${encodeURIComponent(q)}${pathPrefix ? `&path=${encodeURIComponent(pathPrefix)}` : ""}`;
+        const res = await this.invoke<{
+          query: string;
+          results: Array<{
+            path: string;
+            title: string;
+            snippet: string;
+            score: number;
+          }>;
+        }>(url, {
+          method: "GET",
         });
         return res;
       } catch (_err) {
@@ -316,11 +390,16 @@ export class VaultService {
     }
 
     // Offline / Local search through IndexedDB files
-    const list = await this.listFiles(providerToken);
+    const list = await this.listFiles();
     const queryLower = q.toLowerCase();
     const results = list.entries
-      .filter(f => f.name.toLowerCase().includes(queryLower) && (!pathPrefix || f.path.startsWith(pathPrefix)))
-      .map(f => ({
+      .filter(
+        (f) =>
+          f.type === "file" &&
+          f.name.toLowerCase().includes(queryLower) &&
+          (!pathPrefix || f.path.startsWith(pathPrefix)),
+      )
+      .map((f) => ({
         path: f.path,
         title: f.name,
         snippet: `Match in ${f.path} (local)`,

@@ -1,7 +1,15 @@
-import React, { useState } from 'react';
-import { Link2, Sparkles, ChevronDown, ChevronRight, FileText, Plus } from 'lucide-react';
-import { BacklinkReference } from '../../services/intelligence/graphIndexer';
-import { Badge } from '../common/Badge';
+import {
+  ChevronDown,
+  ChevronRight,
+  FileText,
+  Link2,
+  Plus,
+  Sparkles,
+} from "lucide-react";
+import type React from "react";
+import { useState } from "react";
+import type { BacklinkReference } from "../../services/intelligence/graphIndexer";
+import { Badge } from "../common/Badge";
 
 interface BacklinksPanelProps {
   activeFilePath: string;
@@ -16,10 +24,10 @@ export const BacklinksPanel: React.FC<BacklinksPanelProps> = ({
   linkedReferences,
   unlinkedMentions,
   onSelectFile,
-  onLinkMention
+  onLinkMention,
 }) => {
   const [isExpanded, setIsExpanded] = useState(true);
-  const [activeTab, setActiveTab] = useState<'linked' | 'unlinked'>('linked');
+  const [activeTab, setActiveTab] = useState<"linked" | "unlinked">("linked");
 
   const totalCount = linkedReferences.length + unlinkedMentions.length;
   if (totalCount === 0) return null;
@@ -34,7 +42,8 @@ export const BacklinksPanel: React.FC<BacklinksPanelProps> = ({
           <Link2 size={15} className="text-accent-cobalt" />
           <span>VAULT CONNECTIONS & BACKLINKS</span>
           <Badge variant="acid" size="sm">
-            {linkedReferences.length} linked · {unlinkedMentions.length} unlinked
+            {linkedReferences.length} linked · {unlinkedMentions.length}{" "}
+            unlinked
           </Badge>
         </div>
         <button className="text-ink-muted hover:text-ink-primary">
@@ -47,21 +56,21 @@ export const BacklinksPanel: React.FC<BacklinksPanelProps> = ({
           {/* Tabs */}
           <div className="flex items-center gap-2 border-b border-cream-border pb-2">
             <button
-              onClick={() => setActiveTab('linked')}
+              onClick={() => setActiveTab("linked")}
               className={`px-2.5 py-1 text-xs font-mono font-bold transition-colors ${
-                activeTab === 'linked'
-                  ? 'bg-accent-acid text-ink-primary border border-ink-primary'
-                  : 'text-ink-muted hover:text-ink-primary'
+                activeTab === "linked"
+                  ? "bg-accent-acid text-ink-primary border border-ink-primary"
+                  : "text-ink-muted hover:text-ink-primary"
               }`}
             >
               Linked References ({linkedReferences.length})
             </button>
             <button
-              onClick={() => setActiveTab('unlinked')}
+              onClick={() => setActiveTab("unlinked")}
               className={`px-2.5 py-1 text-xs font-mono font-bold transition-colors ${
-                activeTab === 'unlinked'
-                  ? 'bg-accent-acid text-ink-primary border border-ink-primary'
-                  : 'text-ink-muted hover:text-ink-primary'
+                activeTab === "unlinked"
+                  ? "bg-accent-acid text-ink-primary border border-ink-primary"
+                  : "text-ink-muted hover:text-ink-primary"
               }`}
             >
               Unlinked Mentions ({unlinkedMentions.length})
@@ -69,7 +78,7 @@ export const BacklinksPanel: React.FC<BacklinksPanelProps> = ({
           </div>
 
           {/* Tab Content */}
-          {activeTab === 'linked' ? (
+          {activeTab === "linked" ? (
             linkedReferences.length === 0 ? (
               <div className="text-xs font-mono text-ink-muted p-2">
                 No explicit [[links]] to this note from other files.
@@ -85,7 +94,9 @@ export const BacklinksPanel: React.FC<BacklinksPanelProps> = ({
                     <div className="flex items-center gap-1.5 font-mono text-xs font-bold text-accent-cobalt">
                       <FileText size={12} />
                       <span>{ref.sourceTitle}</span>
-                      <span className="text-[10px] text-ink-muted font-normal">({ref.sourcePath})</span>
+                      <span className="text-[10px] text-ink-muted font-normal">
+                        ({ref.sourcePath})
+                      </span>
                     </div>
                     <div className="mt-1 text-xs font-sans text-ink-secondary line-clamp-2">
                       {ref.snippet}
@@ -94,44 +105,46 @@ export const BacklinksPanel: React.FC<BacklinksPanelProps> = ({
                 ))}
               </div>
             )
+          ) : unlinkedMentions.length === 0 ? (
+            <div className="text-xs font-mono text-ink-muted p-2">
+              No unlinked text occurrences found in other notes.
+            </div>
           ) : (
-            unlinkedMentions.length === 0 ? (
-              <div className="text-xs font-mono text-ink-muted p-2">
-                No unlinked text occurrences found in other notes.
-              </div>
-            ) : (
-              <div className="flex flex-col gap-2">
-                {unlinkedMentions.map((ref, idx) => (
+            <div className="flex flex-col gap-2">
+              {unlinkedMentions.map((ref, idx) => (
+                <div
+                  key={idx}
+                  className="p-2.5 bg-white border border-ink-primary/30 flex items-start justify-between gap-2"
+                >
                   <div
-                    key={idx}
-                    className="p-2.5 bg-white border border-ink-primary/30 flex items-start justify-between gap-2"
+                    onClick={() => onSelectFile(ref.sourcePath)}
+                    className="flex-1 cursor-pointer"
                   >
-                    <div
-                      onClick={() => onSelectFile(ref.sourcePath)}
-                      className="flex-1 cursor-pointer"
-                    >
-                      <div className="flex items-center gap-1.5 font-mono text-xs font-bold text-accent-orange">
-                        <Sparkles size={12} />
-                        <span>{ref.sourceTitle}</span>
-                        <span className="text-[10px] text-ink-muted font-normal">({ref.sourcePath})</span>
-                      </div>
-                      <div className="mt-1 text-xs font-sans text-ink-secondary line-clamp-2">
-                        {ref.snippet}
-                      </div>
+                    <div className="flex items-center gap-1.5 font-mono text-xs font-bold text-accent-orange">
+                      <Sparkles size={12} />
+                      <span>{ref.sourceTitle}</span>
+                      <span className="text-[10px] text-ink-muted font-normal">
+                        ({ref.sourcePath})
+                      </span>
                     </div>
-                    {onLinkMention && (
-                      <button
-                        onClick={() => onLinkMention(ref.sourcePath, activeFilePath)}
-                        className="neo-btn px-2 py-1 bg-accent-acid text-ink-primary text-[11px] font-mono font-bold flex items-center gap-1 flex-shrink-0"
-                        title="Convert mention to [[link]]"
-                      >
-                        <Plus size={11} /> Link
-                      </button>
-                    )}
+                    <div className="mt-1 text-xs font-sans text-ink-secondary line-clamp-2">
+                      {ref.snippet}
+                    </div>
                   </div>
-                ))}
-              </div>
-            )
+                  {onLinkMention && (
+                    <button
+                      onClick={() =>
+                        onLinkMention(ref.sourcePath, activeFilePath)
+                      }
+                      className="neo-btn px-2 py-1 bg-accent-acid text-ink-primary text-[11px] font-mono font-bold flex items-center gap-1 flex-shrink-0"
+                      title="Convert mention to [[link]]"
+                    >
+                      <Plus size={11} /> Link
+                    </button>
+                  )}
+                </div>
+              ))}
+            </div>
           )}
         </div>
       )}

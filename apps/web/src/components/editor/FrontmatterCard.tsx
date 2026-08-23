@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
-import { Tag, ChevronDown, ChevronRight, Calendar, Info } from 'lucide-react';
-import { Badge } from '../common/Badge';
+import { Calendar, ChevronDown, ChevronRight, Info, Tag } from "lucide-react";
+import type React from "react";
+import { useState } from "react";
+import { Badge } from "../common/Badge";
 
 interface FrontmatterCardProps {
   frontmatter: Record<string, any>;
 }
 
-export const FrontmatterCard: React.FC<FrontmatterCardProps> = ({ frontmatter }) => {
+export const FrontmatterCard: React.FC<FrontmatterCardProps> = ({
+  frontmatter,
+}) => {
   const [isExpanded, setIsExpanded] = useState(true);
 
   if (Object.keys(frontmatter).length === 0) {
@@ -16,10 +19,12 @@ export const FrontmatterCard: React.FC<FrontmatterCardProps> = ({ frontmatter })
   const tags: string[] = Array.isArray(frontmatter.tags)
     ? frontmatter.tags
     : frontmatter.tags
-    ? [String(frontmatter.tags)]
-    : [];
+      ? [String(frontmatter.tags)]
+      : [];
 
-  const otherEntries = Object.entries(frontmatter).filter(([k]) => k !== 'tags' && k !== 'title');
+  const otherEntries = Object.entries(frontmatter).filter(
+    ([k]) => k !== "tags" && k !== "title",
+  );
 
   return (
     <div className="mb-6 neo-box-sm bg-cream-shell border-2 border-ink-primary p-3">
@@ -31,7 +36,9 @@ export const FrontmatterCard: React.FC<FrontmatterCardProps> = ({ frontmatter })
           <Info size={14} className="text-accent-cobalt" />
           <span>PROPERTIES / METADATA</span>
           {tags.length > 0 && (
-            <span className="text-[10px] text-ink-muted">({tags.length} tags)</span>
+            <span className="text-[10px] text-ink-muted">
+              ({tags.length} tags)
+            </span>
           )}
         </div>
         <button className="text-ink-muted hover:text-ink-primary">
@@ -61,13 +68,15 @@ export const FrontmatterCard: React.FC<FrontmatterCardProps> = ({ frontmatter })
           {otherEntries.map(([key, val]) => (
             <div key={key} className="flex items-start gap-2">
               <span className="text-ink-muted min-w-[70px] flex items-center gap-1">
-                {key.includes('date') || key === 'created' || key === 'updated' ? (
+                {key.includes("date") ||
+                key === "created" ||
+                key === "updated" ? (
                   <Calendar size={12} />
                 ) : null}
                 {key}:
               </span>
               <span className="text-ink-primary font-bold">
-                {typeof val === 'object' ? JSON.stringify(val) : String(val)}
+                {typeof val === "object" ? JSON.stringify(val) : String(val)}
               </span>
             </div>
           ))}

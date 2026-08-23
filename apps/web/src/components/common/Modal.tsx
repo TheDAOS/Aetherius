@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
-import { X } from 'lucide-react';
+import { X } from "lucide-react";
+import type React from "react";
+import { useEffect, useRef } from "react";
 
 export interface ModalProps {
   isOpen: boolean;
@@ -16,28 +17,64 @@ export const Modal: React.FC<ModalProps> = ({
   title,
   badgeText,
   children,
-  maxWidth = 'max-w-xl'
+  maxWidth = "max-w-xl",
 }) => {
+  // Escape key handler
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isOpen) {
+      if (e.key === "Escape" && isOpen) {
         onClose();
       }
     };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, onClose]);
+
+  // Focus trap
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const modal = modalRef.current;
+    if (!modal) return;
+
+    const focusableElements = modal.querySelectorAll<HTMLElement>(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+    );
+    const firstFocusable = focusableElements[0];
+    const lastFocusable = focusableElements[focusableElements.length - 1];
+
+    // Auto-focus first focusable element
+    firstFocusable?.focus();
+
+    const handleTabTrap = (e: KeyboardEvent) => {
+      if (e.key !== "Tab") return;
+
+      if (e.shiftKey) {
+        if (document.activeElement === firstFocusable) {
+          e.preventDefault();
+          lastFocusable?.focus();
+        }
+      } else {
+        if (document.activeElement === lastFocusable) {
+          e.preventDefault();
+          firstFocusable?.focus();
+        }
+      }
+    };
+
+    modal.addEventListener("keydown", handleTabTrap);
+    return () => modal.removeEventListener("keydown", handleTabTrap);
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink-primary/60 backdrop-blur-xs animate-in fade-in duration-100">
-      <div 
-        className="fixed inset-0" 
-        onClick={onClose} 
-        aria-hidden="true" 
-      />
-      <div 
+      <div className="fixed inset-0" onClick={onClose} aria-hidden="true" />
+      <div
+        ref={modalRef}
         className={`neo-box-lg relative z-10 w-full ${maxWidth} bg-cream-shell overflow-hidden flex flex-col max-h-[90vh]`}
         role="dialog"
         aria-modal="true"

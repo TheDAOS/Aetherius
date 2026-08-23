@@ -1,6 +1,6 @@
-import React from 'react';
-import { RefreshCw, GitBranch, CheckCircle2 } from 'lucide-react';
-import { SyncStatus } from '../../types/vault';
+import { CheckCircle2, GitBranch, RefreshCw } from "lucide-react";
+import type React from "react";
+import type { SyncStatus } from "../../types/vault";
 
 interface GitStatusBadgeProps {
   status: SyncStatus | null;
@@ -11,11 +11,12 @@ interface GitStatusBadgeProps {
 
 export const GitStatusBadge: React.FC<GitStatusBadgeProps> = ({
   status,
-  branch = 'main',
+  branch = "main",
   isDirty = false,
-  onSync
+  onSync,
 }) => {
-  const isSyncing = status?.status === 'running' || status?.status === 'pending';
+  const isSyncing =
+    status?.status === "running" || status?.status === "pending";
 
   return (
     <div className="flex items-center gap-1.5 select-none">
@@ -43,7 +44,7 @@ export const GitStatusBadge: React.FC<GitStatusBadgeProps> = ({
           className="neo-btn p-1.5 bg-accent-acid hover:bg-[#d4f000] text-ink-primary"
           title="Trigger Git Sync"
         >
-          <RefreshCw size={13} className={isSyncing ? 'animate-spin' : ''} />
+          <RefreshCw size={13} className={isSyncing ? "animate-spin" : ""} />
         </button>
       )}
     </div>

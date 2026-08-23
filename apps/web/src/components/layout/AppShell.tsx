@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
-import { TopHeader } from './TopHeader';
-import { Sidebar } from './Sidebar';
-import { useVault } from '../../hooks/useVault';
+import type React from "react";
+import { useState } from "react";
+import type { useVault } from "../../hooks/useVault";
+import { Sidebar } from "./Sidebar";
+import { TopHeader } from "./TopHeader";
 
 interface AppShellProps {
-  children: (vaultState: ReturnType<typeof useVault>) => React.ReactNode;
+  children: React.ReactNode;
+  vaultState: ReturnType<typeof useVault>;
   onOpenSearch: () => void;
   onOpenGraph?: () => void;
   onOpenSettings: () => void;
@@ -13,12 +15,12 @@ interface AppShellProps {
 
 export const AppShell: React.FC<AppShellProps> = ({
   children,
+  vaultState,
   onOpenSearch,
   onOpenGraph,
   onOpenSettings,
-  onNewNote
+  onNewNote,
 }) => {
-  const vaultState = useVault();
   const [isSidebarMobileOpen, setIsSidebarMobileOpen] = useState(false);
 
   return (
@@ -31,7 +33,7 @@ export const AppShell: React.FC<AppShellProps> = ({
         onOpenSettings={onOpenSettings}
         onToggleSidebar={() => setIsSidebarMobileOpen(!isSidebarMobileOpen)}
         syncStatus={vaultState.syncStatus}
-        branch={vaultState.vault?.branch || 'main'}
+        branch={vaultState.vault?.branch || "main"}
         isDirty={vaultState.isDirty}
         onSync={vaultState.sync}
       />
@@ -48,7 +50,7 @@ export const AppShell: React.FC<AppShellProps> = ({
         />
 
         <main className="flex-1 flex flex-col h-full overflow-hidden bg-cream-shell relative">
-          {children(vaultState)}
+          {children}
         </main>
       </div>
     </div>

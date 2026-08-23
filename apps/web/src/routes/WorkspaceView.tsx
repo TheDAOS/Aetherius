@@ -1,99 +1,118 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { AppShell } from '../components/layout/AppShell';
-import { NoteToolbar, ViewMode } from '../components/editor/NoteToolbar';
-import { NoteEditor } from '../components/editor/NoteEditor';
-import { NotePreview } from '../components/editor/NotePreview';
-import { SearchModal } from './SearchModal';
-import { SettingsModal } from './SettingsModal';
-import { NewNoteModal } from './NewNoteModal';
-import { GraphModal } from '../components/graph/GraphModal';
-import { ConflictModal } from './ConflictModal';
-import { buildGraphIndex } from '../services/intelligence/graphIndexer';
-import { vaultService } from '../services/vault';
-import { useAuth } from '../contexts/AuthContext';
-import { Plus } from 'lucide-react';
+import { Plus } from "lucide-react";
+import type React from "react";
+import { useEffect, useMemo, useState } from "react";
+import { NoteEditor } from "../components/editor/NoteEditor";
+import { NotePreview } from "../components/editor/NotePreview";
+import { NoteToolbar, type ViewMode } from "../components/editor/NoteToolbar";
+import { GraphModal } from "../components/graph/GraphModal";
+import { AppShell } from "../components/layout/AppShell";
+import { useVault } from "../hooks/useVault";
+import { buildGraphIndex } from "../services/intelligence/graphIndexer";
+import { vaultService } from "../services/vault";
+import { ConflictModal } from "./ConflictModal";
+import { NewNoteModal } from "./NewNoteModal";
+import { SearchModal } from "./SearchModal";
+import { SettingsModal } from "./SettingsModal";
 
 export const WorkspaceView: React.FC = () => {
-  const { providerToken } = useAuth();
-  const [viewMode, setViewMode] = useState<ViewMode>('split');
+  const vaultState = useVault();
+  const [viewMode, setViewMode] = useState<ViewMode>("split");
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isGraphOpen, setIsGraphOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isNewNoteOpen, setIsNewNoteOpen] = useState(false);
   const [isConflictOpen, setIsConflictOpen] = useState(false);
-  const [remoteConflictContent, setRemoteConflictContent] = useState<string>('');
+  const [remoteConflictContent, setRemoteConflictContent] =
+    useState<string>("");
 
   // Global Keyboard Shortcuts
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
         e.preventDefault();
         setIsSearchOpen((prev) => !prev);
-      } else if ((e.metaKey || e.ctrlKey) && e.key === 'g') {
+      } else if ((e.metaKey || e.ctrlKey) && e.key === "g") {
         e.preventDefault();
         setIsGraphOpen((prev) => !prev);
-      } else if ((e.metaKey || e.ctrlKey) && e.key === 'n') {
+      } else if ((e.metaKey || e.ctrlKey) && e.key === "n") {
         e.preventDefault();
         setIsNewNoteOpen(true);
-      } else if ((e.metaKey || e.ctrlKey) && e.key === 'e') {
+      } else if ((e.metaKey || e.ctrlKey) && e.key === "e") {
         e.preventDefault();
-        setViewMode((prev) => (prev === 'edit' ? 'preview' : prev === 'preview' ? 'split' : 'edit'));
+        setViewMode((prev) =>
+          prev === "edit" ? "preview" : prev === "preview" ? "split" : "edit",
+        );
       }
     };
 
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
+
+  // Build live graph index from files
+  const graphIndex = useMemo(
+    () => buildGraphIndex(vaultState.files),
+    [vaultState.files],
+  );
+
+  const allFilePaths = useMemo(
+    () => vaultState.files.map((f) => f.path),
+    [vaultState.files],
+  );
 
   return (
     <AppShell
+      vaultState={vaultState}
       onOpenSearch={() => setIsSearchOpen(true)}
       onOpenGraph={() => setIsGraphOpen(true)}
       onOpenSettings={() => setIsSettingsOpen(true)}
       onNewNote={() => setIsNewNoteOpen(true)}
     >
-      {(vaultState) => {
-        // Build live graph index from files
-        const graphIndex = useMemo(
-          () => buildGraphIndex(vaultState.files),
-          [vaultState.files]
-        );
+      {(() => {
+        const linkedReferences =
+          graphIndex.backlinks.get(vaultState.activeFilePath) || [];
+        const unlinkedMentions =
+          graphIndex.unlinkedMentions.get(vaultState.activeFilePath) || [];
 
-        const allFilePaths = useMemo(
-          () => vaultState.files.map(f => f.path),
-          [vaultState.files]
-        );
-
-        const linkedReferences = graphIndex.backlinks.get(vaultState.activeFilePath) || [];
-        const unlinkedMentions = graphIndex.unlinkedMentions.get(vaultState.activeFilePath) || [];
-
-        const handleLinkMention = async (sourcePath: string, targetPath: string) => {
-          if (!providerToken) return;
+        const handleLinkMention = async (
+          sourcePath: string,
+          targetPath: string,
+        ) => {
           try {
-            const sourceFile = await vaultService.getFile(providerToken, sourcePath);
-            const targetNoteName = targetPath.replace(/\.md$/, '').split('/').pop() || targetPath;
-            
-            // Case-insensitive replacement of first occurrence of note title/name
-            const regex = new RegExp(`\\b${targetNoteName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
-            const updatedContent = (sourceFile.content || '').replace(regex, `[[${targetNoteName}]]`);
+            const sourceFile = await vaultService.getFile(sourcePath);
+            const targetNoteName =
+              targetPath.replace(/\.md$/, "").split("/").pop() || targetPath;
 
-            await vaultService.updateFile(providerToken, sourcePath, {
+            // Case-insensitive replacement of first occurrence of note title/name
+            const regex = new RegExp(
+              `\\b${targetNoteName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`,
+              "i",
+            );
+            const updatedContent = (sourceFile.content || "").replace(
+              regex,
+              `[[${targetNoteName}]]`,
+            );
+
+            await vaultService.updateFile(sourcePath, {
               content: updatedContent,
               expectedSha: sourceFile.sha,
-              commitMessage: `Link [[${targetNoteName}]] in ${sourcePath}`
+              commitMessage: `Link [[${targetNoteName}]] in ${sourcePath}`,
             });
 
             await vaultState.refreshVault();
-          } catch (err: any) {
-            alert(`Could not convert mention: ${err?.message || 'Error'}`);
+          } catch (err: unknown) {
+            const error = err as { message?: string };
+            alert(`Could not convert mention: ${error?.message || "Error"}`);
           }
         };
 
         const handleOpenConflictDiff = async () => {
-          if (!providerToken || !vaultState.activeFilePath) return;
+          if (!vaultState.activeFilePath) return;
           try {
-            const remoteFile = await vaultService.getFile(providerToken, vaultState.activeFilePath);
-            setRemoteConflictContent(remoteFile.content || '');
+            const remoteFile = await vaultService.getFile(
+              vaultState.activeFilePath,
+            );
+            setRemoteConflictContent(remoteFile.content || "");
             setIsConflictOpen(true);
           } catch {
             vaultState.reloadActiveFile();
@@ -116,14 +135,24 @@ export const WorkspaceView: React.FC = () => {
               onAttachImage={async (file) => {
                 const reader = new FileReader();
                 reader.onload = async () => {
-                  const base64Content = (reader.result as string).split(',')[1] || '';
-                  const sanitizedName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+                  const base64Content =
+                    (reader.result as string).split(",")[1] || "";
+                  const sanitizedName = file.name.replace(
+                    /[^a-zA-Z0-9._-]/g,
+                    "_",
+                  );
                   const imagePath = `assets/images/${Date.now()}_${sanitizedName}`;
                   try {
-                    await vaultState.createFile(imagePath, atob(base64Content));
-                    vaultState.updateContent(vaultState.content + `\n\n![${file.name}](${imagePath})\n\n`);
-                  } catch (e: any) {
-                    alert(`Failed to attach image: ${e?.message || 'Error'}`);
+                    // Pass base64 directly — createFile handles encoding
+                    // For binary files, we pass the base64 string as content
+                    await vaultState.createFile(imagePath, base64Content);
+                    vaultState.updateContent(
+                      vaultState.content +
+                        `\n\n![${file.name}](${imagePath})\n\n`,
+                    );
+                  } catch (e: unknown) {
+                    const err = e as { message?: string };
+                    alert(`Failed to attach image: ${err?.message || "Error"}`);
                   }
                 };
                 reader.readAsDataURL(file);
@@ -133,7 +162,9 @@ export const WorkspaceView: React.FC = () => {
             {/* Conflict / Error Banner */}
             {vaultState.hasConflict && (
               <div className="px-4 py-2 bg-accent-pink text-ink-primary font-mono text-xs border-b-2 border-ink-primary flex items-center justify-between">
-                <span className="font-bold">⚠️ Conflict: Remote file changed on GitHub.</span>
+                <span className="font-bold">
+                  ⚠️ Conflict: Remote file changed on GitHub.
+                </span>
                 <div className="flex items-center gap-2">
                   <button
                     onClick={handleOpenConflictDiff}
@@ -155,19 +186,26 @@ export const WorkspaceView: React.FC = () => {
             <div className="px-4 py-1.5 bg-paper-canvas border-b border-cream-border flex items-center justify-between text-xs font-mono text-ink-muted">
               <div className="flex items-center gap-1.5 truncate">
                 <span className="text-accent-cobalt font-bold">vault://</span>
-                <span className="text-ink-primary font-bold">{vaultState.activeFilePath}</span>
+                <span className="text-ink-primary font-bold">
+                  {vaultState.activeFilePath}
+                </span>
               </div>
               {vaultState.activeFile?.lastModified && (
                 <span className="text-[10px] hidden sm:inline">
-                  Last modified: {new Date(vaultState.activeFile.lastModified).toLocaleTimeString()}
+                  Last modified:{" "}
+                  {new Date(
+                    vaultState.activeFile.lastModified,
+                  ).toLocaleTimeString()}
                 </span>
               )}
             </div>
 
             {/* Workspace Content Canvas */}
             <div className="flex-1 flex overflow-hidden relative">
-              {(viewMode === 'edit' || viewMode === 'split') && (
-                <div className={`h-full flex flex-col ${viewMode === 'split' ? 'w-full md:w-1/2 border-r-2 border-ink-primary' : 'w-full'}`}>
+              {(viewMode === "edit" || viewMode === "split") && (
+                <div
+                  className={`h-full flex flex-col ${viewMode === "split" ? "w-full md:w-1/2 border-r-2 border-ink-primary" : "w-full"}`}
+                >
                   <NoteEditor
                     content={vaultState.content}
                     allFilePaths={allFilePaths}
@@ -177,8 +215,10 @@ export const WorkspaceView: React.FC = () => {
                 </div>
               )}
 
-              {(viewMode === 'preview' || viewMode === 'split') && (
-                <div className={`h-full overflow-y-auto ${viewMode === 'split' ? 'hidden md:flex md:w-1/2' : 'w-full flex'}`}>
+              {(viewMode === "preview" || viewMode === "split") && (
+                <div
+                  className={`h-full overflow-y-auto ${viewMode === "split" ? "hidden md:flex md:w-1/2" : "w-full flex"}`}
+                >
                   <NotePreview
                     content={vaultState.content}
                     activeFilePath={vaultState.activeFilePath}
@@ -186,7 +226,10 @@ export const WorkspaceView: React.FC = () => {
                     unlinkedMentions={unlinkedMentions}
                     onSelectFile={(path) => {
                       // If it's a wikilink target without extension, search/resolve
-                      const resolved = allFilePaths.find(p => p.toLowerCase().includes(path.toLowerCase())) || path;
+                      const resolved =
+                        allFilePaths.find((p) =>
+                          p.toLowerCase().includes(path.toLowerCase()),
+                        ) || path;
                       vaultState.selectFile(resolved);
                     }}
                     onLinkMention={handleLinkMention}
@@ -228,19 +271,21 @@ export const WorkspaceView: React.FC = () => {
               onAcceptRemote={() => vaultState.reloadActiveFile()}
               onForceOverwrite={async () => {
                 // Fetch fresh remote sha and overwrite
-                if (!providerToken || !vaultState.activeFilePath) return;
-                const freshRemote = await vaultService.getFile(providerToken, vaultState.activeFilePath);
-                await vaultService.updateFile(providerToken, vaultState.activeFilePath, {
+                if (!vaultState.activeFilePath) return;
+                const freshRemote = await vaultService.getFile(
+                  vaultState.activeFilePath,
+                );
+                await vaultService.updateFile(vaultState.activeFilePath, {
                   content: vaultState.content,
                   expectedSha: freshRemote.sha,
-                  commitMessage: `Force update ${vaultState.activeFilePath} (resolved conflict)`
+                  commitMessage: `Force update ${vaultState.activeFilePath} (resolved conflict)`,
                 });
                 await vaultState.refreshVault();
               }}
               onSaveAsCopy={async () => {
-                const parts = vaultState.activeFilePath.split('.');
-                const ext = parts.pop() || 'md';
-                const copyPath = `${parts.join('.')}.conflict-${Date.now()}.${ext}`;
+                const parts = vaultState.activeFilePath.split(".");
+                const ext = parts.pop() || "md";
+                const copyPath = `${parts.join(".")}.conflict-${Date.now()}.${ext}`;
                 await vaultState.createFile(copyPath, vaultState.content);
                 await vaultState.reloadActiveFile();
               }}
@@ -263,7 +308,7 @@ export const WorkspaceView: React.FC = () => {
             />
           </div>
         );
-      }}
+      })()}
     </AppShell>
   );
 };

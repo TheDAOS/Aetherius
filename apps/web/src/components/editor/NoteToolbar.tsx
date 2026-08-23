@@ -1,8 +1,18 @@
-import React, { useRef } from 'react';
-import { Eye, Edit3, Columns, Save, Code, CheckSquare, Image as ImageIcon, WifiOff } from 'lucide-react';
-import { Button } from '../common/Button';
+import {
+  CheckSquare,
+  Code,
+  Columns,
+  Edit3,
+  Eye,
+  Image as ImageIcon,
+  Save,
+  WifiOff,
+} from "lucide-react";
+import type React from "react";
+import { useRef } from "react";
+import { Button } from "../common/Button";
 
-export type ViewMode = 'edit' | 'preview' | 'split';
+export type ViewMode = "edit" | "preview" | "split";
 
 interface NoteToolbarProps {
   viewMode: ViewMode;
@@ -23,7 +33,7 @@ export const NoteToolbar: React.FC<NoteToolbarProps> = ({
   sha,
   onSave,
   onInsertMarkdown,
-  onAttachImage
+  onAttachImage,
 }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -32,7 +42,7 @@ export const NoteToolbar: React.FC<NoteToolbarProps> = ({
     if (file && onAttachImage) {
       onAttachImage(file);
     }
-    if (e.target) e.target.value = '';
+    if (e.target) e.target.value = "";
   };
 
   return (
@@ -41,11 +51,11 @@ export const NoteToolbar: React.FC<NoteToolbarProps> = ({
       <div className="flex items-center gap-1">
         <div className="neo-box-sm flex bg-white p-0.5">
           <button
-            onClick={() => onChangeViewMode('edit')}
+            onClick={() => onChangeViewMode("edit")}
             className={`flex items-center gap-1 px-2.5 py-1 text-xs font-mono font-bold transition-colors ${
-              viewMode === 'edit'
-                ? 'bg-accent-acid text-ink-primary border border-ink-primary'
-                : 'text-ink-muted hover:text-ink-primary'
+              viewMode === "edit"
+                ? "bg-accent-acid text-ink-primary border border-ink-primary"
+                : "text-ink-muted hover:text-ink-primary"
             }`}
             title="Edit Mode"
           >
@@ -53,11 +63,11 @@ export const NoteToolbar: React.FC<NoteToolbarProps> = ({
             <span className="hidden sm:inline">EDIT</span>
           </button>
           <button
-            onClick={() => onChangeViewMode('preview')}
+            onClick={() => onChangeViewMode("preview")}
             className={`flex items-center gap-1 px-2.5 py-1 text-xs font-mono font-bold transition-colors ${
-              viewMode === 'preview'
-                ? 'bg-accent-acid text-ink-primary border border-ink-primary'
-                : 'text-ink-muted hover:text-ink-primary'
+              viewMode === "preview"
+                ? "bg-accent-acid text-ink-primary border border-ink-primary"
+                : "text-ink-muted hover:text-ink-primary"
             }`}
             title="Preview Mode"
           >
@@ -65,11 +75,11 @@ export const NoteToolbar: React.FC<NoteToolbarProps> = ({
             <span className="hidden sm:inline">PREVIEW</span>
           </button>
           <button
-            onClick={() => onChangeViewMode('split')}
+            onClick={() => onChangeViewMode("split")}
             className={`hidden md:flex items-center gap-1 px-2.5 py-1 text-xs font-mono font-bold transition-colors ${
-              viewMode === 'split'
-                ? 'bg-accent-acid text-ink-primary border border-ink-primary'
-                : 'text-ink-muted hover:text-ink-primary'
+              viewMode === "split"
+                ? "bg-accent-acid text-ink-primary border border-ink-primary"
+                : "text-ink-muted hover:text-ink-primary"
             }`}
             title="Split Mode"
           >
@@ -79,24 +89,24 @@ export const NoteToolbar: React.FC<NoteToolbarProps> = ({
         </div>
 
         {/* Markdown Formatting Helpers */}
-        {onInsertMarkdown && viewMode !== 'preview' && (
+        {onInsertMarkdown && viewMode !== "preview" && (
           <div className="flex items-center gap-1 ml-2">
             <button
-              onClick={() => onInsertMarkdown('## ')}
+              onClick={() => onInsertMarkdown("## ")}
               className="neo-btn px-2 py-1 bg-white text-xs font-mono font-bold text-ink-primary"
               title="Heading 2"
             >
               H2
             </button>
             <button
-              onClick={() => onInsertMarkdown('- [ ] ')}
+              onClick={() => onInsertMarkdown("- [ ] ")}
               className="neo-btn p-1 bg-white text-ink-primary"
               title="Task Checkbox"
             >
               <CheckSquare size={13} />
             </button>
             <button
-              onClick={() => onInsertMarkdown('```\n\n```')}
+              onClick={() => onInsertMarkdown("```\n\n```")}
               className="neo-btn p-1 bg-white text-ink-primary"
               title="Code Block"
             >
@@ -127,25 +137,31 @@ export const NoteToolbar: React.FC<NoteToolbarProps> = ({
       {/* Right: Commit SHA, Offline state & Save Action */}
       <div className="flex items-center gap-2">
         {!isOnline && (
-          <span className="neo-box-sm px-2 py-0.5 text-[10px] font-mono text-accent-pink bg-white flex items-center gap-1" title="Working in offline mode">
+          <span
+            className="neo-box-sm px-2 py-0.5 text-[10px] font-mono text-accent-pink bg-white flex items-center gap-1"
+            title="Working in offline mode"
+          >
             <WifiOff size={11} /> OFFLINE
           </span>
         )}
 
         {sha && (
-          <span className="neo-box-sm px-2 py-0.5 text-[10px] font-mono text-ink-muted bg-white hidden sm:inline" title={`Commit SHA: ${sha}`}>
+          <span
+            className="neo-box-sm px-2 py-0.5 text-[10px] font-mono text-ink-muted bg-white hidden sm:inline"
+            title={`Commit SHA: ${sha}`}
+          >
             SHA: {sha.slice(0, 7)}
           </span>
         )}
 
         <Button
-          variant={isDirty ? 'primary' : 'secondary'}
+          variant={isDirty ? "primary" : "secondary"}
           size="sm"
           icon={<Save size={13} />}
           onClick={onSave}
           disabled={!isDirty}
         >
-          {isDirty ? (isOnline ? 'Commit (Ctrl+S)' : 'Save Offline') : 'Saved'}
+          {isDirty ? (isOnline ? "Commit (Ctrl+S)" : "Save Offline") : "Saved"}
         </Button>
       </div>
     </div>

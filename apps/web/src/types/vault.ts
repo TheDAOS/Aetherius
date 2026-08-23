@@ -9,7 +9,7 @@ export interface Vault {
   branch: string;
 }
 
-export type FileType = 'file' | 'directory';
+export type FileType = "file" | "directory";
 
 export interface VaultFile {
   path: string;
@@ -50,7 +50,13 @@ export interface SearchResponse {
   results: SearchResult[];
 }
 
-export type SyncState = 'idle' | 'pending' | 'running' | 'completed' | 'failed' | 'conflict';
+export type SyncState =
+  | "idle"
+  | "pending"
+  | "running"
+  | "completed"
+  | "failed"
+  | "conflict";
 
 export interface SyncStatus {
   status: SyncState;

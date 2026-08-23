@@ -1,5 +1,9 @@
-import { VaultFile } from '../../types/vault';
-import { parseMarkdown, resolveWikilinkPath, ParsedNote } from './markdownParser';
+import type { VaultFile } from "../../types/vault";
+import {
+  type ParsedNote,
+  parseMarkdown,
+  resolveWikilinkPath,
+} from "./markdownParser";
 
 export interface GraphNode {
   id: string; // path
@@ -31,28 +35,37 @@ export interface VaultGraphIndex {
   tagMap: Map<string, Set<string>>;
 }
 
-export function extractSnippet(content: string, searchPhrase: string, maxLen: number = 120): string {
+export function extractSnippet(
+  content: string,
+  searchPhrase: string,
+  maxLen: number = 120,
+): string {
   const lowerContent = content.toLowerCase();
   const lowerPhrase = searchPhrase.toLowerCase();
   const index = lowerContent.indexOf(lowerPhrase);
 
   if (index === -1) {
-    return content.slice(0, maxLen).replace(/\n/g, ' ') + (content.length > maxLen ? '...' : '');
+    return (
+      content.slice(0, maxLen).replace(/\n/g, " ") +
+      (content.length > maxLen ? "..." : "")
+    );
   }
 
   const start = Math.max(0, index - 40);
   const end = Math.min(content.length, index + searchPhrase.length + 60);
-  let snippet = content.slice(start, end).replace(/\n/g, ' ');
+  let snippet = content.slice(start, end).replace(/\n/g, " ");
 
-  if (start > 0) snippet = '...' + snippet;
-  if (end < content.length) snippet = snippet + '...';
+  if (start > 0) snippet = "..." + snippet;
+  if (end < content.length) snippet = snippet + "...";
 
   return snippet;
 }
 
 export function buildGraphIndex(files: VaultFile[]): VaultGraphIndex {
-  const mdFiles = files.filter(f => f.type === 'file' && f.path.endsWith('.md'));
-  const allPaths = mdFiles.map(f => f.path);
+  const mdFiles = files.filter(
+    (f) => f.type === "file" && f.path.endsWith(".md"),
+  );
+  const allPaths = mdFiles.map((f) => f.path);
 
   const parsedNotesMap = new Map<string, ParsedNote>();
   const nodesMap = new Map<string, GraphNode>();
@@ -63,7 +76,7 @@ export function buildGraphIndex(files: VaultFile[]): VaultGraphIndex {
 
   // 1. Parse all notes
   for (const file of mdFiles) {
-    const parsed = parseMarkdown(file.content || '', file.path);
+    const parsed = parseMarkdown(file.content || "", file.path);
     parsedNotesMap.set(file.path, parsed);
 
     nodesMap.set(file.path, {
@@ -72,7 +85,7 @@ export function buildGraphIndex(files: VaultFile[]): VaultGraphIndex {
       title: parsed.title,
       tags: parsed.tags,
       isHub: false,
-      degree: 0
+      degree: 0,
     });
 
     // Populate Tag Map
@@ -96,9 +109,13 @@ export function buildGraphIndex(files: VaultFile[]): VaultGraphIndex {
   // 3. Build forward links and backlinks
   for (const [sourcePath, parsed] of parsedNotesMap.entries()) {
     for (const link of parsed.outgoingLinks) {
-      const targetPath = resolveWikilinkPath(link.target, allPaths, titleToPathMap);
+      const targetPath = resolveWikilinkPath(
+        link.target,
+        allPaths,
+        titleToPathMap,
+      );
       if (targetPath && targetPath !== sourcePath) {
-        edges.push({ source: sourcePath, target: targetPath, label: 'links' });
+        edges.push({ source: sourcePath, target: targetPath, label: "links" });
 
         // Record Backlink
         if (!backlinks.has(targetPath)) backlinks.set(targetPath, []);
@@ -107,7 +124,7 @@ export function buildGraphIndex(files: VaultFile[]): VaultGraphIndex {
           sourcePath,
           sourceTitle: parsed.title,
           snippet,
-          isExplicit: true
+          isExplicit: true,
         });
 
         // Increment degree
@@ -122,7 +139,7 @@ export function buildGraphIndex(files: VaultFile[]): VaultGraphIndex {
   // 4. Scan Unlinked Mentions
   for (const [targetPath, targetParsed] of parsedNotesMap.entries()) {
     const targetPhrases = [targetParsed.title, ...targetParsed.aliases].filter(
-      p => p && p.length > 2 && p.toLowerCase() !== 'untitled'
+      (p) => p && p.length > 2 && p.toLowerCase() !== "untitled",
     );
 
     if (targetPhrases.length === 0) continue;
@@ -132,26 +149,30 @@ export function buildGraphIndex(files: VaultFile[]): VaultGraphIndex {
 
       // Check if source already has explicit link to target
       const alreadyLinked = (backlinks.get(targetPath) || []).some(
-        b => b.sourcePath === sourcePath
+        (b) => b.sourcePath === sourcePath,
       );
       if (alreadyLinked) continue;
 
       // Strip explicit links and code blocks from text to avoid false positives
       const cleanBody = sourceParsed.body
-        .replace(/\[\[[^\]]+\]\]/g, '')
-        .replace(/```[\s\S]*?```/g, '')
-        .replace(/`[^`]+`/g, '');
+        .replace(/\[\[[^\]]+\]\]/g, "")
+        .replace(/```[\s\S]*?```/g, "")
+        .replace(/`[^`]+`/g, "");
 
       for (const phrase of targetPhrases) {
-        const regex = new RegExp(`\\b${phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i');
+        const regex = new RegExp(
+          `\\b${phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`,
+          "i",
+        );
         if (regex.test(cleanBody)) {
-          if (!unlinkedMentions.has(targetPath)) unlinkedMentions.set(targetPath, []);
+          if (!unlinkedMentions.has(targetPath))
+            unlinkedMentions.set(targetPath, []);
           const snippet = extractSnippet(sourceParsed.body, phrase);
           unlinkedMentions.get(targetPath)!.push({
             sourcePath,
             sourceTitle: sourceParsed.title,
             snippet,
-            isExplicit: false
+            isExplicit: false,
           });
           break;
         }
@@ -171,6 +192,6 @@ export function buildGraphIndex(files: VaultFile[]): VaultGraphIndex {
     edges,
     backlinks,
     unlinkedMentions,
-    tagMap
+    tagMap,
   };
 }
