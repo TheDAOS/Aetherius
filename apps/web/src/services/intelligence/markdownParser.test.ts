@@ -38,6 +38,13 @@ This is the note body.`;
     expect(body).toBe(raw);
   });
 
+  it("handles unclosed frontmatter", () => {
+    const raw = "---\ntitle: Missing end";
+    const { frontmatter, body } = parseFrontmatter(raw);
+    expect(frontmatter).toEqual({});
+    expect(body).toBe(raw);
+  });
+
   it("extracts standard and aliased wikilinks", () => {
     const text =
       "Reference to [[Welcome Note]] and [[notes/system-design|System Design]] and [[Architecture#Overview]].";
@@ -113,5 +120,20 @@ See [[System Design]] for details. Also tagged #knowledge-management.`;
     expect(parsed.tags).toContain("graph");
     expect(parsed.tags).toContain("knowledge-management");
     expect(parsed.outgoingLinks[0].target).toBe("System Design");
+  });
+
+  it("falls back to heading title if no frontmatter title", () => {
+    const parsed = parseMarkdown("# First Heading\nSome text");
+    expect(parsed.title).toBe("First Heading");
+  });
+
+  it("falls back to default path if no title and no heading", () => {
+    const parsed = parseMarkdown("Just some text", "folder/my-note.md");
+    expect(parsed.title).toBe("my-note");
+  });
+
+  it("defaults to Untitled if absolutely no title can be found", () => {
+    const parsed = parseMarkdown("Just some text");
+    expect(parsed.title).toBe("Untitled");
   });
 });

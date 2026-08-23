@@ -103,6 +103,16 @@ Mentions [[Welcome Note]] and [[System Design]].`,
     expect(snippet).toContain("graph indexing");
   });
 
+  it("returns truncated start of content if phrase not found", () => {
+    const text = "A short sentence.";
+    const snippet = extractSnippet(text, "not found");
+    expect(snippet).toBe("A short sentence.");
+    
+    const longText = "a".repeat(150);
+    const longSnippet = extractSnippet(longText, "not found", 120);
+    expect(longSnippet).toContain("a".repeat(120) + "...");
+  });
+
   it("populates tag mapping across all notes", () => {
     const graph = buildGraphIndex(sampleFiles);
     expect(

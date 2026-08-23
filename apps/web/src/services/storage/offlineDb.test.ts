@@ -62,4 +62,52 @@ describe("OfflineDatabase", () => {
     const val = await offlineDb.getMetadata("last_sync_timestamp");
     expect(val).toBe(1724345000000);
   });
+
+  it("gets all files", async () => {
+    await offlineDb.saveFile({ name: "1.md", path: "1.md", type: "file", sha: "1", content: "1" });
+    await offlineDb.saveFile({ name: "2.md", path: "2.md", type: "file", sha: "2", content: "2" });
+    const all = await offlineDb.getAllFiles();
+    expect(all).toHaveLength(2);
+  });
+
+  it("deletes a file", async () => {
+    await offlineDb.saveFile({ name: "1.md", path: "1.md", type: "file", sha: "1", content: "1" });
+    await offlineDb.deleteFile("1.md");
+    const retrieved = await offlineDb.getFile("1.md");
+    expect(retrieved).toBeUndefined();
+  });
+
+  it("clears all files", async () => {
+    await offlineDb.saveFile({ name: "1.md", path: "1.md", type: "file", sha: "1", content: "1" });
+    await offlineDb.clearFiles();
+    const all = await offlineDb.getAllFiles();
+    expect(all).toHaveLength(0);
+  });
+
+  it("clears mutations", async () => {
+    await offlineDb.queueMutation({ action: "create", path: "1.md", content: "1" });
+    await offlineDb.clearMutations();
+    const mutations = await offlineDb.getPendingMutations();
+    expect(mutations).toHaveLength(0);
+  });
+
+  it("clears everything", async () => {
+    await offlineDb.saveFile({ name: "1.md", path: "1.md", type: "file", sha: "1", content: "1" });
+    await offlineDb.queueMutation({ action: "create", path: "1.md", content: "1" });
+    await offlineDb.setMetadata("key", "val");
+    await offlineDb.clearAll();
+    
+    expect(await offlineDb.getAllFiles()).toHaveLength(0);
+    expect(await offlineDb.getPendingMutations()).toHaveLength(0);
+    expect(await offlineDb.getMetadata("key")).toBeUndefined();
+  });
+
+  it("saves multiple files", async () => {
+    await offlineDb.saveFiles([
+      { name: "1.md", path: "1.md", type: "file", sha: "1", content: "1" },
+      { name: "2.md", path: "2.md", type: "file", sha: "2", content: "2" }
+    ]);
+    const all = await offlineDb.getAllFiles();
+    expect(all).toHaveLength(2);
+  });
 });
