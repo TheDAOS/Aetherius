@@ -513,6 +513,15 @@ Derived indexes or metadata must never silently become the source of truth.
 
 ---
 
+# Edge Function Rules
+
+When deploying Supabase Edge Functions in this repository, always append the `--use-api` flag to bypass local bundler bugs:
+`pnpm exec supabase functions deploy <name> --use-api`
+
+Do not attempt to debug `entrypoint path does not exist` errors from the local bundler without first trying `--use-api`.
+
+---
+
 # Dependency Rules
 
 Dependencies should be:
