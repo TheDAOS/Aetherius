@@ -15,8 +15,11 @@ info:
 
     '
   version: 0.1.0
+  license:
+    name: MIT
+    identifier: MIT
 servers:
-- url: https://api.example.com
+- url: https://api.aetherius.sanju.fyi
   description: Production API placeholder
 tags:
 - name: Auth
@@ -67,7 +70,7 @@ paths:
                   data:
                     $ref: '#/components/schemas/TokenResponse'
                   error:
-                    nullable: true
+                    type: ["object", "null"]
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -99,7 +102,7 @@ paths:
                   data:
                     $ref: '#/components/schemas/Vault'
                   error:
-                    nullable: true
+                    type: ["object", "null"]
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
@@ -133,7 +136,7 @@ paths:
                   data:
                     $ref: '#/components/schemas/Vault'
                   error:
-                    nullable: true
+                    type: ["object", "null"]
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -164,7 +167,7 @@ paths:
                   data:
                     $ref: '#/components/schemas/FileList'
                   error:
-                    nullable: true
+                    type: ["object", "null"]
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
@@ -198,7 +201,7 @@ paths:
                   data:
                     $ref: '#/components/schemas/File'
                   error:
-                    nullable: true
+                    type: ["object", "null"]
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -231,7 +234,7 @@ paths:
                   data:
                     $ref: '#/components/schemas/File'
                   error:
-                    nullable: true
+                    type: ["object", "null"]
         '401':
           $ref: '#/components/responses/Unauthorized'
         '404':
@@ -265,7 +268,7 @@ paths:
                   data:
                     $ref: '#/components/schemas/File'
                   error:
-                    nullable: true
+                    type: ["object", "null"]
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -338,7 +341,7 @@ paths:
                   data:
                     $ref: '#/components/schemas/SearchResponse'
                   error:
-                    nullable: true
+                    type: ["object", "null"]
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -372,7 +375,7 @@ paths:
                   data:
                     $ref: '#/components/schemas/SyncOperation'
                   error:
-                    nullable: true
+                    type: ["object", "null"]
         '401':
           $ref: '#/components/responses/Unauthorized'
   /v1/sync/status:
@@ -397,7 +400,7 @@ paths:
                   data:
                     $ref: '#/components/schemas/SyncStatus'
                   error:
-                    nullable: true
+                    type: ["object", "null"]
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
@@ -616,7 +619,7 @@ components:
       type: object
       properties:
         data:
-          nullable: true
+          type: ["object", "null"]
         error:
           type: object
           required:
