@@ -1,9 +1,9 @@
-import { Download, GitFork, HardDrive, RefreshCw, LogOut } from "lucide-react";
+import { Download, GitFork, HardDrive, LogOut, RefreshCw } from "lucide-react";
 import type React from "react";
 import { Button } from "../components/common/Button";
 import { Modal } from "../components/common/Modal";
-import { usePWA } from "../hooks/usePWA";
 import { useAuth } from "../contexts/AuthContext";
+import { usePWA } from "../hooks/usePWA";
 import { vaultService } from "../services/vault";
 import type { SyncStatus, Vault } from "../types/vault";
 
@@ -145,7 +145,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                 if (isDirty) {
                   if (
                     !window.confirm(
-                      "You have unsynced offline changes. Signing out will discard them permanently. Are you sure you want to sign out?"
+                      "You have unsynced offline changes. Signing out will discard them permanently. Are you sure you want to sign out?",
                     )
                   ) {
                     return;

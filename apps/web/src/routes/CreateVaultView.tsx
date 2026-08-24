@@ -1,4 +1,4 @@
-import { Database, GitFork, Loader2, ArrowRight } from "lucide-react";
+import { ArrowRight, Database, GitFork, Loader2 } from "lucide-react";
 import type React from "react";
 import { useState } from "react";
 import { Button } from "../components/common/Button";
@@ -9,9 +9,13 @@ interface CreateVaultViewProps {
   onVaultCreated: () => void;
 }
 
-export const CreateVaultView: React.FC<CreateVaultViewProps> = ({ onVaultCreated }) => {
+export const CreateVaultView: React.FC<CreateVaultViewProps> = ({
+  onVaultCreated,
+}) => {
   const [repoName, setRepoName] = useState("");
-  const [description, setDescription] = useState("My Aetherius knowledge vault");
+  const [description, setDescription] = useState(
+    "My Aetherius knowledge vault",
+  );
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -43,8 +47,8 @@ export const CreateVaultView: React.FC<CreateVaultViewProps> = ({ onVaultCreated
             Initialize Vault
           </h1>
           <p className="text-xs text-ink-muted leading-relaxed">
-            Aetherius stores your notes in a private GitHub repository. 
-            Give your new vault a name, and we'll set everything up for you.
+            Aetherius stores your notes in a private GitHub repository. Give
+            your new vault a name, and we'll set everything up for you.
           </p>
         </div>
 
@@ -94,7 +98,13 @@ export const CreateVaultView: React.FC<CreateVaultViewProps> = ({ onVaultCreated
             size="lg"
             className="w-full justify-center"
             disabled={!repoName.trim() || isSubmitting}
-            icon={isSubmitting ? <Loader2 size={16} className="animate-spin" /> : <ArrowRight size={16} />}
+            icon={
+              isSubmitting ? (
+                <Loader2 size={16} className="animate-spin" />
+              ) : (
+                <ArrowRight size={16} />
+              )
+            }
           >
             {isSubmitting ? "Creating Vault..." : "Create Vault"}
           </Button>

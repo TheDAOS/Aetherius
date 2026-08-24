@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { describe, expect, it, vi, beforeEach } from "vitest";
-import { SettingsModal } from "./SettingsModal";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { vaultService } from "../services/vault";
+import { SettingsModal } from "./SettingsModal";
 
 // Mock dependencies
 vi.mock("../hooks/usePWA", () => ({
@@ -59,7 +59,9 @@ describe("SettingsModal", () => {
   });
 
   it("does not render when isOpen is false", () => {
-    const { container } = render(<SettingsModal {...defaultProps} isOpen={false} />);
+    const { container } = render(
+      <SettingsModal {...defaultProps} isOpen={false} />,
+    );
     expect(container).toBeEmptyDOMElement();
   });
 
@@ -78,12 +80,14 @@ describe("SettingsModal", () => {
 
   it("calls resetToDefaults when Reset is clicked and confirmed", () => {
     vi.mocked(window.confirm).mockReturnValueOnce(true);
-    
+
     render(<SettingsModal {...defaultProps} />);
     const resetBtn = screen.getByText("Reset to Defaults");
     fireEvent.click(resetBtn);
-    
-    expect(window.confirm).toHaveBeenCalledWith("Reset local mock vault back to starter notes?");
+
+    expect(window.confirm).toHaveBeenCalledWith(
+      "Reset local mock vault back to starter notes?",
+    );
     expect(vaultService.resetToDefaults).toHaveBeenCalled();
     expect(defaultProps.onResetVault).toHaveBeenCalled();
     expect(defaultProps.onClose).toHaveBeenCalled();
@@ -91,11 +95,11 @@ describe("SettingsModal", () => {
 
   it("does not reset when Reset is canceled", () => {
     vi.mocked(window.confirm).mockReturnValueOnce(false);
-    
+
     render(<SettingsModal {...defaultProps} />);
     const resetBtn = screen.getByText("Reset to Defaults");
     fireEvent.click(resetBtn);
-    
+
     expect(vaultService.resetToDefaults).not.toHaveBeenCalled();
     expect(defaultProps.onResetVault).not.toHaveBeenCalled();
     expect(defaultProps.onClose).not.toHaveBeenCalled();
@@ -127,7 +131,7 @@ describe("SettingsModal", () => {
       fireEvent.click(signOutBtn);
 
       expect(window.confirm).toHaveBeenCalledWith(
-        "You have unsynced offline changes. Signing out will discard them permanently. Are you sure you want to sign out?"
+        "You have unsynced offline changes. Signing out will discard them permanently. Are you sure you want to sign out?",
       );
       expect(mockSignOut).not.toHaveBeenCalled();
       expect(defaultProps.onClose).not.toHaveBeenCalled();
@@ -144,7 +148,7 @@ describe("SettingsModal", () => {
       fireEvent.click(signOutBtn);
 
       expect(window.confirm).toHaveBeenCalledWith(
-        "You have unsynced offline changes. Signing out will discard them permanently. Are you sure you want to sign out?"
+        "You have unsynced offline changes. Signing out will discard them permanently. Are you sure you want to sign out?",
       );
       expect(mockSignOut).toHaveBeenCalled();
       expect(defaultProps.onClose).toHaveBeenCalled();
