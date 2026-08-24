@@ -600,6 +600,9 @@ When implementing frontend views that depend on backend state (e.g., a user's va
 ## 2. No Silent Auto-Generation
 Do not automatically generate important user assets (such as GitHub repositories) silently in the background. Always present a UI where the user can consent to the action, choose identifiers (e.g., repository names), and clearly understand what is being created on their behalf.
 
+## 3. React Rules of Hooks and Early Returns
+When inserting conditional rendering (like empty states, loading screens, or onboarding UIs) into an existing React component, **always place the early return statements below all hook initializations** (`useState`, `useEffect`, `useMemo`, `useCallback`, etc.). Placing an early return above a hook violates React's Rules of Hooks (`useHookAtTopLevel`) and will cause Biome lint checks to fail the CI build.
+
 ---
 
 # Project Philosophy
