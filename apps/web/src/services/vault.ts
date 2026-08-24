@@ -27,10 +27,14 @@ export class VaultService {
     });
 
     if (error) {
-      throw new Error(error.message || "API request failed");
+      throw error;
     }
 
-    return data;
+    if (data && data.error) {
+      throw new Error(data.error.message || "API request failed");
+    }
+
+    return data ? data.data : data;
   }
 
   // Store GitHub token server-side (called once after OAuth login)

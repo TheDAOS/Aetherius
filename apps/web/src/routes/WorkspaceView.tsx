@@ -1,4 +1,4 @@
-import { Plus } from "lucide-react";
+import { Plus, X } from "lucide-react";
 import type React from "react";
 import { useEffect, useMemo, useState } from "react";
 import { NoteEditor } from "../components/editor/NoteEditor";
@@ -10,6 +10,7 @@ import { useVault } from "../hooks/useVault";
 import { buildGraphIndex } from "../services/intelligence/graphIndexer";
 import { vaultService } from "../services/vault";
 import { ConflictModal } from "./ConflictModal";
+import { CreateVaultView } from "./CreateVaultView";
 import { NewNoteModal } from "./NewNoteModal";
 import { SearchModal } from "./SearchModal";
 import { SettingsModal } from "./SettingsModal";
@@ -59,6 +60,10 @@ export const WorkspaceView: React.FC = () => {
     () => vaultState.files.map((f) => f.path),
     [vaultState.files],
   );
+
+  if (!vaultState.isLoading && !vaultState.vault) {
+    return <CreateVaultView onVaultCreated={vaultState.refreshVault} />;
+  }
 
   return (
     <AppShell
@@ -182,6 +187,21 @@ export const WorkspaceView: React.FC = () => {
               </div>
             )}
 
+            {vaultState.error && !vaultState.hasConflict && (
+              <div className="px-4 py-2 bg-accent-orange text-white font-mono text-xs border-b-2 border-ink-primary flex items-center justify-between">
+                <span className="font-bold flex-1 truncate mr-4">
+                  ⚠️ Error: {vaultState.error}
+                </span>
+                <button
+                  onClick={vaultState.clearError}
+                  className="p-1 hover:bg-white/20 rounded transition-colors"
+                  title="Dismiss"
+                >
+                  <X size={14} />
+                </button>
+              </div>
+            )}
+
             {/* Breadcrumb Path Bar */}
             <div className="px-4 py-1.5 bg-paper-canvas border-b border-cream-border flex items-center justify-between text-xs font-mono text-ink-muted">
               <div className="flex items-center gap-1.5 truncate">
@@ -296,6 +316,7 @@ export const WorkspaceView: React.FC = () => {
               onClose={() => setIsSettingsOpen(false)}
               vault={vaultState.vault}
               syncStatus={vaultState.syncStatus}
+              isDirty={vaultState.isDirty}
               onResetVault={vaultState.refreshVault}
             />
 

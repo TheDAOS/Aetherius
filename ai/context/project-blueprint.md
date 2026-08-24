@@ -1118,6 +1118,10 @@ Zero-cost first
 
 Use free tiers and open-source tooling while designing the system so that paid infrastructure can be introduced later without rewriting the entire application.
 
+Explicit UX Design
+
+No silent failures on missing state (always provide onboarding UI for empty states). No silent auto-generation (users must consent and name auto-generated assets like GitHub repositories).
+
 ⸻
 
 Final Decision

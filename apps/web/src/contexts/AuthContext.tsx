@@ -9,22 +9,27 @@ interface AuthContextType {
   session: Session | null;
   user: User | null;
   loading: boolean;
+  error: string | null;
   signInWithGithub: () => Promise<void>;
   signOut: () => Promise<void>;
+  clearError: () => void;
 }
 
 const AuthContext = createContext<AuthContextType>({
   session: null,
   user: null,
   loading: true,
+  error: null,
   signInWithGithub: async () => {},
   signOut: async () => {},
+  clearError: () => {},
 });
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [session, setSession] = useState<Session | null>(null);
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     // Initialize session — with error handling to prevent infinite loading
@@ -75,12 +80,18 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   const signInWithGithub = async () => {
-    await supabase.auth.signInWithOAuth({
-      provider: "github",
-      options: {
-        scopes: "repo", // required for git operations
-      },
-    });
+    try {
+      setError(null);
+      const { error: signInError } = await supabase.auth.signInWithOAuth({
+        provider: "github",
+        options: {
+          scopes: "repo", // required for git operations
+        },
+      });
+      if (signInError) throw signInError;
+    } catch (err: any) {
+      setError(err.message || "Failed to sign in with GitHub");
+    }
   };
 
   const signOut = async () => {
@@ -90,12 +101,27 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     } catch (err) {
       console.warn("Failed to clear offline data on sign out:", err);
     }
-    await supabase.auth.signOut();
+    try {
+      const { error: signOutError } = await supabase.auth.signOut();
+      if (signOutError) throw signOutError;
+    } catch (err: any) {
+      setError(err.message || "Failed to sign out");
+    }
   };
+
+  const clearError = () => setError(null);
 
   return (
     <AuthContext.Provider
-      value={{ session, user, loading, signInWithGithub, signOut }}
+      value={{
+        session,
+        user,
+        loading,
+        error,
+        signInWithGithub,
+        signOut,
+        clearError,
+      }}
     >
       {children}
     </AuthContext.Provider>

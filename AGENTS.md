@@ -513,6 +513,15 @@ Derived indexes or metadata must never silently become the source of truth.
 
 ---
 
+# Edge Function Rules
+
+When deploying Supabase Edge Functions in this repository, always append the `--use-api` flag to bypass local bundler bugs:
+`pnpm exec supabase functions deploy <name> --use-api`
+
+Do not attempt to debug `entrypoint path does not exist` errors from the local bundler without first trying `--use-api`.
+
+---
+
 # Dependency Rules
 
 Dependencies should be:
@@ -580,6 +589,19 @@ A change is generally complete when:
 - An ADR is added or updated when a significant architectural decision is involved.
 - No secrets are introduced.
 - The change is ready for review.
+
+---
+
+# UI and Implementation Rules
+
+## 1. No Silent Failures on Missing State
+When implementing frontend views that depend on backend state (e.g., a user's vault), always handle the "empty" or "null" state gracefully. Provide explicit onboarding UI (like a creation or setup screen) rather than silently failing, hanging, or rendering blank layouts.
+
+## 2. No Silent Auto-Generation
+Do not automatically generate important user assets (such as GitHub repositories) silently in the background. Always present a UI where the user can consent to the action, choose identifiers (e.g., repository names), and clearly understand what is being created on their behalf.
+
+## 3. React Rules of Hooks and Early Returns
+When inserting conditional rendering (like empty states, loading screens, or onboarding UIs) into an existing React component, **always place the early return statements below all hook initializations** (`useState`, `useEffect`, `useMemo`, `useCallback`, etc.). Placing an early return above a hook violates React's Rules of Hooks (`useHookAtTopLevel`) and will cause Biome lint checks to fail the CI build.
 
 ---
 

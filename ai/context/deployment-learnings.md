@@ -3,12 +3,13 @@
 This document captures environment-specific deployment requirements and workarounds discovered during the initial Phase 3 production rollout. It serves as context for future automated or manual deployments.
 
 ## 1. Supabase CLI Edge Function Bundling
-The standard `pnpm dlx supabase functions deploy` command attempts to bundle Deno edge functions locally using a Docker container.
-* **Issue:** On some local environments (particularly Linux desktop with restricted Docker mount permissions or snap installations), the local Docker container fails to mount the host repository path, causing Deno to throw `Error: entrypoint path does not exist`.
-* **Fix/Workaround:** Bypass the local Docker bundling step and have Supabase bundle it server-side using the `--use-api` flag:
+The standard `pnpm exec supabase functions deploy` command attempts to bundle Deno edge functions locally before uploading them.
+* **Issue:** On some local environments (particularly Linux sandboxes) or with recent versions of the Supabase CLI (e.g. `2.115.0` which dropped `deno bundle`), the local bundler completely fails to resolve file paths. This causes Deno to throw a generic `failed to bundle function: exit 1` error alongside the message `Error: entrypoint path does not exist (/absolute/path/to/index.ts)`. This happens even if the TypeScript code perfectly passes a manual `deno check`.
+* **Fix/Workaround:** Completely bypass the local CLI bundling step and have Supabase's infrastructure bundle it server-side using the `--use-api` flag:
   ```bash
   pnpm exec supabase functions deploy api-v1 --use-api
   ```
+  **Coding Agents:** Always append the `--use-api` flag when deploying Supabase functions in this repository to prevent frustrating debugging loops over phantom `entrypoint path does not exist` errors.
 
 ## 2. Vercel `ERR_INVALID_THIS` (pnpm + Node 20/22 mismatch)
 Vercel defaults to Node 20/22. If the project does not explicitly specify the `packageManager` version, Vercel falls back to an older default `pnpm` version that contains a `URLSearchParams` bug (`ERR_INVALID_THIS`) when running on Node 20+.

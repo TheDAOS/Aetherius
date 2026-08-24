@@ -1,408 +1,467 @@
 openapi: 3.1.0
-
 info:
   title: Git-Backed Personal Vault API
-  description: |
-    API for accessing and managing a user's GitHub-backed Markdown vault.
+  description: 'API for accessing and managing a user''s GitHub-backed Markdown vault.
 
-    The user's private GitHub repository is the canonical source of truth
+
+    The user''s private GitHub repository is the canonical source of truth
+
     for vault contents.
 
+
     Clients such as the PWA and future Swift/iOS application communicate
+
     with the vault through this API.
+
+    '
   version: 0.1.0
-
+  license:
+    name: MIT
+    identifier: MIT
 servers:
-  - url: https://api.example.com
-    description: Production API placeholder
-
+- url: https://api.aetherius.sanju.fyi
+  description: Production API placeholder
 tags:
-  - name: Auth
-    description: Authentication and token management
-  - name: Vault
-    description: Vault metadata and information
-  - name: Files
-    description: Vault file operations
-  - name: Search
-    description: Vault search
-  - name: Sync
-    description: Synchronization operations
-
+- name: Auth
+  description: Authentication and token management
+- name: Vault
+  description: Vault metadata and information
+- name: Files
+  description: Vault file operations
+- name: Search
+  description: Vault search
+- name: Sync
+  description: Synchronization operations
 paths:
-
   /v1/auth/github-token:
     post:
       operationId: storeGitHubToken
       summary: Store GitHub token server-side
-      description: |
-        Stores the user's GitHub provider token server-side after OAuth
+      description: 'Stores the user''s GitHub provider token server-side after OAuth
+
         authentication. The token is stored securely and used by Edge
+
         Functions to perform GitHub API operations on behalf of the user.
 
+
         This endpoint should be called once after the OAuth callback.
+
         Subsequent API calls use JWT-only authentication.
+
+        '
       tags:
-        - Auth
+      - Auth
       security:
-        - bearerAuth: []
+      - bearerAuth: []
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/StoreTokenRequest"
+              $ref: '#/components/schemas/StoreTokenRequest'
       responses:
-        "200":
+        '200':
           description: Token stored successfully
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/TokenResponse"
-        "400":
-          $ref: "#/components/responses/BadRequest"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/TokenResponse'
+                  error:
+                    type: ["object", "null"]
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
   /v1/vault:
     get:
       operationId: getVault
       summary: Get the current user's vault
-      description: |
-        Returns metadata about the authenticated user's vault.
+      description: 'Returns metadata about the authenticated user''s vault.
 
-        Vault contents themselves remain in the user's private GitHub
+
+        Vault contents themselves remain in the user''s private GitHub
+
         repository.
+
+        '
       tags:
-        - Vault
+      - Vault
       security:
-        - bearerAuth: []
+      - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Vault metadata
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Vault"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Vault'
+                  error:
+                    type: ["object", "null"]
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
           description: No vault has been configured for the user
-
     post:
       operationId: createVault
       summary: Initialize a new vault
-      description: |
-        Creates a new private GitHub repository for the user's vault
+      description: 'Creates a new private GitHub repository for the user''s vault
+
         and stores the metadata in the database.
+
+        '
       tags:
-        - Vault
+      - Vault
       security:
-        - bearerAuth: []
+      - bearerAuth: []
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CreateVaultRequest"
+              $ref: '#/components/schemas/CreateVaultRequest'
       responses:
-        "201":
+        '201':
           description: Vault created
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Vault"
-        "400":
-          $ref: "#/components/responses/BadRequest"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "409":
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Vault'
+                  error:
+                    type: ["object", "null"]
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '409':
           description: A vault already exists for this user
-
   /v1/files:
     get:
       operationId: listFiles
       summary: List vault files
-      description: |
-        Returns files and directories available in the user's vault.
+      description: 'Returns files and directories available in the user''s vault.
+
+        '
       tags:
-        - Files
+      - Files
       security:
-        - bearerAuth: []
+      - bearerAuth: []
       parameters:
-        - $ref: "#/components/parameters/Path"
+      - $ref: '#/components/parameters/Path'
       responses:
-        "200":
+        '200':
           description: Files and directories
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/FileList"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/FileList'
+                  error:
+                    type: ["object", "null"]
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
           description: Vault or path was not found
-
     post:
       operationId: createFile
       summary: Create a file
-      description: |
-        Creates a new file in the user's vault and commits the change
-        to the user's GitHub repository.
+      description: 'Creates a new file in the user''s vault and commits the change
+
+        to the user''s GitHub repository.
+
+        '
       tags:
-        - Files
+      - Files
       security:
-        - bearerAuth: []
+      - bearerAuth: []
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/CreateFileRequest"
+              $ref: '#/components/schemas/CreateFileRequest'
       responses:
-        "201":
+        '201':
           description: File created
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/File"
-        "400":
-          $ref: "#/components/responses/BadRequest"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "403":
-          $ref: "#/components/responses/Forbidden"
-        "409":
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/File'
+                  error:
+                    type: ["object", "null"]
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '409':
           description: File already exists
-
   /v1/files/{path}:
     parameters:
-      - $ref: "#/components/parameters/FilePath"
-
+    - $ref: '#/components/parameters/FilePath'
     get:
       operationId: getFile
       summary: Get a file
-      description: |
-        Returns the contents and metadata of a file in the user's vault.
+      description: 'Returns the contents and metadata of a file in the user''s vault.
+
+        '
       tags:
-        - Files
+      - Files
       security:
-        - bearerAuth: []
+      - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: File contents and metadata
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/File"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "404":
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/File'
+                  error:
+                    type: ["object", "null"]
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
           description: File was not found
-
     put:
       operationId: updateFile
       summary: Update a file
-      description: |
-        Updates an existing file and commits the change to the user's
+      description: 'Updates an existing file and commits the change to the user''s
+
         GitHub repository.
+
+        '
       tags:
-        - Files
+      - Files
       security:
-        - bearerAuth: []
+      - bearerAuth: []
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/UpdateFileRequest"
+              $ref: '#/components/schemas/UpdateFileRequest'
       responses:
-        "200":
+        '200':
           description: File updated
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/File"
-        "400":
-          $ref: "#/components/responses/BadRequest"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "403":
-          $ref: "#/components/responses/Forbidden"
-        "404":
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/File'
+                  error:
+                    type: ["object", "null"]
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
           description: File was not found
-        "409":
+        '409':
           description: File changed since the client last retrieved it
-
     delete:
       operationId: deleteFile
       summary: Delete a file
-      description: |
-        Deletes a file and commits the change to the user's GitHub repository.
-      tags:
-        - Files
-      security:
-        - bearerAuth: []
-      responses:
-        "204":
-          description: File deleted
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-        "403":
-          $ref: "#/components/responses/Forbidden"
-        "404":
-          description: File was not found
-        "409":
-          description: File changed since the client last retrieved it
+      description: 'Deletes a file and commits the change to the user''s GitHub repository.
 
+        '
+      tags:
+      - Files
+      security:
+      - bearerAuth: []
+      responses:
+        '204':
+          description: File deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          description: File was not found
+        '409':
+          description: File changed since the client last retrieved it
   /v1/search:
     get:
       operationId: searchVault
       summary: Search the vault
-      description: |
-        Searches the user's vault.
+      description: 'Searches the user''s vault.
+
 
         The initial implementation may use straightforward text search.
+
         Semantic search and knowledge-graph functionality are future features.
+
+        '
       tags:
-        - Search
+      - Search
       security:
-        - bearerAuth: []
+      - bearerAuth: []
       parameters:
-        - name: q
-          in: query
-          required: true
-          description: Search query
-          schema:
-            type: string
-            minLength: 1
-        - name: path
-          in: query
-          required: false
-          description: Optional path prefix used to limit the search
-          schema:
-            type: string
+      - name: q
+        in: query
+        required: true
+        description: Search query
+        schema:
+          type: string
+          minLength: 1
+      - name: path
+        in: query
+        required: false
+        description: Optional path prefix used to limit the search
+        schema:
+          type: string
       responses:
-        "200":
+        '200':
           description: Search results
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SearchResponse"
-        "400":
-          $ref: "#/components/responses/BadRequest"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/SearchResponse'
+                  error:
+                    type: ["object", "null"]
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
   /v1/sync:
     post:
       operationId: syncVault
       summary: Synchronize vault state
-      description: |
-        Starts or requests synchronization between the client and the
-        user's GitHub-backed vault.
+      description: 'Starts or requests synchronization between the client and the
+
+        user''s GitHub-backed vault.
+
 
         Detailed offline synchronization and conflict-resolution semantics
+
         are intentionally deferred to a later development phase.
+
+        '
       tags:
-        - Sync
+      - Sync
       security:
-        - bearerAuth: []
+      - bearerAuth: []
       responses:
-        "202":
+        '202':
           description: Synchronization accepted
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SyncOperation"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/SyncOperation'
+                  error:
+                    type: ["object", "null"]
+        '401':
+          $ref: '#/components/responses/Unauthorized'
   /v1/sync/status:
     get:
       operationId: getSyncStatus
       summary: Get synchronization status
-      description: |
-        Returns the current synchronization state for the user's vault.
+      description: 'Returns the current synchronization state for the user''s vault.
+
+        '
       tags:
-        - Sync
+      - Sync
       security:
-        - bearerAuth: []
+      - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Synchronization status
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SyncStatus"
-        "401":
-          $ref: "#/components/responses/Unauthorized"
-
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/SyncStatus'
+                  error:
+                    type: ["object", "null"]
+        '401':
+          $ref: '#/components/responses/Unauthorized'
 components:
-
   securitySchemes:
-
     bearerAuth:
       type: http
       scheme: bearer
       bearerFormat: JWT
-      description: |
-        Authenticated application session token.
+      description: 'Authenticated application session token.
 
+        '
   parameters:
-
     Path:
       name: path
       in: query
       required: false
-      description: |
-        Optional path used to limit the returned files and directories.
+      description: 'Optional path used to limit the returned files and directories.
+
+        '
       schema:
         type: string
-
     FilePath:
       name: path
       in: path
       required: true
-      description: |
-        Repository-relative path to the requested file.
+      description: 'Repository-relative path to the requested file.
+
 
         The backend must validate and safely handle this path.
+
+        '
       schema:
         type: string
         minLength: 1
-
   responses:
-
     BadRequest:
       description: Invalid request
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/Error"
-
+            $ref: '#/components/schemas/Error'
     Unauthorized:
       description: Authentication is required
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/Error"
-
+            $ref: '#/components/schemas/Error'
     Forbidden:
       description: The authenticated user is not authorized
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/Error"
-
+            $ref: '#/components/schemas/Error'
   schemas:
-
     Vault:
       type: object
       required:
-        - id
-        - owner
-        - repository
-        - branch
+      - id
+      - owner
+      - repository
+      - branch
       properties:
         id:
           type: string
@@ -413,11 +472,10 @@ components:
           type: string
         branch:
           type: string
-
     CreateVaultRequest:
       type: object
       required:
-        - repository
+      - repository
       properties:
         repository:
           type: string
@@ -425,12 +483,11 @@ components:
         description:
           type: string
           description: Optional description for the repository
-
     File:
       type: object
       required:
-        - path
-        - type
+      - path
+      - type
       properties:
         path:
           type: string
@@ -438,8 +495,8 @@ components:
         type:
           type: string
           enum:
-            - file
-            - directory
+          - file
+          - directory
         name:
           type: string
         content:
@@ -454,25 +511,23 @@ components:
         lastModified:
           type: string
           format: date-time
-
     FileList:
       type: object
       required:
-        - path
-        - entries
+      - path
+      - entries
       properties:
         path:
           type: string
         entries:
           type: array
           items:
-            $ref: "#/components/schemas/File"
-
+            $ref: '#/components/schemas/File'
     CreateFileRequest:
       type: object
       required:
-        - path
-        - content
+      - path
+      - content
       properties:
         path:
           type: string
@@ -483,41 +538,40 @@ components:
           type: string
           minLength: 1
           maxLength: 200
-
     UpdateFileRequest:
       type: object
       required:
-        - content
+      - content
       properties:
         content:
           type: string
         expectedSha:
           type: string
-          description: |
-            SHA of the version the client expects to update.
+          description: 'SHA of the version the client expects to update.
+
             Used to detect concurrent modifications.
+
+            '
         commitMessage:
           type: string
           minLength: 1
           maxLength: 200
-
     SearchResponse:
       type: object
       required:
-        - query
-        - results
+      - query
+      - results
       properties:
         query:
           type: string
         results:
           type: array
           items:
-            $ref: "#/components/schemas/SearchResult"
-
+            $ref: '#/components/schemas/SearchResult'
     SearchResult:
       type: object
       required:
-        - path
+      - path
       properties:
         path:
           type: string
@@ -528,68 +582,67 @@ components:
         score:
           type: number
           format: double
-
     SyncOperation:
       type: object
       required:
-        - id
-        - status
+      - id
+      - status
       properties:
         id:
           type: string
         status:
-          $ref: "#/components/schemas/SyncState"
-
+          $ref: '#/components/schemas/SyncState'
     SyncStatus:
       type: object
       required:
-        - status
+      - status
       properties:
         status:
-          $ref: "#/components/schemas/SyncState"
+          $ref: '#/components/schemas/SyncState'
         lastSyncAt:
-          type: 
-            - string
-            - "null"
+          type:
+          - string
+          - 'null'
           format: date-time
         message:
           type: string
-
     SyncState:
       type: string
       enum:
-        - idle
-        - pending
-        - running
-        - completed
-        - failed
-        - conflict
-
+      - idle
+      - pending
+      - running
+      - completed
+      - failed
+      - conflict
     Error:
       type: object
-      required:
-        - code
-        - message
       properties:
-        code:
-          type: string
-        message:
-          type: string
-
+        data:
+          type: ["object", "null"]
+        error:
+          type: object
+          required:
+          - code
+          - message
+          properties:
+            code:
+              type: string
+            message:
+              type: string
     StoreTokenRequest:
       type: object
       required:
-        - token
+      - token
       properties:
         token:
           type: string
           description: GitHub OAuth provider token to store server-side
-
     TokenResponse:
       type: object
       required:
-        - code
-        - message
+      - code
+      - message
       properties:
         code:
           type: string
