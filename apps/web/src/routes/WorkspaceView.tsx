@@ -10,10 +10,10 @@ import { useVault } from "../hooks/useVault";
 import { buildGraphIndex } from "../services/intelligence/graphIndexer";
 import { vaultService } from "../services/vault";
 import { ConflictModal } from "./ConflictModal";
+import { CreateVaultView } from "./CreateVaultView";
 import { NewNoteModal } from "./NewNoteModal";
 import { SearchModal } from "./SearchModal";
 import { SettingsModal } from "./SettingsModal";
-import { CreateVaultView } from "./CreateVaultView";
 
 export const WorkspaceView: React.FC = () => {
   const vaultState = useVault();
@@ -25,10 +25,6 @@ export const WorkspaceView: React.FC = () => {
   const [isConflictOpen, setIsConflictOpen] = useState(false);
   const [remoteConflictContent, setRemoteConflictContent] =
     useState<string>("");
-
-  if (!vaultState.isLoading && !vaultState.vault) {
-    return <CreateVaultView onVaultCreated={vaultState.refreshVault} />;
-  }
 
   // Global Keyboard Shortcuts
   useEffect(() => {
@@ -64,6 +60,10 @@ export const WorkspaceView: React.FC = () => {
     () => vaultState.files.map((f) => f.path),
     [vaultState.files],
   );
+
+  if (!vaultState.isLoading && !vaultState.vault) {
+    return <CreateVaultView onVaultCreated={vaultState.refreshVault} />;
+  }
 
   return (
     <AppShell
