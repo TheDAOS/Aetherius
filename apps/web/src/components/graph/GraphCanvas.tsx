@@ -34,6 +34,7 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({
   const isDraggingRef = useRef(false);
   const dragStartRef = useRef({ x: 0, y: 0 });
   const draggedNodeRef = useRef<SimNode | null>(null);
+  const nodeDragStartRef = useRef({ x: 0, y: 0 });
   const hoveredNodeRef = useRef<SimNode | null>(null);
   const simNodesRef = useRef<SimNode[]>([]);
   const animationFrameRef = useRef<number>(0);
@@ -300,6 +301,7 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({
       const dy = world.y - node.y;
       if (dx * dx + dy * dy < node.radius * node.radius) {
         draggedNodeRef.current = node;
+        nodeDragStartRef.current = { x: mouseX, y: mouseY };
         return;
       }
     }
@@ -353,9 +355,8 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({
       if (rect) {
         const mouseX = e.clientX - rect.left;
         const mouseY = e.clientY - rect.top;
-        const world = toWorld(mouseX, mouseY);
-        const dx = world.x - draggedNodeRef.current.x;
-        const dy = world.y - draggedNodeRef.current.y;
+        const dx = mouseX - nodeDragStartRef.current.x;
+        const dy = mouseY - nodeDragStartRef.current.y;
         if (Math.abs(dx) < 2 && Math.abs(dy) < 2) {
           onSelectNode(draggedNodeRef.current.path);
         }
@@ -449,6 +450,12 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
+        onMouseLeave={() => {
+          draggedNodeRef.current = null;
+          isDraggingRef.current = false;
+          hoveredNodeRef.current = null;
+          setHoveredNode(null);
+        }}
         onKeyDown={(e) => {
           const PAN_SPEED = 20;
           if (e.key === "ArrowUp") transformRef.current.y += PAN_SPEED;

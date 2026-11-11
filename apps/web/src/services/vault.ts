@@ -1,363 +1,701 @@
 import type { SyncStatus, Vault, VaultFile } from "../types/vault";
-import { offlineDb } from "./storage/offlineDb";
+import {
+  type OfflineDatabase,
+  type OfflineMutation,
+  offlineDb,
+} from "./storage/offlineDb";
 import { supabase } from "./supabaseClient";
 
-// UTF-8-safe base64 encoding/decoding (btoa/atob only support Latin-1)
-function utf8ToBase64(str: string): string {
-  return btoa(String.fromCodePoint(...new TextEncoder().encode(str)));
+export class VaultApiError extends Error {
+  constructor(
+    public code: string,
+    message: string,
+    public status: number,
+  ) {
+    super(message);
+  }
 }
+const pathUrl = (path: string) =>
+  path.split("/").map(encodeURIComponent).join("/");
+function encode(text: string): string {
+  const bytes = new TextEncoder().encode(text);
+  let binary = "";
+  for (let i = 0; i < bytes.length; i += 8192)
+    binary += String.fromCharCode(...bytes.subarray(i, i + 8192));
+  return btoa(binary);
+}
+function decode(base64: string): string {
+  return new TextDecoder().decode(
+    Uint8Array.from(atob(base64.replace(/\s/g, "")), (c) => c.charCodeAt(0)),
+  );
+}
+const networkError = (error: unknown) =>
+  error instanceof TypeError ||
+  (error as Error)?.name === "FunctionsFetchError";
+const textFile = (path: string) =>
+  /\.(md|markdown|txt|json|ya?ml|csv|svg)$/i.test(path);
 
-function base64ToUtf8(base64: string): string {
-  const binary = atob(base64.replace(/\s/g, ""));
-  const bytes = Uint8Array.from(binary, (c) => c.codePointAt(0)!);
-  return new TextDecoder().decode(bytes);
+// Web Locks coordinate separate tabs/PWA windows. The promise fallback also
+// coordinates multiple service instances in runtimes without LockManager.
+const localLocks = new Map<string, Promise<unknown>>();
+async function withAccountLock<T>(
+  user: string | null,
+  operation: () => Promise<T>,
+): Promise<T> {
+  const name = `aetherius-vault-${user ?? "default"}`;
+  if (navigator.locks?.request)
+    return navigator.locks.request(name, { mode: "exclusive" }, operation);
+  const next = (localLocks.get(name) ?? Promise.resolve()).then(
+    operation,
+    operation,
+  );
+  const settled = next.catch(() => {});
+  localLocks.set(name, settled);
+  try {
+    return await next;
+  } finally {
+    if (localLocks.get(name) === settled) localLocks.delete(name);
+  }
 }
 
 export class VaultService {
+  constructor(
+    private readonly scopedDb?: OfflineDatabase,
+    private readonly scopeVersion?: number,
+    private readonly queue = {
+      tail: Promise.resolve() as Promise<unknown>,
+      epoch: 0,
+    },
+    private vaultEpoch = queue.epoch,
+    private expectedBranch?: string,
+  ) {}
+  private assertScope(): void {
+    if (
+      this.scopedDb &&
+      (offlineDb.getScopeVersion() !== this.scopeVersion ||
+        this.queue.epoch !== this.vaultEpoch)
+    ) {
+      throw new VaultApiError(
+        "SCOPE_CHANGED",
+        "The account or vault branch changed. Retry this operation in the current workspace.",
+        0,
+      );
+    }
+  }
+  private get db(): OfflineDatabase {
+    this.assertScope();
+    return this.scopedDb ?? offlineDb;
+  }
+  private async inScope<T>(
+    operation: (service: VaultService) => Promise<T>,
+  ): Promise<T> {
+    const version = offlineDb.getScopeVersion();
+    let service!: VaultService;
+    const db = offlineDb.snapshot(() => service.assertScope());
+    service = new VaultService(db, version, this.queue);
+    service.expectedBranch = (await db.getMetadata<Vault>("vault"))?.branch;
+    service.assertScope();
+    const result = await operation(service);
+    service.assertScope();
+    return result;
+  }
+  private invalidateVaultReads(): void {
+    this.queue.epoch++;
+    this.vaultEpoch = this.queue.epoch;
+  }
+
+  private exclusive<T>(operation: () => Promise<T>): Promise<T> {
+    const guarded = () =>
+      withAccountLock(this.scopedDb?.getUserId() ?? null, async () => {
+        this.assertScope();
+        return operation();
+      });
+    const next = this.queue.tail.then(guarded, guarded);
+    this.queue.tail = next.catch(() => {});
+    return next;
+  }
   private async invoke<T>(
     path: string,
     options: {
-      method: "GET" | "POST" | "PUT" | "DELETE";
+      method: "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
       body?: Record<string, unknown>;
     },
   ): Promise<T> {
-    const { data, error } = await supabase.functions.invoke(`api-v1${path}`, {
-      method: options.method,
-      body: options.body,
-    });
+    this.assertScope();
+    const { data: auth, error: authError } = await supabase.auth.getSession();
+    this.assertScope();
+    if (authError) throw authError;
+    if ((auth.session?.user.id ?? null) !== this.db.getUserId())
+      throw new VaultApiError(
+        "SCOPE_CHANGED",
+        "The signed-in account changed. Retry this operation.",
+        0,
+      );
+    // Pin the bearer instead of allowing the SDK to fetch another user's token
+    // while a queued request waits for the auth lock.
+    const headers = auth.session
+      ? { Authorization: `Bearer ${auth.session.access_token}` }
+      : undefined;
+    if (
+      /^\/v1\/(?:files|search|sync)(?:[/?]|$)/.test(path) &&
+      this.expectedBranch
+    ) {
+      if (options.method === "GET") {
+        if (!new URLSearchParams(path.split("?")[1]).has("expectedBranch"))
+          path += `${path.includes("?") ? "&" : "?"}expectedBranch=${encodeURIComponent(this.expectedBranch)}`;
+      } else
+        options = {
+          ...options,
+          body: { expectedBranch: this.expectedBranch, ...options.body },
+        };
+    }
 
+    const { data, error } = await supabase.functions.invoke(`api-v1${path}`, {
+      ...options,
+      headers,
+    });
+    this.assertScope();
     if (error) {
+      const response = (error as { context?: Response }).context;
+      if (response instanceof Response) {
+        let payload: {
+          error?: { code?: string; message?: string };
+          code?: string;
+          message?: string;
+        } = {};
+        try {
+          payload = await response.clone().json();
+        } catch {
+          /* Non-JSON gateway response */
+        }
+        const detail = payload.error ?? payload;
+        throw new VaultApiError(
+          detail.code ?? "HTTP_ERROR",
+          detail.message ?? `API request failed (${response.status})`,
+          response.status,
+        );
+      }
       throw error;
     }
-
-    if (data && data.error) {
-      throw new Error(data.error.message || "API request failed");
-    }
-
-    return data ? data.data : data;
+    if (data?.error)
+      throw new VaultApiError(
+        data.error.code ?? "API_ERROR",
+        data.error.message ?? "API request failed",
+        0,
+      );
+    if (data === null || data === undefined) return undefined as T; // HTTP 204
+    if (!("data" in data))
+      throw new VaultApiError(
+        "INVALID_RESPONSE",
+        "API response does not match the contract",
+        0,
+      );
+    return data.data as T;
   }
-
-  // Store GitHub token server-side (called once after OAuth login)
   async storeGitHubToken(token: string): Promise<void> {
+    if (!this.scopedDb)
+      return this.inScope((service) => service.storeGitHubToken(token));
+    this.assertScope();
+
     await this.invoke("/v1/auth/github-token", {
       method: "POST",
       body: { token },
     });
   }
+  async getVault(): Promise<Vault | null> {
+    if (!this.scopedDb) return this.inScope((service) => service.getVault());
+    this.assertScope();
 
-  async getVault(): Promise<Vault> {
-    try {
+    return this.exclusive(async () => {
+      if (this.expectedBranch)
+        await this.db.bindLegacyMutations(this.expectedBranch);
       if (navigator.onLine) {
-        const vault = await this.invoke<Vault>("/v1/vault", { method: "GET" });
-        await offlineDb.setMetadata("vault", vault);
-        return vault;
+        try {
+          const vault = await this.invoke<Vault>("/v1/vault", {
+            method: "GET",
+          });
+          const cached = await this.db.getMetadata<Vault>("vault");
+          const pending = await this.db.getPendingMutations();
+          if (
+            cached &&
+            pending.some(
+              (m) => m.expectedBranch && m.expectedBranch !== vault.branch,
+            )
+          )
+            return cached;
+          if (
+            cached &&
+            (cached.id !== vault.id || cached.branch !== vault.branch)
+          ) {
+            this.invalidateVaultReads();
+            this.expectedBranch = vault.branch;
+            await this.db.switchVault(vault, pending.length > 0);
+          } else await this.db.setMetadata("vault", vault);
+          return vault;
+        } catch (error) {
+          if (error instanceof VaultApiError && error.status === 404)
+            return null;
+          if (!networkError(error)) throw error;
+        }
       }
-    } catch (_err) {
-      // Fallback to offline storage
-    }
-
-    const cachedVault = await offlineDb.getMetadata<Vault>("vault");
-    if (cachedVault) return cachedVault;
-    throw new Error("Vault not available offline and not yet cached");
+      const vault = await this.db.getMetadata<Vault>("vault");
+      if (!vault)
+        throw new Error(
+          "Vault is not cached for offline use. Connect to the internet and retry.",
+        );
+      return vault;
+    });
   }
-
   async createVault(repository: string, description?: string): Promise<Vault> {
+    if (!this.scopedDb)
+      return this.inScope((service) =>
+        service.createVault(repository, description),
+      );
+    this.assertScope();
+
     const vault = await this.invoke<Vault>("/v1/vault", {
       method: "POST",
       body: { repository, description },
     });
-    await offlineDb.setMetadata("vault", vault);
+    await this.db.setMetadata("vault", vault);
     return vault;
   }
+  async connectVault(
+    owner: string,
+    repository: string,
+    branch?: string,
+  ): Promise<Vault> {
+    if (!this.scopedDb)
+      return this.inScope((service) =>
+        service.connectVault(owner, repository, branch),
+      );
+    this.assertScope();
 
-  async listFiles(): Promise<{ entries: VaultFile[] }> {
-    try {
-      if (navigator.onLine) {
-        const res = await this.invoke<Record<string, unknown>>("/v1/files", {
-          method: "GET",
-        });
-        const rawEntries = Array.isArray(res)
-          ? res
-          : ((res?.entries || res?.files || []) as Record<string, unknown>[]);
-        const entries: VaultFile[] = rawEntries.map(
-          (f: Record<string, unknown>) => ({
-            path: f.path as string,
-            name:
-              (f.name as string) ||
-              (f.path as string).split("/").pop() ||
-              (f.path as string),
-            type: (f.type === "directory" ||
-            f.type === "dir" ||
-            f.type === "tree"
-              ? "directory"
-              : "file") as "file" | "directory",
-            size: (f.size as number) || 0,
-            lastModified:
-              (f.lastModified as string) || new Date().toISOString(),
-            sha: f.sha as string | undefined,
-          }),
-        );
-
-        // Cache files list to IndexedDB
-        await offlineDb.saveFiles(entries);
-        return { entries };
-      }
-    } catch (_err) {
-      // Fallback to IndexedDB
-    }
-
-    const cached = await offlineDb.getAllFiles();
-    return { entries: cached };
+    const vault = await this.invoke<Vault>("/v1/vault", {
+      method: "POST",
+      body: { mode: "connect", owner, repository, branch: branch || undefined },
+    });
+    await this.db.setMetadata("vault", vault);
+    return vault;
   }
+  async changeBranch(branch: string): Promise<Vault> {
+    if (!this.scopedDb)
+      return this.inScope((service) => service.changeBranch(branch));
+    this.assertScope();
 
-  async getFile(path: string): Promise<VaultFile> {
-    try {
-      if (navigator.onLine) {
-        const f = await this.invoke<Record<string, unknown>>(
-          `/v1/files/${path}`,
+    return this.exclusive(async () => {
+      if (this.expectedBranch)
+        await this.db.bindLegacyMutations(this.expectedBranch);
+      const pending = await this.db.getPendingMutations();
+      if (
+        pending.length &&
+        !pending.every((mutation) => mutation.expectedBranch === branch)
+      )
+        throw new Error(
+          "Synchronize pending changes before changing branches, or restore their original branch",
+        );
+      const vault = await this.invoke<Vault>("/v1/vault", {
+        method: "PATCH",
+        body: { branch },
+      });
+      this.invalidateVaultReads();
+      this.expectedBranch = branch;
+      await this.db.switchVault(vault, pending.length > 0);
+      return vault;
+    });
+  }
+  async moveFile(
+    from: string,
+    to: string,
+    expectedSha?: string,
+  ): Promise<VaultFile> {
+    if (!this.scopedDb)
+      return this.inScope((service) => service.moveFile(from, to, expectedSha));
+    this.assertScope();
+
+    return this.exclusive(async () => {
+      if (!navigator.onLine)
+        throw new Error("Connect to the internet to rename or move files");
+      if (
+        (await this.db.getPendingMutations()).some(
+          (m) => m.path === from || m.path === to,
+        )
+      )
+        throw new Error("Synchronize pending changes before moving this note");
+      const saved = await this.invoke<VaultFile>("/v1/files/move", {
+        method: "POST",
+        body: { from, to, expectedSha },
+      });
+      await this.db.deleteFile(from);
+      return saved;
+    });
+  }
+  async listFiles(): Promise<{ entries: VaultFile[] }> {
+    if (!this.scopedDb) return this.inScope((service) => service.listFiles());
+    this.assertScope();
+
+    if (navigator.onLine) {
+      try {
+        const expectedVault = await this.db.getMetadata<Vault>("vault");
+        const result = await this.invoke<{ entries: VaultFile[] }>(
+          "/v1/files",
           { method: "GET" },
         );
-        const file: VaultFile = {
-          path: f.path as string,
-          name:
-            (f.name as string) ||
-            (f.path as string).split("/").pop() ||
-            (f.path as string),
-          type: (f.type === "directory" || f.type === "dir"
-            ? "directory"
-            : "file") as "file" | "directory",
-          size: f.size as number,
-          lastModified: (f.lastModified as string) || new Date().toISOString(),
-          sha: f.sha as string | undefined,
-          content: f.content ? base64ToUtf8(f.content as string) : "",
+        if (!Array.isArray(result?.entries))
+          throw new Error("Invalid file listing response");
+        return {
+          entries: await this.db.reconcileFiles(result.entries, expectedVault),
         };
-        await offlineDb.saveFile(file);
-        return file;
+      } catch (error) {
+        if (!networkError(error)) throw error;
       }
-    } catch (_err) {
-      // Fallback to IndexedDB
     }
-
-    const cached = await offlineDb.getFile(path);
-    if (cached) return cached;
-    throw new Error(`File ${path} not found in offline cache`);
+    return { entries: await this.db.getAllFiles() };
   }
+  async getRemoteFile(
+    path: string,
+    expectedBranch?: string,
+  ): Promise<VaultFile> {
+    if (!this.scopedDb)
+      return this.inScope((service) =>
+        service.getRemoteFile(path, expectedBranch),
+      );
+    this.assertScope();
 
+    const f = await this.invoke<VaultFile>(
+      `/v1/files/${pathUrl(path)}${expectedBranch ? `?expectedBranch=${encodeURIComponent(expectedBranch)}` : ""}`,
+      {
+        method: "GET",
+      },
+    );
+    if (!f || f.type === "directory" || f.content === undefined)
+      throw new Error(`File ${path} has no downloadable content`);
+    const encoding = textFile(path) ? "utf-8" : "base64";
+    return {
+      ...f,
+      encoding,
+      content:
+        encoding === "utf-8" ? decode(f.content) : f.content.replace(/\s/g, ""),
+    };
+  }
+  async getFile(path: string): Promise<VaultFile> {
+    if (!this.scopedDb) return this.inScope((service) => service.getFile(path));
+    this.assertScope();
+
+    const pending = (await this.db.getPendingMutations()).find(
+      (m) => m.path === path,
+    );
+    if (pending?.action === "delete")
+      throw new Error(`File ${path} is pending deletion`);
+    const cached = await this.db.getFile(path);
+    if (pending && cached?.content !== undefined) return cached;
+    if (navigator.onLine) {
+      try {
+        const expectedVault = await this.db.getMetadata<Vault>("vault");
+        const file = await this.getRemoteFile(path);
+        return await this.db.cacheRemoteFile(file, expectedVault);
+      } catch (error) {
+        if (!networkError(error)) throw error;
+      }
+    }
+    if (cached?.content !== undefined) return cached;
+    throw new Error(`File ${path} is not cached for offline use`);
+  }
+  private async write(
+    mutation: Omit<OfflineMutation, "id" | "timestamp">,
+  ): Promise<VaultFile> {
+    return this.exclusive(async () => {
+      const cached = await this.db.getFile(mutation.path);
+      const optimistic: VaultFile = {
+        path: mutation.path,
+        name: mutation.path.split("/").pop()!,
+        type: "file",
+        content: mutation.content,
+        encoding: mutation.encoding ?? "utf-8",
+        sha: mutation.expectedSha ?? cached?.sha,
+        lastModified: new Date().toISOString(),
+      };
+      const pending = (await this.db.getPendingMutations()).find(
+        (m) => m.path === mutation.path,
+      );
+      if (
+        pending?.expectedBranch &&
+        mutation.expectedBranch &&
+        pending.expectedBranch !== mutation.expectedBranch
+      ) {
+        throw new VaultApiError(
+          "BRANCH_CHANGED",
+          `This draft belongs to ${pending.expectedBranch}. Restore that branch before editing it.`,
+          409,
+        );
+      }
+      if (navigator.onLine && !pending) {
+        try {
+          const saved = await this.send(mutation);
+          const file = {
+            ...optimistic,
+            ...saved,
+            content: mutation.content,
+            encoding: optimistic.encoding,
+          };
+          await this.db.saveFile(file);
+          return file;
+        } catch (error) {
+          if (!networkError(error)) throw error;
+        }
+      }
+      await this.db.applyMutation(mutation, optimistic);
+      return optimistic;
+    });
+  }
   async createFile(params: {
     path: string;
     content: string;
     commitMessage?: string;
+    encoding?: "utf-8" | "base64";
   }): Promise<VaultFile> {
-    const filename = params.path.split("/").pop() || params.path;
-    const optimisticFile: VaultFile = {
-      path: params.path,
-      name: filename,
-      type: "file",
-      content: params.content,
-      lastModified: new Date().toISOString(),
-    };
+    if (!this.scopedDb)
+      return this.inScope((service) => service.createFile(params));
+    this.assertScope();
 
-    if (navigator.onLine) {
-      try {
-        const res = await this.invoke<{ path: string }>("/v1/files", {
-          method: "POST",
-          body: {
-            path: params.path,
-            content: utf8ToBase64(params.content),
-            commitMessage: params.commitMessage,
-          },
-        });
-        const saved = await this.getFile(res.path);
-        return saved;
-      } catch (err) {
-        console.warn("Online create failed, queuing offline mutation:", err);
-      }
-    }
-
-    // Save optimistically to offline cache & queue mutation
-    await offlineDb.saveFile(optimisticFile);
-    await offlineDb.queueMutation({
+    return this.write({
+      ...params,
       action: "create",
-      path: params.path,
-      content: params.content,
-      commitMessage: params.commitMessage,
+      expectedBranch: this.expectedBranch,
     });
-
-    return optimisticFile;
   }
-
   async updateFile(
     path: string,
     params: { content: string; expectedSha?: string; commitMessage?: string },
   ): Promise<VaultFile> {
-    const filename = path.split("/").pop() || path;
-    const optimisticFile: VaultFile = {
+    if (!this.scopedDb)
+      return this.inScope((service) => service.updateFile(path, params));
+    this.assertScope();
+
+    return this.write({
+      ...params,
       path,
-      name: filename,
-      type: "file",
-      content: params.content,
-      sha: params.expectedSha,
-      lastModified: new Date().toISOString(),
-    };
-
-    if (navigator.onLine) {
-      try {
-        const res = await this.invoke<{ path: string }>(`/v1/files/${path}`, {
-          method: "PUT",
-          body: {
-            content: utf8ToBase64(params.content),
-            expectedSha: params.expectedSha,
-            commitMessage: params.commitMessage,
-          },
-        });
-        const saved = await this.getFile(res.path);
-        return saved;
-      } catch (err: unknown) {
-        const error = err as { message?: string; code?: string };
-        // If conflict, propagate error so user is notified
-        if (
-          error?.message?.includes("conflict") ||
-          error?.message?.includes("409") ||
-          error?.code === "CONFLICT"
-        ) {
-          throw err;
-        }
-        console.warn("Online update failed, queuing offline mutation:", err);
-      }
-    }
-
-    // Save optimistically to offline cache & queue mutation
-    await offlineDb.saveFile(optimisticFile);
-    await offlineDb.queueMutation({
       action: "update",
-      path,
-      content: params.content,
-      expectedSha: params.expectedSha,
-      commitMessage: params.commitMessage,
+      expectedBranch: this.expectedBranch,
     });
-
-    return optimisticFile;
   }
-
   async deleteFile(path: string, sha?: string): Promise<void> {
-    if (navigator.onLine && sha) {
-      try {
-        await this.invoke<void>(`/v1/files/${path}`, {
-          method: "DELETE",
-          body: { expectedSha: sha },
-        });
-        await offlineDb.deleteFile(path);
-        return;
-      } catch (err) {
-        console.warn("Online delete failed, queuing offline mutation:", err);
-      }
-    }
+    if (!this.scopedDb)
+      return this.inScope((service) => service.deleteFile(path, sha));
+    this.assertScope();
 
-    await offlineDb.deleteFile(path);
-    await offlineDb.queueMutation({
-      action: "delete",
-      path,
-      expectedSha: sha,
+    await this.exclusive(async () => {
+      const pending = (await this.db.getPendingMutations()).find(
+        (m) => m.path === path,
+      );
+      if (
+        pending?.expectedBranch &&
+        this.expectedBranch &&
+        pending.expectedBranch !== this.expectedBranch
+      ) {
+        throw new VaultApiError(
+          "BRANCH_CHANGED",
+          `This draft belongs to ${pending.expectedBranch}. Restore that branch before deleting it.`,
+          409,
+        );
+      }
+      const expectedSha = sha ?? (await this.db.getFile(path))?.sha;
+      if (navigator.onLine && !pending && expectedSha) {
+        try {
+          await this.send({
+            action: "delete",
+            path,
+            expectedSha,
+            expectedBranch: this.expectedBranch,
+          });
+          await this.db.deleteFile(path);
+          return;
+        } catch (error) {
+          if (!networkError(error)) throw error;
+        }
+      }
+      await this.db.applyMutation({
+        action: "delete",
+        path,
+        expectedSha,
+        expectedBranch: this.expectedBranch,
+      });
     });
   }
-
+  private async send(
+    m: Omit<OfflineMutation, "id" | "timestamp">,
+  ): Promise<VaultFile | undefined> {
+    if (m.action === "delete")
+      return this.invoke(`/v1/files/${pathUrl(m.path)}`, {
+        method: "DELETE",
+        body: {
+          expectedSha: m.expectedSha,
+          expectedBranch: m.expectedBranch ?? this.expectedBranch,
+        },
+      });
+    return this.invoke(
+      m.action === "create" ? "/v1/files" : `/v1/files/${pathUrl(m.path)}`,
+      {
+        method: m.action === "create" ? "POST" : "PUT",
+        body: {
+          ...(m.action === "create" ? { path: m.path } : {}),
+          content:
+            m.encoding === "base64" ? m.content : encode(m.content ?? ""),
+          expectedSha: m.expectedSha,
+          expectedBranch: m.expectedBranch ?? this.expectedBranch,
+          commitMessage: m.commitMessage ?? `${m.action} ${m.path}`,
+        },
+      },
+    );
+  }
   async syncPendingMutations(): Promise<{
     syncedCount: number;
-    errors: Array<{ mutation: unknown; error: string }>;
+    errors: Array<{ mutation: OfflineMutation; error: string; code?: string }>;
   }> {
-    if (!navigator.onLine) {
-      return { syncedCount: 0, errors: [{ mutation: null, error: "Offline" }] };
-    }
+    if (!this.scopedDb)
+      return this.inScope((service) => service.syncPendingMutations());
+    this.assertScope();
 
-    const mutations = await offlineDb.getPendingMutations();
-    if (mutations.length === 0) {
-      // Trigger cloud sync status ping
-      try {
+    return this.exclusive(async () => {
+      const errors: Array<{
+        mutation: OfflineMutation;
+        error: string;
+        code?: string;
+      }> = [];
+      if (!navigator.onLine) throw new Error("Cannot sync while offline");
+      let syncedCount = 0;
+      if (this.expectedBranch)
+        await this.db.bindLegacyMutations(this.expectedBranch);
+      for (const mutation of await this.db.getPendingMutations()) {
+        try {
+          let saved: VaultFile | undefined;
+          try {
+            saved = await this.send(mutation);
+          } catch (error) {
+            // An interrupted response may have committed remotely. Acknowledge only
+            // identical content; never silently overwrite a divergent remote note.
+            if (
+              error instanceof VaultApiError &&
+              error.status === 409 &&
+              error.code === "CONFLICT" &&
+              mutation.action !== "delete"
+            ) {
+              const remote = await this.getRemoteFile(
+                mutation.path,
+                mutation.expectedBranch,
+              );
+              if (remote.content !== mutation.content) throw error;
+              saved = remote;
+            } else if (
+              !(
+                mutation.action === "delete" &&
+                error instanceof VaultApiError &&
+                error.status === 404
+              )
+            )
+              throw error;
+          }
+          if (mutation.action === "delete")
+            await this.db.deleteFile(mutation.path);
+          else
+            await this.db.saveFile({
+              ...saved,
+              path: mutation.path,
+              name: mutation.path.split("/").pop()!,
+              type: "file",
+              content: mutation.content,
+              encoding: mutation.encoding ?? "utf-8",
+            });
+          if (mutation.id !== undefined)
+            await this.db.deleteMutation(mutation.id);
+          syncedCount++;
+        } catch (error) {
+          errors.push({
+            mutation,
+            error: (error as Error).message,
+            code: (error as VaultApiError).code,
+          });
+          break;
+        }
+      }
+      if (errors.length === 0) {
+        await this.listFiles();
+        // This verifies remote access; it does not claim to upload local mutations.
         await this.invoke("/v1/sync", { method: "POST" });
-      } catch (_e) {
-        // Ignore ping error
+        await this.db.setMetadata("lastSyncAt", new Date().toISOString());
       }
-      return { syncedCount: 0, errors: [] };
-    }
-
-    let syncedCount = 0;
-    const errors: Array<{ mutation: unknown; error: string }> = [];
-
-    for (const m of mutations) {
-      try {
-        if (m.action === "create" && m.content !== undefined) {
-          await this.invoke("/v1/files", {
-            method: "POST",
-            body: {
-              path: m.path,
-              content: utf8ToBase64(m.content),
-              commitMessage:
-                m.commitMessage || `Create note: ${m.path} (offline sync)`,
-            },
-          });
-        } else if (m.action === "update" && m.content !== undefined) {
-          await this.invoke(`/v1/files/${m.path}`, {
-            method: "PUT",
-            body: {
-              content: utf8ToBase64(m.content),
-              expectedSha: m.expectedSha,
-              commitMessage:
-                m.commitMessage || `Update note: ${m.path} (offline sync)`,
-            },
-          });
-        } else if (m.action === "delete") {
-          await this.invoke(`/v1/files/${m.path}`, {
-            method: "DELETE",
-            body: m.expectedSha ? { expectedSha: m.expectedSha } : {},
-          });
-        }
-
-        if (m.id !== undefined) {
-          await offlineDb.deleteMutation(m.id);
-        }
-        syncedCount++;
-      } catch (err: unknown) {
-        const error = err as { message?: string };
-        console.error(`Sync error on mutation ${m.path}:`, err);
-        errors.push({ mutation: m, error: error?.message || "Unknown error" });
-        // Stop batch on conflict or critical error
-        break;
-      }
-    }
-
-    // Refresh file cache from GitHub after sync
-    await this.listFiles();
-
-    return { syncedCount, errors };
+      return { syncedCount, errors };
+    });
   }
-
   async getSyncStatus(): Promise<SyncStatus> {
-    const mutations = await offlineDb.getPendingMutations();
-    if (mutations.length > 0) {
+    if (!this.scopedDb)
+      return this.inScope((service) => service.getSyncStatus());
+    this.assertScope();
+
+    const mutations = await this.db.getPendingMutations();
+    const lastSyncAt =
+      (await this.db.getMetadata<string>("lastSyncAt")) ?? null;
+    if (mutations.length)
       return {
         status: "pending",
-        lastSyncAt: null,
-        message: `${mutations.length} change(s) queued for sync`,
+        lastSyncAt,
+        message: `${mutations.length} change(s) awaiting GitHub`,
       };
-    }
-
-    if (navigator.onLine) {
-      try {
-        return await this.invoke<SyncStatus>("/v1/sync/status", {
-          method: "GET",
-        });
-      } catch (_e) {
-        // Fallback
-      }
-    }
-
     return {
-      lastSyncAt: new Date().toISOString(),
       status: "idle",
-      message: navigator.onLine ? "Vault synchronized" : "Offline mode",
+      lastSyncAt,
+      message: navigator.onLine
+        ? "No local changes pending"
+        : "Offline — cached notes",
     };
   }
+  async resolveConflict(
+    path: string,
+    action: "remote" | "overwrite" | "copy",
+    content: string,
+  ): Promise<void> {
+    if (!this.scopedDb)
+      return this.inScope((service) =>
+        service.resolveConflict(path, action, content),
+      );
+    this.assertScope();
 
+    await this.exclusive(async () => {
+      if (!navigator.onLine)
+        throw new Error("Connect to the internet to resolve this conflict");
+      const remote = await this.getRemoteFile(path);
+      if (action === "overwrite") {
+        const saved = await this.send({
+          action: "update",
+          path,
+          content,
+          expectedSha: remote.sha,
+        });
+        await this.db.saveFile({ ...remote, ...saved, content });
+      } else {
+        if (action === "copy") {
+          const copy = path.replace(
+            /(\.[^/.]+)?$/,
+            `.conflict-${Date.now()}$1`,
+          );
+          const saved = await this.send({
+            action: "create",
+            path: copy,
+            content,
+          });
+          await this.db.saveFile({
+            ...saved,
+            path: copy,
+            name: copy.split("/").pop()!,
+            type: "file",
+            content,
+          });
+        }
+        await this.db.saveFile(remote);
+      }
+      await this.db.discardMutations(path);
+    });
+  }
   async search(
     query: string,
     pathPrefix?: string,
@@ -370,51 +708,42 @@ export class VaultService {
       score: number;
     }>;
   }> {
+    if (!this.scopedDb)
+      return this.inScope((service) => service.search(query, pathPrefix));
+    this.assertScope();
+
     const q = query.trim();
     if (!q) return { query, results: [] };
-
     if (navigator.onLine) {
       try {
-        const url = `/v1/search?q=${encodeURIComponent(q)}${pathPrefix ? `&path=${encodeURIComponent(pathPrefix)}` : ""}`;
-        const res = await this.invoke<{
-          query: string;
-          results: Array<{
-            path: string;
-            title: string;
-            snippet: string;
-            score: number;
-          }>;
-        }>(url, {
-          method: "GET",
-        });
-        return res;
-      } catch (_err) {
-        // Fallback to offline search
+        return await this.invoke(
+          `/v1/search?q=${encodeURIComponent(q)}${pathPrefix ? `&path=${encodeURIComponent(pathPrefix)}` : ""}`,
+          { method: "GET" },
+        );
+      } catch (error) {
+        if (!networkError(error)) throw error;
       }
     }
-
-    // Offline / Local search through IndexedDB files
-    const list = await this.listFiles();
-    const queryLower = q.toLowerCase();
-    const results = list.entries
-      .filter(
-        (f) =>
-          f.type === "file" &&
-          f.name.toLowerCase().includes(queryLower) &&
-          (!pathPrefix || f.path.startsWith(pathPrefix)),
-      )
-      .map((f) => ({
-        path: f.path,
-        title: f.name,
-        snippet: `Match in ${f.path} (local)`,
-        score: 1,
-      }));
-    return { query, results };
-  }
-
-  resetToDefaults(): void {
-    console.warn("resetToDefaults is not supported in GitHub Vault mode");
+    const files = await this.db.getAllFiles();
+    return {
+      query,
+      results: files
+        .filter(
+          (f) =>
+            f.type === "file" &&
+            textFile(f.path) &&
+            (!pathPrefix || f.path.startsWith(pathPrefix)) &&
+            `${f.name}\n${f.content ?? ""}`
+              .toLowerCase()
+              .includes(q.toLowerCase()),
+        )
+        .map((f) => ({
+          path: f.path,
+          title: f.name,
+          snippet: (f.content ?? f.path).slice(0, 200),
+          score: 1,
+        })),
+    };
   }
 }
-
 export const vaultService = new VaultService();

@@ -1,5 +1,6 @@
 import { AlertTriangle, Check, Copy, RefreshCw } from "lucide-react";
 import type React from "react";
+import { useState } from "react";
 import { Button } from "../components/common/Button";
 import { Modal } from "../components/common/Modal";
 
@@ -9,9 +10,9 @@ interface ConflictModalProps {
   filePath: string;
   localContent: string;
   remoteContent: string;
-  onAcceptRemote: () => void;
-  onForceOverwrite: () => void;
-  onSaveAsCopy: () => void;
+  onAcceptRemote: () => void | Promise<void>;
+  onForceOverwrite: () => void | Promise<void>;
+  onSaveAsCopy: () => void | Promise<void>;
 }
 
 export const ConflictModal: React.FC<ConflictModalProps> = ({
@@ -24,15 +25,41 @@ export const ConflictModal: React.FC<ConflictModalProps> = ({
   onForceOverwrite,
   onSaveAsCopy,
 }) => {
+  const [isResolving, setIsResolving] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const resolve = async (action: () => void | Promise<void>) => {
+    if (isResolving) return;
+    setIsResolving(true);
+    setError(null);
+    try {
+      await action();
+      onClose();
+    } catch (cause) {
+      setError(
+        cause instanceof Error
+          ? cause.message
+          : "Could not resolve conflict. Please retry.",
+      );
+    } finally {
+      setIsResolving(false);
+    }
+  };
   return (
     <Modal
       isOpen={isOpen}
-      onClose={onClose}
+      onClose={() => {
+        if (!isResolving) onClose();
+      }}
       title="Merge Conflict Detected"
       badgeText="409 Conflict"
       maxWidth="max-w-4xl"
     >
       <div className="flex flex-col gap-4">
+        {error && (
+          <p role="alert" className="font-mono text-sm text-accent-pink">
+            {error}
+          </p>
+        )}
         <div className="flex items-center gap-2 p-3 bg-accent-pink/30 border-2 border-ink-primary font-mono text-xs text-ink-primary">
           <AlertTriangle
             size={16}
@@ -78,10 +105,8 @@ export const ConflictModal: React.FC<ConflictModalProps> = ({
             variant="secondary"
             size="sm"
             icon={<Copy size={13} />}
-            onClick={() => {
-              onSaveAsCopy();
-              onClose();
-            }}
+            disabled={isResolving}
+            onClick={() => void resolve(onSaveAsCopy)}
           >
             Save as Conflict Copy
           </Button>
@@ -90,10 +115,8 @@ export const ConflictModal: React.FC<ConflictModalProps> = ({
             variant="secondary"
             size="sm"
             icon={<RefreshCw size={13} />}
-            onClick={() => {
-              onAcceptRemote();
-              onClose();
-            }}
+            disabled={isResolving}
+            onClick={() => void resolve(onAcceptRemote)}
           >
             Accept Remote (Discard Local)
           </Button>
@@ -102,10 +125,8 @@ export const ConflictModal: React.FC<ConflictModalProps> = ({
             variant="primary"
             size="sm"
             icon={<Check size={13} />}
-            onClick={() => {
-              onForceOverwrite();
-              onClose();
-            }}
+            disabled={isResolving}
+            onClick={() => void resolve(onForceOverwrite)}
           >
             Force Overwrite Remote
           </Button>

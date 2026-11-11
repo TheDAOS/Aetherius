@@ -30,3 +30,13 @@ describe("Input", () => {
     expect(getByRole("textbox").className).toContain("custom-class");
   });
 });
+
+it("associates labels and validation errors with the input", () => {
+  const { getByLabelText, getByRole } = render(
+    <Input label="Folder" error="Required" id="folder" />,
+  );
+  const input = getByLabelText("Folder");
+  expect(input).toHaveAttribute("id", "folder");
+  expect(input).toHaveAttribute("aria-invalid", "true");
+  expect(input).toHaveAttribute("aria-describedby", getByRole("alert").id);
+});

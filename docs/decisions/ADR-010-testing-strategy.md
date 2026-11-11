@@ -18,15 +18,15 @@ We have decided to adopt the following testing strategy and toolchain:
 - **Framework**: Vitest (replacing Jest) for fast, Vite-native execution.
 - **Environment**: `jsdom` for mocking the browser environment.
 - **Component Testing**: React Testing Library (`@testing-library/react` and `@testing-library/jest-dom`) for semantic, accessibility-focused UI testing.
-- **Coverage Tooling**: `@vitest/coverage-v8` to enforce a minimum baseline of 80% coverage across critical paths.
+- **Coverage Tooling**: `@vitest/coverage-v8` to report coverage and enforce targeted thresholds on critical paths.
 
 ### Backend (Supabase Edge Functions)
 - **Framework**: Deno's native test runner (`Deno.test`).
-- **Assertions/Mocking**: `https://deno.land/std/testing/` modules for stubbing the `Deno.serve` entry points to test Request/Response chains without deploying.
+- **Assertions/Mocking**: dependency-injected Request/Response handlers with deterministic Supabase/GitHub fixtures. Deno.serve is confined to the runtime entrypoint; tests import the handler directly.
 
 ### Coverage Targets
 - We aim for **80%+ statement and branch coverage** minimum on all logical systems, hooks, and complex UI components.
-- The repository enforces these targets using the automated CI pipelines before any code is merged to the main branch.
+- The 80% branch/statement goal remains the target for all logical modules. Current CI enforces at least 80% branch coverage on the vault service and intelligence modules, with stricter statement/line thresholds; other modules are reported rather than falsely described as meeting that goal. Rendering/animation branches still need broader coverage.
 
 ## Consequences
 - **Positive**: We have a unified, extremely fast testing setup for the frontend utilizing Vite's existing config. Code regressions in critical components (like offline synchronization or markdown parsing) are heavily mitigated. 
@@ -35,4 +35,4 @@ We have decided to adopt the following testing strategy and toolchain:
 
 ## Notes
 - Fake IndexedDB (`fake-indexeddb`) is used to test the offline storage engine without a real browser.
-- CI pipelines are configured to run `pnpm test` ensuring both React and Node logic executes properly in Ubuntu environments.
+- CI runs coverage-tested frontend logic, native Deno tests/typecheck, Playwright browser workflows through the actual SDK and handler, and PostgreSQL migration/role assertions. External OAuth/GitHub providers are synthetic in automated browser tests; live release validation remains separate.

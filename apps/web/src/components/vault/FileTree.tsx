@@ -7,6 +7,7 @@ interface FileTreeProps {
   activeFilePath: string;
   onSelectFile: (path: string) => void;
   onDeleteFile?: (path: string) => void;
+  onMoveFile?: (path: string) => void;
 }
 
 interface TreeNode {
@@ -22,13 +23,14 @@ export const FileTree: React.FC<FileTreeProps> = ({
   activeFilePath,
   onSelectFile,
   onDeleteFile,
+  onMoveFile,
 }) => {
   const [collapsedFolders, setCollapsedFolders] = useState<
     Record<string, boolean>
   >({});
 
   const toggleFolder = (path: string) => {
-    setCollapsedFolders((prev) => ({ ...prev, [path]: !prev[path] }));
+    setCollapsedFolders((prev) => ({ ...prev, [path]: prev[path] !== true }));
   };
 
   if (files.length === 0) {
@@ -44,7 +46,7 @@ export const FileTree: React.FC<FileTreeProps> = ({
     name: "",
     path: "",
     type: "directory",
-    children: {},
+    children: Object.create(null),
   };
 
   files.forEach((file) => {
@@ -63,7 +65,7 @@ export const FileTree: React.FC<FileTreeProps> = ({
           file: isLast
             ? file
             : { path: subpath, name: part, type: "directory" },
-          children: {},
+          children: Object.create(null),
         };
       } else if (isLast) {
         current.children[part].file = file;
@@ -75,7 +77,7 @@ export const FileTree: React.FC<FileTreeProps> = ({
 
   const renderNode = (node: TreeNode, depth: number = 0): React.ReactNode => {
     const isDir = node.type === "directory";
-    const isCollapsed = collapsedFolders[node.path];
+    const isCollapsed = collapsedFolders[node.path] === true;
     const fileObj = node.file || {
       path: node.path,
       name: node.name,
@@ -92,12 +94,13 @@ export const FileTree: React.FC<FileTreeProps> = ({
           onToggleFolder={toggleFolder}
           onSelect={onSelectFile}
           onDelete={onDeleteFile}
+          onMoveFile={onMoveFile}
         />
         {isDir &&
           !isCollapsed &&
-          Object.values(node.children).map((child) =>
-            renderNode(child, depth + 1),
-          )}
+          Object.values(node.children)
+            .sort(sortNodes)
+            .map((child) => renderNode(child, depth + 1))}
       </React.Fragment>
     );
   };

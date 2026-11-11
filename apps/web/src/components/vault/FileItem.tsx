@@ -17,6 +17,7 @@ interface FileItemProps {
   onToggleFolder?: (path: string) => void;
   onSelect: (path: string) => void;
   onDelete?: (path: string) => void;
+  onMoveFile?: (path: string) => void;
 }
 
 export const FileItem: React.FC<FileItemProps> = ({
@@ -27,6 +28,7 @@ export const FileItem: React.FC<FileItemProps> = ({
   onToggleFolder,
   onSelect,
   onDelete,
+  onMoveFile,
 }) => {
   const isDirectory = file.type === "directory";
 
@@ -82,9 +84,24 @@ export const FileItem: React.FC<FileItemProps> = ({
         <span className="truncate">{file.name}</span>
       </div>
 
-      <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+      <div className="flex items-center gap-1 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 focus-within:opacity-100 transition-opacity">
+        {onMoveFile && !isDirectory && (
+          <button
+            type="button"
+            title="Rename/Move file"
+            aria-label="Rename/Move file"
+            onClick={(event) => {
+              event.stopPropagation();
+              onMoveFile(file.path);
+            }}
+            className="p-1 text-[10px] hover:text-accent-cobalt"
+          >
+            Move
+          </button>
+        )}
         {onDelete && !isDirectory && (
           <button
+            type="button"
             onClick={(e) => {
               e.stopPropagation();
               if (window.confirm(`Delete ${file.name}?`)) {

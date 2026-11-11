@@ -1,10 +1,10 @@
-import { Download, GitFork, HardDrive, LogOut, RefreshCw } from "lucide-react";
+import { Download, GitFork, HardDrive, LogOut } from "lucide-react";
 import type React from "react";
+import { useState } from "react";
 import { Button } from "../components/common/Button";
 import { Modal } from "../components/common/Modal";
 import { useAuth } from "../contexts/AuthContext";
 import { usePWA } from "../hooks/usePWA";
-import { vaultService } from "../services/vault";
 import type { SyncStatus, Vault } from "../types/vault";
 
 interface SettingsModalProps {
@@ -13,7 +13,8 @@ interface SettingsModalProps {
   vault: Vault | null;
   syncStatus: SyncStatus | null;
   isDirty?: boolean;
-  onResetVault: () => void;
+  onResetVault?: () => void;
+  onChangeBranch?: (branch: string) => Promise<void>;
 }
 
 export const SettingsModal: React.FC<SettingsModalProps> = ({
@@ -22,10 +23,12 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   vault,
   syncStatus,
   isDirty = false,
-  onResetVault,
+  onChangeBranch,
 }) => {
   const { isInstallable, installApp, isOnline } = usePWA();
   const { signOut } = useAuth();
+  const [actionError, setActionError] = useState<string | null>(null);
+  const [busy, setBusy] = useState(false);
 
   return (
     <Modal
@@ -104,32 +107,44 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           </div>
         </section>
 
-        {/* Danger Zone: Reset Mock Data */}
-        <section className="flex flex-col gap-2.5">
-          <div className="flex items-center justify-between">
-            <span className="font-display font-bold text-xs uppercase tracking-wider text-accent-pink">
-              Reset Demo Vault
-            </span>
-            <Button
-              variant="danger"
-              size="sm"
-              icon={<RefreshCw size={13} />}
-              onClick={() => {
-                if (
-                  window.confirm(
-                    "Reset local mock vault back to starter notes?",
-                  )
-                ) {
-                  vaultService.resetToDefaults();
-                  onResetVault();
-                  onClose();
-                }
-              }}
-            >
-              Reset to Defaults
+        {onChangeBranch && (
+          <form
+            onSubmit={async (e) => {
+              e.preventDefault();
+              const branch = String(
+                new FormData(e.currentTarget).get("branch") ?? "",
+              ).trim();
+              setBusy(true);
+              setActionError(null);
+              try {
+                await onChangeBranch(branch);
+              } catch (err) {
+                setActionError((err as Error).message);
+              } finally {
+                setBusy(false);
+              }
+            }}
+            className="flex gap-2"
+          >
+            <label className="flex-1">
+              Vault branch
+              <input
+                name="branch"
+                defaultValue={vault?.branch}
+                required
+                className="neo-box w-full p-2"
+              />
+            </label>
+            <Button type="submit" disabled={busy}>
+              Change Branch
             </Button>
-          </div>
-        </section>
+          </form>
+        )}
+        {actionError && <p role="alert">{actionError}</p>}
+        <p className="text-xs">
+          Saved offline changes stay on this device for your account until
+          synchronized. Signing out does not erase them.
+        </p>
 
         {/* Account Management */}
         <section className="flex flex-col gap-2.5 pt-4 border-t border-cream-border">
@@ -141,18 +156,25 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
               variant="secondary"
               size="sm"
               icon={<LogOut size={13} />}
-              onClick={() => {
-                if (isDirty) {
-                  if (
-                    !window.confirm(
-                      "You have unsynced offline changes. Signing out will discard them permanently. Are you sure you want to sign out?",
-                    )
-                  ) {
-                    return;
-                  }
+              disabled={busy}
+              onClick={async () => {
+                if (
+                  isDirty &&
+                  !window.confirm(
+                    "You have unsaved editor changes. Sign out and discard this editor draft? Saved offline changes will be kept.",
+                  )
+                )
+                  return;
+                setBusy(true);
+                setActionError(null);
+                try {
+                  await signOut();
+                  onClose();
+                } catch (err) {
+                  setActionError((err as Error).message);
+                } finally {
+                  setBusy(false);
                 }
-                signOut();
-                onClose();
               }}
             >
               Sign Out

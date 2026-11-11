@@ -1,4 +1,5 @@
 import type React from "react";
+import { useId } from "react";
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -12,12 +13,23 @@ export const Input: React.FC<InputProps> = ({
   error,
   icon,
   className = "",
+  id,
   ...props
 }) => {
+  const generatedId = useId();
+  const inputId = id || generatedId;
+  const errorId = `${inputId}-error`;
+  const description =
+    [props["aria-describedby"], error ? errorId : undefined]
+      .filter(Boolean)
+      .join(" ") || undefined;
   return (
     <div className="flex flex-col gap-1 w-full">
       {label && (
-        <label className="text-xs font-mono font-bold tracking-wider uppercase text-ink-secondary">
+        <label
+          htmlFor={inputId}
+          className="text-xs font-mono font-bold tracking-wider uppercase text-ink-secondary"
+        >
           {label}
         </label>
       )}
@@ -32,10 +44,17 @@ export const Input: React.FC<InputProps> = ({
             icon ? "pl-9" : ""
           } ${error ? "border-accent-pink bg-pink-50" : ""} ${className}`}
           {...props}
+          id={inputId}
+          aria-invalid={error ? true : props["aria-invalid"]}
+          aria-describedby={description}
         />
       </div>
       {error && (
-        <span className="text-[11px] font-mono text-accent-pink font-semibold">
+        <span
+          id={errorId}
+          role="alert"
+          className="text-[11px] font-mono text-accent-pink font-semibold"
+        >
           {error}
         </span>
       )}

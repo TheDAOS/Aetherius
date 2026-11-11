@@ -10,7 +10,10 @@
     "lint:fix": "biome check --fix .",
     "format": "biome format --write .",
     "typecheck": "pnpm --filter web typecheck",
-    "build": "pnpm --filter web build"
+    "build": "pnpm --filter web build",
+    "test:e2e": "playwright test",
+    "test:backend": "deno test supabase/functions/api-v1/index.test.ts",
+    "smoke": "pnpm typecheck && pnpm test && pnpm build"
   },
   "keywords": [],
   "author": "",
@@ -26,6 +29,7 @@
   "packageManager": "pnpm@11.22.0",
   "devDependencies": {
     "@biomejs/biome": "^2.0.0",
+    "@playwright/test": "1.65.0",
     "fake-indexeddb": "^6.2.5",
     "supabase": "^2.115.0",
     "vitest": "^4.1.11"

@@ -57,3 +57,24 @@ The client stores the token server-side once after the OAuth callback, then remo
 
 - ADR-001: GitHub Is the Source of Truth
 - ADR-003: API Boundary
+
+## 2026-11-11 implementation clarification
+
+The token table has RLS enabled and no policies or grants for `PUBLIC`, `anon`, or
+`authenticated`. Only the Edge Function's service-role client can read/write it,
+with `user_id` derived from `auth.getUser()` and an explicit per-user filter. Vault
+metadata continues to use the user-JWT client and RLS. The service-role key never
+enters a response or a frontend environment variable.
+
+The OAuth bootstrap still transiently delivers a provider token to the browser.
+The client sends it once over HTTPS; the API verifies that GitHub's token owner
+matches the verified user's GitHub identity before storage. Removing the token
+from persistent browser session storage reduces exposure after bootstrap, but an
+XSS during OAuth bootstrap can still steal it. This flow does not make a browser
+with an active XSS safe. A fully server-side OAuth callback is future work.
+
+The legacy column name `encrypted_token` is retained for migration compatibility;
+the application does not implement envelope encryption. Database access controls
+are the application-level protection, in addition to hosting storage encryption.
+The earlier claim that the token table uses the same client-readable policies as
+vault metadata is superseded by this clarification and the secure-token migration.

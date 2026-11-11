@@ -37,8 +37,25 @@ jobs:
       - name: Typecheck
         run: pnpm typecheck
 
-      - name: Test
-        run: pnpm test
+      - name: Test and enforce critical service coverage
+        run: pnpm --filter web test:coverage
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
+      - name: Typecheck backend
+        run: deno check supabase/functions/api-v1/index.ts
+
+      - name: Test backend handlers
+        run: deno test supabase/functions/api-v1/index.test.ts
+
+      - name: Install test browser
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Browser workflow regression tests
+        run: pnpm test:e2e
 
       - name: Build
         run: pnpm build
@@ -46,3 +63,18 @@ jobs:
       - name: Validate OpenAPI
         run: |
           pnpm --package=@redocly/cli dlx redocly lint openapi/openapi.yaml
+
+  migrations:
+    name: Migration and database authorization checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Fetch disposable PostgreSQL image
+        run: docker pull postgres:17-alpine
+      - name: Test migrations and database roles
+        env:
+          CONTAINER_RUNTIME: docker
+          POSTGRES_TEST_IMAGE: postgres:17-alpine
+          POSTGRES_TEST_USER: postgres
+        run: ./scripts/test-migrations.sh

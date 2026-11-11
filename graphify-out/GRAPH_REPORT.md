@@ -1,16 +1,17 @@
-# Graph Report - Aetherius  (2026-08-23)
+# Graph Report - Aetherius  (2026-11-11)
 
 ## Corpus Check
-- 114 files · ~48,000 words
+- 136 files · ~70,685 words
 - Verdict: corpus is large enough that graph structure adds value.
+- Unclassified: 10 file(s) not represented in the graph (top: (none) 5, .example 2, .css 1)
 
 ## Summary
-- 872 nodes · 1067 edges · 78 communities (70 shown, 8 thin omitted)
-- Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
+- 1013 nodes · 1574 edges · 73 communities (58 shown, 15 thin omitted)
+- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 26 edges (avg confidence: 0.94)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `04870ca9`
+- Built from commit: `da85634c`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -34,33 +35,32 @@
 - Project: {{name}}
 - Personal Knowledge Vault
 - Daily Note - {{date}}
-- Git-Backed Personal Vault
+- web/package.json
 - Welcome to Your Vault
-- rules/graphify.md
-- workflows/graphify.md
+- smoke.sh
 - CLAUDE.md
 - GEMINI.md
 - pnpm Workspace Configuration (apps/*)
 - Phase 1 Implementation Plan — Frontend / PWA Foundation
 - Frontend & PWA Architecture
 - ADR-006: Frontend PWA Design System and Architecture
-- types/vault.ts
-- services/vault.ts
+- mockVaultService
+- react
 - compilerOptions
-- web/package.json
+- dependencies
 - devDependencies
-- graphIndexer.ts
+- NotePreview.tsx
+- vite.config.ts
+- scripts
 - Non-Negotiable Rules
 - imports
 - GitHubClient
 - 2. Step-by-Step Execution Sequence
 - Deployment Learnings & Workarounds
 - ADR-007: Offline Storage, Mutation Queue, and Conflict Resolution
-- 3. Step-by-Step Execution Sequence
-- ADR-008: Derived Markdown Intelligence, Wikilinks, and Knowledge Graph
-- Offline Caching & Synchronization Architecture
+- P2 findings
 - Markdown Intelligence & Knowledge Graph Architecture
-- includes
+- a11y
 - ADR 010: Testing Strategy
 - 1. 🚨 CRITICAL Security Vulnerabilities
 - 2. Line-by-Line Frontend Review (`apps/web/src/`)
@@ -70,7 +70,7 @@
 - Aetherius Audit Verification Report
 - 🔴 CRITICAL: API Contract Violations
 - Finding-by-Finding Verification
-- 🔴 CRITICAL: Security Vulnerabilities
+- test-migrations.sh
 - 🟡 HIGH: Frontend Quality Issues
 - 🟡 HIGH: Performance Issues
 - 🟡 MEDIUM: Database & Infrastructure
@@ -81,61 +81,59 @@
 - UI and Implementation Rules
 - AGENTS.md
 - Final Authority
+- vaultService
 - WorkspaceView.tsx
-- Button.tsx
-- VaultService
-- SearchModal.tsx
-- SyncStatus
-- SettingsModal.tsx
+- setupTests.ts
+- 2026-11-11-repair-plan.md
 
 ## God Nodes (most connected - your core abstractions)
-1. `VaultFile` - 26 edges
-2. `VaultService` - 21 edges
-3. `compilerOptions` - 19 edges
-4. `OfflineDatabase` - 17 edges
-5. `MockVaultService` - 16 edges
-6. `GitHubClient` - 14 edges
-7. `Git-Backed Personal Vault API (OpenAPI 3.1.0)` - 14 edges
-8. `SyncStatus` - 13 edges
-9. `Security Architecture` - 13 edges
-10. `Architecture Overview` - 12 edges
+1. `vaultService` - 38 edges
+2. `VaultFile` - 36 edges
+3. `react` - 31 edges
+4. `OfflineDatabase` - 29 edges
+5. `@testing-library/react` - 22 edges
+6. `GitHubClient` - 20 edges
+7. `compilerOptions` - 19 edges
+8. `WorkspaceView()` - 18 edges
+9. `lucide-react` - 17 edges
+10. `createHandler()` - 17 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `OpenAPI Validation Step (redocly lint)` --references--> `Git-Backed Personal Vault API (OpenAPI 3.1.0)`  [EXTRACTED]
-  .github/workflows/ci.yml → openapi/openapi.yaml
-- `BacklinksPanelProps` --references--> `BacklinkReference`  [EXTRACTED]
-  apps/web/src/components/editor/BacklinksPanel.tsx → apps/web/src/services/intelligence/graphIndexer.ts
-- `NotePreviewProps` --references--> `BacklinkReference`  [EXTRACTED]
-  apps/web/src/components/editor/NotePreview.tsx → apps/web/src/services/intelligence/graphIndexer.ts
-- `GraphCanvasProps` --references--> `VaultGraphIndex`  [EXTRACTED]
-  apps/web/src/components/graph/GraphCanvas.tsx → apps/web/src/services/intelligence/graphIndexer.ts
-- `GraphModalProps` --references--> `VaultGraphIndex`  [EXTRACTED]
-  apps/web/src/components/graph/GraphModal.tsx → apps/web/src/services/intelligence/graphIndexer.ts
+- `5. API, cache and rendering` --references--> `vaultService`  [INFERRED]
+  docs/architecture/frontend.md → apps/web/src/services/vault.ts
+- `Decision` --references--> `NoteEditor()`  [INFERRED]
+  docs/decisions/ADR-008-derived-markdown-intelligence-and-graph.md → apps/web/src/components/editor/NoteEditor.tsx
+- `🟡 React Antipatterns` --references--> `NotePreview()`  [INFERRED]
+  docs/audits/Aetherius-Audit-Report.md → apps/web/src/components/editor/NotePreview.tsx
+- `🟡 React Antipatterns` --references--> `NoteToolbar()`  [INFERRED]
+  docs/audits/Aetherius-Audit-Report.md → apps/web/src/components/editor/NoteToolbar.tsx
+- `**Step 2 — Read-Through Caching & Offline Fallback**` --references--> `useVault()`  [INFERRED]
+  ai/context/phase-4-sync-offline-plan.md → apps/web/src/hooks/useVault.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (78 total, 8 thin omitted)
+## Communities (73 total, 15 thin omitted)
 
 ### Community 0 - "Git-Backed Personal Vault API (OpenAPI 3.1.0)"
 Cohesion: 0.12
 Nodes (16): CI Pipeline (GitHub Actions), OpenAPI Validation Step (redocly lint), Bearer Auth Security Scheme (JWT), POST /v1/files — createFile, DELETE /v1/files/{path} — deleteFile, File Schema (path, type, name, content, sha, size, lastModified), GET /v1/files/{path} — getFile, GET /v1/sync/status — getSyncStatus (+8 more)
 
 ### Community 1 - "GitHub Architecture"
-Cohesion: 0.20
-Nodes (9): API Access, File Operations, Git History, GitHub Actions, GitHub Architecture, Purpose, Repository Ownership, Source of Truth (+1 more)
+Cohesion: 0.18
+Nodes (10): API Access, Existing vaults, branches, and moves, File Operations, Git History, GitHub Actions, GitHub Architecture, Purpose, Repository Ownership (+2 more)
 
 ### Community 2 - "package.json"
-Cohesion: 0.06
-Nodes (31): @biomejs/biome, fake-indexeddb, author, description, devDependencies, @biomejs/biome, fake-indexeddb, supabase (+23 more)
+Cohesion: 0.05
+Nodes (35): author, description, devDependencies, @biomejs/biome, fake-indexeddb, @playwright/test, supabase, vitest (+27 more)
 
 ### Community 3 - "Architecture Overview"
-Cohesion: 0.13
-Nodes (14): API Boundary, Architectural Principles, Architecture Overview, Backend, Clients, Derived Markdown Intelligence & Knowledge Graph, Development Architecture, GitHub (+6 more)
+Cohesion: 0.07
+Nodes (24): API Boundary, Architectural Principles, Architecture Overview, Backend, Clients, Derived Markdown Intelligence & Knowledge Graph, Development Architecture, GitHub (+16 more)
 
 ### Community 4 - "Security Architecture"
-Cohesion: 0.14
-Nodes (13): API Security, Authentication, Authorization, CI Security, Client Security, GitHub Security, Logging, Purpose (+5 more)
+Cohesion: 0.13
+Nodes (14): API Security, Authentication, Authorization, CI Security, Client Security, GitHub Security, Logging, Provider-token boundary (+6 more)
 
 ### Community 5 - "Supabase Architecture"
 Cohesion: 0.15
@@ -155,7 +153,7 @@ Nodes (11): ADR-004: Markdown Vault Format, Alternatives Considered, Consequence
 
 ### Community 9 - "AGENTS.md"
 Cohesion: 0.11
-Nodes (17): ADR Rules, AI Context, AI Development Workflow, API Rules, Architecture Documentation, CI Requirements, Core Architecture, Database Rules (+9 more)
+Nodes (18): ADR Rules, AI Context, AI Development Workflow, API Rules, Architecture Documentation, CI Requirements, Core Architecture, Database Rules (+10 more)
 
 ### Community 10 - "ADR-005: PWA and Swift Share the Same API"
 Cohesion: 0.17
@@ -193,9 +191,9 @@ Nodes (4): Note Format, Personal Knowledge Vault, Portability & Ownership, Struc
 Cohesion: 0.40
 Nodes (4): Daily Note - {{date}}, Notes & Thoughts, Objectives, Tasks & Follow-ups
 
-### Community 19 - "Git-Backed Personal Vault"
-Cohesion: 0.33
-Nodes (5): Aetherius, Architecture, Git-Backed Personal Vault, Project Status, Testing
+### Community 19 - "web/package.json"
+Cohesion: 0.10
+Nodes (20): vitest, name, packageManager, private, type, version, autoprefixer, clsx (+12 more)
 
 ### Community 27 - "Phase 1 Implementation Plan — Frontend / PWA Foundation"
 Cohesion: 0.13
@@ -203,35 +201,39 @@ Nodes (14): 1. Overview & Objectives, 2.1 Color Palette & Tokens, 2.2 Tactile Me
 
 ### Community 28 - "Frontend & PWA Architecture"
 Cohesion: 0.15
-Nodes (12): 1. Technical Stack, 2. Design System: "Warm Cream & Acid Neo-Memphis", 3.1 Desktop UX & Power-User Features, 3.2 Mobile PWA UX & Touch Specifics, 3. Application Shell & Layout, 4. Routes & Navigation Structure, 5. Mock API & OpenAPI Conformance, 6. UX & Implementation Rules (+4 more)
+Nodes (12): 1. Technical Stack, 2. Design System: "Warm Cream & Acid Neo-Memphis", 3.1 Desktop UX & Power-User Features, 3.2 Mobile PWA UX & Touch Specifics, 3. Application Shell & Layout, 4. Navigation and current workflows, 5. API, cache and rendering, 6. UX & Implementation Rules (+4 more)
 
 ### Community 29 - "ADR-006: Frontend PWA Design System and Architecture"
 Cohesion: 0.25
 Nodes (7): ADR-006: Frontend PWA Design System and Architecture, Consequences, Context, Decision, Negative, Positive, Related Decisions
 
-### Community 30 - "types/vault.ts"
-Cohesion: 0.07
-Nodes (21): Sidebar(), SidebarProps, FileItem(), FileItemProps, FileTree(), FileTreeProps, TreeNode, DEFAULT_FILES (+13 more)
+### Community 30 - "mockVaultService"
+Cohesion: 0.14
+Nodes (10): DEFAULT_FILES, DEFAULT_VAULT, generateSha(), mockVaultService, CreateFileRequest, FileListResponse, SearchResponse, SyncOperation (+2 more)
 
-### Community 31 - "services/vault.ts"
-Cohesion: 0.20
-Nodes (10): App(), AuthContext, AuthContextType, AuthProvider(), useAuth(), rootElement, LoginView(), offlineDb (+2 more)
+### Community 31 - "react"
+Cohesion: 0.08
+Nodes (28): App(), ErrorBoundary, AuthContext, AuthContextType, AuthProvider(), mocks, Probe(), session (+20 more)
 
 ### Community 32 - "compilerOptions"
-Cohesion: 0.07
-Nodes (26): compilerOptions, allowImportingTsExtensions, baseUrl, isolatedModules, jsx, lib, module, moduleResolution (+18 more)
+Cohesion: 0.10
+Nodes (20): compilerOptions, allowImportingTsExtensions, baseUrl, isolatedModules, jsx, lib, module, moduleResolution (+12 more)
 
-### Community 33 - "web/package.json"
-Cohesion: 0.07
-Nodes (27): dependencies, clsx, lucide-react, markdown-it, react, react-dom, @supabase/supabase-js, tailwind-merge (+19 more)
+### Community 33 - "dependencies"
+Cohesion: 0.25
+Nodes (8): dependencies, clsx, lucide-react, markdown-it, react, react-dom, @supabase/supabase-js, tailwind-merge
 
 ### Community 34 - "devDependencies"
-Cohesion: 0.06
-Nodes (35): devDependencies, autoprefixer, jsdom, postcss, tailwindcss, @testing-library/jest-dom, @testing-library/react, @testing-library/user-event (+27 more)
+Cohesion: 0.11
+Nodes (18): devDependencies, autoprefixer, jsdom, postcss, tailwindcss, @testing-library/jest-dom, @testing-library/react, @testing-library/user-event (+10 more)
 
-### Community 35 - "graphIndexer.ts"
-Cohesion: 0.10
-Nodes (27): Badge(), BadgeProps, BacklinksPanel(), BacklinksPanelProps, FrontmatterCard(), FrontmatterCardProps, md, NotePreview() (+19 more)
+### Community 35 - "NotePreview.tsx"
+Cohesion: 0.06
+Nodes (43): Badge(), BadgeProps, BacklinksPanel(), BacklinksPanelProps, FrontmatterCard(), FrontmatterCardProps, isExternal(), md (+35 more)
+
+### Community 39 - "scripts"
+Cohesion: 0.29
+Nodes (7): scripts, build, dev, preview, test, test:coverage, typecheck
 
 ### Community 40 - "Non-Negotiable Rules"
 Cohesion: 0.18
@@ -242,8 +244,8 @@ Cohesion: 0.50
 Nodes (3): imports, @supabase/functions-js, @supabase/server
 
 ### Community 42 - "GitHubClient"
-Cohesion: 0.15
-Nodes (3): serveStub, GitHubClient, utf8ToBase64()
+Cohesion: 0.07
+Nodes (34): 3. Line-by-Line Backend Review (`supabase/functions/api-v1/index.ts`), 🟡 Abysmal API Design, 🔴 Critical Security Vulnerability: SSRF & Path Injection, 🔴 OOM (Out of Memory) Crash Vector, Stream 3: Data Integrity Fixes, 1. GitHub Token Exposure — Rule #4 Violation, 2. SSRF / Path Injection, 3. XSS in Markdown Preview (+26 more)
 
 ### Community 43 - "2. Step-by-Step Execution Sequence"
 Cohesion: 0.17
@@ -257,25 +259,17 @@ Nodes (7): 1. Supabase CLI Edge Function Bundling, 2. Vercel `ERR_INVALID_THIS` 
 Cohesion: 0.25
 Nodes (7): ADR-007: Offline Storage, Mutation Queue, and Conflict Resolution, Consequences, Context, Decision, Negative, Positive, Related Decisions
 
-### Community 47 - "3. Step-by-Step Execution Sequence"
-Cohesion: 0.17
-Nodes (11): 1. Overview & Objectives, 2. Architecture & Data Flow, 3. Step-by-Step Execution Sequence, 4. Definition of Done, Phase 4 Implementation Plan — Offline Cache & Synchronization Engine, **Step 1 — IndexedDB Storage Layer**, **Step 2 — Read-Through Caching & Offline Fallback**, **Step 3 — Offline Mutation Queue & Background Sync** (+3 more)
-
-### Community 48 - "ADR-008: Derived Markdown Intelligence, Wikilinks, and Knowledge Graph"
-Cohesion: 0.25
-Nodes (7): ADR-008: Derived Markdown Intelligence, Wikilinks, and Knowledge Graph, Consequences, Context, Decision, Negative, Positive, Related Decisions
-
-### Community 49 - "Offline Caching & Synchronization Architecture"
-Cohesion: 0.33
-Nodes (5): Conflict Resolution, Mutation Lifecycle, Offline Caching & Synchronization Architecture, Overview, Storage Layer (`offlineDb.ts`)
+### Community 47 - "P2 findings"
+Cohesion: 0.05
+Nodes (41): 1. Overview & Objectives, 2. Architecture & Data Flow, 3. Step-by-Step Execution Sequence, 4. Definition of Done, Phase 4 Implementation Plan — Offline Cache & Synchronization Engine, **Step 1 — IndexedDB Storage Layer**, **Step 2 — Read-Through Caching & Offline Fallback**, **Step 3 — Offline Mutation Queue & Background Sync** (+33 more)
 
 ### Community 50 - "Markdown Intelligence & Knowledge Graph Architecture"
 Cohesion: 0.40
 Nodes (4): Knowledge Graph Visualization, Markdown Intelligence & Knowledge Graph Architecture, Pipeline, Principles
 
-### Community 51 - "includes"
-Cohesion: 0.05
-Nodes (40): noAutofocus, noInteractiveElementToNoninteractiveRole, noLabelWithoutControl, noNoninteractiveElementToInteractiveRole, noStaticElementInteractions, noSvgWithoutTitle, useButtonType, useFocusableInteractive (+32 more)
+### Community 51 - "a11y"
+Cohesion: 0.06
+Nodes (31): noAutofocus, noInteractiveElementToNoninteractiveRole, noLabelWithoutControl, noNoninteractiveElementToInteractiveRole, noStaticElementInteractions, noSvgWithoutTitle, useButtonType, useFocusableInteractive (+23 more)
 
 ### Community 52 - "ADR 010: Testing Strategy"
 Cohesion: 0.20
@@ -286,20 +280,20 @@ Cohesion: 0.12
 Nodes (16): 1. 🚨 CRITICAL Security Vulnerabilities, 2. 🚨 CRITICAL Data Loss & Crash Vectors, 3. ⚠️ UX, Logic, and Performance Flaws, 4. 🛠 Tooling & Database Deficiencies, Aetherius Project Audit Report (Final Exhaustive Pass), App-Breaking Unicode/Emoji Crashes, Broken Offline Full-Text Search, Edge Function OOM (Out of Memory) Crash (+8 more)
 
 ### Community 54 - "2. Line-by-Line Frontend Review (`apps/web/src/`)"
-Cohesion: 0.12
-Nodes (16): 1. Tooling, Dependencies, & Static Analysis Audit, 2. Line-by-Line Frontend Review (`apps/web/src/`), 3. Line-by-Line Backend Review (`supabase/functions/api-v1/index.ts`), 4. Database Schema Audit (`20260820082558_init_vaults.sql`), 🟡 Abysmal API Design, Aetherius Project Audit Report (Pass 2 - Exhaustive Deep Dive), 🔴 Critical Encoding Crash (`vault.ts`), 🔴 Critical Security Vulnerability: SSRF & Path Injection (+8 more)
+Cohesion: 0.15
+Nodes (12): 1. Tooling, Dependencies, & Static Analysis Audit, 2. Line-by-Line Frontend Review (`apps/web/src/`), 4. Database Schema Audit (`20260820082558_init_vaults.sql`), Aetherius Project Audit Report (Pass 2 - Exhaustive Deep Dive), 🔴 Critical Encoding Crash (`vault.ts`), 🔴 Data Integrity Flaws, ⚠️ Dependency & Workspace Configuration, 🔴 `GraphCanvas.tsx` Memory/Performance Leaks (+4 more)
 
 ### Community 55 - "4. Frontend Code Quality & UX"
 Cohesion: 0.12
 Nodes (15): 1. Architectural & Compliance Violations (AGENTS.md), 2. API Contract Drift (OpenAPI vs. Edge Functions), 3. Backend Security & Performance, 4. Frontend Code Quality & UX, 🟡 Accessibility (a11y) Nightmares, Aetherius Project Audit Report, 🔴 Critical Rule Violations, 🟡 Database Design Flaws (+7 more)
 
 ### Community 56 - "Work Streams (Parallel)"
-Cohesion: 0.15
-Nodes (12): Agreed Decisions, Audit Fix Implementation Plan, Execution Order, New ADR Required, Stream 1: Security — Server-Side Token Architecture, Stream 2: API Contract Alignment, Stream 3: Data Integrity Fixes, Stream 4: Frontend Performance & Quality (+4 more)
+Cohesion: 0.17
+Nodes (11): Agreed Decisions, Audit Fix Implementation Plan, Execution Order, New ADR Required, Stream 1: Security — Server-Side Token Architecture, Stream 2: API Contract Alignment, Stream 4: Frontend Performance & Quality, Stream 5: Database Hardening (+3 more)
 
 ### Community 57 - "ADR-009: Server-Side GitHub Token Storage"
-Cohesion: 0.20
-Nodes (9): ADR-009: Server-Side GitHub Token Storage, Consequences, Context, Decision, Negative, Neutral, Positive, Related Decisions (+1 more)
+Cohesion: 0.18
+Nodes (10): 2026-11-11 implementation clarification, ADR-009: Server-Side GitHub Token Storage, Consequences, Context, Decision, Negative, Neutral, Positive (+2 more)
 
 ### Community 58 - "Aetherius Audit Verification Report"
 Cohesion: 0.22
@@ -312,10 +306,6 @@ Nodes (8): 10. Error Schema Mismatch, 11. GET /v1/files Path Parameter Handling,
 ### Community 60 - "Finding-by-Finding Verification"
 Cohesion: 0.25
 Nodes (8): 26. No Focus Trapping in Modal, 27. Inaccessible Custom Inputs, 28. Global keydown Event Clashes, 29. TypeScript `any` Abuse, 30. Zero React Test Coverage, Finding-by-Finding Verification, 🟡 MEDIUM: Accessibility, 🟡 MEDIUM: Code Quality & Tooling
-
-### Community 61 - "🔴 CRITICAL: Security Vulnerabilities"
-Cohesion: 0.33
-Nodes (6): 1. GitHub Token Exposure — Rule #4 Violation, 2. SSRF / Path Injection, 3. XSS in Markdown Preview, 4. Cross-Account Data Leak (IndexedDB), 5. Insecure CORS Policy, 🔴 CRITICAL: Security Vulnerabilities
 
 ### Community 62 - "🟡 HIGH: Frontend Quality Issues"
 Cohesion: 0.33
@@ -346,52 +336,36 @@ Cohesion: 0.50
 Nodes (3): ADRs, docs/, Documentation Rules
 
 ### Community 69 - "UI and Implementation Rules"
-Cohesion: 0.67
-Nodes (3): 1. No Silent Failures on Missing State, 2. No Silent Auto-Generation, UI and Implementation Rules
+Cohesion: 0.50
+Nodes (4): 1. No Silent Failures on Missing State, 2. No Silent Auto-Generation, 3. React Rules of Hooks and Early Returns, UI and Implementation Rules
 
-### Community 72 - "WorkspaceView.tsx"
-Cohesion: 0.22
-Nodes (9): NoteEditor(), NoteEditorProps, NoteToolbar(), NoteToolbarProps, ViewMode, AppShell(), AppShellProps, useVault() (+1 more)
+### Community 74 - "vaultService"
+Cohesion: 0.10
+Nodes (9): OfflineDatabase, OfflineMutation, networkError(), pathUrl(), textFile(), VaultApiError, vaultService, Vault (+1 more)
 
-### Community 73 - "Button.tsx"
-Cohesion: 0.22
-Nodes (8): Button(), ButtonProps, Input(), InputProps, CreateVaultView(), CreateVaultViewProps, NewNoteModal(), NewNoteModalProps
-
-### Community 74 - "VaultService"
-Cohesion: 0.26
-Nodes (3): base64ToUtf8(), utf8ToBase64(), VaultService
-
-### Community 75 - "SearchModal.tsx"
-Cohesion: 0.24
-Nodes (7): Modal(), ModalProps, ConflictModal(), ConflictModalProps, SearchModal(), SearchModalProps, SearchResult
-
-### Community 76 - "SyncStatus"
-Cohesion: 0.31
-Nodes (5): TopHeader(), TopHeaderProps, GitStatusBadge(), GitStatusBadgeProps, SyncStatus
-
-### Community 77 - "SettingsModal.tsx"
-Cohesion: 0.29
-Nodes (4): usePWA(), SettingsModal(), SettingsModalProps, Vault
+### Community 76 - "WorkspaceView.tsx"
+Cohesion: 0.05
+Nodes (55): Button(), ButtonProps, Input(), InputProps, Modal(), ModalProps, NoteEditor(), NoteEditorProps (+47 more)
 
 ## Knowledge Gaps
-- **489 isolated node(s):** `name`, `private`, `version`, `type`, `packageManager` (+484 more)
-  These have ≤1 connection - possible missing edges or undocumented components.
-- **8 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **536 isolated node(s):** `name`, `private`, `version`, `type`, `packageManager` (+531 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 603 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **15 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `VaultFile` connect `types/vault.ts` to `WorkspaceView.tsx`, `VaultService`, `graphIndexer.ts`, `services/vault.ts`?**
-  _High betweenness centrality (0.010) - this node is a cross-community bridge._
-- **Why does `OfflineDatabase` connect `types/vault.ts` to `services/vault.ts`?**
-  _High betweenness centrality (0.005) - this node is a cross-community bridge._
-- **Why does `VaultService` connect `VaultService` to `WorkspaceView.tsx`, `Button.tsx`, `SearchModal.tsx`, `SyncStatus`, `SettingsModal.tsx`, `services/vault.ts`?**
-  _High betweenness centrality (0.004) - this node is a cross-community bridge._
+- **Why does `fake-indexeddb` connect `react` to `package.json`?**
+  _High betweenness centrality (0.139) - this node is a cross-community bridge._
+- **Are the 3 inferred relationships involving `vaultService` (e.g. with `**Step 2 — Read-Through Caching & Offline Fallback**` and `**Step 3 — Offline Mutation Queue & Background Sync**`) actually correct?**
+  _`vaultService` has 3 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `name`, `private`, `version` to the rest of the system?**
-  _489 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _536 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Git-Backed Personal Vault API (OpenAPI 3.1.0)` be split into smaller, more focused modules?**
   _Cohesion score 0.125 - nodes in this community are weakly interconnected._
+- **Why does `@playwright/test` connect `package.json` to `GitHubClient`?**
+  _High betweenness centrality (0.121) - this node is a cross-community bridge._
 - **Should `package.json` be split into smaller, more focused modules?**
-  _Cohesion score 0.0625 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.05405405405405406 - nodes in this community are weakly interconnected._
 - **Should `Architecture Overview` be split into smaller, more focused modules?**
-  _Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07142857142857142 - nodes in this community are weakly interconnected._

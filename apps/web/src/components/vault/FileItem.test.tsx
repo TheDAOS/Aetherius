@@ -141,3 +141,19 @@ describe("FileItem", () => {
     expect(container.firstChild).toHaveStyle({ paddingLeft: "40px" });
   });
 });
+
+it("offers rename/move for files without selecting or deleting them", () => {
+  const move = vi.fn();
+  const select = vi.fn();
+  render(
+    <FileItem
+      file={{ path: "a.md", name: "a.md", type: "file" }}
+      isActive={false}
+      onSelect={select}
+      onMoveFile={move}
+    />,
+  );
+  fireEvent.click(screen.getByRole("button", { name: "Rename/Move file" }));
+  expect(move).toHaveBeenCalledWith("a.md");
+  expect(select).not.toHaveBeenCalled();
+});

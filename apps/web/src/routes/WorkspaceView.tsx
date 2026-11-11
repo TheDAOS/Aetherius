@@ -1,6 +1,6 @@
 import { Plus, X } from "lucide-react";
 import type React from "react";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { NoteEditor } from "../components/editor/NoteEditor";
 import { NotePreview } from "../components/editor/NotePreview";
 import { NoteToolbar, type ViewMode } from "../components/editor/NoteToolbar";
@@ -8,6 +8,11 @@ import { GraphModal } from "../components/graph/GraphModal";
 import { AppShell } from "../components/layout/AppShell";
 import { useVault } from "../hooks/useVault";
 import { buildGraphIndex } from "../services/intelligence/graphIndexer";
+import { linkMention } from "../services/intelligence/linkMention";
+import {
+  parseMarkdown,
+  resolveWikilinkPath,
+} from "../services/intelligence/markdownParser";
 import { vaultService } from "../services/vault";
 import { ConflictModal } from "./ConflictModal";
 import { CreateVaultView } from "./CreateVaultView";
@@ -52,8 +57,20 @@ export const WorkspaceView: React.FC = () => {
 
   // Build live graph index from files
   const graphIndex = useMemo(
-    () => buildGraphIndex(vaultState.files),
-    [vaultState.files],
+    () =>
+      buildGraphIndex(
+        vaultState.files.map((f) =>
+          f.path === vaultState.activeFilePath && vaultState.activeFile
+            ? { ...f, content: vaultState.content }
+            : f,
+        ),
+      ),
+    [
+      vaultState.files,
+      vaultState.activeFilePath,
+      vaultState.activeFile,
+      vaultState.content,
+    ],
   );
 
   const allFilePaths = useMemo(
@@ -61,6 +78,59 @@ export const WorkspaceView: React.FC = () => {
     [vaultState.files],
   );
 
+  const titlePaths = useMemo(() => {
+    const paths = new Map<string, string>();
+    for (const file of vaultState.files) {
+      if (file.type !== "file" || !/\.md$/i.test(file.path)) continue;
+      const parsed = parseMarkdown(file.content ?? "", file.path);
+      paths.set(parsed.title.toLowerCase(), file.path);
+      for (const alias of parsed.aliases)
+        paths.set(alias.toLowerCase(), file.path);
+    }
+    return paths;
+  }, [vaultState.files]);
+  const assetUrls = useRef(new Map<string, string>());
+  useEffect(
+    () => () => {
+      for (const url of assetUrls.current.values()) URL.revokeObjectURL(url);
+    },
+    [],
+  );
+  const resolveAsset = useCallback(async (path: string) => {
+    const file = await vaultService.getFile(path);
+    const extension = path.split(".").pop()?.toLowerCase();
+    const mime: Record<string, string> = {
+      png: "image/png",
+      jpg: "image/jpeg",
+      jpeg: "image/jpeg",
+      gif: "image/gif",
+      webp: "image/webp",
+      avif: "image/avif",
+    };
+    if (!extension || !mime[extension] || file.encoding !== "base64")
+      throw new Error("Unsupported image format");
+    const key = `${path}:${file.sha ?? file.content}`;
+    const cached = assetUrls.current.get(key);
+    if (cached) return cached;
+    const bytes = Uint8Array.from(atob(file.content ?? ""), (c) =>
+      c.charCodeAt(0),
+    );
+    const url = URL.createObjectURL(
+      new Blob([bytes], { type: mime[extension] }),
+    );
+    assetUrls.current.set(key, url);
+    return url;
+  }, []);
+  if (!vaultState.isLoading && !vaultState.vault && vaultState.error) {
+    return (
+      <main role="alert" className="p-8">
+        <p>{vaultState.error}</p>
+        <button type="button" onClick={vaultState.refreshVault}>
+          Retry loading vault
+        </button>
+      </main>
+    );
+  }
   if (!vaultState.isLoading && !vaultState.vault) {
     return <CreateVaultView onVaultCreated={vaultState.refreshVault} />;
   }
@@ -85,23 +155,16 @@ export const WorkspaceView: React.FC = () => {
         ) => {
           try {
             const sourceFile = await vaultService.getFile(sourcePath);
-            const targetNoteName =
-              targetPath.replace(/\.md$/, "").split("/").pop() || targetPath;
-
-            // Case-insensitive replacement of first occurrence of note title/name
-            const regex = new RegExp(
-              `\\b${targetNoteName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`,
-              "i",
-            );
-            const updatedContent = (sourceFile.content || "").replace(
-              regex,
-              `[[${targetNoteName}]]`,
+            const targetFile = await vaultService.getFile(targetPath);
+            const updatedContent = linkMention(
+              sourceFile.content ?? "",
+              targetFile,
             );
 
             await vaultService.updateFile(sourcePath, {
               content: updatedContent,
               expectedSha: sourceFile.sha,
-              commitMessage: `Link [[${targetNoteName}]] in ${sourcePath}`,
+              commitMessage: `Link [[${targetPath}]] in ${sourcePath}`,
             });
 
             await vaultState.refreshVault();
@@ -114,13 +177,13 @@ export const WorkspaceView: React.FC = () => {
         const handleOpenConflictDiff = async () => {
           if (!vaultState.activeFilePath) return;
           try {
-            const remoteFile = await vaultService.getFile(
-              vaultState.activeFilePath,
+            const remoteFile = await vaultService.getRemoteFile(
+              vaultState.conflict?.path ?? vaultState.activeFilePath,
             );
             setRemoteConflictContent(remoteFile.content || "");
             setIsConflictOpen(true);
-          } catch {
-            vaultState.reloadActiveFile();
+          } catch (err) {
+            alert(`Could not load remote changes: ${(err as Error).message}`);
           }
         };
 
@@ -138,29 +201,32 @@ export const WorkspaceView: React.FC = () => {
                 vaultState.updateContent(vaultState.content + snippet);
               }}
               onAttachImage={async (file) => {
-                const reader = new FileReader();
-                reader.onload = async () => {
-                  const base64Content =
-                    (reader.result as string).split(",")[1] || "";
-                  const sanitizedName = file.name.replace(
-                    /[^a-zA-Z0-9._-]/g,
-                    "_",
-                  );
-                  const imagePath = `assets/images/${Date.now()}_${sanitizedName}`;
-                  try {
-                    // Pass base64 directly — createFile handles encoding
-                    // For binary files, we pass the base64 string as content
-                    await vaultState.createFile(imagePath, base64Content);
-                    vaultState.updateContent(
-                      vaultState.content +
-                        `\n\n![${file.name}](${imagePath})\n\n`,
+                const notePath = vaultState.activeFilePath;
+                if (!/\.(png|jpe?g|gif|webp|avif)$/i.test(file.name)) {
+                  alert("Use PNG, JPEG, GIF, WebP, or AVIF images.");
+                  return;
+                }
+                try {
+                  const bytes = new Uint8Array(await file.arrayBuffer());
+                  let binary = "";
+                  for (let i = 0; i < bytes.length; i += 8192)
+                    binary += String.fromCharCode(
+                      ...bytes.subarray(i, i + 8192),
                     );
-                  } catch (e: unknown) {
-                    const err = e as { message?: string };
-                    alert(`Failed to attach image: ${err?.message || "Error"}`);
-                  }
-                };
-                reader.readAsDataURL(file);
+                  const imagePath = `assets/images/${crypto.randomUUID()}_${file.name.replace(/[^a-zA-Z0-9._-]/g, "_")}`;
+                  await vaultService.createFile({
+                    path: imagePath,
+                    content: btoa(binary),
+                    encoding: "base64",
+                    commitMessage: `Attach ${file.name}`,
+                  });
+                  vaultState.appendToFile(
+                    notePath,
+                    `\n\n![${file.name.replace(/[[\]\n]/g, "_")}](/${imagePath})\n\n`,
+                  );
+                } catch (err) {
+                  alert(`Failed to attach image: ${(err as Error).message}`);
+                }
               }}
             />
 
@@ -176,12 +242,6 @@ export const WorkspaceView: React.FC = () => {
                     className="neo-btn px-2 py-0.5 bg-accent-acid text-ink-primary text-xs font-bold"
                   >
                     View Diff & Resolve
-                  </button>
-                  <button
-                    onClick={vaultState.reloadActiveFile}
-                    className="neo-btn px-2 py-0.5 bg-white text-ink-primary text-xs hover:bg-cream-muted"
-                  >
-                    Reload
                   </button>
                 </div>
               </div>
@@ -228,6 +288,9 @@ export const WorkspaceView: React.FC = () => {
                 >
                   <NoteEditor
                     content={vaultState.content}
+                    readOnly={
+                      !vaultState.activeFile || vaultState.isChangingBranch
+                    }
                     allFilePaths={allFilePaths}
                     onChange={vaultState.updateContent}
                     onSave={vaultState.saveActiveFile}
@@ -244,14 +307,14 @@ export const WorkspaceView: React.FC = () => {
                     activeFilePath={vaultState.activeFilePath}
                     linkedReferences={linkedReferences}
                     unlinkedMentions={unlinkedMentions}
-                    onSelectFile={(path) => {
-                      // If it's a wikilink target without extension, search/resolve
-                      const resolved =
-                        allFilePaths.find((p) =>
-                          p.toLowerCase().includes(path.toLowerCase()),
-                        ) || path;
-                      vaultState.selectFile(resolved);
-                    }}
+                    allFilePaths={allFilePaths}
+                    resolveAsset={resolveAsset}
+                    onSelectFile={(path) =>
+                      vaultState.selectFile(
+                        resolveWikilinkPath(path, allFilePaths, titlePaths) ??
+                          path,
+                      )
+                    }
                     onLinkMention={handleLinkMention}
                   />
                 </div>
@@ -285,30 +348,16 @@ export const WorkspaceView: React.FC = () => {
             <ConflictModal
               isOpen={isConflictOpen}
               onClose={() => setIsConflictOpen(false)}
-              filePath={vaultState.activeFilePath}
-              localContent={vaultState.content}
+              filePath={vaultState.conflict?.path ?? vaultState.activeFilePath}
+              localContent={
+                vaultState.conflict?.path === vaultState.activeFilePath
+                  ? vaultState.content
+                  : (vaultState.conflict?.content ?? "")
+              }
               remoteContent={remoteConflictContent}
-              onAcceptRemote={() => vaultState.reloadActiveFile()}
-              onForceOverwrite={async () => {
-                // Fetch fresh remote sha and overwrite
-                if (!vaultState.activeFilePath) return;
-                const freshRemote = await vaultService.getFile(
-                  vaultState.activeFilePath,
-                );
-                await vaultService.updateFile(vaultState.activeFilePath, {
-                  content: vaultState.content,
-                  expectedSha: freshRemote.sha,
-                  commitMessage: `Force update ${vaultState.activeFilePath} (resolved conflict)`,
-                });
-                await vaultState.refreshVault();
-              }}
-              onSaveAsCopy={async () => {
-                const parts = vaultState.activeFilePath.split(".");
-                const ext = parts.pop() || "md";
-                const copyPath = `${parts.join(".")}.conflict-${Date.now()}.${ext}`;
-                await vaultState.createFile(copyPath, vaultState.content);
-                await vaultState.reloadActiveFile();
-              }}
+              onAcceptRemote={() => vaultState.resolveConflict("remote")}
+              onForceOverwrite={() => vaultState.resolveConflict("overwrite")}
+              onSaveAsCopy={() => vaultState.resolveConflict("copy")}
             />
 
             <SettingsModal
@@ -317,14 +366,15 @@ export const WorkspaceView: React.FC = () => {
               vault={vaultState.vault}
               syncStatus={vaultState.syncStatus}
               isDirty={vaultState.isDirty}
-              onResetVault={vaultState.refreshVault}
+              onChangeBranch={vaultState.changeBranch}
             />
 
             <NewNoteModal
               isOpen={isNewNoteOpen}
               onClose={() => setIsNewNoteOpen(false)}
-              onCreateNote={async (path) => {
-                await vaultState.createFile(path);
+              files={vaultState.files}
+              onCreateNote={async (path, content) => {
+                await vaultState.createFile(path, content);
               }}
             />
           </div>

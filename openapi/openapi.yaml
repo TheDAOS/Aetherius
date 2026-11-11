@@ -109,7 +109,7 @@ paths:
           description: No vault has been configured for the user
     post:
       operationId: createVault
-      summary: Initialize a new vault
+      summary: Create or connect a private vault
       description: 'Creates a new private GitHub repository for the user''s vault
 
         and stores the metadata in the database.
@@ -143,6 +143,42 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '409':
           description: A vault already exists for this user
+    patch:
+      operationId: updateVaultBranch
+      summary: Select an existing vault branch
+      description: Verifies the branch exists on GitHub before updating the authenticated user's vault metadata.
+      tags: [Vault]
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [branch]
+              properties:
+                branch:
+                  type: string
+                  minLength: 1
+      responses:
+        '200':
+          description: Updated vault metadata
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Vault'
+                  error:
+                    type: [object, 'null']
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          description: Vault or branch not found
   /v1/files:
     get:
       operationId: listFiles
@@ -156,6 +192,7 @@ paths:
       - bearerAuth: []
       parameters:
       - $ref: '#/components/parameters/Path'
+      - $ref: '#/components/parameters/ExpectedBranch'
       responses:
         '200':
           description: Files and directories
@@ -210,9 +247,63 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '409':
           description: File already exists
+  /v1/files/move:
+    post:
+      operationId: moveFile
+      summary: Atomically rename or move a file
+      description: Creates one Git commit that removes the source and adds the destination. A non-force branch advance rejects concurrent branch changes; failed publication never exposes a partial move.
+      tags: [Files]
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [from, to, expectedSha]
+              properties:
+                from:
+                  type: string
+                  minLength: 1
+                to:
+                  type: string
+                  minLength: 1
+                expectedBranch:
+                  $ref: '#/components/schemas/ExpectedBranch'
+                expectedSha:
+                  type: string
+                  minLength: 1
+                commitMessage:
+                  type: string
+                  minLength: 1
+                  maxLength: 200
+      responses:
+        '200':
+          description: Moved file metadata
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/File'
+                  error:
+                    type: [object, 'null']
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          description: Vault or source file not found
+        '409':
+          description: Source changed, destination exists, or branch advance was rejected
   /v1/files/{path}:
     parameters:
     - $ref: '#/components/parameters/FilePath'
+    - $ref: '#/components/parameters/ExpectedBranch'
     get:
       operationId: getFile
       summary: Get a file
@@ -280,6 +371,19 @@ paths:
         '409':
           description: File changed since the client last retrieved it
     delete:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [expectedSha]
+              properties:
+                expectedBranch:
+                  $ref: '#/components/schemas/ExpectedBranch'
+                expectedSha:
+                  type: string
+                  minLength: 1
       operationId: deleteFile
       summary: Delete a file
       description: 'Deletes a file and commits the change to the user''s GitHub repository.
@@ -304,19 +408,13 @@ paths:
     get:
       operationId: searchVault
       summary: Search the vault
-      description: 'Searches the user''s vault.
-
-
-        The initial implementation may use straightforward text search.
-
-        Semantic search and knowledge-graph functionality are future features.
-
-        '
+      description: Searches the selected vault branch. The default branch uses GitHub code search; other branches use literal case-insensitive Markdown content scanning, limited to 100 notes of at most 1 MB each after the path filter. Over-limit or incomplete searches return an error rather than partial results.
       tags:
       - Search
       security:
       - bearerAuth: []
       parameters:
+      - $ref: '#/components/parameters/ExpectedBranch'
       - name: q
         in: query
         required: true
@@ -344,26 +442,30 @@ paths:
                     type: ["object", "null"]
         '400':
           $ref: '#/components/responses/BadRequest'
+        '422':
+          description: Search is incomplete or exceeds safe scan limits; narrow the query or path filter
         '401':
           $ref: '#/components/responses/Unauthorized'
+        '409':
+          description: The selected vault branch changed on another device (BRANCH_CHANGED)
   /v1/sync:
     post:
       operationId: syncVault
-      summary: Synchronize vault state
-      description: 'Starts or requests synchronization between the client and the
-
-        user''s GitHub-backed vault.
-
-
-        Detailed offline synchronization and conflict-resolution semantics
-
-        are intentionally deferred to a later development phase.
-
-        '
+      summary: Verify remote vault availability
+      description: Verifies the configured GitHub branch can be read. Clients replay their local mutation queue before this check; this endpoint does not read browser storage.
       tags:
       - Sync
       security:
       - bearerAuth: []
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                expectedBranch:
+                  $ref: '#/components/schemas/ExpectedBranch'
       responses:
         '202':
           description: Synchronization accepted
@@ -378,6 +480,8 @@ paths:
                     type: ["object", "null"]
         '401':
           $ref: '#/components/responses/Unauthorized'
+        '409':
+          description: The selected vault branch changed on another device (BRANCH_CHANGED)
   /v1/sync/status:
     get:
       operationId: getSyncStatus
@@ -389,6 +493,8 @@ paths:
       - Sync
       security:
       - bearerAuth: []
+      parameters:
+      - $ref: '#/components/parameters/ExpectedBranch'
       responses:
         '200':
           description: Synchronization status
@@ -403,6 +509,8 @@ paths:
                     type: ["object", "null"]
         '401':
           $ref: '#/components/responses/Unauthorized'
+        '409':
+          description: The selected vault branch changed on another device (BRANCH_CHANGED)
 components:
   securitySchemes:
     bearerAuth:
@@ -413,6 +521,12 @@ components:
 
         '
   parameters:
+    ExpectedBranch:
+      name: expectedBranch
+      in: query
+      required: false
+      schema:
+        $ref: '#/components/schemas/ExpectedBranch'
     Path:
       name: path
       in: query
@@ -455,6 +569,10 @@ components:
           schema:
             $ref: '#/components/schemas/Error'
   schemas:
+    ExpectedBranch:
+      type: string
+      minLength: 1
+      description: The branch the client read or edited. If another device changed vault selection, the API rejects the operation with 409 BRANCH_CHANGED before GitHub access. Omitted for backward compatibility.
     Vault:
       type: object
       required:
@@ -477,9 +595,20 @@ components:
       required:
       - repository
       properties:
+        mode:
+          type: string
+          enum: [create, connect]
+          default: create
+          description: Create a new private repository or connect an existing accessible private repository with write permission.
+        owner:
+          type: string
+          description: Required for connect mode; GitHub user or organization owning the repository.
+        branch:
+          type: string
+          description: Optional existing branch for connect mode; defaults to the repository's default branch.
         repository:
           type: string
-          description: Name for the new GitHub repository
+          description: Name of the new or existing GitHub repository
         description:
           type: string
           description: Optional description for the repository
@@ -501,7 +630,7 @@ components:
           type: string
         content:
           type: string
-          description: File contents when requested
+          description: Base64-encoded UTF-8 file contents when requested
         sha:
           type: string
           description: GitHub blob/file identifier used for change detection
@@ -529,11 +658,14 @@ components:
       - path
       - content
       properties:
+        expectedBranch:
+          $ref: '#/components/schemas/ExpectedBranch'
         path:
           type: string
           minLength: 1
         content:
           type: string
+          description: Base64-encoded UTF-8 file contents
         commitMessage:
           type: string
           minLength: 1
@@ -542,9 +674,13 @@ components:
       type: object
       required:
       - content
+      - expectedSha
       properties:
+        expectedBranch:
+          $ref: '#/components/schemas/ExpectedBranch'
         content:
           type: string
+          description: Base64-encoded UTF-8 file contents
         expectedSha:
           type: string
           description: 'SHA of the version the client expects to update.

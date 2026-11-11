@@ -163,3 +163,23 @@ User-owned private repository
 ```
 
 Security controls should be enforced by the backend and CI rather than relying solely on AI instructions or client behavior.
+
+## Provider-token boundary
+
+Apply `20261111042753_secure_token_boundary.sql` with the backend release. It
+revokes browser roles from `user_github_tokens` and grants the verified Edge
+runtime service client access. All service-role operations explicitly scope to
+the user returned by Supabase Auth. Provider-token bootstrap also verifies the
+GitHub account ID. See ADR-009 for transient OAuth exposure and storage limits.
+
+Responses use `{data, error}` consistently. Invalid JSON, relative-path traversal,
+and missing write SHAs are rejected before GitHub requests. Filename segments
+are URL-encoded, and file reads use the configured vault branch. Error logs omit
+private paths, tokens, and upstream response bodies.
+
+Database authorization regressions are checked by `./scripts/test-migrations.sh`.
+It creates a disposable local container, applies the migrations, exercises
+`anon`, `authenticated`, and `service_role`, and removes the container. The
+checks cover token-table denial, own-vault access, cross-user isolation, ownership
+reassignment rejection, and immutable IDs. CI uses a clean PostgreSQL 17 image;
+local runs default to the cached Supabase PostgreSQL image.
