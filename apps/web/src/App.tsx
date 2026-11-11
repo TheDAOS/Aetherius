@@ -1,4 +1,5 @@
 import type React from "react";
+import { ErrorBoundary } from "./components/common/ErrorBoundary";
 import { useAuth } from "./contexts/AuthContext";
 import { LoginView } from "./routes/LoginView";
 import { WorkspaceView } from "./routes/WorkspaceView";
@@ -18,7 +19,11 @@ export const App: React.FC = () => {
     return <LoginView />;
   }
 
-  return <WorkspaceView />;
+  return (
+    <ErrorBoundary key={session.user.id}>
+      <WorkspaceView />
+    </ErrorBoundary>
+  );
 };
 
 export default App;

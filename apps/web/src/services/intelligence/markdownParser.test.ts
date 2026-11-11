@@ -159,8 +159,8 @@ aliases: single-alias
 # Heading`;
     const { frontmatter } = parseFrontmatter(raw);
     expect(frontmatter.listKey).toEqual(["quoted item"]);
-    expect(frontmatter.stringKey).toBe(true);
-    expect(frontmatter.falseKey).toBe(false);
+    expect(frontmatter.stringKey).toBe("true");
+    expect(frontmatter.falseKey).toBe("false");
     expect(frontmatter.numberKey).toBe(123);
     expect(frontmatter.zeroKey).toBe(0);
     expect(frontmatter.emptyStrKey).toBe("");
@@ -199,4 +199,47 @@ body with #tag1`);
     const res5 = resolveWikilinkPath("something-else", ["/", ".md"]);
     expect(res5).toBeNull();
   });
+});
+
+describe("frontmatter interoperability", () => {
+  it("parses inline arrays and preserves quoted scalar types", () => {
+    const parsed = parseMarkdown(
+      '---\ntitle: "2026"\ntags: [research, "work, notes"]\naliases: [First, "Second"]\n---\nBody',
+    );
+    expect(parsed.title).toBe("2026");
+    expect(parsed.tags).toEqual(["research", "work, notes"]);
+    expect(parsed.aliases).toEqual(["First", "Second"]);
+    expect(parseFrontmatter('---\nflag: "false"\n---\n').frontmatter.flag).toBe(
+      "false",
+    );
+  });
+
+  it("always normalizes scalar titles to strings", () => {
+    expect(parseMarkdown("---\ntitle: 2026\n---\nBody").title).toBe("2026");
+    expect(parseMarkdown("---\ntitle: true\n---\nBody").title).toBe("true");
+  });
+
+  it("ignores wikilinks inside fenced and inline code", () => {
+    expect(
+      extractWikilinks("`[[inline]]`\n~~~md\n[[fenced]]\n~~~\n[[actual]]"),
+    ).toEqual([{ raw: "[[actual]]", target: "actual", alias: "actual" }]);
+  });
+});
+
+it("preserves metadata strings and arrays with YAML comments", () => {
+  const parsed = parseMarkdown(
+    '---\ntitle: "A # title" # comment\ntags: [one, "two # tag"] # comment\n---\n    indented code',
+  );
+  expect(parsed.title).toBe("A # title");
+  expect(parsed.tags).toEqual(["one", "two # tag"]);
+  expect(parsed.body).toBe("    indented code");
+});
+
+it("resolves wikilinks with heading and block fragments to their note", () => {
+  expect(
+    resolveWikilinkPath("Architecture#Overview", ["notes/architecture.md"]),
+  ).toBe("notes/architecture.md");
+  expect(
+    resolveWikilinkPath("Architecture#^block", ["notes/architecture.md"]),
+  ).toBe("notes/architecture.md");
 });

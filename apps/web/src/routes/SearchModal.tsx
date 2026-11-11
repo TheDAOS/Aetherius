@@ -19,16 +19,22 @@ export const SearchModal: React.FC<SearchModalProps> = ({
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<SearchResult[]>([]);
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (!isOpen) {
       setQuery("");
       setResults([]);
       setSelectedIndex(0);
+      setError(null);
+      setIsLoading(false);
       return;
     }
 
     const abortController = new AbortController();
+    setIsLoading(true);
+    setError(null);
 
     const timer = setTimeout(async () => {
       if (abortController.signal.aborted) return;
@@ -53,8 +59,17 @@ export const SearchModal: React.FC<SearchModalProps> = ({
             setResults(initialResults);
           }
         }
-      } catch {
-        // Request was cancelled or failed - ignore
+      } catch (cause) {
+        if (!abortController.signal.aborted) {
+          setResults([]);
+          setError(
+            cause instanceof Error
+              ? cause.message
+              : "Search failed. Please retry.",
+          );
+        }
+      } finally {
+        if (!abortController.signal.aborted) setIsLoading(false);
       }
     }, 100);
 
@@ -73,7 +88,12 @@ export const SearchModal: React.FC<SearchModalProps> = ({
       setSelectedIndex(
         (prev) => (prev - 1 + results.length) % (results.length || 1),
       );
-    } else if (e.key === "Enter" && results[selectedIndex]) {
+    } else if (
+      e.key === "Enter" &&
+      !isLoading &&
+      !error &&
+      results[selectedIndex]
+    ) {
       e.preventDefault();
       onSelectFile(results[selectedIndex].path);
       onClose();
@@ -107,7 +127,18 @@ export const SearchModal: React.FC<SearchModalProps> = ({
 
         {/* Results List */}
         <div className="flex flex-col max-h-80 overflow-y-auto divide-y divide-cream-border border-2 border-ink-primary bg-white">
-          {results.length === 0 ? (
+          {error ? (
+            <div
+              role="alert"
+              className="p-6 font-mono text-sm text-accent-pink"
+            >
+              {error}
+            </div>
+          ) : isLoading ? (
+            <div role="status" className="p-6 font-mono text-sm">
+              Searching...
+            </div>
+          ) : results.length === 0 ? (
             <div className="p-6 text-center text-xs font-mono text-ink-muted">
               No notes match your query.
             </div>

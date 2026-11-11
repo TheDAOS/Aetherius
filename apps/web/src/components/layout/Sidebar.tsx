@@ -9,6 +9,7 @@ interface SidebarProps {
   activeFilePath: string;
   onSelectFile: (path: string) => void;
   onDeleteFile?: (path: string) => void;
+  onMoveFile?: (path: string) => void;
   isOpenMobile: boolean;
   onCloseMobile: () => void;
 }
@@ -18,6 +19,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   activeFilePath,
   onSelectFile,
   onDeleteFile,
+  onMoveFile,
   isOpenMobile,
   onCloseMobile,
 }) => {
@@ -105,6 +107,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               onCloseMobile();
             }}
             onDeleteFile={onDeleteFile}
+            onMoveFile={onMoveFile}
           />
         </div>
 
@@ -112,7 +115,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         <div className="p-2.5 border-t-2 border-ink-primary bg-cream-muted text-[11px] font-mono text-ink-secondary flex items-center justify-between select-none">
           <span className="flex items-center gap-1.5">
             <span className="w-2 h-2 rounded-full bg-accent-mint border border-ink-primary" />
-            GitHub Synced
+            Git-backed vault
           </span>
           <span className="text-ink-muted">{filteredFiles.length} files</span>
         </div>

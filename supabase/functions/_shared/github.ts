@@ -1,3 +1,6 @@
+function escapePath(path: string): string {
+  return path.split("/").map(encodeURIComponent).join("/");
+}
 // UTF-8-safe base64 encoding (btoa only supports Latin-1)
 function utf8ToBase64(str: string): string {
   return btoa(String.fromCodePoint(...new TextEncoder().encode(str)));
@@ -6,7 +9,10 @@ function utf8ToBase64(str: string): string {
 export class GitHubClient {
   private token: string;
 
-  constructor(token: string) {
+  constructor(
+    token: string,
+    private request: typeof fetch = fetch,
+  ) {
     if (!token) {
       throw new Error("GitHub token is required");
     }
@@ -20,16 +26,17 @@ export class GitHubClient {
     headers.set("Accept", "application/vnd.github.v3+json");
     headers.set("X-GitHub-Api-Version", "2022-11-28");
 
-    const response = await fetch(url, { ...options, headers });
+    const response = await this.request(url, { ...options, headers });
 
     if (!response.ok) {
-      const errorText = await response.text();
-      console.error(`GitHub API Error (${response.status}):`, errorText);
-      const err: any = new Error(
-        `GitHub API error: ${response.status} ${response.statusText}`,
+      await response.body?.cancel();
+      console.error("GitHub API request failed", { status: response.status });
+      const err = Object.assign(
+        new Error(
+          `GitHub API error: ${response.status} ${response.statusText}`,
+        ),
+        { status: response.status },
       );
-      err.status = response.status;
-      err.body = errorText;
       throw err;
     }
 
@@ -67,8 +74,15 @@ export class GitHubClient {
     return this.fetch(`/repos/${owner}/${repo}`, { method: "DELETE" });
   }
 
-  async getContents(owner: string, repo: string, path: string = "") {
-    return this.fetch(`/repos/${owner}/${repo}/contents/${path}`);
+  async getContents(
+    owner: string,
+    repo: string,
+    path: string = "",
+    branch?: string,
+  ) {
+    return this.fetch(
+      `/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/contents/${escapePath(path)}${branch ? `?ref=${encodeURIComponent(branch)}` : ""}`,
+    );
   }
 
   async getTree(
@@ -77,8 +91,16 @@ export class GitHubClient {
     treeSha: string = "main",
     recursive: boolean = true,
   ) {
-    const url = `/repos/${owner}/${repo}/git/trees/${treeSha}${recursive ? "?recursive=1" : ""}`;
-    return this.fetch(url);
+    const url = `/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/git/trees/${encodeURIComponent(treeSha)}${recursive ? "?recursive=1" : ""}`;
+    const result = await this.fetch(url);
+    if (result.truncated)
+      throw Object.assign(
+        new Error(
+          "Vault exceeds GitHub tree response limit; refusing an incomplete listing",
+        ),
+        { status: 502 },
+      );
+    return result;
   }
 
   async createOrUpdateFile(
@@ -90,15 +112,18 @@ export class GitHubClient {
     sha?: string, // required for updates
     branch: string = "main",
   ) {
-    return this.fetch(`/repos/${owner}/${repo}/contents/${path}`, {
-      method: "PUT",
-      body: JSON.stringify({
-        message,
-        content,
-        sha,
-        branch,
-      }),
-    });
+    return this.fetch(
+      `/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/contents/${escapePath(path)}`,
+      {
+        method: "PUT",
+        body: JSON.stringify({
+          message,
+          content,
+          sha,
+          branch,
+        }),
+      },
+    );
   }
 
   async deleteFile(
@@ -109,19 +134,169 @@ export class GitHubClient {
     sha: string,
     branch: string = "main",
   ) {
-    return this.fetch(`/repos/${owner}/${repo}/contents/${path}`, {
-      method: "DELETE",
+    return this.fetch(
+      `/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/contents/${escapePath(path)}`,
+      {
+        method: "DELETE",
+        body: JSON.stringify({
+          message,
+          sha,
+          branch,
+        }),
+      },
+    );
+  }
+
+  async moveFile(
+    owner: string,
+    repo: string,
+    branch: string,
+    from: string,
+    to: string,
+    expectedSha: string,
+    message: string,
+  ) {
+    const base = `/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/git`;
+    const head = await this.fetch(`${base}/ref/heads/${escapePath(branch)}`);
+    const commit = await this.fetch(`${base}/commits/${head.object.sha}`);
+    const tree = await this.getTree(owner, repo, commit.tree.sha, true);
+    const source = tree.tree.find(
+      (entry: { path: string }) => entry.path === from,
+    );
+    if (source?.type !== "blob")
+      throw Object.assign(new Error("Source file not found"), { status: 404 });
+    if (source.sha !== expectedSha)
+      throw Object.assign(new Error("Source file changed remotely"), {
+        status: 409,
+      });
+    if (
+      tree.tree.some(
+        (entry: { path: string; type: string }) =>
+          entry.path === to ||
+          entry.path.startsWith(`${to}/`) ||
+          (entry.type === "blob" && to.startsWith(`${entry.path}/`)),
+      )
+    )
+      throw Object.assign(
+        new Error("Destination already exists or conflicts with a file"),
+        { status: 409 },
+      );
+    const changedTree = await this.fetch(`${base}/trees`, {
+      method: "POST",
       body: JSON.stringify({
-        message,
-        sha,
-        branch,
+        base_tree: commit.tree.sha,
+        tree: [
+          { path: from, mode: source.mode, type: "blob", sha: null },
+          { path: to, mode: source.mode, type: "blob", sha: source.sha },
+        ],
       }),
     });
+    const movedCommit = await this.fetch(`${base}/commits`, {
+      method: "POST",
+      body: JSON.stringify({
+        message,
+        tree: changedTree.sha,
+        parents: [head.object.sha],
+      }),
+    });
+    try {
+      await this.fetch(`${base}/refs/heads/${escapePath(branch)}`, {
+        method: "PATCH",
+        body: JSON.stringify({ sha: movedCommit.sha, force: false }),
+      });
+    } catch (error) {
+      if ([409, 422].includes((error as { status: number }).status))
+        throw Object.assign(
+          new Error("Branch changed or is protected; move was not published"),
+          { status: 409 },
+        );
+      throw error;
+    }
+    return {
+      path: to,
+      name: to.split("/").pop(),
+      type: "file",
+      sha: source.sha,
+      size: source.size,
+    };
+  }
+
+  async searchBranch(
+    owner: string,
+    repo: string,
+    branch: string,
+    query: string,
+    pathPrefix = "",
+  ) {
+    const listing = await this.getTree(owner, repo, branch, true);
+    const files = listing.tree.filter(
+      (entry: { type: string; path: string }) =>
+        entry.type === "blob" &&
+        /\.(md|markdown)$/i.test(entry.path) &&
+        entry.path.startsWith(pathPrefix),
+    ) as Array<{ path: string; size?: number }>;
+    if (
+      files.length > 100 ||
+      files.some((file) => (file.size || 0) > 1_000_000)
+    )
+      throw Object.assign(
+        new Error(
+          "Branch search exceeds safe content scan limits; narrow the path filter",
+        ),
+        { status: 422 },
+      );
+    const matches: Array<{ path: string; name: string; score: number }> = [];
+    const needle = query.toLocaleLowerCase();
+    // Four requests at a time keeps GitHub usage bounded without dropping matches.
+    for (let start = 0; start < files.length; start += 4) {
+      const found = await Promise.all(
+        files.slice(start, start + 4).map(async (file) => {
+          const result = await this.getContents(owner, repo, file.path, branch);
+          if (
+            result.encoding !== "base64" ||
+            typeof result.content !== "string"
+          )
+            throw Object.assign(
+              new Error("Branch search could not read every note"),
+              { status: 502 },
+            );
+          const text = new TextDecoder().decode(
+            Uint8Array.from(atob(result.content.replace(/\s/g, "")), (char) =>
+              char.charCodeAt(0),
+            ),
+          );
+          return text.toLocaleLowerCase().includes(needle) ||
+            file.path.toLocaleLowerCase().includes(needle)
+            ? {
+                path: file.path,
+                name: file.path.split("/").pop() || file.path,
+                score: 1,
+              }
+            : null;
+        }),
+      );
+      for (const item of found) if (item) matches.push(item);
+    }
+    return { items: matches };
   }
 
   async searchCode(owner: string, repo: string, query: string) {
     const encodedQuery = encodeURIComponent(`${query} repo:${owner}/${repo}`);
-    return this.fetch(`/search/code?q=${encodedQuery}`);
+    const items = [];
+    for (let page = 1; page <= 10; page++) {
+      const result = await this.fetch(
+        `/search/code?q=${encodedQuery}&per_page=100&page=${page}`,
+      );
+      if (result.incomplete_results || result.total_count > 1000)
+        throw Object.assign(
+          new Error("Search is incomplete; narrow the query"),
+          { status: 422 },
+        );
+      items.push(...result.items);
+      if (items.length >= result.total_count || result.items.length < 100)
+        return { items };
+    }
+    return { items };
   }
 
   async initTemplateFiles(
@@ -175,12 +350,17 @@ export class GitHubClient {
       try {
         let sha: string | undefined;
         try {
-          const existing = await this.getContents(owner, repo, file.path);
+          const existing = await this.getContents(
+            owner,
+            repo,
+            file.path,
+            branch,
+          );
           if (existing && !Array.isArray(existing)) {
             sha = existing.sha;
           }
-        } catch {
-          // File does not exist yet, no sha needed
+        } catch (error) {
+          if ((error as { status?: number }).status !== 404) throw error;
         }
         await this.createOrUpdateFile(
           owner,
@@ -192,7 +372,9 @@ export class GitHubClient {
           branch,
         );
       } catch (err) {
-        console.warn(`Could not seed template file ${file.path}:`, err);
+        throw new Error(`Could not seed template file ${file.path}`, {
+          cause: err,
+        });
       }
     }
   }

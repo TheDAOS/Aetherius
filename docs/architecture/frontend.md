@@ -92,26 +92,21 @@ The desktop workspace follows a 3-column collapsible architecture:
 
 ---
 
-## 4. Routes & Navigation Structure
+## 4. Navigation and current workflows
 
-| Route | View Name | Description |
-| :--- | :--- | :--- |
-| `/` | **Landing / Welcome** | Public landing page with GitHub OAuth CTA and visual intro. |
-| `/setup` | **Vault Setup** | Onboarding: clone vault from template or connect existing GitHub repo. |
-| `/vault` or `/notes/*` | **Main Workspace** | Primary 3-column editor, file tree navigator, and Git status. |
-| `Ctrl+K` Overlay | **Quick Search** | Instant modal search across titles and markdown content. |
-| `/settings` | **Settings Modal** | Vault metadata, editor preferences, and PWA install trigger. |
-| `/*` | **404 Page** | Fallback for missing notes/routes. |
+The root renders configuration guidance, GitHub login, vault setup, or the authenticated workspace according to explicit state. Failed vault requests show a retry action rather than onboarding. Note URLs use `#note=<encoded-vault-path>`; hash navigation supports browser back/forward and guards unsaved drafts. Settings/search/new-note/conflict views are modal overlays rather than separate routes.
 
----
+Vault setup supports a new private repository or connection to an existing writable private repository. Settings supports validated branch selection. The file explorer supports deletion and atomic file rename/move; arbitrary folders and template expansion are part of new-note creation. Git has no empty directories, so creating a note establishes its parent folders.
 
-## 5. Mock API & OpenAPI Conformance
+## 5. API, cache and rendering
 
-During Phase 1, `apps/web/src/services/mockVault.ts` provides client-side repository services matching the OpenAPI specification (`/v1/vault`, `/v1/files`, `/v1/files/{path}`). This allows testing:
-- Folder expansion and browsing.
-- Note creation, modification, and deletion.
-- Dirty vs. clean Git status tracking.
-- Local storage persistence across browser refreshes.
+The production client uses `VaultService` with the actual Edge handler/OpenAPI envelope, not `mockVault.ts` (retained historical Phase 1 code). Auth bootstrap completes before first workspace load; same-account token refresh does not remount the editor. A render error boundary preserves saved account-scoped offline data.
+
+IndexedDB caches bodies and metadata separately by behavior within file records: list refresh preserves unchanged bodies, invalidates changed remote bodies, reconciles missing remote paths, and overlays queued drafts. The derived graph downloads Markdown bodies with bounded concurrency and uses current editor text for the active note. Notes never become canonical database records.
+
+Wikilinks use escaped Markdown-it tokens with raw HTML disabled. Internal Markdown links resolve relative to the note; title/alias lookup maps wikilinks to canonical paths. Private raster assets load through the authenticated API into object URLs owned/revoked by the workspace. Unsupported or unavailable assets stay inert rather than issuing requests for private paths to the PWA host.
+
+Browser regression tests exercise the real client, SDK and handler against synthetic external persistence. CI also runs native handler tests and real disposable PostgreSQL authorization assertions.
 
 ---
 

@@ -12,6 +12,9 @@ interface CreateVaultViewProps {
 export const CreateVaultView: React.FC<CreateVaultViewProps> = ({
   onVaultCreated,
 }) => {
+  const [mode, setMode] = useState<"create" | "connect">("create");
+  const [owner, setOwner] = useState("");
+  const [branch, setBranch] = useState("");
   const [repoName, setRepoName] = useState("");
   const [description, setDescription] = useState(
     "My Aetherius knowledge vault",
@@ -27,7 +30,13 @@ export const CreateVaultView: React.FC<CreateVaultViewProps> = ({
     setError(null);
 
     try {
-      await vaultService.createVault(repoName.trim(), description.trim());
+      if (mode === "connect")
+        await vaultService.connectVault(
+          owner.trim(),
+          repoName.trim(),
+          branch.trim(),
+        );
+      else await vaultService.createVault(repoName.trim(), description.trim());
       onVaultCreated();
     } catch (err: any) {
       setError(err.message || "Failed to create vault.");
@@ -48,7 +57,7 @@ export const CreateVaultView: React.FC<CreateVaultViewProps> = ({
           </h1>
           <p className="text-xs text-ink-muted leading-relaxed">
             Aetherius stores your notes in a private GitHub repository. Give
-            your new vault a name, and we'll set everything up for you.
+            your new vault a name, or connect an existing private repository.
           </p>
         </div>
 
@@ -59,6 +68,33 @@ export const CreateVaultView: React.FC<CreateVaultViewProps> = ({
         )}
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+          <label>
+            Vault setup
+            <select
+              aria-label="Vault setup"
+              value={mode}
+              onChange={(e) => setMode(e.target.value as "create" | "connect")}
+              className="neo-box w-full p-2"
+            >
+              <option value="create">Create a new repository</option>
+              <option value="connect">Connect an existing repository</option>
+            </select>
+          </label>
+          {mode === "connect" && (
+            <>
+              <Input
+                label="Repository owner"
+                value={owner}
+                onChange={(e) => setOwner(e.target.value)}
+                required
+              />
+              <Input
+                label="Branch (blank uses default)"
+                value={branch}
+                onChange={(e) => setBranch(e.target.value)}
+              />
+            </>
+          )}
           <Input
             label="Repository Name"
             name="repoName"
@@ -85,11 +121,18 @@ export const CreateVaultView: React.FC<CreateVaultViewProps> = ({
               <GitFork size={14} className="text-accent-cobalt" />
               <span>What happens next?</span>
             </div>
-            <ul className="list-disc list-inside space-y-1 ml-1">
-              <li>A private repo will be created on your GitHub account.</li>
-              <li>A standard vault folder structure will be generated.</li>
-              <li>Starter templates and a welcome note will be added.</li>
-            </ul>
+            {mode === "connect" ? (
+              <p>
+                The existing private repository will be connected without adding
+                or changing files.
+              </p>
+            ) : (
+              <ul className="list-disc list-inside space-y-1 ml-1">
+                <li>A private repo will be created on your GitHub account.</li>
+                <li>A standard vault folder structure will be generated.</li>
+                <li>Starter templates and a welcome note will be added.</li>
+              </ul>
+            )}
           </div>
 
           <Button

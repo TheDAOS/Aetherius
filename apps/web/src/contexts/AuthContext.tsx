@@ -1,6 +1,6 @@
 import type { Session, User } from "@supabase/supabase-js";
 import type React from "react";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { offlineDb } from "../services/storage/offlineDb";
 import { supabase } from "../services/supabaseClient";
 import { vaultService } from "../services/vault";
@@ -14,7 +14,6 @@ interface AuthContextType {
   signOut: () => Promise<void>;
   clearError: () => void;
 }
-
 const AuthContext = createContext<AuthContextType>({
   session: null,
   user: null,
@@ -24,110 +23,122 @@ const AuthContext = createContext<AuthContextType>({
   signOut: async () => {},
   clearError: () => {},
 });
-
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [session, setSession] = useState<Session | null>(null);
-  const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
+  const settledUser = useRef<string | null>(null);
+  const initialized = useRef(false);
   useEffect(() => {
-    // Initialize session — with error handling to prevent infinite loading
-    supabase.auth
-      .getSession()
-      .then(({ data: { session } }) => {
-        setSession(session);
-        setUser(session?.user ?? null);
-        setLoading(false);
-
-        // Scope IndexedDB to this user to prevent cross-account data leaks
-        if (session?.user?.id) {
-          offlineDb.setUserId(session.user.id);
+    let alive = true;
+    let generation = 0;
+    let eventSeen = false;
+    const initialize = async (incoming: Session | null) => {
+      const version = ++generation;
+      const sameAccount =
+        initialized.current &&
+        settledUser.current === (incoming?.user.id ?? null);
+      if (!sameAccount) {
+        setLoading(true);
+        setSession(null);
+      }
+      try {
+        if (incoming?.user.id) offlineDb.setUserId(incoming.user.id);
+        else offlineDb.setUserId(null);
+        if (incoming?.provider_token)
+          await vaultService.storeGitHubToken(incoming.provider_token);
+        if (!alive || generation !== version) return;
+        const clean = incoming ? { ...incoming } : null;
+        if (clean) {
+          delete clean.provider_token;
+          delete clean.provider_refresh_token;
         }
-
-        // Store GitHub token server-side if available (Rule #4 compliance)
-        if (session?.provider_token) {
-          vaultService.storeGitHubToken(session.provider_token).catch((err) => {
-            console.warn("Failed to store GitHub token server-side:", err);
-          });
+        settledUser.current = incoming?.user.id ?? null;
+        initialized.current = true;
+        setSession(clean);
+        setError(null);
+      } catch (err) {
+        if (alive && generation === version) {
+          if (!sameAccount) setSession(null);
+          setError((err as Error).message);
         }
-      })
-      .catch((err) => {
-        console.error("Failed to get session:", err);
-        setLoading(false);
-      });
-
+      } finally {
+        if (alive && generation === version) setLoading(false);
+      }
+    };
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-      setUser(session?.user ?? null);
-
-      // Scope IndexedDB to this user
-      if (session?.user?.id) {
-        offlineDb.setUserId(session.user.id);
-      }
-
-      // Store GitHub token server-side whenever it's available (e.g., on sign-in)
-      if (session?.provider_token) {
-        vaultService.storeGitHubToken(session.provider_token).catch((err) => {
-          console.warn("Failed to store GitHub token server-side:", err);
-        });
-      }
+    } = supabase.auth.onAuthStateChange((_event, incoming) => {
+      eventSeen = true;
+      // Never await SDK-auth-dependent work inside the auth callback/lock.
+      setTimeout(() => {
+        if (alive) void initialize(incoming);
+      }, 0);
     });
-
-    return () => subscription.unsubscribe();
-  }, []);
-
-  const signInWithGithub = async () => {
-    try {
-      setError(null);
-      const { error: signInError } = await supabase.auth.signInWithOAuth({
-        provider: "github",
-        options: {
-          scopes: "repo", // required for git operations
-        },
+    supabase.auth
+      .getSession()
+      .then(({ data, error: sessionError }) => {
+        if (!alive || eventSeen) return;
+        if (sessionError) {
+          setError(sessionError.message);
+          setLoading(false);
+          return;
+        }
+        void initialize(data.session);
+      })
+      .catch((err) => {
+        if (alive) {
+          setError((err as Error).message);
+          setLoading(false);
+        }
       });
-      if (signInError) throw signInError;
-    } catch (err: any) {
-      setError(err.message || "Failed to sign in with GitHub");
-    }
-  };
-
-  const signOut = async () => {
-    // Clear user-scoped offline data to prevent cross-account data leaks
+    return () => {
+      alive = false;
+      ++generation;
+      subscription.unsubscribe();
+    };
+  }, []);
+  const signInWithGithub = async () => {
+    setError(null);
     try {
-      await offlineDb.clearAll();
+      const { error: authError } = await supabase.auth.signInWithOAuth({
+        provider: "github",
+        options: { scopes: "repo", redirectTo: window.location.origin },
+      });
+      if (authError) throw authError;
     } catch (err) {
-      console.warn("Failed to clear offline data on sign out:", err);
-    }
-    try {
-      const { error: signOutError } = await supabase.auth.signOut();
-      if (signOutError) throw signOutError;
-    } catch (err: any) {
-      setError(err.message || "Failed to sign out");
+      setError((err as Error).message);
     }
   };
-
-  const clearError = () => setError(null);
-
+  const signOut = async () => {
+    try {
+      const { error: authError } = await supabase.auth.signOut();
+      if (authError) throw authError;
+      // User-scoped drafts survive logout. They are never exposed to the next account.
+      offlineDb.setUserId(null);
+      settledUser.current = null;
+      initialized.current = true;
+      setSession(null);
+      setError(null);
+    } catch (err) {
+      setError((err as Error).message);
+      throw err;
+    }
+  };
   return (
     <AuthContext.Provider
       value={{
         session,
-        user,
+        user: session?.user ?? null,
         loading,
         error,
         signInWithGithub,
         signOut,
-        clearError,
+        clearError: () => setError(null),
       }}
     >
       {children}
     </AuthContext.Provider>
   );
 };
-
-export const useAuth = () => {
-  return useContext(AuthContext);
-};
+export const useAuth = () => useContext(AuthContext);

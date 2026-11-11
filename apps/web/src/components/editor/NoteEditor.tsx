@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 
 interface NoteEditorProps {
   content: string;
+  readOnly?: boolean;
   allFilePaths?: string[];
   onChange: (content: string) => void;
   onSave?: () => void;
@@ -11,6 +12,7 @@ interface NoteEditorProps {
 
 export const NoteEditor: React.FC<NoteEditorProps> = ({
   content,
+  readOnly = false,
   allFilePaths = [],
   onChange,
   onSave,
@@ -39,8 +41,7 @@ export const NoteEditor: React.FC<NoteEditorProps> = ({
     const triggerIndex = text.lastIndexOf("[[", cursorPos);
     if (triggerIndex === -1) return;
 
-    const noteName =
-      targetPath.replace(/\.md$/, "").split("/").pop() || targetPath;
+    const noteName = targetPath.replace(/\.md$/, "");
     const replacement = `[[${noteName}]]`;
     const newText =
       text.slice(0, triggerIndex) + replacement + text.slice(cursorPos);
@@ -148,7 +149,9 @@ export const NoteEditor: React.FC<NoteEditorProps> = ({
     }
   };
 
-  const handleKeyUp = () => {
+  const handleKeyUp = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (["ArrowDown", "ArrowUp", "Enter", "Tab", "Escape"].includes(event.key))
+      return;
     const textarea = textareaRef.current;
     if (!textarea) return;
 
@@ -173,6 +176,8 @@ export const NoteEditor: React.FC<NoteEditorProps> = ({
       <textarea
         ref={textareaRef}
         value={content}
+        readOnly={readOnly}
+        aria-label="Markdown note editor"
         onChange={(e) => onChange(e.target.value)}
         onKeyDown={handleKeyDown}
         onKeyUp={handleKeyUp}

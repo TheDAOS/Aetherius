@@ -91,3 +91,29 @@ describe("FileTree", () => {
     expect(screen.getByText("file.md")).toBeDefined();
   });
 });
+
+it("passes rename/move actions for nested files", () => {
+  const move = vi.fn();
+  render(
+    <FileTree
+      files={[{ path: "folder/a.md", name: "a.md", type: "file" }]}
+      activeFilePath=""
+      onSelectFile={vi.fn()}
+      onMoveFile={move}
+    />,
+  );
+  fireEvent.click(screen.getByRole("button", { name: "Rename/Move file" }));
+  expect(move).toHaveBeenCalledWith("folder/a.md");
+});
+
+it("renders files under names which shadow object prototype properties", () => {
+  render(
+    <FileTree
+      files={[{ path: "constructor/a.md", name: "a.md", type: "file" }]}
+      activeFilePath=""
+      onSelectFile={vi.fn()}
+    />,
+  );
+  expect(screen.getByText("constructor")).toBeInTheDocument();
+  expect(screen.getByText("a.md")).toBeInTheDocument();
+});

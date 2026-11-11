@@ -45,6 +45,7 @@ export const AppShell: React.FC<AppShellProps> = ({
           activeFilePath={vaultState.activeFilePath}
           onSelectFile={vaultState.selectFile}
           onDeleteFile={vaultState.deleteFile}
+          onMoveFile={vaultState.moveFile}
           isOpenMobile={isSidebarMobileOpen}
           onCloseMobile={() => setIsSidebarMobileOpen(false)}
         />

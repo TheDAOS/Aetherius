@@ -1,6 +1,12 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.5.10/schema.json",
-  "assist": { "actions": { "source": { "organizeImports": "on" } } },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
+  },
   "linter": {
     "enabled": true,
     "rules": {
@@ -41,7 +47,9 @@
       "!**/build",
       "!**/.next",
       "!**/graphify-out",
-      "!**/supabase/.temp"
+      "!**/supabase/.temp",
+      "!**/test-results",
+      "!**/playwright-report"
     ]
   }
 }

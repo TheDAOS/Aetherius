@@ -16,6 +16,7 @@ export interface VaultFile {
   type: FileType;
   name: string;
   content?: string;
+  encoding?: "utf-8" | "base64";
   sha?: string;
   size?: number;
   lastModified?: string;

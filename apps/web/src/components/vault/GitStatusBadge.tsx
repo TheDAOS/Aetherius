@@ -15,8 +15,17 @@ export const GitStatusBadge: React.FC<GitStatusBadgeProps> = ({
   isDirty = false,
   onSync,
 }) => {
-  const isSyncing =
-    status?.status === "running" || status?.status === "pending";
+  const isSyncing = status?.status === "running";
+  const label =
+    status?.status === "pending"
+      ? "PENDING"
+      : status?.status === "failed"
+        ? "SYNC FAILED"
+        : status?.status === "conflict"
+          ? "CONFLICT"
+          : isSyncing
+            ? "SYNCING"
+            : "NO LOCAL CHANGES";
 
   return (
     <div className="flex items-center gap-1.5 select-none">
@@ -32,7 +41,7 @@ export const GitStatusBadge: React.FC<GitStatusBadgeProps> = ({
         ) : (
           <span className="flex items-center gap-1 text-ink-secondary font-semibold">
             <CheckCircle2 size={12} className="text-accent-mint" />
-            CLEAN
+            {label}
           </span>
         )}
       </div>

@@ -14,7 +14,7 @@ describe("GitStatusBadge", () => {
   it("renders clean status with branch name", () => {
     render(<GitStatusBadge status={null} branch="main" />);
     expect(screen.getByText("main")).toBeDefined();
-    expect(screen.getByText("CLEAN")).toBeDefined();
+    expect(screen.getByText("NO LOCAL CHANGES")).toBeDefined();
     expect(screen.getByTestId("CheckCircle2")).toBeDefined();
   });
 
@@ -47,7 +47,7 @@ describe("GitStatusBadge", () => {
     expect(screen.getByTestId("RefreshCw").className).toContain("animate-spin");
   });
 
-  it("shows spinning icon when status is pending", () => {
+  it("allows manual sync when changes are pending", () => {
     render(
       <GitStatusBadge
         status={{ status: "pending", lastSyncAt: null }}
@@ -57,7 +57,7 @@ describe("GitStatusBadge", () => {
     );
 
     const syncBtn = screen.getByTitle("Trigger Git Sync") as HTMLButtonElement;
-    expect(syncBtn.disabled).toBe(true);
-    expect(screen.getByTestId("RefreshCw").className).toContain("animate-spin");
+    expect(syncBtn.disabled).toBe(false);
+    expect(screen.getByText("PENDING")).toBeInTheDocument();
   });
 });

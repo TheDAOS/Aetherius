@@ -41,5 +41,22 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: ["./src/setupTests.ts"],
     globals: true,
+    coverage: {
+      reporter: ["text", "json-summary", "html"],
+      thresholds: {
+        "src/services/vault.ts": {
+          statements: 85,
+          branches: 80,
+          functions: 85,
+          lines: 90,
+        },
+        "src/services/intelligence/*.ts": {
+          statements: 90,
+          branches: 80,
+          functions: 90,
+          lines: 90,
+        },
+      },
+    },
   },
 });

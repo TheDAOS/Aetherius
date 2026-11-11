@@ -7,64 +7,105 @@ export interface ParsedNote {
   outgoingLinks: Array<{ raw: string; target: string; alias?: string }>;
 }
 
+// Small YAML subset used by note metadata: scalars and flat/block lists.
+// Preserve quoted strings and split arrays outside quoted commas.
+function parseScalar(value: string): unknown {
+  let quote = "";
+  let end = value.length;
+  let escaped = false;
+  for (let index = 0; index < value.length; index++) {
+    const char = value[index];
+    if (!escaped && (char === '"' || char === "'"))
+      quote = quote === char ? "" : quote || char;
+    if (
+      !quote &&
+      char === "#" &&
+      (index === 0 || /\s/.test(value[index - 1]))
+    ) {
+      end = index;
+      break;
+    }
+    escaped = quote === '"' && !escaped && char === "\\";
+  }
+  const raw = value.slice(0, end).trim();
+  if (raw.startsWith('"') && raw.endsWith('"')) {
+    try {
+      return JSON.parse(raw);
+    } catch {
+      return raw.slice(1, -1);
+    }
+  }
+  if (raw.startsWith("'") && raw.endsWith("'")) {
+    return raw.slice(1, -1).replace(/''/g, "'");
+  }
+  if (raw.startsWith("[") && raw.endsWith("]")) {
+    const values: unknown[] = [];
+    let current = "";
+    let quote = "";
+    for (const char of raw.slice(1, -1)) {
+      if ((char === '"' || char === "'") && !current.endsWith("\\")) {
+        quote = quote === char ? "" : quote || char;
+      }
+      if (char === "," && !quote) {
+        if (current.trim()) values.push(parseScalar(current));
+        current = "";
+      } else current += char;
+    }
+    if (current.trim()) values.push(parseScalar(current));
+    return values;
+  }
+  const scalar = raw.replace(/\s+#.*$/, "").trim();
+  if (scalar === "true") return true;
+  if (scalar === "false") return false;
+  if (scalar === "null" || scalar === "~") return null;
+  if (/^[+-]?(?:\d+\.?\d*|\.\d+)$/.test(scalar)) return Number(scalar);
+  return scalar;
+}
+
 export function parseFrontmatter(rawContent: string): {
-  frontmatter: Record<string, any>;
+  frontmatter: Record<string, unknown>;
   body: string;
 } {
-  const trimmed = rawContent.trimStart();
-  if (!trimmed.startsWith("---")) {
-    return { frontmatter: {}, body: rawContent };
-  }
-
-  const endIndex = trimmed.indexOf("\n---", 3);
-  if (endIndex === -1) {
-    return { frontmatter: {}, body: rawContent };
-  }
-
-  const yamlBlock = trimmed.slice(3, endIndex).trim();
-  const body = trimmed.slice(endIndex + 4).trimStart();
-  const frontmatter: Record<string, any> = {};
-
-  const lines = yamlBlock.split("\n");
+  const match = rawContent.match(
+    /^\s*---[ \t]*\r?\n([\s\S]*?)\r?\n---[ \t]*(?:\r?\n|$)/,
+  );
+  if (!match) return { frontmatter: {}, body: rawContent };
+  const frontmatter: Record<string, unknown> = {};
   let currentKey = "";
-  let inList = false;
-
-  for (const line of lines) {
-    const trimmedLine = line.trim();
-    if (!trimmedLine || trimmedLine.startsWith("#")) continue;
-
-    if (trimmedLine.startsWith("- ") && currentKey && inList) {
-      const val = trimmedLine
-        .slice(2)
-        .trim()
-        .replace(/^["']|["']$/g, "");
-      frontmatter[currentKey].push(val);
+  for (const line of match[1].split(/\r?\n/)) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith("#")) continue;
+    if (
+      trimmed.startsWith("- ") &&
+      currentKey &&
+      Array.isArray(frontmatter[currentKey])
+    ) {
+      (frontmatter[currentKey] as unknown[]).push(
+        parseScalar(trimmed.slice(2)),
+      );
       continue;
     }
-
-    const colonIndex = line.indexOf(":");
-    if (colonIndex !== -1) {
-      const key = line.slice(0, colonIndex).trim();
-      const rawValue = line.slice(colonIndex + 1).trim();
-
-      if (!rawValue) {
-        currentKey = key;
-        frontmatter[key] = [];
-        inList = true;
-      } else {
-        currentKey = key;
-        inList = false;
-        let parsedVal: any = rawValue.replace(/^["']|["']$/g, "");
-        if (parsedVal === "true") parsedVal = true;
-        else if (parsedVal === "false") parsedVal = false;
-        else if (!isNaN(Number(parsedVal)) && parsedVal !== "")
-          parsedVal = Number(parsedVal);
-        frontmatter[key] = parsedVal;
-      }
-    }
+    const entry = line.match(/^([^:#]+):\s*(.*)$/);
+    if (!entry) continue;
+    const key = entry[1].trim();
+    // A Markdown document must never modify Object.prototype through metadata.
+    if (["__proto__", "constructor", "prototype"].includes(key)) continue;
+    currentKey = key;
+    frontmatter[key] = entry[2].trim() ? parseScalar(entry[2]) : [];
   }
+  return {
+    frontmatter,
+    body: rawContent.slice(match[0].length).replace(/^(?:[ \t]*\r?\n)*/, ""),
+  };
+}
 
-  return { frontmatter, body };
+function withoutCode(text: string): string {
+  return text
+    .replace(
+      /^ {0,3}(`{3,}|~{3,})[^\n]*\n[\s\S]*?^ {0,3}\1[ \t]*(?:\n|$)/gm,
+      "",
+    )
+    .replace(/(`+)[\s\S]*?\1/g, "");
 }
 
 export function extractWikilinks(
@@ -73,8 +114,9 @@ export function extractWikilinks(
   const wikilinkRegex = /\[\[([^[\]|]+)(?:\|([^[\]]+))?\]\]/g;
   const links: Array<{ raw: string; target: string; alias?: string }> = [];
   let match: RegExpExecArray | null;
+  const source = withoutCode(text);
 
-  while ((match = wikilinkRegex.exec(text)) !== null) {
+  while ((match = wikilinkRegex.exec(source)) !== null) {
     const target = match[1].trim();
     const alias = match[2]?.trim();
     links.push({
@@ -89,7 +131,7 @@ export function extractWikilinks(
 
 export function extractInlineTags(text: string): string[] {
   // Strip code blocks first
-  const noCode = text.replace(/```[\s\S]*?```/g, "").replace(/`[^`]+`/g, "");
+  const noCode = withoutCode(text);
   const tagRegex = /(?:^|\s)#([a-zA-Z0-9_\-/]+)(?=\s|$|[.,;:!?])/g;
   const tags = new Set<string>();
   let match: RegExpExecArray | null;
@@ -125,7 +167,7 @@ export function parseMarkdown(
       : [];
 
   // Title resolution: frontmatter title > first # heading > filename
-  let title = frontmatter.title;
+  let title = frontmatter.title == null ? "" : String(frontmatter.title);
   if (!title) {
     const headingMatch = body.match(/^#\s+(.+)$/m);
     if (headingMatch) {
@@ -153,7 +195,11 @@ export function resolveWikilinkPath(
   allFilePaths: string[],
   titleToPathMap?: Map<string, string>,
 ): string | null {
-  const cleanTarget = target.trim().replace(/\.md$/, "").toLowerCase();
+  const cleanTarget = target
+    .split("#")[0]
+    .trim()
+    .replace(/\.md$/, "")
+    .toLowerCase();
   const normalizedTarget = cleanTarget.replace(/[\s\-_]+/g, "-");
 
   // 1. Check title/alias map if provided
